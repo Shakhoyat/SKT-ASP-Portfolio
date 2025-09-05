@@ -1,4 +1,9 @@
-# ASP.NET Web Forms .gitignore
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
 
 # Build results
 [Dd]ebug/
@@ -7,137 +12,279 @@
 [Rr]eleases/
 x64/
 x86/
-build/
 bld/
 [Bb]in/
 [Oo]bj/
+[Ll]og/
 
-# Visual Studio
+# Visual Studio 2015/2017 cache/options directory
 .vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-*.userprefs
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUNIT
+*.VisualState.xml
+TestResult.xml
 
 # Build Results of an ATL Project
 [Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
 
-# Web Deploy Package
-*.pubxml
-*.publishproj
-*.azurePubxml
+# Benchmark Results
+BenchmarkDotNet.Artifacts/
 
-# Package Files
-*.nupkg
-# The packages folder can be ignored because of Package Restore
-**/packages/*
-# except build/, which is used as an MSBuild target.
-!**/packages/build/
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
-# NuGet
-packages/
+# StyleCop
+StyleCopReport.xml
 
-# Database files
-*.mdf
-*.ldf
-*.sdf
-App_Data/*.mdf
-App_Data/*.ldf
-
-# Connection strings (for security)
-# Uncomment the next line if you want to ignore connection strings
-# connectionStrings.config
-
-# Log files
-*.log
-
-# Temporary files
-Temporary ASP.NET Files/
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
 *.tmp
-*.temp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
 
-# Web.config transform files
-Web.Debug.config
-Web.Release.config
+# Chutzpah Test files
+_Chutzpah*
 
-# Publish profiles
-PublishProfiles/
-*.pubxml
-*.pubxml.user
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
 
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
 
-# Folder config file
-Desktop.ini
+# Visual Studio Trace Files
+*.e2e
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# TFS 2012 Local Workspace
+$tf/
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Guidance Automation Toolkit
+*.gpState
 
-# Windows shortcuts
-*.lnk
-
-# Node.js (if using npm for frontend packages)
-node_modules/
-npm-debug.log*
-
-# Typescript
-*.tsbuildinfo
-
-# Visual Studio Code
-.vscode/
-
-# ReSharper
+# ReSharper is a .NET coding add-in
 _ReSharper*/
 *.[Rr]e[Ss]harper
 *.DotSettings.user
 
-# JetBrains IDEs
+# JetBrains Rider
 .idea/
 *.sln.iml
 
-# CodeRush
-.cr/
+# CodeRush personal settings
+.cr/personal
 
-# Python
+# Python Tools for Visual Studio (PTVS)
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Cake - Uncomment if you are using it
+# tools/**
+# !tools/packages.config
 
-# IDE specific files
+# Tabs Studio
+*.tss
+
+# Telerik's JustMock configuration file
+*.jmconfig
+
+# BizTalk build output
+*.btp.cs
+*.btm.cs
+*.odx.cs
+*.xsd.cs
+
+# OpenCover UI analysis results
+OpenCover/
+
+# Azure Stream Analytics local run output
+ASALocalRun/
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# NVidia Nsight GPU debugger configuration file
+*.nvuser
+
+# MFractors (Xamarin productivity tool) working folder
+.mfractor/
+
+# Local History for Visual Studio
+.localhistory/
+
+# BeatPulse healthcheck temp database
+healthchecksdb
+
+# Backup folder for Package Reference Convert tool in Visual Studio 2017
+MigrationBackup/
+
+# Ionide (cross platform F# VS Code tools) working folder
+.ionide/
+
+# ASP.NET Web Forms specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Web.config transforms (keep base Web.config)
+Web.Debug.config
+Web.Release.config
+
+# Package files
+*.nupkg
+packages/
+!packages/repositories.config
+!packages/packages.config
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Business Intelligence projects
+*.rdl.data
+*.bim.layout
+*.bim_*.settings
+*.rptproj.rsuser
+
+# Microsoft Fakes
+FakesAssemblies/
+
+# GhostDoc plugin setting file
+*.GhostDoc.xml
+
+# Node.js Tools for Visual Studio
+.ntvs_analysis.dat
+node_modules/
+
+# Visual Studio 6 build log
+*.plg
+
+# Visual Studio 6 workspace options file
+*.opt
+
+# Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
+*.vbw
+
+# Visual Studio LightSwitch build output
+**/*.HTMLClient/GeneratedArtifacts
+**/*.DesktopClient/GeneratedArtifacts
+**/*.DesktopClient/ModelManifest.xml
+**/*.Server/GeneratedArtifacts
+**/*.Server/ModelManifest.xml
+_Pvt_Extensions
+
+# Paket dependency manager
+.paket/paket.exe
+paket-files/
+
+# FAKE - F# Make
+.fake/
+
+# CodeRush personal settings
+.cr/personal
+
+# Python Tools for Visual Studio (PTVS)
+__pycache__/
+*.pyc
+
+# Cake - Uncomment if you are using it
+# tools/**
+# !tools/packages.config
+
+# Tabs Studio
+*.tss
+
+# Telerik's JustMock configuration file
+*.jmconfig
+
+# BizTalk build output
+*.btp.cs
+*.btm.cs
+*.odx.cs
+*.xsd.cs
+
+# OpenCover UI analysis results
+OpenCover/
+
+# Azure Stream Analytics local run output
+ASALocalRun/
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# NVidia Nsight GPU debugger configuration file
+*.nvuser
+
+# MFractors (Xamarin productivity tool) working folder
+.mfractor/
+
+# Local History for Visual Studio
+.localhistory/
+
+# BeatPulse healthcheck temp database
+healthchecksdb
+
+# Backup folder for Package Reference Convert tool in Visual Studio 2017
+MigrationBackup/
+
+# Ionide (cross platform F# VS Code tools) working folder
+.ionide/
+
+# Custom additions for ASP.NET Web Forms
 *.swp
 *.swo
 *~
 
-# Mac OS
+# OS generated files
 .DS_Store
-.AppleDouble
-.LSOverride
-
-# SASS
-.sass-cache/
-*.css.map
-
-# Backup files
-*.bak
-*.tmp
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db

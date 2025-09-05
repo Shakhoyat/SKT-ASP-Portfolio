@@ -1,237 +1,101 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SKT_ASP_Portfolio.SiteMaster" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication1.SiteMaster" %>
 
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head runat="server">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-    <meta name="description" content="SKT Portfolio - Professional ASP.NET Developer specializing in web applications, database design, and full-stack development" />
-    <meta name="keywords" content="ASP.NET, C#, SQL Server, Web Development, Portfolio, Full Stack Developer" />
-    <meta name="author" content="SKT Portfolio" />
-    <meta name="robots" content="index, follow" />
-    
-    <!-- Mobile Optimization -->
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="SKT Portfolio" />
-    
-    <!-- Theme Colors -->
-    <meta name="theme-color" content="#007bff" />
-    <meta name="msapplication-navbutton-color" content="#007bff" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="#007bff" />
-    
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    
     <title><%: Page.Title %> - SKT Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" 
-          integrity="sha384-9ndCyUa5UvMmJB9E1HXjp8YzU2yc7qzb9J8WV9GgqGO0z1zZOW5PZoJ1zU1XJz8Y" crossorigin="anonymous" />
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" 
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" />
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <!-- Custom CSS -->
-    <link href="~/Content/site.css" rel="stylesheet" />
-    
-    <!-- Responsive Images Support -->
-    <script>
-        // Picture element polyfill for older browsers
-        if (!window.HTMLPictureElement) {
-            document.createElement('picture');
-        }
-    </script>
+    <link href="~/Content/Site.css" rel="stylesheet" />
     
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "SKT Portfolio",
-        "jobTitle": "ASP.NET Developer",
-        "description": "Professional ASP.NET Developer specializing in web applications, database design, and full-stack development",
-        "url": "<%: Request.Url.GetLeftPart(UriPartial.Authority) %>",
-        "sameAs": [
-            "https://github.com/your-github",
-            "https://linkedin.com/in/your-linkedin"
-        ]
-    }
-    </script>
 </head>
 
 <body>
-    <form runat="server">
-        <asp:ScriptManager runat="server">
-            <Scripts>
-                <%--Framework Scripts--%>
-                <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="bootstrap" />
-                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
-                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
-                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
-                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
-                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
-                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
-                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-                <asp:ScriptReference Name="WebFormsBundle" />
-            </Scripts>
-        </asp:ScriptManager>
-
-        <!-- Skip to main content for accessibility -->
-        <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
-
-        <!-- Enhanced Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <form id="form1" runat="server">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
             <div class="container">
-                <a class="navbar-brand" href="Default.aspx" aria-label="SKT Portfolio Home">
-                    <i class="fas fa-code" aria-hidden="true"></i> 
-                    <span class="d-none d-sm-inline">SKT Portfolio</span>
-                    <span class="d-sm-none">SKT</span>
+                <a class="navbar-brand" href="Default.aspx">
+                    <i class="fas fa-code"></i>SKT Portfolio
                 </a>
                 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggle" type="button" onclick="toggleNavbar()">
+                    <span class="navbar-toggle-icon"></span>
+                    <span class="navbar-toggle-icon"></span>
+                    <span class="navbar-toggle-icon"></span>
                 </button>
                 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Default.aspx" aria-label="Home page">
-                                <i class="fas fa-home d-lg-none" aria-hidden="true"></i>
-                                <span class="d-lg-inline d-none">Home</span>
-                                <span class="d-lg-none">Home</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="About.aspx" aria-label="About page">
-                                <i class="fas fa-user d-lg-none" aria-hidden="true"></i>
-                                <span class="d-lg-inline d-none">About</span>
-                                <span class="d-lg-none">About</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Skills.aspx" aria-label="Skills page">
-                                <i class="fas fa-cogs d-lg-none" aria-hidden="true"></i>
-                                <span class="d-lg-inline d-none">Skills</span>
-                                <span class="d-lg-none">Skills</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Projects.aspx" aria-label="Projects page">
-                                <i class="fas fa-folder-open d-lg-none" aria-hidden="true"></i>
-                                <span class="d-lg-inline d-none">Projects</span>
-                                <span class="d-lg-none">Projects</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Achievements.aspx" aria-label="Achievements page">
-                                <i class="fas fa-trophy d-lg-none" aria-hidden="true"></i>
-                                <span class="d-lg-inline d-none">Achievements</span>
-                                <span class="d-lg-none">Awards</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Education.aspx" aria-label="Education page">
-                                <i class="fas fa-graduation-cap d-lg-none" aria-hidden="true"></i>
-                                <span class="d-lg-inline d-none">Education</span>
-                                <span class="d-lg-none">Education</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Contact.aspx" aria-label="Contact page">
-                                <i class="fas fa-envelope d-lg-none" aria-hidden="true"></i>
-                                <span class="d-lg-inline d-none">Contact</span>
-                                <span class="d-lg-none">Contact</span>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="navbar-nav" id="navbarNav">
+                    <a class="nav-link" href="Default.aspx">
+                        <i class="fas fa-home"></i>Home
+                    </a>
+                    <a class="nav-link" href="About.aspx">
+                        <i class="fas fa-user"></i>About
+                    </a>
+                    <a class="nav-link" href="Skills.aspx">
+                        <i class="fas fa-tools"></i>Skills
+                    </a>
+                    <a class="nav-link" href="Projects.aspx">
+                        <i class="fas fa-project-diagram"></i>Projects
+                    </a>
+                    <a class="nav-link" href="Achievements.aspx">
+                        <i class="fas fa-trophy"></i>Achievements
+                    </a>
+                    <a class="nav-link" href="Education.aspx">
+                        <i class="fas fa-graduation-cap"></i>Education
+                    </a>
+                    <a class="nav-link" href="Contact.aspx">
+                        <i class="fas fa-envelope"></i>Contact
+                    </a>
                 </div>
             </div>
         </nav>
 
         <!-- Main Content -->
-        <main role="main" class="main-content" id="main-content">
+        <main class="main-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </main>
 
-        <!-- Enhanced Footer -->
-        <footer class="bg-dark text-white py-4 mt-5">
+        <!-- Footer -->
+        <footer class="footer">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-12 text-center text-lg-start mb-3 mb-lg-0">
-                        <p class="mb-0">&copy; <%: DateTime.Now.Year %> SKT Portfolio. All rights reserved.</p>
-                        <small class="text-muted">
-                            Built with ASP.NET Web Forms & Bootstrap
-                        </small>
+                <div class="footer-content">
+                    <div class="footer-left">
+                        <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. All rights reserved.</p>
                     </div>
-                    <div class="col-lg-6 col-md-12 text-center text-lg-end">
-                        <div class="social-links">
-                            <a href="#" class="text-white me-3" aria-label="LinkedIn Profile" title="LinkedIn">
-                                <i class="fab fa-linkedin" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" class="text-white me-3" aria-label="GitHub Profile" title="GitHub">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" class="text-white me-3" aria-label="Twitter Profile" title="Twitter">
-                                <i class="fab fa-twitter" aria-hidden="true"></i>
-                            </a>
-                            <a href="Contact.aspx" class="text-white" aria-label="Contact via Email" title="Email">
-                                <i class="fas fa-envelope" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="mt-2">
-                            <small class="text-muted">
-                                <a href="#" class="text-muted text-decoration-none me-2">Privacy Policy</a>
-                                <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
-                            </small>
-                        </div>
+                    <div class="footer-right">
+                        <a href="#" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </footer>
-        
-        <!-- Loading indicator for better UX -->
-        <div id="loading-indicator" class="position-fixed top-0 start-0 w-100 h-100 d-none" 
-             style="background: rgba(255,255,255,0.9); z-index: 9999;">
-            <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        </div>
     </form>
 
-    <!-- Bootstrap JS with integrity -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" 
-            crossorigin="anonymous"></script>
-    
-    <!-- Custom JS -->
-    <script src="~/Scripts/site.js"></script>
-    
-    <!-- Service Worker for PWA capabilities (optional) -->
+    <!-- Pure JavaScript for mobile navigation -->
     <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                // Uncomment to enable service worker
-                // navigator.serviceWorker.register('/sw.js');
-            });
+        function toggleNavbar() {
+            var nav = document.getElementById('navbarNav');
+            nav.classList.toggle('active');
         }
     </script>
+    
+    <asp:ContentPlaceHolder ID="ScriptsContent" runat="server">
+    </asp:ContentPlaceHolder>
 </body>
 </html>
