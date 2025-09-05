@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.Models;
 
 namespace WebApplication1
 {
@@ -37,7 +38,7 @@ namespace WebApplication1
         {
             try
             {
-                List<Achievement> achievements = GetSampleAchievements();
+                List<AchievementModel> achievements = GetSampleAchievements();
                 System.Diagnostics.Debug.WriteLine($"Admin: Loaded {achievements.Count} achievements.");
 
                 gvAchievements.DataSource = achievements;
@@ -57,11 +58,11 @@ namespace WebApplication1
         /// <summary>
         /// Get sample achievements for demonstration
         /// </summary>
-        private List<Achievement> GetSampleAchievements()
+        private List<AchievementModel> GetSampleAchievements()
         {
-            return new List<Achievement>
+            return new List<AchievementModel>
             {
-                new Achievement
+                new AchievementModel
                 {
                     AchievementId = 1,
                     Title = "Project Excellence Award",
@@ -71,7 +72,7 @@ namespace WebApplication1
                     AchievementDate = new DateTime(2024, 6, 15),
                     IsActive = true
                 },
-                new Achievement
+                new AchievementModel
                 {
                     AchievementId = 2,
                     Title = "Microsoft Azure Fundamentals",
@@ -81,7 +82,7 @@ namespace WebApplication1
                     AchievementDate = new DateTime(2023, 11, 20),
                     IsActive = true
                 },
-                new Achievement
+                new AchievementModel
                 {
                     AchievementId = 3,
                     Title = "Best Code Quality",
@@ -91,7 +92,7 @@ namespace WebApplication1
                     AchievementDate = new DateTime(2023, 9, 10),
                     IsActive = true
                 },
-                new Achievement
+                new AchievementModel
                 {
                     AchievementId = 4,
                     Title = "Open Source Contributor",
@@ -101,7 +102,7 @@ namespace WebApplication1
                     AchievementDate = new DateTime(2023, 12, 1),
                     IsActive = true
                 },
-                new Achievement
+                new AchievementModel
                 {
                     AchievementId = 5,
                     Title = "Team Leadership Excellence",
@@ -309,21 +310,5 @@ namespace WebApplication1
                 System.Diagnostics.Debug.WriteLine($"Error logging admin activity: {ex.Message}");
             }
         }
-    }
-
-    /// <summary>
-    /// Achievement model class
-    /// </summary>
-    public class Achievement
-    {
-        public int AchievementId { get; set; }
-        public string Title { get; set; }
-        public string Type { get; set; }
-        public string Description { get; set; }
-        public string Organization { get; set; }
-        public DateTime AchievementDate { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
     }
 }

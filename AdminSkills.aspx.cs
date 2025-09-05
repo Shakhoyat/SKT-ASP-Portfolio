@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.Models;
 
 namespace WebApplication1
 {
@@ -37,7 +38,7 @@ namespace WebApplication1
         {
             try
             {
-                List<Skill> skills = GetSampleSkills();
+                List<SkillModel> skills = GetSampleSkills();
                 System.Diagnostics.Debug.WriteLine($"Admin: Loaded {skills.Count} skills.");
 
                 gvSkills.DataSource = skills;
@@ -57,11 +58,11 @@ namespace WebApplication1
         /// <summary>
         /// Get sample skills for demonstration
         /// </summary>
-        private List<Skill> GetSampleSkills()
+        private List<SkillModel> GetSampleSkills()
         {
-            return new List<Skill>
+            return new List<SkillModel>
             {
-                new Skill
+                new SkillModel
                 {
                     SkillId = 1,
                     SkillName = "C#",
@@ -70,7 +71,7 @@ namespace WebApplication1
                     Description = "Advanced knowledge of C# and .NET Framework",
                     IsActive = true
                 },
-                new Skill
+                new SkillModel
                 {
                     SkillId = 2,
                     SkillName = "ASP.NET Web Forms",
@@ -79,7 +80,7 @@ namespace WebApplication1
                     Description = "Experienced in building web applications",
                     IsActive = true
                 },
-                new Skill
+                new SkillModel
                 {
                     SkillId = 3,
                     SkillName = "SQL Server",
@@ -88,7 +89,7 @@ namespace WebApplication1
                     Description = "Database design and T-SQL programming",
                     IsActive = true
                 },
-                new Skill
+                new SkillModel
                 {
                     SkillId = 4,
                     SkillName = "JavaScript",
@@ -97,7 +98,7 @@ namespace WebApplication1
                     Description = "Frontend programming and DOM manipulation",
                     IsActive = true
                 },
-                new Skill
+                new SkillModel
                 {
                     SkillId = 5,
                     SkillName = "HTML/CSS",
@@ -300,20 +301,5 @@ namespace WebApplication1
                 System.Diagnostics.Debug.WriteLine($"Error logging admin activity: {ex.Message}");
             }
         }
-    }
-
-    /// <summary>
-    /// Skill model class
-    /// </summary>
-    public class Skill
-    {
-        public int SkillId { get; set; }
-        public string SkillName { get; set; }
-        public string Category { get; set; }
-        public int ProficiencyLevel { get; set; }
-        public string Description { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
     }
 }

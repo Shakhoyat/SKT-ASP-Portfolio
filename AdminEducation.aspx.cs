@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.Models;
 
 namespace WebApplication1
 {
@@ -37,7 +38,7 @@ namespace WebApplication1
         {
             try
             {
-                List<Education> educationList = GetSampleEducation();
+                List<EducationModel> educationList = GetSampleEducation();
                 System.Diagnostics.Debug.WriteLine($"Admin: Loaded {educationList.Count} education records.");
 
                 gvEducation.DataSource = educationList;
@@ -57,11 +58,11 @@ namespace WebApplication1
         /// <summary>
         /// Get sample education for demonstration
         /// </summary>
-        private List<Education> GetSampleEducation()
+        private List<EducationModel> GetSampleEducation()
         {
-            return new List<Education>
+            return new List<EducationModel>
             {
-                new Education
+                new EducationModel
                 {
                     EducationId = 1,
                     Degree = "Bachelor of Science in Computer Science",
@@ -74,7 +75,7 @@ namespace WebApplication1
                     Type = "Degree",
                     IsActive = true
                 },
-                new Education
+                new EducationModel
                 {
                     EducationId = 2,
                     Degree = "Microsoft Certified: Azure Fundamentals",
@@ -87,7 +88,7 @@ namespace WebApplication1
                     Type = "Certification",
                     IsActive = true
                 },
-                new Education
+                new EducationModel
                 {
                     EducationId = 3,
                     Degree = "Full Stack Web Development",
@@ -100,7 +101,7 @@ namespace WebApplication1
                     Type = "Course",
                     IsActive = true
                 },
-                new Education
+                new EducationModel
                 {
                     EducationId = 4,
                     Degree = "Higher Secondary Certificate",
@@ -337,24 +338,5 @@ namespace WebApplication1
                 System.Diagnostics.Debug.WriteLine($"Error logging admin activity: {ex.Message}");
             }
         }
-    }
-
-    /// <summary>
-    /// Education model class
-    /// </summary>
-    public class Education
-    {
-        public int EducationId { get; set; }
-        public string Degree { get; set; }
-        public string FieldOfStudy { get; set; }
-        public string Institution { get; set; }
-        public string Location { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string GPA { get; set; }
-        public string Type { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
     }
 }

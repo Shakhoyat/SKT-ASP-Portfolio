@@ -390,16 +390,6 @@
             font-weight: 600;
         }
 
-        .status-indicator.coming-soon {
-            background: rgba(255, 193, 7, 0.1);
-            color: #ffc107;
-        }
-
-        .coming-soon {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-        }
-
         /* Activity log */
         .activity-log {
             padding: 1rem 0;
