@@ -15,8 +15,10 @@
     
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    
     <!-- Custom CSS -->
     <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/placeholder-styles.css" rel="stylesheet" />
     
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -77,7 +79,7 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-left">
-                        <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. Crafted with ?? using ASP.NET</p>
+                        <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. Built with ?? and ASP.NET</p>
                     </div>
                     <div class="footer-right">
                         <a href="https://linkedin.com/in/shakhoyat" class="social-link" title="LinkedIn" target="_blank">
@@ -89,13 +91,16 @@
                         <a href="mailto:skt104.shujon@gmail.com" class="social-link" title="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
+                        <a href="https://wa.me/1234567890" class="social-link" title="WhatsApp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </footer>
     </form>
 
-    <!-- Enhanced JavaScript for mobile navigation -->
+    <!-- Enhanced JavaScript -->
     <script>
         function toggleNavbar() {
             var nav = document.getElementById('navbarNav');
@@ -112,25 +117,65 @@
             }
         });
 
-        // Add scroll effect to navbar
+        // Enhanced navbar scroll effect
         window.addEventListener('scroll', function() {
             var navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+                navbar.style.background = 'rgba(10, 14, 26, 0.98)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.borderBottom = '1px solid rgba(0, 212, 170, 0.3)';
             } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                navbar.style.background = 'rgba(10, 14, 26, 0.95)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.borderBottom = '1px solid var(--border-color)';
             }
         });
 
-        // Add loading animation
+        // Smooth loading animation
         window.addEventListener('load', function() {
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.5s ease-in-out';
             setTimeout(function() {
                 document.body.style.opacity = '1';
             }, 100);
+        });
+
+        // Add active state to navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            var currentPage = window.location.pathname.split('/').pop();
+            var navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(function(link) {
+                var linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'Default.aspx')) {
+                    link.style.color = 'var(--accent-color)';
+                    link.style.fontWeight = '600';
+                }
+            });
+        });
+
+        // Parallax effect for hero sections
+        window.addEventListener('scroll', function() {
+            var hero = document.querySelector('.hero');
+            if (hero) {
+                var scrolled = window.pageYOffset;
+                var rate = scrolled * -0.5;
+                hero.style.transform = 'translateY(' + rate + 'px)';
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
     
