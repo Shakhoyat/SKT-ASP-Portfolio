@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\about.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:about.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\skills.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:skills.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
+      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\about.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
@@ -29,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
-      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:site.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\site.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -67,8 +71,28 @@
       "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|",
-      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}|"
+      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\skills.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:skills.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\projects.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:projects.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\projects.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:projects.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\contact.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:contact.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\contact.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:contact.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|c:\\users\\skt_pie\\source\\repos\\skt-asp-portfolio\\content\\responsive-enhancements.css||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{F28FDEBF-C653-461D-B32C-350E552C69A2}|SKT-ASP-Portfolio.csproj|solutionrelative:content\\responsive-enhancements.css||{8B382828-6202-11D1-8870-0000F87579D2}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,37 +102,128 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 22,
+              "Title": "responsive-enhancements.css",
+              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Content\\responsive-enhancements.css",
+              "RelativeDocumentMoniker": "Content\\responsive-enhancements.css",
+              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Content\\responsive-enhancements.css",
+              "RelativeToolTip": "Content\\responsive-enhancements.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-05T10:49:47.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Contact.aspx",
+              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Contact.aspx",
+              "RelativeDocumentMoniker": "Contact.aspx",
+              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Contact.aspx",
+              "RelativeToolTip": "Contact.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-05T10:34:08.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Projects.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Projects.aspx.cs",
+              "RelativeDocumentMoniker": "Projects.aspx.cs",
+              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Projects.aspx.cs",
+              "RelativeToolTip": "Projects.aspx.cs",
+              "ViewState": "AgIAAPUAAAAAAAAAAEBVwPkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T10:25:01.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Projects.aspx",
+              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Projects.aspx",
+              "RelativeDocumentMoniker": "Projects.aspx",
+              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Projects.aspx",
+              "RelativeToolTip": "Projects.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-05T10:24:03.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Site.Master",
+              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Site.Master",
+              "RelativeDocumentMoniker": "Site.Master",
+              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Site.Master",
+              "RelativeToolTip": "Site.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-05T09:53:11.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Contact.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Contact.aspx.cs",
+              "RelativeDocumentMoniker": "Contact.aspx.cs",
+              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Contact.aspx.cs",
+              "RelativeToolTip": "Contact.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T10:34:53.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Skills.aspx",
+              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Skills.aspx",
+              "RelativeDocumentMoniker": "Skills.aspx",
+              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Skills.aspx",
+              "RelativeToolTip": "Skills.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-09-05T10:17:25.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Skills.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Skills.aspx.cs",
+              "RelativeDocumentMoniker": "Skills.aspx.cs",
+              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Skills.aspx.cs",
+              "RelativeToolTip": "Skills.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T10:18:12.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "README.md",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\README.md",
               "RelativeDocumentMoniker": "README.md",
               "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\README.md",
               "RelativeToolTip": "README.md",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYAAABkAAAAAAAAAA==",
+              "ViewState": "AgIAAA4BAAAAAAAAAAAMwCYBAAChAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
               "WhenOpened": "2025-09-05T10:10:40.471Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "About.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\About.aspx.cs",
-              "RelativeDocumentMoniker": "About.aspx.cs",
-              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\About.aspx.cs",
-              "RelativeToolTip": "About.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-05T10:09:16.268Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "About.aspx",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\About.aspx",
               "RelativeDocumentMoniker": "About.aspx",
@@ -121,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -134,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Web.config",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Web.config",
               "RelativeDocumentMoniker": "Web.config",
@@ -147,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Default.aspx.cs",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Default.aspx.cs",
               "RelativeDocumentMoniker": "Default.aspx.cs",
@@ -160,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\App.config",
               "RelativeDocumentMoniker": "App.config",
@@ -173,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -186,7 +301,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "Form1.Designer.cs",
@@ -199,7 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Default.aspx",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Default.aspx",
               "RelativeDocumentMoniker": "Default.aspx",
@@ -212,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
@@ -225,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Global.asax.cs",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Global.asax.cs",
               "RelativeDocumentMoniker": "Global.asax.cs",
@@ -238,7 +353,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Global.asax",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Global.asax",
               "RelativeDocumentMoniker": "Global.asax",
@@ -251,33 +366,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "site.js",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Scripts\\site.js",
               "RelativeDocumentMoniker": "Scripts\\site.js",
               "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Scripts\\site.js",
               "RelativeToolTip": "Scripts\\site.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAP0DAAAAAAAAAIBJwP8DAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-09-05T09:54:01.723Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Content\\site.css",
               "RelativeDocumentMoniker": "Content\\site.css",
               "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Content\\site.css",
               "RelativeToolTip": "Content\\site.css",
-              "ViewState": "AgIAAF8BAAAAAAAAAIBJwGEBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAKEDAAAAAAAAAIBJwKMDAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-09-05T09:53:42.418Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Site.Master.cs",
               "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Site.Master.cs",
               "RelativeDocumentMoniker": "Site.Master.cs",
@@ -286,19 +401,6 @@
               "ViewState": "AgIAABoAAAAAAAAAAIBJwBwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-05T09:53:19.954Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Site.Master",
-              "DocumentMoniker": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Site.Master",
-              "RelativeDocumentMoniker": "Site.Master",
-              "ToolTip": "C:\\Users\\skt_pie\\source\\repos\\SKT-ASP-Portfolio\\Site.Master",
-              "RelativeToolTip": "Site.Master",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-09-05T09:53:11.882Z",
               "EditorCaption": ""
             }
           ]

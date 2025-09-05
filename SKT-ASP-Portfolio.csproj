@@ -104,6 +104,7 @@
     <Content Include=".gitignore" />
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\responsive-enhancements.css" />
     <Content Include="Content\site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
