@@ -20,8 +20,24 @@ namespace WebApplication1
 
             if (!IsPostBack)
             {
-                // Redirect to dashboard with message
-                Response.Redirect("AdminDashboard.aspx?message=Achievements management will be implemented in the next phase");
+                // Page loads normally - no redirect needed
+                LogAdminActivity("Viewed Achievements management page");
+            }
+        }
+
+        /// <summary>
+        /// Log admin activity
+        /// </summary>
+        private void LogAdminActivity(string activity)
+        {
+            try
+            {
+                string logEntry = $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] {activity} by {AdminLogin.GetAdminUsername()}";
+                System.Diagnostics.Debug.WriteLine(logEntry);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error logging admin activity: {ex.Message}");
             }
         }
     }

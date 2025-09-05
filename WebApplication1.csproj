@@ -70,11 +70,14 @@
     <Content Include=".gitignore" />
     <Content Include="About.aspx" />
     <Content Include="Achievements.aspx" />
+    <Content Include="AdminAchievements.aspx" />
     <Content Include="AdminDashboard.aspx" />
+    <Content Include="AdminEducation.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="AdminMessages.aspx" />
     <Content Include="AdminProjectForm.aspx" />
     <Content Include="AdminProjects.aspx" />
+    <Content Include="AdminSkills.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\placeholder-styles.css" />
     <Content Include="Content\Site.css" />
@@ -101,6 +104,10 @@
     </Compile>
     <Compile Include="AdminAchievements.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>AdminAchievements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAchievements.aspx.designer.cs">
+      <DependentUpon>AdminAchievements.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminDashboard.aspx.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
@@ -111,6 +118,10 @@
     </Compile>
     <Compile Include="AdminEducation.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>AdminEducation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEducation.aspx.designer.cs">
+      <DependentUpon>AdminEducation.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminLogin.aspx.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
@@ -142,8 +153,12 @@
     </Compile>
     <Compile Include="AdminSkills.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>AdminSkills.aspx</DependentUpon>
     </Compile>
     <Content Include="App_Code\PortfolioCacheManager.cs" />
+    <Compile Include="AdminSkills.aspx.designer.cs">
+      <DependentUpon>AdminSkills.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

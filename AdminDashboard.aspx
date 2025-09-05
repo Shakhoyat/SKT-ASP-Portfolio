@@ -119,11 +119,11 @@
                         </div>
                         <div class="management-actions">
                             <a href="AdminSkills.aspx" class="btn btn-primary">
-                                <i class="fas fa-edit"></i> Manage Skills
+                                <i class="fas fa-eye"></i> View Preview
                             </a>
-                            <a href="AdminSkills.aspx?action=add" class="btn btn-outline-primary">
-                                <i class="fas fa-plus"></i> Add New
-                            </a>
+                            <span class="status-indicator coming-soon">
+                                Coming Soon
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -142,11 +142,11 @@
                         </div>
                         <div class="management-actions">
                             <a href="AdminAchievements.aspx" class="btn btn-primary">
-                                <i class="fas fa-edit"></i> Manage Achievements
+                                <i class="fas fa-eye"></i> View Preview
                             </a>
-                            <a href="AdminAchievements.aspx?action=add" class="btn btn-outline-primary">
-                                <i class="fas fa-plus"></i> Add New
-                            </a>
+                            <span class="status-indicator coming-soon">
+                                Coming Soon
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -165,11 +165,11 @@
                         </div>
                         <div class="management-actions">
                             <a href="AdminEducation.aspx" class="btn btn-primary">
-                                <i class="fas fa-edit"></i> Manage Education
+                                <i class="fas fa-eye"></i> View Preview
                             </a>
-                            <a href="AdminEducation.aspx?action=add" class="btn btn-outline-primary">
-                                <i class="fas fa-plus"></i> Add New
-                            </a>
+                            <span class="status-indicator coming-soon">
+                                Coming Soon
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -388,6 +388,16 @@
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 600;
+        }
+
+        .status-indicator.coming-soon {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+
+        .coming-soon {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
         }
 
         /* Activity log */
