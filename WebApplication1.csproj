@@ -90,6 +90,7 @@
     <Content Include="Education.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Projects.aspx" />
+    <Content Include="Site_Master_Updated.txt" />
     <Content Include="Skills.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

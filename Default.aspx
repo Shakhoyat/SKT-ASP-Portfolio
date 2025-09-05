@@ -1309,6 +1309,11 @@
                 animation: fadeInUp 1.5s ease-out 0.8s both;
             }
         }
+
+        /* Override main content margin for homepage since navbar is hidden initially */
+        .main-content {
+            margin-top: 0 !important;
+        }
     </style>
 
     <script>
