@@ -69,11 +69,14 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="About.aspx" />
+    <Content Include="Achievements.aspx" />
+    <Content Include="Contact.aspx" />
     <Content Include="Content\placeholder-styles.css" />
     <Content Include="Content\Site.css" />
     <Content Include="DatabaseSetup.aspx" />
     <Content Include="Database\PortfolioSchema.sql" />
     <Content Include="Default.aspx" />
+    <Content Include="Education.aspx" />
     <Content Include="Projects.aspx" />
     <Content Include="Skills.aspx" />
     <Content Include="Web.config" />
@@ -83,6 +86,20 @@
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Achievements.aspx.cs">
+      <DependentUpon>Achievements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Achievements.aspx.designer.cs">
+      <DependentUpon>Achievements.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\ProjectsDAL.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="DatabaseSetup.aspx.cs">
@@ -91,6 +108,13 @@
     </Compile>
     <Compile Include="DatabaseSetup.aspx.designer.cs">
       <DependentUpon>DatabaseSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Education.aspx.cs">
+      <DependentUpon>Education.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Education.aspx.designer.cs">
+      <DependentUpon>Education.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Project.cs" />
     <Compile Include="Projects.aspx.cs">
@@ -120,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\README.md" />
+    <Content Include="Content\docs\README.md" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">
