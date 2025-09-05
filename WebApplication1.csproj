@@ -69,7 +69,9 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="About.aspx" />
+    <Content Include="Content\placeholder-styles.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="DatabaseSetup.aspx" />
     <Content Include="Database\PortfolioSchema.sql" />
     <Content Include="Default.aspx" />
     <Content Include="Projects.aspx" />
@@ -83,6 +85,13 @@
     </Compile>
     <Compile Include="DataAccess\ProjectsDAL.cs" />
     <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="DatabaseSetup.aspx.cs">
+      <DependentUpon>DatabaseSetup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DatabaseSetup.aspx.designer.cs">
+      <DependentUpon>DatabaseSetup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Project.cs" />
     <Compile Include="Projects.aspx.cs">
       <DependentUpon>Projects.aspx</DependentUpon>

@@ -54,6 +54,9 @@
                     <a class="nav-link" href="Contact.aspx">
                         <i class="fas fa-envelope"></i>Contact
                     </a>
+                    <a class="nav-link" href="DatabaseSetup.aspx" style="color: #ffc107;">
+                        <i class="fas fa-database"></i>DB Setup
+                    </a>
                 </div>
             </div>
         </nav>
