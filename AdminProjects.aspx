@@ -34,9 +34,15 @@
                             <h2>Portfolio Projects</h2>
                             <div class="admin-actions">
                                 <asp:Button ID="btnAddProject" runat="server" Text="Add New Project" 
-                                          CssClass="btn btn-primary" OnClick="btnAddProject_Click" />
+                                          CssClass="btn btn-primary" OnClick="btnAddProject_Click" 
+                                          CausesValidation="false" UseSubmitBehavior="true" />
                                 <asp:Button ID="btnRefresh" runat="server" Text="Refresh" 
-                                          CssClass="btn btn-outline-primary" OnClick="btnRefresh_Click" />
+                                          CssClass="btn btn-outline-primary" OnClick="btnRefresh_Click"
+                                          CausesValidation="false" UseSubmitBehavior="true" />
+                                <!-- Debug: Direct link for testing -->
+                                <a href="AdminProjectForm.aspx" class="btn btn-outline-secondary" style="font-size: 0.8rem;">
+                                    <i class="fas fa-external-link-alt"></i> Direct Link
+                                </a>
                             </div>
                         </div>
 
@@ -123,7 +129,8 @@
                                         <h3>No Projects Found</h3>
                                         <p>Start by adding your first project to showcase your work.</p>
                                         <asp:Button ID="btnAddFirstProject" runat="server" Text="Add Your First Project" 
-                                                  CssClass="btn btn-primary" OnClick="btnAddProject_Click" />
+                                                  CssClass="btn btn-primary" OnClick="btnAddProject_Click" 
+                                                  CausesValidation="false" UseSubmitBehavior="true" />
                                     </div>
                                 </EmptyDataTemplate>
                             </asp:GridView>
@@ -362,9 +369,9 @@
                 }
             });
 
-            // Add loading state to buttons
-            const buttons = document.querySelectorAll('.btn');
-            buttons.forEach(button => {
+            // Add loading state to buttons (but exclude server-side buttons)
+            const clientButtons = document.querySelectorAll('.btn:not([id*="btn"])');
+            clientButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     if (!this.disabled && !this.classList.contains('btn-danger')) {
                         this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
@@ -372,6 +379,44 @@
                     }
                 });
             });
+        });
+
+        // Handle server-side button clicks properly
+        function handleServerButtonClick(button, buttonText) {
+            // Don't interfere with server-side button functionality
+            // Just add visual feedback without disabling the button
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + buttonText + '...';
+            button.style.opacity = '0.8';
+            
+            // Reset after a short delay (the page will redirect anyway)
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.opacity = '1';
+            }, 1000);
+        }
+
+        // Add click handler for Add Project button specifically
+        window.addEventListener('load', function() {
+            const addProjectBtn = document.getElementById('<%= btnAddProject.ClientID %>');
+            if (addProjectBtn) {
+                console.log('Add Project button found:', addProjectBtn);
+                addProjectBtn.addEventListener('click', function(e) {
+                    console.log('Add Project button clicked!');
+                    handleServerButtonClick(this, 'Loading');
+                    // Don't prevent default - let the server handle it
+                });
+            } else {
+                console.error('Add Project button not found!');
+            }
+            
+            const refreshBtn = document.getElementById('<%= btnRefresh.ClientID %>');
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', function() {
+                    console.log('Refresh button clicked!');
+                    handleServerButtonClick(this, 'Refreshing');
+                });
+            }
         });
     </script>
 </asp:Content>

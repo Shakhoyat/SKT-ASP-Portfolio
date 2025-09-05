@@ -25,6 +25,11 @@ namespace WebApplication1
             {
                 LoadProjects();
             }
+            else
+            {
+                // Log postback events for debugging
+                System.Diagnostics.Debug.WriteLine($"AdminProjects postback occurred. EventTarget: {Request.Form["__EVENTTARGET"]}");
+            }
         }
 
         /// <summary>
@@ -287,8 +292,21 @@ namespace WebApplication1
         /// </summary>
         protected void btnAddProject_Click(object sender, EventArgs e)
         {
-            // Redirect to the add form
-            Response.Redirect("AdminProjectForm.aspx");
+            try
+            {
+                // Log the button click for debugging
+                System.Diagnostics.Debug.WriteLine("Add Project button clicked by admin: " + AdminLogin.GetAdminUsername());
+                LogAdminActivity("Clicked Add New Project button");
+                
+                // Redirect to the add form
+                System.Diagnostics.Debug.WriteLine("Redirecting to AdminProjectForm.aspx");
+                Response.Redirect("AdminProjectForm.aspx");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in btnAddProject_Click: {ex.Message}");
+                ShowError($"Error navigating to add project form: {ex.Message}");
+            }
         }
 
         /// <summary>

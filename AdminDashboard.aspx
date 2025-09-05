@@ -98,7 +98,7 @@
                             <a href="AdminProjects.aspx" class="btn btn-primary">
                                 <i class="fas fa-edit"></i> Manage Projects
                             </a>
-                            <a href="AdminProjects.aspx?action=add" class="btn btn-outline-primary">
+                            <a href="AdminProjectForm.aspx" class="btn btn-outline-primary">
                                 <i class="fas fa-plus"></i> Add New
                             </a>
                         </div>
