@@ -23,317 +23,470 @@
         </div>
     </div>
 
-    <!-- Coming Soon Section -->
+    <!-- Education Management -->
     <div class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 mx-auto text-center">
+                <div class="col-md-12">
                     <div class="card">
-                        <div style="padding: 4rem 2rem;">
-                            <div style="background: var(--gradient-primary); width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            
-                            <h2 style="color: var(--text-primary); margin-bottom: 1.5rem;">Education Management</h2>
-                            <h3 style="color: var(--accent-color); margin-bottom: 2rem;">Coming Soon!</h3>
-                            
-                            <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
-                                The Education Management system is currently under development. This feature will allow you to:
-                            </p>
-                            
-                            <div class="row" style="margin: 2rem 0;">
-                                <div class="col-md-6 mb-3">
-                                    <div style="display: flex; align-items: center; gap: 1rem; text-align: left;">
-                                        <div style="background: rgba(0, 212, 170, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-color); font-size: 1.2rem;">
-                                            <i class="fas fa-university"></i>
-                                        </div>
-                                        <div>
-                                            <strong style="color: var(--text-primary);">Add Degrees</strong><br />
-                                            <small style="color: var(--text-secondary);">Bachelor's, Master's, PhD</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-3">
-                                    <div style="display: flex; align-items: center; gap: 1rem; text-align: left;">
-                                        <div style="background: rgba(0, 212, 170, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-color); font-size: 1.2rem;">
-                                            <i class="fas fa-certificate"></i>
-                                        </div>
-                                        <div>
-                                            <strong style="color: var(--text-primary);">Certifications</strong><br />
-                                            <small style="color: var(--text-secondary);">Professional certificates</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-3">
-                                    <div style="display: flex; align-items: center; gap: 1rem; text-align: left;">
-                                        <div style="background: rgba(0, 212, 170, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-color); font-size: 1.2rem;">
-                                            <i class="fas fa-laptop-code"></i>
-                                        </div>
-                                        <div>
-                                            <strong style="color: var(--text-primary);">Courses</strong><br />
-                                            <small style="color: var(--text-secondary);">Online and offline courses</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-md-6 mb-3">
-                                    <div style="display: flex; align-items: center; gap: 1rem; text-align: left;">
-                                        <div style="background: rgba(0, 212, 170, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-color); font-size: 1.2rem;">
-                                            <i class="fas fa-calendar-alt"></i>
-                                        </div>
-                                        <div>
-                                            <strong style="color: var(--text-primary);">Timeline</strong><br />
-                                            <small style="color: var(--text-secondary);">Educational timeline</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div style="background: rgba(0, 212, 170, 0.05); border: 1px solid rgba(0, 212, 170, 0.2); border-radius: var(--border-radius); padding: 1.5rem; margin: 2rem 0;">
-                                <h4 style="color: var(--text-primary); margin-bottom: 1rem;">
-                                    <i class="fas fa-info-circle" style="color: var(--accent-color); margin-right: 0.5rem;"></i>
-                                    Current Status
-                                </h4>
-                                <p style="color: var(--text-secondary); margin: 0; line-height: 1.6;">
-                                    You can currently manage your education information through the static Education.aspx page. 
-                                    The dynamic admin management system will be available in the next update.
-                                </p>
-                            </div>
-                            
-                            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-                                <a href="Education.aspx" class="btn btn-primary">
-                                    <i class="fas fa-eye"></i> View Current Education Page
-                                </a>
-                                <a href="AdminDashboard.aspx" class="btn btn-outline-primary">
-                                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                        <div class="admin-header">
+                            <h2>Educational Background</h2>
+                            <div class="admin-actions">
+                                <asp:Button ID="btnAddEducation" runat="server" Text="Add New Education" 
+                                          CssClass="btn btn-primary" OnClick="btnAddEducation_Click" 
+                                          CausesValidation="false" UseSubmitBehavior="true" />
+                                <asp:Button ID="btnRefreshEducation" runat="server" Text="Refresh" 
+                                          CssClass="btn btn-outline-primary" OnClick="btnRefreshEducation_Click"
+                                          CausesValidation="false" UseSubmitBehavior="true" />
+                                <!-- Debug: Direct link for testing -->
+                                <a href="AdminEducationForm.aspx" class="btn btn-outline-secondary" style="font-size: 0.8rem;">
+                                    <i class="fas fa-external-link-alt"></i> Direct Link
                                 </a>
                             </div>
+                        </div>
+
+                        <!-- Education Grid -->
+                        <div class="admin-content">
+                            <asp:GridView ID="gvEducation" runat="server" 
+                                        AutoGenerateColumns="false" 
+                                        CssClass="admin-grid"
+                                        OnRowCommand="gvEducation_RowCommand"
+                                        OnRowDataBound="gvEducation_RowDataBound"
+                                        DataKeyNames="EducationId">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Education">
+                                        <ItemTemplate>
+                                            <div class="education-info">
+                                                <div class="education-icon <%# GetEducationClass(Eval("Type").ToString()) %>">
+                                                    <i class="<%# GetEducationIcon(Eval("Type").ToString()) %>"></i>
+                                                </div>
+                                                <div class="education-details">
+                                                    <h4><%# Eval("Degree") %></h4>
+                                                    <span class="education-field"><%# Eval("FieldOfStudy") %></span>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:TemplateField HeaderText="Institution">
+                                        <ItemTemplate>
+                                            <div class="institution-info">
+                                                <h5><%# Eval("Institution") %></h5>
+                                                <div class="institution-meta">
+                                                    <div class="meta-item">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <%# Eval("Location") %>
+                                                    </div>
+                                                    <div class="meta-item">
+                                                        <i class="fas fa-star"></i>
+                                                        GPA: <%# Eval("GPA") %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:TemplateField HeaderText="Duration">
+                                        <ItemTemplate>
+                                            <div class="duration-info">
+                                                <div class="meta-item">
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                    <%# Eval("StartDate", "{0:MMM yyyy}") %> - <%# Eval("EndDate", "{0:MMM yyyy}") %>
+                                                </div>
+                                                <div class="meta-item">
+                                                    <i class="fas fa-clock"></i>
+                                                    <%# GetDuration((DateTime)Eval("StartDate"), (DateTime?)Eval("EndDate")) %>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:TemplateField HeaderText="Actions">
+                                        <ItemTemplate>
+                                            <div class="action-buttons">
+                                                <asp:LinkButton ID="btnEditEducation" runat="server" 
+                                                              CommandName="EditEducation" 
+                                                              CommandArgument='<%# Eval("EducationId") %>'
+                                                              CssClass="btn btn-sm btn-outline-primary"
+                                                              ToolTip="Edit Education">
+                                                    <i class="fas fa-edit"></i>
+                                                </asp:LinkButton>
+                                                
+                                                <asp:LinkButton ID="btnToggleEducationStatus" runat="server" 
+                                                              CommandName="ToggleStatus" 
+                                                              CommandArgument='<%# Eval("EducationId") %>'
+                                                              CssClass='<%# "btn btn-sm " + ((bool)Eval("IsActive") ? "btn-warning" : "btn-success") %>'
+                                                              ToolTip='<%# (bool)Eval("IsActive") ? "Deactivate" : "Activate" %>'>
+                                                    <i class='<%# "fas " + ((bool)Eval("IsActive") ? "fa-pause" : "fa-play") %>'></i>
+                                                </asp:LinkButton>
+                                                
+                                                <asp:LinkButton ID="btnDeleteEducation" runat="server" 
+                                                              CommandName="DeleteEducation" 
+                                                              CommandArgument='<%# Eval("EducationId") %>'
+                                                              CssClass="btn btn-sm btn-danger"
+                                                              ToolTip="Delete Education"
+                                                              OnClientClick="return confirm('Are you sure you want to delete this education record?');">
+                                                    <i class="fas fa-trash"></i>
+                                                </asp:LinkButton>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                                <EmptyDataTemplate>
+                                    <div class="empty-state">
+                                        <i class="fas fa-graduation-cap fa-3x"></i>
+                                        <h3>No Education Records Found</h3>
+                                        <p>Start by adding your first education record to showcase your academic background.</p>
+                                        <asp:Button ID="btnAddFirstEducation" runat="server" Text="Add Your First Education" 
+                                                  CssClass="btn btn-primary" OnClick="btnAddEducation_Click" 
+                                                  CausesValidation="false" UseSubmitBehavior="true" />
+                                    </div>
+                                </EmptyDataTemplate>
+                            </asp:GridView>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Development Progress -->
-    <div class="section section-alt">
+
+    <!-- Success/Error Messages -->
+    <asp:Panel ID="pnlMessages" runat="server" Visible="false">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 mx-auto">
-                    <div class="card">
-                        <h3 style="color: var(--text-primary); margin-bottom: 2rem; text-align: center;">
-                            <i class="fas fa-code-branch" style="color: var(--accent-color); margin-right: 0.5rem;"></i>
-                            Development Roadmap
-                        </h3>
-                        
-                        <div class="timeline">
-                            <div class="timeline-item completed">
-                                <div class="timeline-marker">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <h4>Admin Authentication System</h4>
-                                    <p>Secure login and session management</p>
-                                    <span class="timeline-status completed">Completed</span>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item completed">
-                                <div class="timeline-marker">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <h4>Projects Management</h4>
-                                    <p>Full CRUD operations for portfolio projects</p>
-                                    <span class="timeline-status completed">Completed</span>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item completed">
-                                <div class="timeline-marker">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <h4>Contact Messages</h4>
-                                    <p>Manage and respond to contact form submissions</p>
-                                    <span class="timeline-status completed">Completed</span>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item current">
-                                <div class="timeline-marker">
-                                    <i class="fas fa-cogs"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <h4>Education Management</h4>
-                                    <p>Add and manage educational background</p>
-                                    <span class="timeline-status current">In Development</span>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item upcoming">
-                                <div class="timeline-marker">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <h4>Skills Management</h4>
-                                    <p>Dynamic skills and proficiency management</p>
-                                    <span class="timeline-status upcoming">Upcoming</span>
-                                </div>
-                            </div>
-                            
-                            <div class="timeline-item upcoming">
-                                <div class="timeline-marker">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div class="timeline-content">
-                                    <h4>Achievements Management</h4>
-                                    <p>Track and display professional achievements</p>
-                                    <span class="timeline-status upcoming">Upcoming</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-12">
+                    <asp:Panel ID="pnlSuccess" runat="server" CssClass="alert alert-success" Visible="false">
+                        <i class="fas fa-check-circle"></i>
+                        <asp:Literal ID="ltlSuccessMessage" runat="server"></asp:Literal>
+                    </asp:Panel>
+                    
+                    <asp:Panel ID="pnlError" runat="server" CssClass="alert alert-error" Visible="false">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <asp:Literal ID="ltlErrorMessage" runat="server"></asp:Literal>
+                    </asp:Panel>
                 </div>
             </div>
         </div>
-    </div>
+    </asp:Panel>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsContent" runat="server">
+    <script>
+        // GridView client-side actions
+        function onGridViewRowCommand(sender, args) {
+            var commandName = args.get_commandName();
+            var educationId = args.get_gridDataItem().getKey();
+            
+            if (commandName === "EditEducation") {
+                // Redirect to edit page
+                window.location = "AdminEducationForm.aspx?editId=" + educationId;
+            } else if (commandName === "ToggleStatus") {
+                // Toggle education status
+                var btn = args.get_item().findControl("btnToggleEducationStatus");
+                var newStatus = btn.classList.contains("btn-warning") ? "Active" : "Inactive";
+                
+                if (confirm("Are you sure you want to " + newStatus.toLowerCase() + " this education record?")) {
+                    __doPostBack(btn.getPostBackEventReference(), "");
+                }
+            } else if (commandName === "DeleteEducation") {
+                // Delete education record
+                if (confirm("Are you sure you want to delete this education record?")) {
+                    __doPostBack(args.get_item().getPostBackEventReference(), "");
+                }
+            }
+        }
+
+        // Show success/error message
+        function showMessage(panelId, message) {
+            var panel = $find(panelId);
+            panel.set_visible(true);
+            panel.get_element().innerHTML = message;
+            
+            // Auto-hide message after 3 seconds
+            setTimeout(function() {
+                panel.set_visible(false);
+            }, 3000);
+        }
+    </script>
+
     <style>
-        /* Timeline styles */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
+        /* Admin Education specific styles */
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 30px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border-color);
+        .admin-header h2 {
+            color: var(--text-primary);
+            margin: 0;
+            font-size: 1.8rem;
         }
 
-        .timeline-item {
-            position: relative;
-            margin: 0 0 2rem 0;
-            padding-left: 80px;
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
         }
 
-        .timeline-marker {
-            position: absolute;
-            left: 18px;
-            top: 0;
-            width: 24px;
-            height: 24px;
+        .admin-grid {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .admin-grid th {
+            background: var(--secondary-bg);
+            color: var(--text-primary);
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--border-color);
+            font-weight: 600;
+        }
+
+        .admin-grid td {
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        .admin-grid tr:hover {
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        /* Education info */
+        .education-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .education-icon {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .timeline-item.completed .timeline-marker {
-            background: var(--accent-color);
             color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
         }
 
-        .timeline-item.current .timeline-marker {
-            background: #ffc107;
-            color: #333;
+        .education-icon.degree {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
-        .timeline-item.upcoming .timeline-marker {
-            background: var(--text-muted);
-            color: white;
+        .education-icon.certification {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
         }
 
-        .timeline-content h4 {
+        .education-icon.course {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .education-icon.training {
+            background: var(--gradient-primary);
+            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+        }
+
+        .education-details h4 {
             color: var(--text-primary);
-            margin: 0 0 0.5rem 0;
+            margin: 0 0 0.25rem 0;
             font-size: 1.1rem;
         }
 
-        .timeline-content p {
+        .education-field {
             color: var(--text-secondary);
-            margin: 0 0 0.5rem 0;
-            font-size: 0.9rem;
-        }
-
-        .timeline-status {
-            font-size: 0.8rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            font-weight: 600;
-        }
-
-        .timeline-status.completed {
+            font-size: 0.85rem;
             background: rgba(0, 212, 170, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+        }
+
+        /* Institution info */
+        .institution-info h5 {
+            color: var(--text-primary);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .institution-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        /* Duration info */
+        .duration-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .meta-item {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-item i {
             color: var(--accent-color);
         }
 
-        .timeline-status.current {
-            background: rgba(255, 193, 7, 0.1);
-            color: #ffc107;
+        /* Action buttons */
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
         }
 
-        .timeline-status.upcoming {
-            background: rgba(108, 117, 125, 0.1);
+        .btn-sm {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
             color: var(--text-muted);
+            margin-bottom: 1rem;
         }
 
-        /* Card animations */
-        .card {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease-out forwards;
+        .empty-state h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Alert styles */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .alert i {
+            margin-right: 0.5rem;
+        }
+
+        .alert-success {
+            background: rgba(0, 184, 148, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(0, 184, 148, 0.3);
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
         }
 
         /* Responsive design */
         @media (max-width: 768px) {
-            .timeline::before {
-                left: 20px;
+            .admin-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
             }
 
-            .timeline-marker {
-                left: 8px;
+            .admin-actions {
+                justify-content: center;
             }
 
-            .timeline-item {
-                padding-left: 60px;
+            .admin-grid {
+                font-size: 0.9rem;
+            }
+
+            .admin-grid th,
+            .admin-grid td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            .education-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .action-buttons {
+                justify-content: center;
             }
         }
     </style>
 
     <script>
-        // Add entrance animations
+        // Admin Education enhancements
         document.addEventListener('DOMContentLoaded', function() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            timelineItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateX(-20px)';
-                item.style.transition = 'all 0.6s ease-out';
-                item.style.animationDelay = `${index * 0.1}s`;
-                
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateX(0)';
-                }, index * 100 + 500);
+            // Auto-hide success/error messages
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                if (alert.style.display !== 'none') {
+                    setTimeout(() => {
+                        alert.style.opacity = '0';
+                        alert.style.transform = 'translateY(-10px)';
+                        setTimeout(() => {
+                            alert.style.display = 'none';
+                        }, 300);
+                    }, 5000);
+                }
             });
+
+            // Add loading state to buttons (but exclude server-side buttons)
+            const clientButtons = document.querySelectorAll('.btn:not([id*="btn"])');
+            clientButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (!this.disabled && !this.classList.contains('btn-danger')) {
+                        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                        this.disabled = true;
+                    }
+                });
+            });
+        });
+
+        // Handle server-side button clicks properly
+        function handleServerButtonClick(button, buttonText) {
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + buttonText + '...';
+            button.style.opacity = '0.8';
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.opacity = '1';
+            }, 1000);
+        }
+
+        // Add click handler for Add Education button specifically
+        window.addEventListener('load', function() {
+            const addEducationBtn = document.getElementById('<%= btnAddEducation.ClientID %>');
+            if (addEducationBtn) {
+                console.log('Add Education button found:', addEducationBtn);
+                addEducationBtn.addEventListener('click', function(e) {
+                    console.log('Add Education button clicked!');
+                    handleServerButtonClick(this, 'Loading');
+                });
+            }
+            
+            const refreshBtn = document.getElementById('<%= btnRefreshEducation.ClientID %>');
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', function() {
+                    console.log('Refresh Education button clicked!');
+                    handleServerButtonClick(this, 'Refreshing');
+                });
+            }
         });
     </script>
 </asp:Content>
