@@ -8,6 +8,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <!-- Custom CSS -->
@@ -54,7 +59,7 @@
                     <a class="nav-link" href="Contact.aspx">
                         <i class="fas fa-envelope"></i>Contact
                     </a>
-                    <a class="nav-link" href="DatabaseSetup.aspx" style="color: #ffc107;">
+                    <a class="nav-link" href="DatabaseSetup.aspx">
                         <i class="fas fa-database"></i>DB Setup
                     </a>
                 </div>
@@ -72,16 +77,16 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-left">
-                        <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. All rights reserved.</p>
+                        <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. Crafted with ?? using ASP.NET</p>
                     </div>
                     <div class="footer-right">
-                        <a href="#" class="social-link" title="LinkedIn">
+                        <a href="https://linkedin.com/in/shakhoyat" class="social-link" title="LinkedIn" target="_blank">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="#" class="social-link" title="GitHub">
+                        <a href="https://github.com/Shakhoyat" class="social-link" title="GitHub" target="_blank">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="social-link" title="Email">
+                        <a href="mailto:skt104.shujon@gmail.com" class="social-link" title="Email">
                             <i class="fas fa-envelope"></i>
                         </a>
                     </div>
@@ -90,12 +95,43 @@
         </footer>
     </form>
 
-    <!-- Pure JavaScript for mobile navigation -->
+    <!-- Enhanced JavaScript for mobile navigation -->
     <script>
         function toggleNavbar() {
             var nav = document.getElementById('navbarNav');
             nav.classList.toggle('active');
         }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            var nav = document.getElementById('navbarNav');
+            var toggle = document.querySelector('.navbar-toggle');
+            
+            if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            var navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(function() {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
     </script>
     
     <asp:ContentPlaceHolder ID="ScriptsContent" runat="server">
