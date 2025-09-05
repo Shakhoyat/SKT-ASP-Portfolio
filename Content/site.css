@@ -61,6 +61,26 @@ body {
     margin-bottom: 2rem;
 }
 
+/* About Page Specific Styles */
+.hero-section.bg-primary {
+    background: linear-gradient(135deg, var(--primary-color), #0056b3) !important;
+    text-align: left;
+}
+
+.hero-section.bg-primary .container .row {
+    align-items: center;
+    min-height: 500px;
+}
+
+.hero-section img {
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.hero-section img:hover {
+    transform: scale(1.05);
+}
+
 /* Card Styles */
 .card {
     border: none;
@@ -79,6 +99,27 @@ body {
     color: white;
     font-weight: bold;
     border-bottom: none;
+}
+
+.card-header.bg-success {
+    background-color: var(--success-color) !important;
+}
+
+.card-header.bg-info {
+    background-color: var(--info-color) !important;
+}
+
+/* Progress Bars */
+.progress {
+    height: 8px;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    overflow: hidden;
+}
+
+.progress-bar {
+    transition: width 1.5s ease-in-out;
+    border-radius: 4px;
 }
 
 /* Section Styling */
@@ -116,6 +157,20 @@ body {
 
 .skill-progress {
     margin-top: 1rem;
+}
+
+/* Skills Repeater Styling */
+.fw-semibold {
+    font-weight: 600;
+}
+
+/* About Page Values Section */
+.text-center .skill-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.text-center:hover .skill-icon {
+    transform: scale(1.1);
 }
 
 /* Projects Section */
@@ -175,6 +230,22 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* Button Variants */
+.btn-lg {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-outline-light:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* Gap utility for flexbox */
+.gap-3 {
+    gap: 1rem;
+}
+
 /* Footer */
 footer {
     background-color: var(--dark-color) !important;
@@ -221,6 +292,25 @@ footer {
     .main-content {
         margin-top: 66px;
     }
+    
+    .hero-section.bg-primary {
+        text-align: center;
+        padding: 60px 0;
+    }
+    
+    .hero-section.bg-primary .container .row {
+        min-height: auto;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
 }
 
 /* Animation Classes */
@@ -237,6 +327,17 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Progress Bar Animation */
+@keyframes progressAnimation {
+    from {
+        width: 0%;
+    }
+}
+
+.progress-bar {
+    animation: progressAnimation 2s ease-in-out;
 }
 
 /* Utility Classes */
