@@ -49,6 +49,9 @@
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -100,6 +103,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="About.aspx" />
+    <Content Include="Contact.aspx" />
     <Content Include="Content\site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
