@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="SKT_ASP_Portfolio.Global" Language="C#" %>

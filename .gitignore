@@ -1,0 +1,143 @@
+# ASP.NET Web Forms .gitignore
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Web Deploy Package
+*.pubxml
+*.publishproj
+*.azurePubxml
+
+# Package Files
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NuGet
+packages/
+
+# Database files
+*.mdf
+*.ldf
+*.sdf
+App_Data/*.mdf
+App_Data/*.ldf
+
+# Connection strings (for security)
+# Uncomment the next line if you want to ignore connection strings
+# connectionStrings.config
+
+# Log files
+*.log
+
+# Temporary files
+Temporary ASP.NET Files/
+*.tmp
+*.temp
+
+# Web.config transform files
+Web.Debug.config
+Web.Release.config
+
+# Publish profiles
+PublishProfiles/
+*.pubxml
+*.pubxml.user
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# Node.js (if using npm for frontend packages)
+node_modules/
+npm-debug.log*
+
+# Typescript
+*.tsbuildinfo
+
+# Visual Studio Code
+.vscode/
+
+# ReSharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# JetBrains IDEs
+.idea/
+*.sln.iml
+
+# CodeRush
+.cr/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE specific files
+*.swp
+*.swo
+*~
+
+# Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# SASS
+.sass-cache/
+*.css.map
+
+# Backup files
+*.bak
+*.tmp
