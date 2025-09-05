@@ -139,7 +139,13 @@ namespace WebApplication1.DataAccess
                 SqlParameter[] parameters = CreateProjectParameters(project);
                 
                 object result = DatabaseHelper.ExecuteScalar(query, parameters);
-                return Convert.ToInt32(result);
+                int newId = Convert.ToInt32(result);
+                
+                // Clear any cache to ensure immediate updates
+                ClearPortfolioCache();
+                System.Diagnostics.Debug.WriteLine("Cache cleared after project insert - changes will be visible immediately.");
+                
+                return newId;
             }
             catch (Exception ex)
             {
@@ -169,7 +175,16 @@ namespace WebApplication1.DataAccess
                 SqlParameter[] parameters = CreateProjectParameters(project);
                 
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
-                return rowsAffected > 0;
+                bool success = rowsAffected > 0;
+                
+                if (success)
+                {
+                    // Clear any cache to ensure immediate updates
+                    ClearPortfolioCache();
+                    System.Diagnostics.Debug.WriteLine("Cache cleared after project update - changes will be visible immediately.");
+                }
+                
+                return success;
             }
             catch (Exception ex)
             {
@@ -194,12 +209,59 @@ namespace WebApplication1.DataAccess
                 };
 
                 int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
-                return rowsAffected > 0;
+                bool success = rowsAffected > 0;
+                
+                if (success)
+                {
+                    // Clear any cache to ensure immediate updates
+                    ClearPortfolioCache();
+                    System.Diagnostics.Debug.WriteLine("Cache cleared after project delete - changes will be visible immediately.");
+                }
+                
+                return success;
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("Error deleting project: " + ex.Message);
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// Clear portfolio cache to ensure immediate updates
+        /// </summary>
+        private static void ClearPortfolioCache()
+        {
+            try
+            {
+                if (HttpContext.Current != null && HttpContext.Current.Cache != null)
+                {
+                    var cache = HttpContext.Current.Cache;
+                    var keysToRemove = new List<string>();
+                    
+                    // Find all cache keys that might contain project data
+                    var enumerator = cache.GetEnumerator();
+                    while (enumerator.MoveNext())
+                    {
+                        string key = enumerator.Key.ToString();
+                        if (key.Contains("Project") || key.Contains("Portfolio"))
+                        {
+                            keysToRemove.Add(key);
+                        }
+                    }
+                    
+                    // Remove cache entries
+                    foreach (string key in keysToRemove)
+                    {
+                        cache.Remove(key);
+                    }
+                    
+                    System.Diagnostics.Debug.WriteLine($"Cleared {keysToRemove.Count} portfolio cache entries.");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error clearing portfolio cache: {ex.Message}");
             }
         }
 

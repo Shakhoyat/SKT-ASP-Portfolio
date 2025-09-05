@@ -20,82 +20,139 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Load projects data from database with fallback to sample data
+        /// Load projects data with priority on database content
         /// </summary>
         private void LoadProjectsData()
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("Starting to load projects data...");
+                System.Diagnostics.Debug.WriteLine("Loading projects data...");
                 
-                // Step 1: Test database connection
-                if (!DatabaseHelper.TestConnection())
-                {
-                    System.Diagnostics.Debug.WriteLine("Database connection failed. Loading sample data.");
-                    LoadSampleProjectsData();
-                    ShowMessage("Database connection unavailable. Displaying sample projects.", "warning");
-                    return;
-                }
+                List<Project> projects = new List<Project>();
+                bool usingDatabase = false;
 
-                // Step 2: Check if database is properly initialized
-                if (!DatabaseHelper.IsDatabaseInitialized())
+                // Step 1: Test database connection first
+                if (DatabaseHelper.TestConnection())
                 {
-                    System.Diagnostics.Debug.WriteLine("Database not initialized. Loading sample data.");
-                    LoadSampleProjectsData();
-                    ShowMessage("Database tables not found. Please run the database schema script. Displaying sample projects.", "warning");
-                    return;
-                }
-
-                // Step 3: Try to load projects from database
-                List<Project> projects = ProjectsDAL.GetAllProjects();
-                
-                if (projects.Count == 0)
-                {
-                    System.Diagnostics.Debug.WriteLine("No projects found in database. Trying to initialize sample data...");
+                    System.Diagnostics.Debug.WriteLine("Database connection successful.");
                     
-                    // Try to initialize sample data
-                    if (DatabaseHelper.InitializeSampleData())
+                    // Step 2: Check if Projects table exists
+                    if (DatabaseHelper.TableExists("Projects"))
                     {
-                        // Reload projects after sample data insertion
-                        projects = ProjectsDAL.GetAllProjects();
-                        if (projects.Count > 0)
+                        System.Diagnostics.Debug.WriteLine("Projects table found.");
+                        
+                        try
                         {
-                            System.Diagnostics.Debug.WriteLine($"Sample data initialized successfully. Loaded {projects.Count} projects.");
-                            BindProjectsData(projects);
-                            ShowMessage("Welcome! Sample projects have been loaded into your database.", "success");
-                            return;
+                            // Step 3: Load projects from database
+                            projects = ProjectsDAL.GetAllProjects();
+                            usingDatabase = true;
+                            
+                            System.Diagnostics.Debug.WriteLine($"Successfully loaded {projects.Count} projects from database.");
+                            
+                            if (projects.Count == 0)
+                            {
+                                System.Diagnostics.Debug.WriteLine("No projects found in database. This could mean:");
+                                System.Diagnostics.Debug.WriteLine("1. No projects have been added yet");
+                                System.Diagnostics.Debug.WriteLine("2. All projects are marked as inactive");
+                                System.Diagnostics.Debug.WriteLine("3. Database needs to be initialized with sample data");
+                                
+                                // Show a message to admin about empty database
+                                projects = GetEmptyStateProjects();
+                            }
+                        }
+                        catch (Exception dbEx)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Error querying Projects table: {dbEx.Message}");
+                            throw;
                         }
                     }
-                    
-                    // If sample data initialization failed, fall back to hardcoded sample data
-                    System.Diagnostics.Debug.WriteLine("Sample data initialization failed. Loading hardcoded sample data.");
-                    LoadSampleProjectsData();
-                    ShowMessage("Unable to initialize database. Displaying hardcoded sample projects.", "warning");
-                    return;
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Projects table not found. Database needs to be initialized.");
+                        projects = GetDatabaseNotInitializedProjects();
+                    }
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Database connection failed. Using fallback sample data.");
+                    projects = LoadSampleProjectsData();
                 }
 
-                // Step 4: Successfully loaded projects from database
-                System.Diagnostics.Debug.WriteLine($"Successfully loaded {projects.Count} projects from database.");
-                BindProjectsData(projects);
-                ShowMessage($"Successfully loaded {projects.Count} projects from database.", "success");
+                // Step 4: Bind projects to UI
+                BindProjectsData(projects, usingDatabase);
+                
             }
             catch (Exception ex)
             {
-                // Log error and load sample data as fallback
-                System.Diagnostics.Debug.WriteLine($"Error loading projects from database: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error in LoadProjectsData: {ex.Message}");
                 System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
                 
-                LoadSampleProjectsData();
-                ShowMessage($"Error accessing database: {ex.Message}. Displaying sample projects.", "error");
+                // Fallback to sample data
+                var fallbackProjects = LoadSampleProjectsData();
+                BindProjectsData(fallbackProjects, false);
             }
         }
 
         /// <summary>
-        /// Load sample projects data (fallback when database is not available)
+        /// Create empty state projects message
         /// </summary>
-        private void LoadSampleProjectsData()
+        private List<Project> GetEmptyStateProjects()
         {
-            System.Diagnostics.Debug.WriteLine("Loading hardcoded sample projects data...");
+            return new List<Project>
+            {
+                new Project
+                {
+                    ProjectId = 0,
+                    Title = "No Projects Found",
+                    Description = "Your portfolio database is connected but no projects have been added yet. Use the Admin Panel to add your first project.",
+                    ShortDescription = "Database is ready - add your first project through the Admin Panel",
+                    TechnologiesUsed = "Admin Panel Ready",
+                    ProjectUrl = "AdminLogin.aspx",
+                    GitHubUrl = null,
+                    ImageUrl = null,
+                    StartDate = DateTime.Now,
+                    EndDate = null,
+                    IsActive = true,
+                    DisplayOrder = 1,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now
+                }
+            };
+        }
+
+        /// <summary>
+        /// Create database not initialized projects message
+        /// </summary>
+        private List<Project> GetDatabaseNotInitializedProjects()
+        {
+            return new List<Project>
+            {
+                new Project
+                {
+                    ProjectId = 0,
+                    Title = "Database Not Initialized",
+                    Description = "Your database connection is working, but the Projects table hasn't been created yet. Please run the Database Setup to initialize your portfolio database.",
+                    ShortDescription = "Run Database Setup to initialize your portfolio database",
+                    TechnologiesUsed = "Database Setup Required",
+                    ProjectUrl = "DatabaseSetup.aspx",
+                    GitHubUrl = null,
+                    ImageUrl = null,
+                    StartDate = DateTime.Now,
+                    EndDate = null,
+                    IsActive = true,
+                    DisplayOrder = 1,
+                    CreatedDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now
+                }
+            };
+        }
+
+        /// <summary>
+        /// Load sample projects data (only used when database is completely unavailable)
+        /// </summary>
+        private List<Project> LoadSampleProjectsData()
+        {
+            System.Diagnostics.Debug.WriteLine("Loading demonstration sample projects...");
             
             List<Project> sampleProjects = new List<Project>
             {
@@ -153,9 +210,9 @@ namespace WebApplication1
                 new Project
                 {
                     ProjectId = 4,
-                    Title = "Portfolio Website",
-                    Description = "A professional portfolio website built with ASP.NET Web Forms showcasing technical skills, projects, and achievements. Features responsive design, database integration, and admin panel for content management. This very website you're viewing!",
-                    ShortDescription = "Professional portfolio website with database integration and admin panel",
+                    Title = "DEMO: Portfolio Website",
+                    Description = "This is demonstration data. Connect your database and use the Admin Panel to replace this with your real projects. This portfolio website itself is built with ASP.NET Web Forms showcasing technical skills, projects, and achievements.",
+                    ShortDescription = "DEMO DATA - Use Admin Panel to add your real projects",
                     TechnologiesUsed = "ASP.NET Web Forms, C#, SQL Server, Pure CSS, JavaScript",
                     ProjectUrl = null,
                     GitHubUrl = "https://github.com/Shakhoyat/SKT-ASP-Portfolio",
@@ -169,15 +226,15 @@ namespace WebApplication1
                 }
             };
 
-            BindProjectsData(sampleProjects);
-            System.Diagnostics.Debug.WriteLine($"Loaded {sampleProjects.Count} hardcoded sample projects.");
+            return sampleProjects;
         }
 
         /// <summary>
         /// Bind projects data to the repeater and set statistics
         /// </summary>
         /// <param name="projects">List of projects to bind</param>
-        private void BindProjectsData(List<Project> projects)
+        /// <param name="usingDatabase">Whether data is from database</param>
+        private void BindProjectsData(List<Project> projects, bool usingDatabase)
         {
             try
             {
@@ -187,7 +244,19 @@ namespace WebApplication1
                 // Set total projects count
                 ltlTotalProjects.Text = projects.Count.ToString();
                 
-                System.Diagnostics.Debug.WriteLine($"Successfully bound {projects.Count} projects to repeater.");
+                string dataSource = usingDatabase ? "database" : "demonstration";
+                System.Diagnostics.Debug.WriteLine($"Successfully bound {projects.Count} projects from {dataSource} to repeater.");
+                
+                // Add data source indicator to page (for debugging)
+                if (!usingDatabase && projects.Count > 0 && projects[0].ProjectId != 0)
+                {
+                    Page.Title += " (Demo Data)";
+                }
+                else if (usingDatabase)
+                {
+                    Page.Title += " (Live Data)";
+                }
+                
             }
             catch (Exception ex)
             {
@@ -254,22 +323,6 @@ namespace WebApplication1
                     System.Diagnostics.Debug.WriteLine($"Error in rptProjects_ItemDataBound: {ex.Message}");
                 }
             }
-        }
-
-        /// <summary>
-        /// Show a message to the user (for debugging purposes)
-        /// In a real application, this would show a user-friendly notification
-        /// </summary>
-        /// <param name="message">Message to show</param>
-        /// <param name="type">Type of message (success, warning, error)</param>
-        private void ShowMessage(string message, string type)
-        {
-            // For now, just log to debug output
-            // In a real application, you might show this in a panel or use JavaScript alerts
-            System.Diagnostics.Debug.WriteLine($"[{type.ToUpper()}] {message}");
-            
-            // You can uncomment this line to see messages in the browser console
-            // ClientScript.RegisterStartupScript(this.GetType(), "showMessage", $"console.log('[{type.ToUpper()}] {message}');", true);
         }
     }
 }

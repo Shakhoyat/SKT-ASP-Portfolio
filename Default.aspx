@@ -11,8 +11,8 @@
                 <!-- Profile Image -->
                 <div class="profile-image">
                     <!-- Sample profile image - replace with your actual image -->
-                    <div class="profile-image-placeholder">
-                        <i class="fas fa-user"></i>
+                    <div class="profile-image-placeholder business-card">
+                        <!-- The initials "SR" will be displayed via CSS -->
                     </div>
                     <!-- Uncomment when you add your image:
                     <img src="/Content/images/profile.jpg" alt="Shakhoyat Rahman" />

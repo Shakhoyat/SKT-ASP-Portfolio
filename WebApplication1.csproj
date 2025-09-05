@@ -70,6 +70,11 @@
     <Content Include=".gitignore" />
     <Content Include="About.aspx" />
     <Content Include="Achievements.aspx" />
+    <Content Include="AdminDashboard.aspx" />
+    <Content Include="AdminLogin.aspx" />
+    <Content Include="AdminMessages.aspx" />
+    <Content Include="AdminProjectForm.aspx" />
+    <Content Include="AdminProjects.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\placeholder-styles.css" />
     <Content Include="Content\Site.css" />
@@ -94,6 +99,51 @@
     <Compile Include="Achievements.aspx.designer.cs">
       <DependentUpon>Achievements.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminAchievements.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminEducation.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMessages.aspx.cs">
+      <DependentUpon>AdminMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminMessages.aspx.designer.cs">
+      <DependentUpon>AdminMessages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminProjectForm.aspx.cs">
+      <DependentUpon>AdminProjectForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminProjectForm.aspx.designer.cs">
+      <DependentUpon>AdminProjectForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminProjects.aspx.cs">
+      <DependentUpon>AdminProjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminProjects.aspx.designer.cs">
+      <DependentUpon>AdminProjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminSkills.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Content Include="App_Code\PortfolioCacheManager.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
