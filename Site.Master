@@ -82,17 +82,20 @@
                         <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. Built with ?? and ASP.NET</p>
                     </div>
                     <div class="footer-right">
-                        <a href="https://linkedin.com/in/shakhoyat" class="social-link" title="LinkedIn" target="_blank">
+                        <a href="mailto:skt104.shujon@gmail.com" class="social-link" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shakhoyat-shujon-313ba5336/" class="social-link" title="LinkedIn" target="_blank">
                             <i class="fab fa-linkedin"></i>
                         </a>
                         <a href="https://github.com/Shakhoyat" class="social-link" title="GitHub" target="_blank">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="mailto:skt104.shujon@gmail.com" class="social-link" title="Email">
-                            <i class="fas fa-envelope"></i>
+                        <a href="https://www.kaggle.com/shakhoyatshujon" class="social-link" title="Kaggle" target="_blank">
+                            <i class="fab fa-kaggle"></i>
                         </a>
-                        <a href="https://wa.me/1234567890" class="social-link" title="WhatsApp" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
+                        <a href="https://x.com/skt_rahman" class="social-link" title="Twitter" target="_blank">
+                            <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>

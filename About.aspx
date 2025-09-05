@@ -11,9 +11,9 @@
                 <div class="col-md-8">
                     <h1 style="color: white; text-align: left; margin-bottom: 1.5rem; font-size: 3.5rem;">About Me</h1>
                     <p style="font-size: 1.3rem; line-height: 1.6; margin-bottom: 2rem; color: white; opacity: 0.95;">
-                        I'm a passionate software developer with expertise in creating robust web applications 
-                        using ASP.NET technologies. I love turning complex problems into simple, beautiful, 
-                        and intuitive solutions.
+                        I'm Shakhoyat Shujon, a Computer Science Engineering student at KUET specializing in data science, 
+                        machine learning, and IoT systems. Passionate about transforming data into actionable insights 
+                        and building intelligent solutions that make a real impact.
                     </p>
                     <a href="Contact.aspx" class="btn btn-secondary" style="padding: 1rem 2rem;">
                         <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-md-4 text-center">
                     <div style="width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.15); margin: 0 auto; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); border: 3px solid rgba(255,255,255,0.2);">
-                        <i class="fas fa-user fa-5x" style="color: rgba(255,255,255,0.9);"></i>
+                        <i class="fas fa-user-graduate fa-5x" style="color: rgba(255,255,255,0.9);"></i>
                     </div>
                 </div>
             </div>
@@ -43,35 +43,26 @@
                             <h3 class="card-title">Professional Background</h3>
                         </div>
                         <p class="card-text">
-                            With a strong foundation in computer science and practical experience in software development, 
-                            I specialize in full-stack web development using Microsoft technologies.
+                            As a Computer Science Engineering student at KUET, I specialize in data science, machine learning, 
+                            and IoT systems. I'm passionate about solving complex problems through data analysis, statistical modeling, 
+                            and intelligent algorithms. Active Kaggle competitor with 700+ problem-solving experience.
                         </p>
                         <ul style="color: var(--text-secondary); line-height: 1.8; margin: 1.5rem 0;">
-                            <li><strong>Full-stack Development:</strong> ASP.NET Web Forms, C#, SQL Server</li>
-                            <li><strong>Database Design:</strong> Relational database modeling and optimization</li>
-                            <li><strong>Frontend Technologies:</strong> HTML5, CSS3, JavaScript, jQuery</li>
-                            <li><strong>Version Control:</strong> Git and collaborative development workflows</li>
-                            <li><strong>Problem Solving:</strong> Analytical thinking and debugging expertise</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card" style="height: 100%;">
-                        <div style="text-align: center; margin-bottom: 2rem;">
-                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gradient-accent); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h3 class="card-title">What Drives Me</h3>
-                        </div>
-                        <p class="card-text">
-                            I'm passionate about creating solutions that make a real difference. Whether it's 
-                            building user-friendly interfaces or optimizing backend performance, I believe 
-                            in writing clean, maintainable code that stands the test of time.
+                            <li><strong>Data Science:</strong> Python, Pandas, NumPy, Statistical Analysis</li>
+                            <li><strong>Machine Learning:</strong> TensorFlow, PyTorch, Scikit-Learn, Deep Learning</li>
+                            <li><strong>Programming:</strong> Python, Java, C++, JavaScript, SQL</li>
+                            <li><strong>Web Development:</strong> React, Next.js, Node.js, TypeScript</li>
+                            <li><strong>Research:</strong> IoT Systems, Edge Computing, Real-time Analytics</li>
                         </p>
                         <p class="card-text">
-                            I'm always eager to learn new technologies and stay updated with the latest 
-                            industry trends. I enjoy collaborating with teams and sharing knowledge to 
-                            create better software solutions.
+                            I'm passionate about leveraging data to solve real-world problems and create intelligent systems. 
+                            Whether it's building automated EDA pipelines that reduce exploration time by 70% or developing 
+                            predictive models for healthcare optimization, I believe in using technology to make a meaningful impact.
+                        </p>
+                        <p class="card-text">
+                            As an active Kaggle competitor and open-source contributor, I'm always eager to learn new techniques 
+                            and collaborate with the data science community. I enjoy working on challenging problems that combine 
+                            multiple disciplines like IoT, machine learning, and software engineering.
                         </p>
                         <div style="margin-top: 2rem;">
                             <a href="Skills.aspx" class="btn btn-outline-primary">
@@ -97,10 +88,10 @@
                         </div>
                         <h4 class="card-title">Backend Development</h4>
                         <div style="text-align: left; color: var(--text-secondary); margin: 1.5rem 0;">
-                            <p><strong>Languages:</strong> C#, VB.NET, T-SQL</p>
-                            <p><strong>Frameworks:</strong> ASP.NET Web Forms, .NET Framework</p>
-                            <p><strong>Tools:</strong> Visual Studio, SQL Server Management Studio</p>
-                            <p><strong>Concepts:</strong> OOP, Design Patterns, SOLID Principles</p>
+                            <p><strong>Languages:</strong> Python, Java, C++, JavaScript</p>
+                            <p><strong>Data Science:</strong> Pandas, NumPy, Scikit-Learn</p>
+                            <p><strong>Machine Learning:</strong> TensorFlow, PyTorch, Deep Learning</p>
+                            <p><strong>Tools:</strong> Jupyter, Git, Docker, Streamlit</p>
                         </div>
                     </div>
                 </div>
@@ -109,12 +100,12 @@
                         <div style="background: linear-gradient(135deg, #00b894 0%, #00a085 100%); width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
                             <i class="fas fa-database"></i>
                         </div>
-                        <h4 class="card-title">Database & Data</h4>
+                        <h4 class="card-title">Data & Analytics</h4>
                         <div style="text-align: left; color: var(--text-secondary); margin: 1.5rem 0;">
-                            <p><strong>Databases:</strong> SQL Server, LocalDB</p>
-                            <p><strong>Technologies:</strong> ADO.NET, Entity Framework</p>
-                            <p><strong>Skills:</strong> Database Design, Query Optimization</p>
-                            <p><strong>Tools:</strong> SSMS, Database Diagrams, Indexing</p>
+                            <p><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB</p>
+                            <p><strong>Analytics:</strong> Statistical Analysis, EDA, Data Mining</p>
+                            <p><strong>Visualization:</strong> Matplotlib, Plotly, Seaborn</p>
+                            <p><strong>Big Data:</strong> Data Pipelines, ETL, Real-time Processing</p>
                         </div>
                     </div>
                 </div>
@@ -123,12 +114,12 @@
                         <div style="background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%); width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
                             <i class="fas fa-paint-brush"></i>
                         </div>
-                        <h4 class="card-title">Frontend & Design</h4>
+                        <h4 class="card-title">Web & IoT Development</h4>
                         <div style="text-align: left; color: var(--text-secondary); margin: 1.5rem 0;">
-                            <p><strong>Languages:</strong> HTML5, CSS3, JavaScript</p>
-                            <p><strong>Libraries:</strong> jQuery, Font Awesome</p>
-                            <p><strong>Concepts:</strong> Responsive Design, UX/UI</p>
-                            <p><strong>Tools:</strong> Browser DevTools, CSS Grid/Flexbox</p>
+                            <p><strong>Frontend:</strong> React, Next.js, TypeScript, HTML5/CSS3</p>
+                            <p><strong>Backend:</strong> Node.js, Express.js, REST APIs</p>
+                            <p><strong>IoT:</strong> Sensor Integration, Edge Computing</p>
+                            <p><strong>Deployment:</strong> Streamlit, Cloud Platforms, DevOps</p>
                         </div>
                     </div>
                 </div>
@@ -153,9 +144,9 @@
                     </div>
                     <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Quality First</h4>
                     <p class="card-text">
-                        I believe in delivering high-quality solutions that exceed expectations. 
-                        Every line of code is written with purpose, following best practices and 
-                        industry standards.
+                        I believe in delivering high-quality solutions that are both innovative and practical. 
+                        Every analysis, model, and application I build is designed with accuracy, interpretability, 
+                        and real-world impact in mind.
                     </p>
                 </div>
                 <div class="col-md-4 text-center mb-4">
@@ -164,8 +155,9 @@
                     </div>
                     <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Collaboration</h4>
                     <p class="card-text">
-                        Great software is built by great teams. I value open communication, 
-                        knowledge sharing, and collective problem-solving to achieve common goals.
+                        Great insights come from great collaboration. I value working with diverse teams, 
+                        sharing knowledge across disciplines, and learning from both technical experts 
+                        and domain specialists to solve complex problems.
                     </p>
                 </div>
                 <div class="col-md-4 text-center mb-4">
@@ -174,8 +166,9 @@
                     </div>
                     <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Continuous Learning</h4>
                     <p class="card-text">
-                        Technology evolves rapidly, and so do I. I'm committed to staying current 
-                        with new tools, frameworks, and methodologies to deliver modern solutions.
+                        The data science field evolves rapidly, and so do I. I'm committed to staying current 
+                        with new algorithms, tools, and methodologies through continuous learning, research, 
+                        and active participation in the data science community.
                     </p>
                 </div>
             </div>
@@ -194,15 +187,16 @@
                             Formal Education
                         </h4>
                         <p style="color: rgba(255,255,255,0.9); margin-bottom: 1rem;">
-                            Strong foundation in computer science principles, software engineering, 
-                            and modern development practices.
+                            Currently pursuing Computer Science Engineering at KUET with focus on data science, 
+                            machine learning, and intelligent systems. Strong foundation in mathematics, 
+                            statistics, and programming.
                         </p>
                         <ul style="color: rgba(255,255,255,0.8); line-height: 1.8;">
-                            <li>Computer Science Fundamentals</li>
-                            <li>Object-Oriented Programming</li>
-                            <li>Database Systems & Design</li>
-                            <li>Software Engineering Principles</li>
-                            <li>Web Development Technologies</li>
+                            <li>Computer Science & Engineering at KUET</li>
+                            <li>Data Science & Machine Learning Specialization</li>
+                            <li>Statistical Analysis & Mathematical Modeling</li>
+                            <li>Algorithm Design & Optimization</li>
+                            <li>Research in IoT + ML Integration</li>
                         </ul>
                     </div>
                 </div>
@@ -213,15 +207,16 @@
                             Continuous Learning
                         </h4>
                         <p style="color: rgba(255,255,255,0.9); margin-bottom: 1rem;">
-                            Always expanding my knowledge through online courses, documentation, 
-                            and hands-on practice with new technologies.
+                            Always expanding knowledge through Kaggle competitions, research papers, 
+                            online courses, and hands-on projects. Active contributor to open-source 
+                            data science projects and ML communities.
                         </p>
                         <ul style="color: rgba(255,255,255,0.8); line-height: 1.8;">
-                            <li>Microsoft Documentation & Tutorials</li>
-                            <li>Online Programming Courses</li>
-                            <li>Technical Blogs & Articles</li>
+                            <li>Kaggle Competitions & Datasets</li>
+                            <li>Machine Learning Research Papers</li>
+                            <li>Online Courses (Coursera, edX, Udacity)</li>
                             <li>Open Source Contributions</li>
-                            <li>Personal Projects & Experiments</li>
+                            <li>Data Science Community Engagement</li>
                         </ul>
                     </div>
                 </div>
@@ -234,8 +229,8 @@
         <div class="container text-center">
             <h2 class="section-title">Let's Build Something Amazing Together</h2>
             <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                I'm always open to discussing new opportunities and exciting projects. 
-                Whether you have a specific project in mind or just want to connect, I'd love to hear from you.
+                I'm always open to discussing research collaborations, data science projects, and machine learning opportunities. 
+                Whether you have a challenging dataset to analyze or want to build intelligent systems, I'd love to collaborate.
             </p>
             <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
                 <a href="Projects.aspx" class="btn btn-primary" style="padding: 1.25rem 2.5rem; font-size: 1.1rem;">
