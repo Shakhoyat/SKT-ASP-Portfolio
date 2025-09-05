@@ -18,6 +18,9 @@ function initializePortfolio() {
     
     // Initialize skills page specific features
     initializeSkillsPage();
+    
+    // Initialize projects page specific features
+    initializeProjectsPage();
 }
 
 // Smooth scrolling for anchor links
@@ -66,10 +69,181 @@ function initializeScrollAnimations() {
     }, observerOptions);
 
     // Observe elements with animation class
-    const animatedElements = document.querySelectorAll('.card, .skill-item, .section, .stats-card, .timeline-item');
+    const animatedElements = document.querySelectorAll('.card, .skill-item, .section, .stats-card, .timeline-item, .project-card');
     animatedElements.forEach(element => {
         observer.observe(element);
     });
+}
+
+// Projects page specific functionality
+function initializeProjectsPage() {
+    // Initialize project filtering
+    initializeProjectFiltering();
+    
+    // Initialize project search
+    initializeProjectSearch();
+    
+    // Initialize project modals
+    initializeProjectModals();
+    
+    // Initialize stats counter animation
+    initializeStatsCounters();
+}
+
+// Project filtering functionality
+function initializeProjectFiltering() {
+    const filterButtons = document.querySelectorAll('.projects-filter-buttons .filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    if (filterButtons.length === 0) return; // Not on projects page
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter project cards
+            let visibleCount = 0;
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    card.classList.remove('hidden', 'filtered-out');
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.classList.add('filtered-out');
+                    setTimeout(() => {
+                        card.classList.add('hidden');
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Show/hide no results message
+            toggleNoResultsMessage(visibleCount === 0);
+        });
+    });
+}
+
+// Project search functionality
+function initializeProjectSearch() {
+    const searchInput = document.getElementById('projectSearch');
+    if (!searchInput) return; // Not on projects page
+    
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const projectCards = document.querySelectorAll('.project-card');
+        let visibleCount = 0;
+        
+        projectCards.forEach(card => {
+            const title = card.getAttribute('data-title')?.toLowerCase() || '';
+            const tech = card.getAttribute('data-tech')?.toLowerCase() || '';
+            const cardText = card.textContent.toLowerCase();
+            
+            const matches = title.includes(searchTerm) || 
+                          tech.includes(searchTerm) || 
+                          cardText.includes(searchTerm);
+            
+            if (matches || searchTerm === '') {
+                card.classList.remove('hidden', 'filtered-out');
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.classList.add('filtered-out');
+                setTimeout(() => {
+                    card.classList.add('hidden');
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+        
+        // Show/hide no results message
+        toggleNoResultsMessage(visibleCount === 0);
+    });
+}
+
+// Toggle no results message
+function toggleNoResultsMessage(show) {
+    const noResultsElement = document.getElementById('noProjectsFound');
+    if (noResultsElement) {
+        noResultsElement.style.display = show ? 'block' : 'none';
+    }
+}
+
+// Project modal functionality
+function initializeProjectModals() {
+    // Initialize Bootstrap modal if available
+    if (typeof bootstrap !== 'undefined') {
+        window.projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
+    }
+}
+
+// Open project modal with details
+function openProjectModal(projectId) {
+    if (!window.projectDetails || !window.projectDetails[projectId]) {
+        console.error('Project details not found for ID:', projectId);
+        return;
+    }
+    
+    const project = window.projectDetails[projectId];
+    const modalBody = document.getElementById('projectModalBody');
+    const modalTitle = document.getElementById('projectModalLabel');
+    const demoLink = document.getElementById('modalDemoLink');
+    const sourceLink = document.getElementById('modalSourceLink');
+    
+    // Update modal title
+    modalTitle.textContent = project.title;
+    
+    // Build features list
+    const featuresList = project.features.map(feature => `<li>${feature}</li>`).join();
+    const techList = project.technologies.map(tech => `<span class="tech-tag bg-primary">${tech}</span>`).join();
+    
+    // Update modal body
+    modalBody.innerHTML = `
+        <div class="row">
+            <div class="col-md-6">
+                <img src="${project.imageUrl}" alt="${project.title}" class="img-fluid rounded mb-3">
+            </div>
+            <div class="col-md-6">
+                <h6 class="text-primary">Project Overview</h6>
+                <p>${project.description}</p>
+                
+                <h6 class="text-primary mt-3">Technologies Used</h6>
+                <div class="mb-3">${techList}</div>
+                
+                <h6 class="text-primary">Key Challenges</h6>
+                <p>${project.challenges}</p>
+                
+                <h6 class="text-primary">Results</h6>
+                <p class="text-success">${project.results}</p>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <h6 class="text-primary">Key Features</h6>
+                <ul class="features-list">
+                    ${featuresList}
+                </ul>
+            </div>
+        </div>
+    `;
+    
+    // Update modal links
+    demoLink.href = '#'; // Replace with actual demo URL
+    sourceLink.href = '#'; // Replace with actual source URL
+    
+    // Show modal
+    if (window.projectModal) {
+        window.projectModal.show();
+    } else {
+        // Fallback for when Bootstrap is not available
+        document.getElementById('projectModal').style.display = 'block';
+    }
 }
 
 // Skills page specific functionality
@@ -86,7 +260,7 @@ function initializeSkillsPage() {
 
 // Skills filtering functionality
 function initializeSkillFiltering() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterButtons = document.querySelectorAll('.skills-filter-buttons .filter-btn');
     const skillCards = document.querySelectorAll('.skills-category-card');
     
     if (filterButtons.length === 0) return; // Not on skills page
@@ -379,3 +553,49 @@ window.addEventListener('load', function() {
     initializeScrollToTop();
     initializeLazyLoading();
 });
+
+// Project filtering by technology (additional functionality)
+function filterProjectsByTechnology(tech) {
+    const projectCards = document.querySelectorAll('.project-card');
+    let visibleCount = 0;
+    
+    projectCards.forEach(card => {
+        const technologies = card.getAttribute('data-tech')?.toLowerCase() || '';
+        
+        if (technologies.includes(tech.toLowerCase())) {
+            card.classList.remove('hidden', 'filtered-out');
+            card.style.display = 'block';
+            visibleCount++;
+        } else {
+            card.classList.add('filtered-out');
+            setTimeout(() => {
+                card.classList.add('hidden');
+                card.style.display = 'none';
+            }, 300);
+        }
+    });
+    
+    toggleNoResultsMessage(visibleCount === 0);
+}
+
+// Reset all filters
+function resetProjectFilters() {
+    const projectCards = document.querySelectorAll('.project-card');
+    const filterButtons = document.querySelectorAll('.projects-filter-buttons .filter-btn');
+    const searchInput = document.getElementById('projectSearch');
+    
+    // Reset filter buttons
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    document.querySelector('[data-filter="all"]')?.classList.add('active');
+    
+    // Reset search input
+    if (searchInput) searchInput.value = '';
+    
+    // Show all projects
+    projectCards.forEach(card => {
+        card.classList.remove('hidden', 'filtered-out');
+        card.style.display = 'block';
+    });
+    
+    toggleNoResultsMessage(false);
+}
