@@ -21,6 +21,9 @@ function initializePortfolio() {
     
     // Initialize projects page specific features
     initializeProjectsPage();
+    
+    // Initialize contact page specific features
+    initializeContactPage();
 }
 
 // Smooth scrolling for anchor links
@@ -69,9 +72,168 @@ function initializeScrollAnimations() {
     }, observerOptions);
 
     // Observe elements with animation class
-    const animatedElements = document.querySelectorAll('.card, .skill-item, .section, .stats-card, .timeline-item, .project-card');
+    const animatedElements = document.querySelectorAll('.card, .skill-item, .section, .stats-card, .timeline-item, .project-card, .contact-form-container, .contact-info');
     animatedElements.forEach(element => {
         observer.observe(element);
+    });
+}
+
+// Contact page specific functionality
+function initializeContactPage() {
+    // Initialize form enhancements
+    initializeContactForm();
+    
+    // Initialize tooltips for social links
+    initializeTooltips();
+    
+    // Initialize scroll to form functionality
+    initializeScrollToForm();
+    
+    // Initialize character counting for message field
+    initializeCharacterCount();
+}
+
+// Contact form enhancements
+function initializeContactForm() {
+    const contactForm = document.querySelector('.contact-form');
+    if (!contactForm) return; // Not on contact page
+    
+    // Add floating labels effect
+    const formControls = contactForm.querySelectorAll('.form-control, .form-select');
+    formControls.forEach(control => {
+        // Add focus and blur event listeners for better UX
+        control.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        control.addEventListener('blur', function() {
+            if (!this.value) {
+                this.parentElement.classList.remove('focused');
+            }
+        });
+        
+        // Initialize state for pre-filled fields
+        if (control.value) {
+            control.parentElement.classList.add('focused');
+        }
+    });
+    
+    // Phone number formatting
+    const phoneInput = document.getElementById('txtPhone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', formatPhoneNumber);
+    }
+    
+    // Message field enhancements
+    const messageField = document.getElementById('txtMessage');
+    if (messageField) {
+        messageField.addEventListener('input', function() {
+            validateMessageLength(this);
+        });
+    }
+}
+
+// Format phone number as user types
+function formatPhoneNumber(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    let formattedValue = '';
+    
+    if (value.length > 0) {
+        if (value.length <= 3) {
+            formattedValue = `(${value}`;
+        } else if (value.length <= 6) {
+            formattedValue = `(${value.slice(0, 3)}) ${value.slice(3)}`;
+        } else {
+            formattedValue = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6, 10)}`;
+        }
+    }
+    
+    e.target.value = formattedValue;
+}
+
+// Validate message length and show feedback
+function validateMessageLength(messageField) {
+    const minLength = 10;
+    const currentLength = messageField.value.length;
+    const formText = messageField.parentElement.querySelector('.form-text');
+    
+    if (currentLength < minLength) {
+        messageField.classList.add('is-invalid');
+        messageField.classList.remove('is-valid');
+        if (formText) {
+            formText.textContent = `Minimum ${minLength} characters required. Current: ${currentLength}`;
+            formText.className = 'form-text text-danger';
+        }
+    } else {
+        messageField.classList.remove('is-invalid');
+        messageField.classList.add('is-valid');
+        if (formText) {
+            formText.textContent = `Character count: ${currentLength}`;
+            formText.className = 'form-text text-success';
+        }
+    }
+}
+
+// Initialize tooltips
+function initializeTooltips() {
+    // Initialize Bootstrap tooltips if available
+    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    }
+}
+
+// Scroll to form functionality
+function initializeScrollToForm() {
+    const scrollToFormButtons = document.querySelectorAll('.scroll-to-form');
+    
+    scrollToFormButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const contactForm = document.querySelector('.contact-form-container');
+            if (contactForm) {
+                contactForm.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Focus on first input after scroll
+                setTimeout(() => {
+                    const firstInput = contactForm.querySelector('input[type="text"]');
+                    if (firstInput) {
+                        firstInput.focus();
+                    }
+                }, 1000);
+            }
+        });
+    });
+}
+
+// Character counting for message field
+function initializeCharacterCount() {
+    const messageField = document.getElementById('txtMessage');
+    if (!messageField) return;
+    
+    // Create character counter element
+    const counterElement = document.createElement('div');
+    counterElement.className = 'character-counter text-muted small mt-1';
+    counterElement.textContent = '0 characters';
+    
+    // Insert after the message field
+    messageField.parentNode.insertBefore(counterElement, messageField.nextSibling);
+    
+    // Update counter on input
+    messageField.addEventListener('input', function() {
+        const currentLength = this.value.length;
+        counterElement.textContent = `${currentLength} characters`;
+        
+        if (currentLength >= 10) {
+            counterElement.className = 'character-counter text-success small mt-1';
+        } else {
+            counterElement.className = 'character-counter text-muted small mt-1';
+        }
     });
 }
 
@@ -199,7 +361,7 @@ function openProjectModal(projectId) {
     modalTitle.textContent = project.title;
     
     // Build features list
-    const featuresList = project.features.map(feature => `<li>${feature}</li>`).join();
+    const featuresList = project.features.map(feature => `<li>${feature}</li>`).join('');
     const techList = project.technologies.map(tech => `<span class="tech-tag bg-primary">${tech}</span>`).join();
     
     // Update modal body
@@ -383,7 +545,70 @@ function initializeFormValidation() {
             }
             this.classList.add('was-validated');
         });
+        
+        // Real-time validation for contact form
+        if (form.querySelector('.contact-form')) {
+            initializeRealTimeValidation(form);
+        }
     });
+}
+
+// Real-time validation for contact form
+function initializeRealTimeValidation(form) {
+    const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+    
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateField(this);
+        });
+        
+        input.addEventListener('input', function() {
+            if (this.classList.contains('is-invalid')) {
+                validateField(this);
+            }
+        });
+    });
+}
+
+// Validate individual field
+function validateField(field) {
+    const value = field.value.trim();
+    let isValid = true;
+    let errorMessage = '';
+    
+    // Required field validation
+    if (field.hasAttribute('required') && !value) {
+        isValid = false;
+        errorMessage = 'This field is required.';
+    }
+    
+    // Email validation
+    if (field.type === 'email' && value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) {
+            isValid = false;
+            errorMessage = 'Please enter a valid email address.';
+        }
+    }
+    
+    // Message length validation
+    if (field.id === 'txtMessage' && value.length > 0 && value.length < 10) {
+        isValid = false;
+        errorMessage = 'Message must be at least 10 characters long.';
+    }
+    
+    // Update field appearance
+    if (isValid) {
+        field.classList.remove('is-invalid');
+        field.classList.add('is-valid');
+        clearFieldError(field);
+    } else {
+        field.classList.remove('is-valid');
+        field.classList.add('is-invalid');
+        showFieldError(field, errorMessage);
+    }
+    
+    return isValid;
 }
 
 // Validate form fields
@@ -392,20 +617,8 @@ function validateForm(form) {
     const requiredFields = form.querySelectorAll('[required]');
     
     requiredFields.forEach(field => {
-        if (!field.value.trim()) {
+        if (!validateField(field)) {
             isValid = false;
-            showFieldError(field, 'This field is required.');
-        } else {
-            clearFieldError(field);
-        }
-        
-        // Email validation
-        if (field.type === 'email' && field.value.trim()) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(field.value)) {
-                isValid = false;
-                showFieldError(field, 'Please enter a valid email address.');
-            }
         }
     });
     
@@ -420,13 +633,11 @@ function showFieldError(field, message) {
     errorDiv.className = 'invalid-feedback';
     errorDiv.textContent = message;
     
-    field.classList.add('is-invalid');
     field.parentNode.appendChild(errorDiv);
 }
 
 // Clear field error
 function clearFieldError(field) {
-    field.classList.remove('is-invalid');
     const errorDiv = field.parentNode.querySelector('.invalid-feedback');
     if (errorDiv) {
         errorDiv.remove();
