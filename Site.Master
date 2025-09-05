@@ -26,11 +26,11 @@
 
 <body>
     <form id="form1" runat="server">
-        <!-- Navigation Bar -->
-        <nav class="navbar">
+        <!-- Navigation Bar - Hidden initially, appears on scroll -->
+        <nav class="navbar navbar-hidden" id="mainNavbar">
             <div class="container">
                 <a class="navbar-brand" href="Default.aspx">
-                    <i class="fas fa-code"></i>SKT Portfolio
+                    SKT Portfolio
                 </a>
                 
                 <button class="navbar-toggle" type="button" onclick="toggleNavbar()">
@@ -40,30 +40,14 @@
                 </button>
                 
                 <div class="navbar-nav" id="navbarNav">
-                    <a class="nav-link" href="Default.aspx">
-                        <i class="fas fa-home"></i>Home
-                    </a>
-                    <a class="nav-link" href="About.aspx">
-                        <i class="fas fa-user"></i>About
-                    </a>
-                    <a class="nav-link" href="Skills.aspx">
-                        <i class="fas fa-tools"></i>Skills
-                    </a>
-                    <a class="nav-link" href="Projects.aspx">
-                        <i class="fas fa-project-diagram"></i>Projects
-                    </a>
-                    <a class="nav-link" href="Achievements.aspx">
-                        <i class="fas fa-trophy"></i>Achievements
-                    </a>
-                    <a class="nav-link" href="Education.aspx">
-                        <i class="fas fa-graduation-cap"></i>Education
-                    </a>
-                    <a class="nav-link" href="Contact.aspx">
-                        <i class="fas fa-envelope"></i>Contact
-                    </a>
-                    <a class="nav-link" href="AdminLogin.aspx">
-                        <i class="fas fa-lock"></i>Admin
-                    </a>
+                    <a class="nav-link" href="Default.aspx">Home</a>
+                    <a class="nav-link" href="About.aspx">About</a>
+                    <a class="nav-link" href="Skills.aspx">Skills</a>
+                    <a class="nav-link" href="Projects.aspx">Projects</a>
+                    <a class="nav-link" href="Achievements.aspx">Achievements</a>
+                    <a class="nav-link" href="Education.aspx">Education</a>
+                    <a class="nav-link" href="Contact.aspx">Contact</a>
+                    <a class="nav-link admin-link" href="AdminLogin.aspx">Admin</a>
                 </div>
             </div>
         </nav>
@@ -79,7 +63,7 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-left">
-                        <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. Built with ?? and ASP.NET</p>
+                        <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. Built with passion and ASP.NET</p>
                     </div>
                     <div class="footer-right">
                         <a href="mailto:skt104.shujon@gmail.com" class="social-link" title="Email">
@@ -120,18 +104,42 @@
             }
         });
 
-        // Enhanced navbar scroll effect
+        // Enhanced navbar scroll effect - Hide/Show on scroll
+        let lastScrollTop = 0;
+        let isNavbarVisible = false;
+        
         window.addEventListener('scroll', function() {
-            var navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(10, 14, 26, 0.98)';
-                navbar.style.backdropFilter = 'blur(20px)';
-                navbar.style.borderBottom = '1px solid rgba(0, 212, 170, 0.3)';
+            var navbar = document.getElementById('mainNavbar');
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Show navbar when scrolling down past 100px
+            if (scrollTop > 100) {
+                if (!isNavbarVisible) {
+                    navbar.classList.remove('navbar-hidden');
+                    navbar.classList.add('navbar-visible');
+                    isNavbarVisible = true;
+                }
+                
+                // Hide navbar when scrolling up quickly
+                if (scrollTop > lastScrollTop && scrollTop > 200) {
+                    // Scrolling down
+                    navbar.classList.add('navbar-slide-up');
+                    navbar.classList.remove('navbar-slide-down');
+                } else {
+                    // Scrolling up
+                    navbar.classList.remove('navbar-slide-up');
+                    navbar.classList.add('navbar-slide-down');
+                }
             } else {
-                navbar.style.background = 'rgba(10, 14, 26, 0.95)';
-                navbar.style.backdropFilter = 'blur(20px)';
-                navbar.style.borderBottom = '1px solid var(--border-color)';
+                // Hide navbar when at top
+                if (isNavbarVisible) {
+                    navbar.classList.add('navbar-hidden');
+                    navbar.classList.remove('navbar-visible');
+                    isNavbarVisible = false;
+                }
             }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
         });
 
         // Smooth loading animation
@@ -151,20 +159,9 @@
             navLinks.forEach(function(link) {
                 var linkPage = link.getAttribute('href');
                 if (linkPage === currentPage || (currentPage === '' && linkPage === 'Default.aspx')) {
-                    link.style.color = 'var(--accent-color)';
-                    link.style.fontWeight = '600';
+                    link.classList.add('active');
                 }
             });
-        });
-
-        // Parallax effect for hero sections
-        window.addEventListener('scroll', function() {
-            var hero = document.querySelector('.hero');
-            if (hero) {
-                var scrolled = window.pageYOffset;
-                var rate = scrolled * -0.5;
-                hero.style.transform = 'translateY(' + rate + 'px)';
-            }
         });
 
         // Smooth scroll for anchor links
