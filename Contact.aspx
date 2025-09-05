@@ -74,23 +74,35 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="txtName" class="form-label">Full Name *</label>
-                                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Your full name" required="true"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName" 
+                                        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Your full name"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rfvName" runat="server" 
+                                                                  ControlToValidate="txtName" 
                                                                   ErrorMessage="Name is required" 
-                                                                  CssClass="error-message" Display="Dynamic" ValidationGroup="ContactForm"></asp:RequiredFieldValidator>
+                                                                  CssClass="error-message" 
+                                                                  Display="Dynamic" 
+                                                                  ValidationGroup="ContactForm"
+                                                                  EnableClientScript="false"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="txtEmail" class="form-label">Email Address *</label>
-                                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="your.email@example.com" required="true"></asp:TextBox>
-                                        <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" 
+                                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="your.email@example.com"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="rfvEmail" runat="server" 
+                                                                  ControlToValidate="txtEmail" 
                                                                   ErrorMessage="Email is required" 
-                                                                  CssClass="error-message" Display="Dynamic" ValidationGroup="ContactForm"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" 
+                                                                  CssClass="error-message" 
+                                                                  Display="Dynamic" 
+                                                                  ValidationGroup="ContactForm"
+                                                                  EnableClientScript="false"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ID="revEmail" runat="server" 
+                                                                      ControlToValidate="txtEmail" 
                                                                       ValidationExpression="^[\w\.-]+@[\w\.-]+\.\w+$" 
                                                                       ErrorMessage="Please enter a valid email address" 
-                                                                      CssClass="error-message" Display="Dynamic" ValidationGroup="ContactForm"></asp:RegularExpressionValidator>
+                                                                      CssClass="error-message" 
+                                                                      Display="Dynamic" 
+                                                                      ValidationGroup="ContactForm"
+                                                                      EnableClientScript="false"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
                             </div>
@@ -113,9 +125,13 @@
                                             <asp:ListItem Value="collaboration">Collaboration</asp:ListItem>
                                             <asp:ListItem Value="other">Other</asp:ListItem>
                                         </asp:DropDownList>
-                                        <asp:RequiredFieldValidator ID="rfvSubject" runat="server" ControlToValidate="ddlSubject" 
+                                        <asp:RequiredFieldValidator ID="rfvSubject" runat="server" 
+                                                                  ControlToValidate="ddlSubject" 
                                                                   ErrorMessage="Please select a subject" 
-                                                                  CssClass="error-message" Display="Dynamic" ValidationGroup="ContactForm"></asp:RequiredFieldValidator>
+                                                                  CssClass="error-message" 
+                                                                  Display="Dynamic" 
+                                                                  ValidationGroup="ContactForm"
+                                                                  EnableClientScript="false"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                             </div>
@@ -124,9 +140,13 @@
                                 <label for="txtMessage" class="form-label">Message *</label>
                                 <asp:TextBox ID="txtMessage" runat="server" CssClass="form-control" TextMode="MultiLine" 
                                            Rows="6" placeholder="Tell me about your project or inquiry..."></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="rfvMessage" runat="server" ControlToValidate="txtMessage" 
+                                <asp:RequiredFieldValidator ID="rfvMessage" runat="server" 
+                                                          ControlToValidate="txtMessage" 
                                                           ErrorMessage="Message is required" 
-                                                          CssClass="error-message" Display="Dynamic" ValidationGroup="ContactForm"></asp:RequiredFieldValidator>
+                                                          CssClass="error-message" 
+                                                          Display="Dynamic" 
+                                                          ValidationGroup="ContactForm"
+                                                          EnableClientScript="false"></asp:RequiredFieldValidator>
                             </div>
                             
                             <div class="form-group text-center">
@@ -258,6 +278,7 @@
             font-size: 0.85rem;
             margin-top: 0.5rem;
             display: block;
+            font-weight: 500;
         }
 
         /* Alert styles */
@@ -343,13 +364,15 @@
             // Auto-hide alerts after 5 seconds
             const alerts = document.querySelectorAll('.alert');
             alerts.forEach(alert => {
-                setTimeout(() => {
-                    alert.style.opacity = '0';
-                    alert.style.transform = 'translateY(-10px)';
+                if (alert.style.display !== 'none') {
                     setTimeout(() => {
-                        alert.style.display = 'none';
-                    }, 300);
-                }, 5000);
+                        alert.style.opacity = '0';
+                        alert.style.transform = 'translateY(-10px)';
+                        setTimeout(() => {
+                            alert.style.display = 'none';
+                        }, 300);
+                    }, 5000);
+                }
             });
         });
 

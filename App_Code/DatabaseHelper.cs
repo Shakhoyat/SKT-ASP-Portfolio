@@ -153,5 +153,78 @@ namespace WebApplication1
                 return false;
             }
         }
+
+        /// <summary>
+        /// Checks if a table exists in the database
+        /// </summary>
+        /// <param name="tableName">Name of the table to check</param>
+        /// <returns>True if table exists, false otherwise</returns>
+        public static bool TableExists(string tableName)
+        {
+            try
+            {
+                string query = @"
+                    SELECT COUNT(*) 
+                    FROM INFORMATION_SCHEMA.TABLES 
+                    WHERE TABLE_NAME = @TableName";
+
+                object result = ExecuteScalar(query, new SqlParameter("@TableName", tableName));
+                return Convert.ToInt32(result) > 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error checking if table '{tableName}' exists: {ex.Message}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Checks if the database is properly initialized with required tables
+        /// </summary>
+        /// <returns>True if database is initialized, false otherwise</returns>
+        public static bool IsDatabaseInitialized()
+        {
+            try
+            {
+                // Check for key tables
+                string[] requiredTables = { "Projects", "Skills", "Achievements", "Education", "ContactMessages" };
+                
+                foreach (string table in requiredTables)
+                {
+                    if (!TableExists(table))
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Required table '{table}' not found.");
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error checking database initialization: {ex.Message}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Initialize sample data (placeholder method - actual implementation would be in DatabaseSetup)
+        /// </summary>
+        /// <returns>True if successful, false otherwise</returns>
+        public static bool InitializeSampleData()
+        {
+            try
+            {
+                // This is a placeholder - actual implementation would be in the DatabaseSetup page
+                // For now, just return false to indicate it should be done through the UI
+                System.Diagnostics.Debug.WriteLine("Sample data initialization should be done through DatabaseSetup.aspx");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error initializing sample data: {ex.Message}");
+                return false;
+            }
+        }
     }
 }
