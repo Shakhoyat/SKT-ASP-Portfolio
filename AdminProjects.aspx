@@ -39,10 +39,6 @@
                                 <asp:Button ID="btnRefresh" runat="server" Text="Refresh" 
                                           CssClass="btn btn-outline-primary" OnClick="btnRefresh_Click"
                                           CausesValidation="false" UseSubmitBehavior="true" />
-                                <!-- Debug: Direct link for testing -->
-                                <a href="AdminProjectForm.aspx" class="btn btn-outline-secondary" style="font-size: 0.8rem;">
-                                    <i class="fas fa-external-link-alt"></i> Direct Link
-                                </a>
                             </div>
                         </div>
 

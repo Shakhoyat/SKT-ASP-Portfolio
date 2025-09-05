@@ -38,10 +38,6 @@
                                 <asp:Button ID="btnRefreshSkills" runat="server" Text="Refresh" 
                                           CssClass="btn btn-outline-primary" OnClick="btnRefreshSkills_Click"
                                           CausesValidation="false" UseSubmitBehavior="true" />
-                                <!-- Debug: Direct link for testing -->
-                                <a href="AdminSkillForm.aspx" class="btn btn-outline-secondary" style="font-size: 0.8rem;">
-                                    <i class="fas fa-external-link-alt"></i> Direct Link
-                                </a>
                             </div>
                         </div>
 
