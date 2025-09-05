@@ -15,6 +15,9 @@ function initializePortfolio() {
     
     // Initialize form validation
     initializeFormValidation();
+    
+    // Initialize skills page specific features
+    initializeSkillsPage();
 }
 
 // Smooth scrolling for anchor links
@@ -46,15 +49,152 @@ function initializeScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in');
+                
+                // Trigger progress bar animations
+                const progressBars = entry.target.querySelectorAll('.progress-bar');
+                progressBars.forEach(bar => {
+                    bar.style.width = bar.getAttribute('aria-valuenow') + '%';
+                });
+                
+                // Trigger counter animations
+                const counters = entry.target.querySelectorAll('.stats-number');
+                counters.forEach(counter => {
+                    animateCounter(counter);
+                });
             }
         });
     }, observerOptions);
 
     // Observe elements with animation class
-    const animatedElements = document.querySelectorAll('.card, .skill-item, .section');
+    const animatedElements = document.querySelectorAll('.card, .skill-item, .section, .stats-card, .timeline-item');
     animatedElements.forEach(element => {
         observer.observe(element);
     });
+}
+
+// Skills page specific functionality
+function initializeSkillsPage() {
+    // Initialize skill filtering
+    initializeSkillFiltering();
+    
+    // Initialize stats counter animation
+    initializeStatsCounters();
+    
+    // Initialize progress bar animations
+    initializeProgressBars();
+}
+
+// Skills filtering functionality
+function initializeSkillFiltering() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const skillCards = document.querySelectorAll('.skills-category-card');
+    
+    if (filterButtons.length === 0) return; // Not on skills page
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter skill cards
+            skillCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    card.style.display = 'block';
+                    card.classList.remove('hidden');
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 100);
+                } else {
+                    card.classList.add('hidden');
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 500);
+                }
+            });
+        });
+    });
+}
+
+// Stats counter animation
+function initializeStatsCounters() {
+    const statsNumbers = document.querySelectorAll('.stats-number');
+    
+    statsNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        const increment = target / 200; // Animation duration factor
+        let current = 0;
+        
+        const updateCounter = () => {
+            if (current < target) {
+                current += increment;
+                stat.textContent = Math.ceil(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                stat.textContent = target;
+            }
+        };
+        
+        // Start animation when element is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(stat);
+    });
+}
+
+// Progress bar animations
+function initializeProgressBars() {
+    const progressBars = document.querySelectorAll('.progress-bar');
+    
+    progressBars.forEach(bar => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = bar.getAttribute('aria-valuenow');
+                    setTimeout(() => {
+                        bar.style.width = width + '%';
+                    }, 200);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(bar.closest('.skill-item') || bar.closest('.card'));
+    });
+}
+
+// Animate counter function
+function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-target'));
+    if (isNaN(target)) return;
+    
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16); // 60fps
+    let current = 0;
+    
+    const updateCounter = () => {
+        if (current < target) {
+            current += increment;
+            element.textContent = Math.ceil(current);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    };
+    
+    updateCounter();
 }
 
 // Form validation
@@ -119,6 +259,34 @@ function clearFieldError(field) {
     }
 }
 
+// Timeline animation
+function initializeTimeline() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+    
+    timelineItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'all 0.6s ease';
+        timelineObserver.observe(item);
+    });
+}
+
+// Initialize timeline when page loads
+window.addEventListener('load', function() {
+    initializeTimeline();
+});
+
 // Utility function for AJAX calls (for future use)
 function makeAjaxCall(url, method, data, successCallback, errorCallback) {
     const xhr = new XMLHttpRequest();
@@ -162,3 +330,52 @@ function showNotification(message, type = 'info') {
         }
     }, 5000);
 }
+
+// Lazy loading for images
+function initializeLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.getAttribute('data-src');
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// Scroll to top functionality
+function initializeScrollToTop() {
+    const scrollButton = document.createElement('button');
+    scrollButton.className = 'btn btn-primary position-fixed';
+    scrollButton.style.cssText = 'bottom: 20px; right: 20px; z-index: 1000; border-radius: 50%; width: 50px; height: 50px; display: none;';
+    scrollButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    
+    document.body.appendChild(scrollButton);
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            scrollButton.style.display = 'block';
+        } else {
+            scrollButton.style.display = 'none';
+        }
+    });
+    
+    scrollButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Initialize scroll to top when page loads
+window.addEventListener('load', function() {
+    initializeScrollToTop();
+    initializeLazyLoading();
+});

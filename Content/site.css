@@ -61,6 +61,94 @@ body {
     margin-bottom: 2rem;
 }
 
+/* Skills Page Specific Styles */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color), #0056b3, var(--info-color)) !important;
+}
+
+.skills-filter-buttons {
+    margin-top: 2rem;
+}
+
+.filter-btn {
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background-color: white !important;
+    color: var(--primary-color) !important;
+    border-color: white !important;
+}
+
+.filter-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Stats Cards */
+.stats-card {
+    padding: 2rem 1rem;
+    transition: transform 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.stats-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.stats-label {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 0;
+}
+
+/* Skills Category Cards */
+.skills-category-card {
+    transition: all 0.3s ease;
+}
+
+.skills-category-card:hover {
+    transform: translateY(-3px);
+}
+
+.skill-item {
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 1rem;
+}
+
+.skill-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0 !important;
+}
+
+.skill-name {
+    font-size: 1.1rem;
+}
+
+.skill-experience {
+    font-size: 0.9rem;
+}
+
+.skill-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.skill-progress .progress-bar {
+    transition: width 2s ease-in-out;
+}
+
 /* About Page Specific Styles */
 .hero-section.bg-primary {
     background: linear-gradient(135deg, var(--primary-color), #0056b3) !important;
@@ -109,6 +197,10 @@ body {
     background-color: var(--info-color) !important;
 }
 
+.card-header.bg-warning {
+    background-color: var(--warning-color) !important;
+}
+
 /* Progress Bars */
 .progress {
     height: 8px;
@@ -121,6 +213,128 @@ body {
     transition: width 1.5s ease-in-out;
     border-radius: 4px;
 }
+
+/* Certification Cards */
+.certification-card .card {
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.certification-card .card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.cert-icon {
+    font-size: 3rem;
+}
+
+.cert-date {
+    font-weight: 600;
+}
+
+.cert-status .badge {
+    font-size: 0.8rem;
+}
+
+/* Learning Timeline */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border: 4px solid white;
+    border-radius: 50%;
+    top: 15px;
+    left: 50%;
+    margin-left: -10px;
+    z-index: 2;
+}
+
+.timeline-content {
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+
+.timeline-left .timeline-content {
+    margin-right: 55%;
+}
+
+.timeline-right .timeline-content {
+    margin-left: 55%;
+}
+
+.timeline-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-description {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.timeline-skills .skill-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: white;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Skill Tags */
+.skill-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: white;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.skill-tag.bg-primary { background-color: var(--primary-color) !important; }
+.skill-tag.bg-success { background-color: var(--success-color) !important; }
+.skill-tag.bg-info { background-color: var(--info-color) !important; }
+.skill-tag.bg-warning { background-color: var(--warning-color) !important; color: var(--dark-color) !important;}
 
 /* Section Styling */
 .section {
@@ -311,6 +525,43 @@ footer {
         width: 100%;
         margin-bottom: 0.5rem;
     }
+    
+    /* Timeline Responsive */
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item::before {
+        left: 20px;
+        margin-left: -10px;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+        margin-right: 0 !important;
+    }
+    
+    .timeline-left .timeline-content,
+    .timeline-right .timeline-content {
+        margin-left: 60px;
+        margin-right: 0;
+    }
+    
+    /* Skills filter buttons */
+    .skills-filter-buttons .filter-btn {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    /* Stats cards */
+    .stats-number {
+        font-size: 2.5rem;
+    }
+    
+    .stats-icon {
+        font-size: 2.5rem;
+    }
 }
 
 /* Animation Classes */
@@ -338,6 +589,33 @@ footer {
 
 .progress-bar {
     animation: progressAnimation 2s ease-in-out;
+}
+
+/* Counter Animation */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stats-number {
+    animation: countUp 0.8s ease-out;
+}
+
+/* Skills Category Filter Animation */
+.skills-category-card {
+    transition: all 0.5s ease;
+}
+
+.skills-category-card.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
 }
 
 /* Utility Classes */
