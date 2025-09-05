@@ -25,7 +25,7 @@
                             <h1 class="hero-hollow-name" data-text="SHAKHOYAT">SHAKHOYAT</h1>
                         </div>
                         <p class="hero-subtitle">
-                            <span class="subtitle-text" data-text1="Deep Learning Enthusiast" data-text2="Problem Solver & IoT Researcher">Kaggle Expert</span>
+                            <span class="subtitle-text" data-text1="Deep Learning Engineer" data-text2="Kaggle Expert | Deep Learning" data-text3="IoT + ML Researcher">Kaggle Expert</span>
                         </p>
                     </div>
                 </div>
@@ -477,8 +477,20 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: floatingImage 6s ease-in-out infinite;
         }
 
+        /* Floating animation for the image */
+        @keyframes floatingImage {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Hero Background Image */
         .hero-background-image {
             position: relative;
             width: 100%;
@@ -549,7 +561,6 @@
             margin: 0;
             letter-spacing: 0.1em;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            animation: fadeInUp 1s ease-out;
             position: relative;
             /* SHAKHOYAT - Mix of solid and hollow letters */
             background: linear-gradient(
@@ -569,6 +580,20 @@
             -webkit-text-fill-color: transparent;
             -webkit-text-stroke: 3px #ffffff;
             text-stroke: 3px #ffffff;
+            /* Name slides in from left */
+            animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        /* Name animation from left */
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
 
         .hero-hollow-name::before {
@@ -582,18 +607,19 @@
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
-            letter-spacing: 0.25em;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
             color: rgba(255, 255, 255, 0.9);
             margin: 0;
             font-weight: 600;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-            animation: fadeInUp 1s ease-out 0.3s both;
             position: relative;
             overflow: hidden;
             height: 1.4em;
             white-space: nowrap;
             text-align: center;
+            /* Subtitle slides in from right */
+            animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
         }
 
         .subtitle-text {
@@ -604,6 +630,7 @@
         /* Tagline */
         .tagline {
             margin: 2rem 0 3rem 0;
+            animation: fadeInUp 1.5s ease-out 0.8s both;
         }
 
         .tagline p {
@@ -622,6 +649,7 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
+            animation: fadeInUp 1.8s ease-out 1.2s both;
         }
 
         .scroll-arrow {
@@ -1183,11 +1211,13 @@
                 font-size: 3.5rem;
                 -webkit-text-stroke: 2px #ffffff;
                 text-stroke: 2px #ffffff;
+                animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
             }
 
             .hero-subtitle {
-                font-size: 1rem;
-                letter-spacing: 0.2em;
+                font-size: 0.9rem;
+                letter-spacing: 0.15em;
+                animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
             }
 
             .hero-text-overlay {
@@ -1198,6 +1228,16 @@
                 max-width: 400px;
                 height: 500px;
                 margin-bottom: 2rem;
+                animation: floatingImage 6s ease-in-out infinite;
+            }
+
+            .scroll-indicator {
+                bottom: 40px;
+                animation: fadeInUp 1.8s ease-out 1.2s both;
+            }
+
+            .tagline {
+                animation: fadeInUp 1.5s ease-out 0.8s both;
             }
 
             .initials {
@@ -1241,6 +1281,7 @@
                 font-size: 2.8rem;
                 -webkit-text-stroke: 1.5px #ffffff;
                 text-stroke: 1.5px #ffffff;
+                animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
             }
 
             .hero-text-overlay {
@@ -1250,11 +1291,22 @@
             .hero-photo-container {
                 max-width: 300px;
                 height: 400px;
+                animation: floatingImage 6s ease-in-out infinite;
+            }
+
+            .scroll-indicator {
+                bottom: 30px;
+                animation: fadeInUp 1.8s ease-out 1.2s both;
             }
 
             .hero-subtitle {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
                 letter-spacing: 0.1em;
+                animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+            }
+
+            .tagline {
+                animation: fadeInUp 1.5s ease-out 0.8s both;
             }
         }
     </style>
@@ -1330,10 +1382,20 @@
             const scrollArrow = document.querySelector('.scroll-arrow');
             if (scrollArrow) {
                 scrollArrow.addEventListener('click', function() {
-                    // Skip stats section and go directly to about section
-                    document.querySelector('.about-section').scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    // Calculate position to show complete About Me section
+                    const aboutSection = document.querySelector('.about-section');
+                    const aboutTitle = document.querySelector('.section-title-hollow');
+                    
+                    if (aboutSection && aboutTitle) {
+                        // Get the offset of the about section minus some padding for better visibility
+                        const targetPosition = aboutSection.offsetTop - 100; // 100px padding from top
+                        
+                        // Smooth scroll to the calculated position
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             }
 
@@ -1341,64 +1403,27 @@
             animateCounters();
             animateOnScroll();
 
-            // Add stagger animation to hero elements
-            const heroElements = document.querySelectorAll('.hero-hollow-name, .hero-subtitle, .tagline');
-            heroElements.forEach((element, index) => {
-                element.style.animation = `fadeInUp 1s ease-out ${index * 0.3}s both`;
-            });
-
-            // Handle image loading for hero photo
-            const heroImage = document.querySelector('.hero-background-image img');
-            const heroFallback = document.querySelector('.profile-fallback');
-            
-            if (heroImage && heroFallback) {
-                heroImage.addEventListener('load', function() {
-                    heroFallback.style.opacity = '0';
-                    console.log('Hero image loaded successfully');
-                });
-                
-                heroImage.addEventListener('error', function() {
-                    heroFallback.style.opacity = '1';
-                    console.log('Hero image not found, showing fallback');
-                });
-                
-                // Check if image is already loaded (cached)
-                if (heroImage.complete) {
-                    heroFallback.style.opacity = '0';
-                }
-            }
-
-            // Handle image loading for about photo
-            const aboutImage = document.querySelector('.about-photo img');
-            const aboutFallback = document.querySelector('.about-placeholder');
-            
-            if (aboutImage && aboutFallback) {
-                aboutImage.addEventListener('load', function() {
-                    aboutFallback.style.opacity = '0';
-                });
-                
-                aboutImage.addEventListener('error', function() {
-                    aboutFallback.style.opacity = '1';
-                    console.log('About image not found, showing fallback');
-                });
-            }
-
             // Animated subtitle text transition
             const subtitleElement = document.querySelector('.subtitle-text');
             if (subtitleElement) {
-                const text1 = subtitleElement.getAttribute('data-text1');
-                const text2 = subtitleElement.getAttribute('data-text2');
-                let isFirstText = true;
+                const text1 = subtitleElement.getAttribute('data-text1'); // Deep Learning Engineer
+                const text2 = subtitleElement.getAttribute('data-text2'); // Kaggle Expert | Deep Learning
+                const text3 = subtitleElement.getAttribute('data-text3'); // IoT + ML Researcher
+                const texts = [text3, text1, text2]; // Start with Kaggle Expert, then rotate through all
+                let currentIndex = 0;
 
                 setInterval(() => {
                     subtitleElement.style.opacity = '0';
                     setTimeout(() => {
-                        subtitleElement.textContent = isFirstText ? text2 : text1;
+                        currentIndex = (currentIndex + 1) % texts.length; // Cycle through all 3 texts
+                        subtitleElement.textContent = texts[currentIndex];
                         subtitleElement.style.opacity = '1';
-                        isFirstText = !isFirstText;
                     }, 250);
                 }, 3000);
             }
+
+            // Hero entrance animations are now handled by CSS
+            // No need for JavaScript hero animations
         });
 
         // Remove parallax effect that interferes with normal scrolling
