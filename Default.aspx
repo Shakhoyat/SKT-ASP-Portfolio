@@ -376,7 +376,7 @@
         window.addEventListener('load', function() {
             const subtitle = document.querySelector('.subtitle');
             if (subtitle) {
-                const text = tooltip.textContent;
+                const text = subtitle.textContent;
                 subtitle.textContent = '';
                 let i = 0;
                 

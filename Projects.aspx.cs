@@ -197,7 +197,7 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Handle project item data binding to bind nested technologies repeater
+        /// Handle project item data binding to bind nested technologies repeater and generate URLs safely
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -207,19 +207,45 @@ namespace WebApplication1
             {
                 try
                 {
-                    // Find the nested technologies repeater
-                    Repeater rptTechnologies = (Repeater)e.Item.FindControl("rptTechnologies");
+                    // Get the current project
+                    Project project = (Project)e.Item.DataItem;
                     
-                    if (rptTechnologies != null)
+                    if (project != null)
                     {
-                        // Get the current project
-                        Project project = (Project)e.Item.DataItem;
-                        
-                        if (project != null && project.TechnologiesList != null)
+                        // Find and bind the nested technologies repeater
+                        Repeater rptTechnologies = (Repeater)e.Item.FindControl("rptTechnologies");
+                        if (rptTechnologies != null && project.TechnologiesList != null)
                         {
-                            // Bind the technologies list
                             rptTechnologies.DataSource = project.TechnologiesList;
                             rptTechnologies.DataBind();
+                        }
+
+                        // Handle Project URL safely
+                        Literal ltlProjectUrl = (Literal)e.Item.FindControl("ltlProjectUrl");
+                        if (ltlProjectUrl != null)
+                        {
+                            if (!string.IsNullOrEmpty(project.ProjectUrl))
+                            {
+                                ltlProjectUrl.Text = $"<a href='{project.ProjectUrl}' target='_blank' class='btn btn-primary' title='View Live Demo'><i class='fas fa-external-link-alt'></i> Live Demo</a>";
+                            }
+                            else
+                            {
+                                ltlProjectUrl.Text = "";
+                            }
+                        }
+
+                        // Handle GitHub URL safely
+                        Literal ltlGitHubUrl = (Literal)e.Item.FindControl("ltlGitHubUrl");
+                        if (ltlGitHubUrl != null)
+                        {
+                            if (!string.IsNullOrEmpty(project.GitHubUrl))
+                            {
+                                ltlGitHubUrl.Text = $"<a href='{project.GitHubUrl}' target='_blank' class='btn btn-secondary' title='View Source Code'><i class='fab fa-github'></i> Source</a>";
+                            }
+                            else
+                            {
+                                ltlGitHubUrl.Text = "";
+                            }
                         }
                     }
                 }
