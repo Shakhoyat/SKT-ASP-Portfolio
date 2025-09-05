@@ -70,7 +70,9 @@
     <Content Include=".gitignore" />
     <Content Include="About.aspx" />
     <Content Include="Content\Site.css" />
+    <Content Include="Database\PortfolioSchema.sql" />
     <Content Include="Default.aspx" />
+    <Content Include="Projects.aspx" />
     <Content Include="Skills.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -78,6 +80,16 @@
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataAccess\ProjectsDAL.cs" />
+    <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Projects.aspx.cs">
+      <DependentUpon>Projects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Projects.aspx.designer.cs">
+      <DependentUpon>Projects.aspx</DependentUpon>
     </Compile>
     <Compile Include="Skills.aspx.cs">
       <DependentUpon>Skills.aspx</DependentUpon>
