@@ -31,10 +31,37 @@
                     </div>
                 </div>
                 <div class="col-md-4 text-center">
-                    <div class="profile-image">
-                        <img src="/Content/images/about.jpg" alt="Shakhoyat Shujon" />
-                        <div class="profile-image-placeholder">
-                            <i class="fas fa-user-graduate"></i>
+                    <!-- Floating Profile Image with Social Media Icons -->
+                    <div class="profile-image-container">
+                        <!-- Social Media Icons positioned above the image -->
+                        <div class="social-media-overlay">
+                            <a href="https://github.com/Shakhoyat" class="social-icon github" title="GitHub" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.kaggle.com/shakhoyatshujon" class="social-icon kaggle" title="Kaggle" target="_blank">
+                                <i class="fab fa-kaggle"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/shakhoyat-shujon-313ba5336/" class="social-icon linkedin" title="LinkedIn" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="mailto:skt104.shujon@gmail.com" class="social-icon email" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://x.com/skt_rahman" class="social-icon twitter" title="Twitter" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                        
+                        <!-- Floating Profile Image -->
+                        <div class="profile-image floating">
+                            <img src="/Content/images/about.jpg" alt="Shakhoyat Shujon" />
+                            <div class="profile-image-placeholder">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <!-- Floating Animation Elements -->
+                            <div class="floating-element floating-element-1"></div>
+                            <div class="floating-element floating-element-2"></div>
+                            <div class="floating-element floating-element-3"></div>
                         </div>
                     </div>
                 </div>
@@ -281,6 +308,186 @@
             font-weight: 500;
         }
 
+        /* Floating Profile Image Container */
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 2rem;
+        }
+
+        /* Social Media Icons Overlay */
+        .social-media-overlay {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+            opacity: 0;
+            animation: socialFadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+
+        .social-icon i {
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .social-icon.github i { color: #333; }
+        .social-icon.kaggle i { color: #20beff; }
+        .social-icon.linkedin i { color: #0077b5; }
+        .social-icon.email i { color: #ea4335; }
+        .social-icon.twitter i { color: #1da1f2; }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 25px rgba(0, 212, 170, 0.3);
+        }
+
+        .social-icon:hover i {
+            color: white;
+        }
+
+        /* Floating Profile Image */
+        .profile-image.floating {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+            animation: float 6s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        .profile-image.floating::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: glow 3s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        .profile-image.floating img,
+        .profile-image.floating .profile-image-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid var(--card-bg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image.floating:hover {
+            animation-play-state: paused;
+            transform: translateY(-10px);
+        }
+
+        .profile-image.floating:hover img,
+        .profile-image.floating:hover .profile-image-placeholder {
+            box-shadow: 0 30px 60px rgba(0, 212, 170, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        /* Floating Animation Elements */
+        .floating-element {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .floating-element-1 {
+            top: 20%;
+            left: -20px;
+            animation: floatElement 4s ease-in-out infinite;
+        }
+
+        .floating-element-2 {
+            top: 60%;
+            right: -25px;
+            animation: floatElement 4s ease-in-out infinite 1s;
+            background: #ff6b6b;
+        }
+
+        .floating-element-3 {
+            bottom: 30%;
+            left: -15px;
+            animation: floatElement 4s ease-in-out infinite 2s;
+            background: #4ecdc4;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+        }
+
+        @keyframes floatElement {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(90deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+            75% { transform: translateY(-15px) rotate(270deg); }
+        }
+
+        @keyframes socialFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
         .professional-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -486,6 +693,24 @@
                 gap: 1rem;
             }
 
+            .profile-image.floating {
+                width: 220px;
+                height: 220px;
+            }
+
+            .social-media-overlay {
+                gap: 0.5rem;
+            }
+
+            .social-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .social-icon i {
+                font-size: 1rem;
+            }
+
             .tech-highlights-grid,
             .values-grid {
                 grid-template-columns: 1fr;
@@ -500,6 +725,20 @@
             .btn-modern {
                 width: 100%;
                 max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-media-overlay {
+                position: static;
+                transform: none;
+                margin-bottom: 1rem;
+                justify-content: center;
+            }
+
+            .profile-image.floating {
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
@@ -547,6 +786,30 @@
                         stat.textContent = Math.floor(current) + '+';
                     }
                 }, 30);
+            });
+
+            // Add parallax effect to floating elements
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = scrolled * 0.5;
+                
+                const floatingElements = document.querySelectorAll('.floating-element');
+                floatingElements.forEach((element, index) => {
+                    const speed = 0.3 + (index * 0.1);
+                    element.style.transform = `translateY(${parallax * speed}px)`;
+                });
+            });
+
+            // Social icons hover effect enhancement
+            const socialIcons = document.querySelectorAll('.social-icon');
+            socialIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.1) rotate(5deg)';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+                });
             });
         });
     </script>

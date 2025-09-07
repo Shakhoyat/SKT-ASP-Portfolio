@@ -26,12 +26,12 @@
 
 <body>
     <form id="form1" runat="server">
-        <!-- Enhanced Navigation Bar -->
-        <nav class="navbar navbar-hidden" id="mainNavbar">
+        <!-- Smart Navigation Bar - Hidden when at top -->
+        <nav class="navbar smart-navbar" id="mainNavbar">
             <div class="container">
                 <!-- Brand Section -->
                 <div class="navbar-brand-section">
-                    <a class="navbar-brand" href="Default.aspx">
+                    <a class="navbar-brand" href="About.aspx">
                         <div class="brand-icon">
                             <i class="fas fa-code"></i>
                         </div>
@@ -51,7 +51,7 @@
                 
                 <!-- Navigation Links -->
                 <div class="navbar-nav" id="navbarNav">
-                    <a class="nav-link" href="Default.aspx" data-section="home">
+                    <a class="nav-link" href="About.aspx" data-section="home">
                         <i class="fas fa-home nav-icon"></i>
                         <span>Home</span>
                     </a>
@@ -120,7 +120,7 @@
                     <div class="footer-section footer-links">
                         <h4>Quick Links</h4>
                         <div class="footer-nav">
-                            <a href="Default.aspx">Home</a>
+                            <a href="About.aspx">Home</a>
                             <a href="About.aspx">About</a>
                             <a href="Skills.aspx">Skills</a>
                             <a href="Projects.aspx">Projects</a>
@@ -181,60 +181,65 @@
         </footer>
     </form>
 
-    <!-- Enhanced JavaScript -->
+    <!-- Enhanced JavaScript for Smart Navigation -->
     <script>
-        // Navigation Toggle
-        function toggleNavbar() {
-            var nav = document.getElementById('navbarNav');
-            var toggle = document.querySelector('.navbar-toggle');
-            nav.classList.toggle('active');
-            toggle.classList.toggle('active');
+        // Smart Navigation System
+        let isNavbarVisible = false;
+        let lastScrollTop = 0;
+        let ticking = false;
+        let isAtTop = true;
+        
+        // Initialize navigation state
+        function initializeNavigation() {
+            const navbar = document.getElementById('mainNavbar');
+            
+            // Initially hide navbar when at the top
+            if (window.pageYOffset <= 50) {
+                navbar.classList.add('navbar-at-top');
+                navbar.classList.remove('navbar-visible');
+                isNavbarVisible = false;
+                isAtTop = true;
+            } else {
+                navbar.classList.remove('navbar-at-top');
+                navbar.classList.add('navbar-visible');
+                isNavbarVisible = true;
+                isAtTop = false;
+            }
         }
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            var nav = document.getElementById('navbarNav');
-            var toggle = document.querySelector('.navbar-toggle');
+        // Smart navbar scroll behavior
+        function updateSmartNavbar() {
+            const navbar = document.getElementById('mainNavbar');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const threshold = 50; // Pixels from top before showing navbar
             
-            if (!nav.contains(event.target) && !toggle.contains(event.target)) {
-                nav.classList.remove('active');
-                toggle.classList.remove('active');
-            }
-        });
-
-        // Enhanced navbar scroll effect
-        let lastScrollTop = 0;
-        let isNavbarVisible = false;
-        let ticking = false;
-        
-        function updateNavbar() {
-            var navbar = document.getElementById('mainNavbar');
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            // Show navbar when scrolling down past 100px
-            if (scrollTop > 100) {
-                if (!isNavbarVisible) {
-                    navbar.classList.remove('navbar-hidden');
-                    navbar.classList.add('navbar-visible');
-                    isNavbarVisible = true;
-                }
-                
-                // Hide/show navbar based on scroll direction
-                if (scrollTop > lastScrollTop && scrollTop > 200) {
-                    // Scrolling down
-                    navbar.classList.add('navbar-slide-up');
-                    navbar.classList.remove('navbar-slide-down');
-                } else {
-                    // Scrolling up
-                    navbar.classList.remove('navbar-slide-up');
-                    navbar.classList.add('navbar-slide-down');
+            if (scrollTop <= threshold) {
+                // At the top - hide navbar
+                if (!isAtTop) {
+                    navbar.classList.add('navbar-at-top');
+                    navbar.classList.remove('navbar-visible', 'navbar-slide-down', 'navbar-slide-up');
+                    isNavbarVisible = false;
+                    isAtTop = true;
                 }
             } else {
-                // Hide navbar when at top
-                if (isNavbarVisible) {
-                    navbar.classList.add('navbar-hidden');
-                    navbar.classList.remove('navbar-visible');
+                // Away from top - show navbar with smart behavior
+                if (isAtTop) {
+                    navbar.classList.remove('navbar-at-top');
+                    navbar.classList.add('navbar-visible');
+                    isAtTop = false;
+                }
+                
+                // Smart hide/show based on scroll direction
+                if (scrollTop > lastScrollTop && scrollTop > 200) {
+                    // Scrolling down - hide navbar
+                    navbar.classList.add('navbar-slide-up');
+                    navbar.classList.remove('navbar-slide-down');
                     isNavbarVisible = false;
+                } else {
+                    // Scrolling up - show navbar
+                    navbar.classList.remove('navbar-slide-up');
+                    navbar.classList.add('navbar-slide-down');
+                    isNavbarVisible = true;
                 }
             }
             
@@ -242,10 +247,30 @@
             ticking = false;
         }
 
-        window.addEventListener('scroll', function() {
+        // Optimized scroll handler
+        function handleScroll() {
             if (!ticking) {
-                requestAnimationFrame(updateNavbar);
+                requestAnimationFrame(updateSmartNavbar);
                 ticking = true;
+            }
+        }
+
+        // Navigation Toggle for Mobile
+        function toggleNavbar() {
+            const nav = document.getElementById('navbarNav');
+            const toggle = document.querySelector('.navbar-toggle');
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('navbarNav');
+            const toggle = document.querySelector('.navbar-toggle');
+            
+            if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+                nav.classList.remove('active');
+                toggle.classList.remove('active');
             }
         });
 
@@ -260,12 +285,21 @@
 
         // Enhanced active state management
         document.addEventListener('DOMContentLoaded', function() {
-            var currentPage = window.location.pathname.split('/').pop();
-            var navLinks = document.querySelectorAll('.nav-link:not(.admin-link)');
+            // Initialize smart navigation
+            initializeNavigation();
+            
+            // Set up scroll listener
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Active page highlighting
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link:not(.admin-link)');
             
             navLinks.forEach(function(link) {
-                var linkPage = link.getAttribute('href');
-                if (linkPage === currentPage || (currentPage === '' && linkPage === 'Default.aspx')) {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || 
+                    (currentPage === '' && linkPage === 'About.aspx') ||
+                    (currentPage === 'Default.aspx' && linkPage === 'About.aspx')) {
                     link.classList.add('active');
                 }
             });
@@ -313,19 +347,6 @@
             });
         }
 
-        // Add scroll progress indicator
-        window.addEventListener('scroll', function() {
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollProgress = (scrollTop / scrollHeight) * 100;
-            
-            // Update progress bar if it exists
-            const progressBar = document.querySelector('.scroll-progress');
-            if (progressBar) {
-                progressBar.style.width = scrollProgress + '%';
-            }
-        });
-
         // Enhanced mobile menu close on link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function() {
@@ -336,6 +357,21 @@
                     toggle.classList.remove('active');
                 }
             });
+        });
+
+        // Mouse movement effects for navbar
+        document.addEventListener('mousemove', function(e) {
+            const navbar = document.getElementById('mainNavbar');
+            if (navbar && isNavbarVisible) {
+                const rect = navbar.getBoundingClientRect();
+                const isHoveringNavbar = e.clientY >= rect.top && e.clientY <= rect.bottom;
+                
+                if (isHoveringNavbar) {
+                    navbar.classList.add('navbar-hover');
+                } else {
+                    navbar.classList.remove('navbar-hover');
+                }
+            }
         });
     </script>
     

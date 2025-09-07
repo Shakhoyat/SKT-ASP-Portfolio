@@ -87,6 +87,7 @@
     <Content Include="DatabaseSetup.aspx" />
     <Content Include="Database\PortfolioSchema.sql" />
     <Content Include="Default.aspx" />
+    <Content Include="demo-features.html" />
     <Content Include="Education.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Projects.aspx" />

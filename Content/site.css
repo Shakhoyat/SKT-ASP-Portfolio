@@ -84,8 +84,12 @@ p {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation States */
-.navbar-hidden {
+/* Smart Navigation States */
+.navbar.smart-navbar {
+    /* Default state - visible but can be hidden when at top */
+}
+
+.navbar-at-top {
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
@@ -104,6 +108,18 @@ p {
 
 .navbar-slide-down {
     transform: translateY(0);
+}
+
+.navbar-hover {
+    background: rgba(10, 14, 26, 0.99);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation when not at top of page */
+.navbar:not(.navbar-at-top) {
+    background: rgba(10, 14, 26, 0.95);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
 }
 
 .navbar .container {
@@ -455,6 +471,126 @@ p {
     box-shadow: var(--shadow-dark);
     color: var(--text-primary);
     text-decoration: none;
+}
+
+/* Modern Button Styles */
+.btn-modern {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    min-width: 180px;
+}
+
+.btn-modern:hover {
+    text-decoration: none;
+    transform: translateY(-3px);
+}
+
+.btn-modern.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-modern.btn-primary:hover {
+    color: var(--text-primary);
+    box-shadow: var(--shadow-dark);
+}
+
+.btn-modern.btn-secondary {
+    background: var(--secondary-bg);
+    color: var(--text-primary);
+    border: 2px solid var(--accent-color);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-modern.btn-secondary:hover {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-dark);
+}
+
+.btn-modern.btn-outline {
+    background: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+}
+
+.btn-modern.btn-outline:hover {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    border-color: var(--accent-color);
+}
+
+.btn-modern i {
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.btn-modern:hover i {
+    transform: translateX(3px);
+}
+
+/* Section Title Ghost Effect */
+.section-title-ghost {
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-primary);
+    position: relative;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.section-title-ghost::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: transparent;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.02) 0%, 
+        rgba(0, 212, 170, 0.05) 50%, 
+        rgba(255, 255, 255, 0.02) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 6rem;
+    font-weight: 900;
+    z-index: -1;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .section-title-ghost {
+        font-size: 2.5rem;
+    }
+    
+    .section-title-ghost::before {
+        font-size: 4rem;
+    }
+    
+    .btn-modern {
+        min-width: auto;
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
 /* Card Styles - Dark Theme */
