@@ -902,7 +902,9 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            animation: floatingImage 6s ease-in-out infinite;
+            /* Photo slides in from left depth with floating */
+            animation: slideInFromLeft 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
+                       floatingImage 6s ease-in-out infinite 1.5s;
         }
 
         /* Floating animation for the image */
@@ -973,6 +975,8 @@
             justify-content: center;
             background: rgba(0, 0, 0, 0.4);
             z-index: 2;
+            /* Text content slides in from right depth */
+            animation: slideInFromRight 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
         }
 
         .name-overlay {
@@ -1005,14 +1009,26 @@
             -webkit-text-fill-color: transparent;
             -webkit-text-stroke: 3px #ffffff;
             text-stroke: 3px #ffffff;
-            /* Name slides in from left */
-            animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            /* Name appears with the text overlay animation */
+            opacity: 1;
         }
 
-        /* Name animation from left */
+        /* Name animation from left depth of screen */
         @keyframes slideInFromLeft {
             0% {
-                transform: translateX(-100px);
+                transform: translateX(-100vw); /* Start from left edge of viewport */
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* New animation for content from right depth of screen */
+        @keyframes slideInFromRight {
+            0% {
+                transform: translateX(100vw); /* Start from right edge of viewport */
                 opacity: 0;
             }
             100% {
@@ -1043,8 +1059,8 @@
             height: 1.4em;
             white-space: nowrap;
             text-align: center;
-            /* Subtitle slides in from right */
-            animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+            /* Subtitle appears with the text overlay animation */
+            opacity: 1;
         }
 
         .subtitle-text {
@@ -1052,51 +1068,11 @@
             transition: all 0.5s ease-in-out;
         }
 
-        /* Tagline */
+        /* Tagline - Enhanced animation from right */
         .tagline {
             margin: 2rem 0 3rem 0;
-            animation: fadeInUp 1.5s ease-out 0.8s both;
-        }
-
-        .tagline p {
-            font-size: 0.9rem;
-            letter-spacing: 0.15em;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-
-        /* Scroll Indicator - Enhanced with pure dark theme */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            animation: fadeInUp 1.8s ease-out 1.2s both;
-        }
-
-        .scroll-arrow {
-            width: 50px;
-            height: 50px;
-            border: 1px solid #444; /* Lighter border for better visibility on pure black */
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888; /* Lighter color for better visibility */
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: bounce 2s infinite;
-            background: rgba(255, 255, 255, 0.05); /* Subtle background for visibility */
-        }
-
-        .scroll-arrow:hover {
-            border-color: #667eea;
-            color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
-            transform: scale(1.1);
+            /* Tagline slides in from right depth after other content */
+            animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
         }
 
         /* Stats Section */
@@ -1771,30 +1747,32 @@
             }
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Enhanced for depth-based animations */
         @media (max-width: 768px) {
             .hero-hollow-name {
                 font-size: 3.5rem;
                 -webkit-text-stroke: 2px #ffffff;
                 text-stroke: 2px #ffffff;
-                animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
             }
 
             .hero-subtitle {
                 font-size: 0.9rem;
                 letter-spacing: 0.15em;
-                animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
             }
 
             .hero-text-overlay {
                 top: 55%;
+                /* Maintain right-depth animation on tablets */
+                animation: slideInFromRight 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
             }
 
             .hero-photo-container {
                 max-width: 400px;
                 height: 500px;
                 margin-bottom: 2rem;
-                animation: floatingImage 6s ease-in-out infinite;
+                /* Maintain left-depth animation on tablets */
+                animation: slideInFromLeft 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
+                           floatingImage 6s ease-in-out infinite 1.5s;
             }
 
             .scroll-indicator {
@@ -1803,7 +1781,8 @@
             }
 
             .tagline {
-                animation: fadeInUp 1.5s ease-out 0.8s both;
+                /* Maintain right-depth animation on tablets */
+                animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
             }
 
             .initials {
@@ -1836,10 +1815,18 @@
                 grid-template-columns: 1fr;
             }
 
-            /* Mobile adjustments for infinite scroll */
+            /* Mobile adjustments for infinite scroll with enhanced center detection */
             .project-showcase,
             .achievement-card {
                 min-width: 280px;
+            }
+
+            .project-showcase.center-item {
+                transform: translateY(-15px) scale(1.03); /* Reduced scale for mobile */
+            }
+
+            .achievement-card.center-item {
+                transform: translateY(-12px) scale(1.05); /* Reduced scale for mobile */
             }
 
             .projects-scroll-track {
@@ -1856,38 +1843,49 @@
                 font-size: 2.8rem;
                 -webkit-text-stroke: 1.5px #ffffff;
                 text-stroke: 1.5px #ffffff;
-                animation: slideInFromLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
             }
 
             .hero-text-overlay {
                 top: 50%;
+                /* Maintain right-depth animation on small mobile */
+                animation: slideInFromRight 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
             }
 
             .hero-photo-container {
                 max-width: 300px;
                 height: 400px;
-                animation: floatingImage 6s ease-in-out infinite;
+                /* Maintain left-depth animation on small mobile */
+                animation: slideInFromLeft 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
+                           floatingImage 6s ease-in-out infinite 1.4s;
             }
 
             .scroll-indicator {
-                margin-top: 1rem;
+                bottom: 20px;
                 animation: fadeInUp 1.8s ease-out 1.2s both;
             }
 
             .hero-subtitle {
                 font-size: 0.8rem;
                 letter-spacing: 0.1em;
-                animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
             }
 
             .tagline {
-                animation: fadeInUp 1.5s ease-out 0.8s both;
+                /* Maintain right-depth animation on small mobile */
+                animation: slideInFromRight 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s both;
             }
 
             /* Extra small mobile adjustments */
             .project-showcase,
             .achievement-card {
                 min-width: 250px;
+            }
+
+            .project-showcase.center-item {
+                transform: translateY(-10px) scale(1.02); /* Further reduced for small mobile */
+            }
+
+            .achievement-card.center-item {
+                transform: translateY(-8px) scale(1.03); /* Further reduced for small mobile */
             }
 
             .project-info,
@@ -2045,6 +2043,30 @@
             animateCounters();
             animateOnScroll();
             initializeCenterDetection(); // Initialize center detection for floating effect
+
+            // Fixed animated subtitle text transition - Now starts after animations complete
+            setTimeout(() => {
+                const subtitleElement = document.querySelector('.subtitle-text');
+                if (subtitleElement) {
+                    const text1 = subtitleElement.getAttribute('data-text1'); // Deep Learning Engineer
+                    const text2 = subtitleElement.getAttribute('data-text2'); // Kaggle Expert | Deep Learning
+                    const text3 = subtitleElement.getAttribute('data-text3'); // IoT + ML Researcher
+                    
+                    // Start with the current text (Kaggle Expert)
+                    const texts = [text1, text2, text3]; // Rotate through all texts
+                    let currentIndex = 0;
+
+                    // Start the rotation after initial animations
+                    setInterval(() => {
+                        subtitleElement.style.opacity = '0';
+                        setTimeout(() => {
+                            currentIndex = (currentIndex + 1) % texts.length; // Cycle through all 3 texts
+                            subtitleElement.textContent = texts[currentIndex];
+                            subtitleElement.style.opacity = '1';
+                        }, 300); // Slightly longer fade time
+                    }, 3500); // Slightly longer interval for better readability
+                }
+            }, 2000); // Wait 2 seconds for animations to complete before starting rotation
         });
 
         // Remove parallax effect that interferes with normal scrolling
