@@ -870,7 +870,7 @@
     <style>
         /* Dark Theme Styles */
         body {
-            background: #0a0a0a;
+            background: #000000 !important; /* Pure black background */
             color: #ffffff;
             font-family: 'Inter', sans-serif;
         }
@@ -878,7 +878,7 @@
         /* Dark Hero Section with Photo Background */
         .dark-hero {
             min-height: 100vh;
-            background: #0a0a0a;
+            background: #000000; /* Pure black background */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1067,7 +1067,7 @@
             font-weight: 400;
         }
 
-        /* Scroll Indicator */
+        /* Scroll Indicator - Enhanced with pure dark theme */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -1080,27 +1080,30 @@
         .scroll-arrow {
             width: 50px;
             height: 50px;
-            border: 1px solid #333;
+            border: 1px solid #444; /* Lighter border for better visibility on pure black */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
+            color: #888; /* Lighter color for better visibility */
             cursor: pointer;
             transition: all 0.3s ease;
             animation: bounce 2s infinite;
+            background: rgba(255, 255, 255, 0.05); /* Subtle background for visibility */
         }
 
         .scroll-arrow:hover {
             border-color: #667eea;
             color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: scale(1.1);
         }
 
         /* Stats Section */
         .stats-section {
-            background: #0a0a0a;
+            background: #000000; /* Pure black background */
             padding: 80px 0;
-            border-top: 1px solid #1a1a1a;
+            border-top: 1px solid #111111; /* Darker border */
         }
 
         .stats-grid {
@@ -1132,9 +1135,9 @@
 
         /* Tech Stack Section */
         .tech-stack-section {
-            background: #0a0a0a;
+            background: #000000; /* Pure black background */
             padding: 100px 0;
-            border-top: 1px solid #1a1a1a;
+            border-top: 1px solid #111111; /* Darker border */
         }
 
         .section-title-hollow {
@@ -1270,9 +1273,9 @@
         }
         /* Projects Section */
         .projects-section {
-            background: #0a0a0a;
+            background: #000000; /* Pure black background */
             padding: 100px 0;
-            border-top: 1px solid #1a1a1a;
+            border-top: 1px solid #111111; /* Darker border */
             overflow: hidden;
         }
 
@@ -1281,6 +1284,7 @@
             overflow: hidden;
             mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
             -webkit-mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+            position: relative;
         }
 
         .projects-scroll-track {
@@ -1308,14 +1312,28 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #222;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
             min-width: 350px;
             flex-shrink: 0;
+            position: relative;
+        }
+
+        /* Center detection and floating animation for projects */
+        .project-showcase.center-item {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+            z-index: 10;
         }
 
         .project-showcase:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-showcase.center-item:hover {
+            transform: translateY(-25px) scale(1.08);
+            box-shadow: 0 35px 70px rgba(102, 126, 234, 0.4);
         }
 
         .project-image-container {
@@ -1418,9 +1436,9 @@
 
         /* Achievements Section - Carousel Infinite Scroll */
         .achievements-section {
-            background: #0a0a0a;
+            background: #000000; /* Pure black background */
             padding: 100px 0;
-            border-top: 1px solid #1a1a1a;
+            border-top: 1px solid #111111; /* Darker border */
             overflow: hidden;
         }
 
@@ -1429,6 +1447,7 @@
             overflow: hidden;
             mask: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
             -webkit-mask: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+            position: relative;
         }
 
         .achievements-carousel-track {
@@ -1456,15 +1475,29 @@
             border-radius: 12px;
             padding: 2rem;
             border: 1px solid #222;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
             text-align: center;
             min-width: 300px;
             flex-shrink: 0;
+            position: relative;
+        }
+
+        /* Center detection and floating animation for achievements */
+        .achievement-card.center-item {
+            transform: translateY(-15px) scale(1.08);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+            z-index: 10;
         }
 
         .achievement-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-card.center-item:hover {
+            transform: translateY(-20px) scale(1.12);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
         }
 
         .achievement-icon {
@@ -1514,9 +1547,9 @@
 
         /* About Section */
         .about-section {
-            background: #0a0a0a;
+            background: #000000; /* Pure black background */
             padding: 100px 0;
-            border-top: 1px solid #1a1a1a;
+            border-top: 1px solid #111111; /* Darker border */
         }
 
         .about-content {
@@ -1605,9 +1638,9 @@
 
         /* Action Section */
         .action-section {
-            background: #0a0a0a;
+            background: #000000; /* Pure black background */
             padding: 100px 0;
-            border-top: 1px solid #1a1a1a;
+            border-top: 1px solid #111111; /* Darker border */
         }
 
         .action-subtitle {
@@ -1943,18 +1976,61 @@
             });
         }
 
-        // Smooth scroll for arrow
+        // Center detection and floating animation for projects and achievements
+        function initializeCenterDetection() {
+            // Function to check if element is in center of viewport
+            function isInCenter(element) {
+                const rect = element.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                const elementCenter = rect.left + rect.width / 2;
+                const viewportCenter = viewportWidth / 2;
+                
+                // Check if element center is within 150px of viewport center
+                return Math.abs(elementCenter - viewportCenter) < 150;
+            }
+
+            // Function to update center items
+            function updateCenterItems() {
+                // Update project items
+                const projectItems = document.querySelectorAll('.project-showcase');
+                projectItems.forEach(item => {
+                    if (isInCenter(item)) {
+                        item.classList.add('center-item');
+                    } else {
+                        item.classList.remove('center-item');
+                    }
+                });
+
+                // Update achievement items
+                const achievementItems = document.querySelectorAll('.achievement-card');
+                achievementItems.forEach(item => {
+                    if (isInCenter(item)) {
+                        item.classList.add('center-item');
+                    } else {
+                        item.classList.remove('center-item');
+                    }
+                });
+            }
+
+            // Run center detection every 100ms for smooth animation
+            setInterval(updateCenterItems, 100);
+
+            // Also run on scroll and resize
+            window.addEventListener('scroll', updateCenterItems);
+            window.addEventListener('resize', updateCenterItems);
+        }
+
+        // Enhanced scroll for arrow with smooth animation
         document.addEventListener('DOMContentLoaded', function() {
             const scrollArrow = document.querySelector('.scroll-arrow');
             if (scrollArrow) {
                 scrollArrow.addEventListener('click', function() {
-                    // Calculate position to show complete About Me section
-                    const aboutSection = document.querySelector('.about-section');
-                    const aboutTitle = document.querySelector('.section-title-hollow');
+                    // Calculate position to show complete Stats section (first section after hero)
+                    const statsSection = document.querySelector('.stats-section');
                     
-                    if (aboutSection && aboutTitle) {
-                        // Get the offset of the about section minus some padding for better visibility
-                        const targetPosition = aboutSection.offsetTop - 100; // 100px padding from top
+                    if (statsSection) {
+                        // Get the offset of the stats section
+                        const targetPosition = statsSection.offsetTop - 80; // 80px padding from top
                         
                         // Smooth scroll to the calculated position
                         window.scrollTo({
@@ -1965,31 +2041,10 @@
                 });
             }
 
-            // Initialize animations
+            // Initialize all animations and effects
             animateCounters();
             animateOnScroll();
-
-            // Animated subtitle text transition
-            const subtitleElement = document.querySelector('.subtitle-text');
-            if (subtitleElement) {
-                const text1 = subtitleElement.getAttribute('data-text1'); // Deep Learning Engineer
-                const text2 = subtitleElement.getAttribute('data-text2'); // Kaggle Expert | Deep Learning
-                const text3 = subtitleElement.getAttribute('data-text3'); // IoT + ML Researcher
-                const texts = [text3, text1, text2]; // Start with Kaggle Expert, then rotate through all
-                let currentIndex = 0;
-
-                setInterval(() => {
-                    subtitleElement.style.opacity = '0';
-                    setTimeout(() => {
-                        currentIndex = (currentIndex + 1) % texts.length; // Cycle through all 3 texts
-                        subtitleElement.textContent = texts[currentIndex];
-                        subtitleElement.style.opacity = '1';
-                    }, 250);
-                }, 3000);
-            }
-
-            // Hero entrance animations are now handled by CSS
-            // No need for JavaScript hero animations
+            initializeCenterDetection(); // Initialize center detection for floating effect
         });
 
         // Remove parallax effect that interferes with normal scrolling
