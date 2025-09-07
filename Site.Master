@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
@@ -26,28 +26,66 @@
 
 <body>
     <form id="form1" runat="server">
-        <!-- Navigation Bar - Hidden initially, appears on scroll -->
+        <!-- Enhanced Navigation Bar -->
         <nav class="navbar navbar-hidden" id="mainNavbar">
             <div class="container">
-                <a class="navbar-brand" href="Default.aspx">
-                    SKT Portfolio
-                </a>
+                <!-- Brand Section -->
+                <div class="navbar-brand-section">
+                    <a class="navbar-brand" href="Default.aspx">
+                        <div class="brand-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="brand-text">
+                            <span class="brand-name">SKT</span>
+                            <span class="brand-subtitle">Portfolio</span>
+                        </div>
+                    </a>
+                </div>
                 
-                <button class="navbar-toggle" type="button" onclick="toggleNavbar()">
+                <!-- Mobile Toggle Button -->
+                <button class="navbar-toggle" type="button" onclick="toggleNavbar()" aria-label="Toggle navigation">
                     <span class="navbar-toggle-icon"></span>
                     <span class="navbar-toggle-icon"></span>
                     <span class="navbar-toggle-icon"></span>
                 </button>
                 
+                <!-- Navigation Links -->
                 <div class="navbar-nav" id="navbarNav">
-                    <a class="nav-link" href="Default.aspx">Home</a>
-                    <a class="nav-link" href="About.aspx">About</a>
-                    <a class="nav-link" href="Skills.aspx">Skills</a>
-                    <a class="nav-link" href="Projects.aspx">Projects</a>
-                    <a class="nav-link" href="Achievements.aspx">Achievements</a>
-                    <a class="nav-link" href="Education.aspx">Education</a>
-                    <a class="nav-link" href="Contact.aspx">Contact</a>
-                    <a class="nav-link admin-link" href="AdminLogin.aspx">Admin</a>
+                    <a class="nav-link" href="Default.aspx" data-section="home">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Home</span>
+                    </a>
+                    <a class="nav-link" href="About.aspx" data-section="about">
+                        <i class="fas fa-user nav-icon"></i>
+                        <span>About</span>
+                    </a>
+                    <a class="nav-link" href="Skills.aspx" data-section="skills">
+                        <i class="fas fa-tools nav-icon"></i>
+                        <span>Skills</span>
+                    </a>
+                    <a class="nav-link" href="Projects.aspx" data-section="projects">
+                        <i class="fas fa-laptop-code nav-icon"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a class="nav-link" href="Achievements.aspx" data-section="achievements">
+                        <i class="fas fa-trophy nav-icon"></i>
+                        <span>Achievements</span>
+                    </a>
+                    <a class="nav-link" href="Education.aspx" data-section="education">
+                        <i class="fas fa-graduation-cap nav-icon"></i>
+                        <span>Education</span>
+                    </a>
+                    <a class="nav-link" href="Contact.aspx" data-section="contact">
+                        <i class="fas fa-envelope nav-icon"></i>
+                        <span>Contact</span>
+                    </a>
+                    
+                    <!-- Admin Link with Special Styling -->
+                    <div class="nav-divider"></div>
+                    <a class="nav-link admin-link" href="AdminLogin.aspx" data-section="admin">
+                        <i class="fas fa-shield-alt nav-icon"></i>
+                        <span>Admin Panel</span>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -58,29 +96,85 @@
             </asp:ContentPlaceHolder>
         </main>
 
-        <!-- Footer -->
+        <!-- Enhanced Footer -->
         <footer class="footer">
             <div class="container">
-                <div class="footer-content">
-                    <div class="footer-left">
-                        <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. Built with passion and ASP.NET</p>
+                <!-- Footer Main Content -->
+                <div class="footer-main">
+                    <div class="footer-section footer-about">
+                        <div class="footer-brand">
+                            <div class="footer-brand-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="footer-brand-text">
+                                <h3>SKT Portfolio</h3>
+                                <p>Crafting digital experiences with passion and precision</p>
+                            </div>
+                        </div>
+                        <p class="footer-description">
+                            Full-stack developer specializing in modern web technologies and user-centered design. 
+                            Let's build something amazing together.
+                        </p>
                     </div>
-                    <div class="footer-right">
-                        <a href="mailto:skt104.shujon@gmail.com" class="social-link" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/shakhoyat-shujon-313ba5336/" class="social-link" title="LinkedIn" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/Shakhoyat" class="social-link" title="GitHub" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.kaggle.com/shakhoyatshujon" class="social-link" title="Kaggle" target="_blank">
-                            <i class="fab fa-kaggle"></i>
-                        </a>
-                        <a href="https://x.com/skt_rahman" class="social-link" title="Twitter" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
+                    
+                    <div class="footer-section footer-links">
+                        <h4>Quick Links</h4>
+                        <div class="footer-nav">
+                            <a href="Default.aspx">Home</a>
+                            <a href="About.aspx">About</a>
+                            <a href="Skills.aspx">Skills</a>
+                            <a href="Projects.aspx">Projects</a>
+                            <a href="Education.aspx">Education</a>
+                            <a href="Contact.aspx">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section footer-contact">
+                        <h4>Get In Touch</h4>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:skt104.shujon@gmail.com">skt104.shujon@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Dhaka, Bangladesh</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section footer-social">
+                        <h4>Follow Me</h4>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/shakhoyat-shujon-313ba5336/" class="social-link linkedin" title="LinkedIn" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/Shakhoyat" class="social-link github" title="GitHub" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.kaggle.com/shakhoyatshujon" class="social-link kaggle" title="Kaggle" target="_blank">
+                                <i class="fab fa-kaggle"></i>
+                            </a>
+                            <a href="https://x.com/skt_rahman" class="social-link twitter" title="Twitter" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="mailto:skt104.shujon@gmail.com" class="social-link email" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <div class="footer-bottom-content">
+                        <div class="copyright">
+                            <p>&copy; <%: DateTime.Now.Year %> SKT Portfolio. All rights reserved.</p>
+                            <p class="tech-note">Built with <i class="fas fa-heart"></i> using ASP.NET</p>
+                        </div>
+                        <div class="footer-bottom-links">
+                            <a href="#" onclick="scrollToTop(); return false;">Back to Top <i class="fas fa-arrow-up"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -89,9 +183,12 @@
 
     <!-- Enhanced JavaScript -->
     <script>
+        // Navigation Toggle
         function toggleNavbar() {
             var nav = document.getElementById('navbarNav');
+            var toggle = document.querySelector('.navbar-toggle');
             nav.classList.toggle('active');
+            toggle.classList.toggle('active');
         }
 
         // Close mobile menu when clicking outside
@@ -101,14 +198,16 @@
             
             if (!nav.contains(event.target) && !toggle.contains(event.target)) {
                 nav.classList.remove('active');
+                toggle.classList.remove('active');
             }
         });
 
-        // Enhanced navbar scroll effect - Hide/Show on scroll
+        // Enhanced navbar scroll effect
         let lastScrollTop = 0;
         let isNavbarVisible = false;
+        let ticking = false;
         
-        window.addEventListener('scroll', function() {
+        function updateNavbar() {
             var navbar = document.getElementById('mainNavbar');
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
@@ -120,7 +219,7 @@
                     isNavbarVisible = true;
                 }
                 
-                // Hide navbar when scrolling up quickly
+                // Hide/show navbar based on scroll direction
                 if (scrollTop > lastScrollTop && scrollTop > 200) {
                     // Scrolling down
                     navbar.classList.add('navbar-slide-up');
@@ -139,7 +238,15 @@
                 }
             }
             
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(updateNavbar);
+                ticking = true;
+            }
         });
 
         // Smooth loading animation
@@ -151,10 +258,10 @@
             }, 100);
         });
 
-        // Add active state to navigation
+        // Enhanced active state management
         document.addEventListener('DOMContentLoaded', function() {
             var currentPage = window.location.pathname.split('/').pop();
-            var navLinks = document.querySelectorAll('.nav-link');
+            var navLinks = document.querySelectorAll('.nav-link:not(.admin-link)');
             
             navLinks.forEach(function(link) {
                 var linkPage = link.getAttribute('href');
@@ -162,6 +269,26 @@
                     link.classList.add('active');
                 }
             });
+
+            // Add intersection observer for smooth animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -10% 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe footer for animation
+            const footer = document.querySelector('.footer');
+            if (footer) {
+                observer.observe(footer);
+            }
         });
 
         // Smooth scroll for anchor links
@@ -174,6 +301,39 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                }
+            });
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add scroll progress indicator
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (scrollTop / scrollHeight) * 100;
+            
+            // Update progress bar if it exists
+            const progressBar = document.querySelector('.scroll-progress');
+            if (progressBar) {
+                progressBar.style.width = scrollProgress + '%';
+            }
+        });
+
+        // Enhanced mobile menu close on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    const nav = document.getElementById('navbarNav');
+                    const toggle = document.querySelector('.navbar-toggle');
+                    nav.classList.remove('active');
+                    toggle.classList.remove('active');
                 }
             });
         });
