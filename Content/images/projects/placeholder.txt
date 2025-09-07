@@ -1,0 +1,7 @@
+/* Project images placeholder directory */
+/* Place project screenshots here named as:
+- ecommerce.jpg
+- taskmanager.jpg
+- finance.jpg
+- support.jpg
+*/

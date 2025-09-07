@@ -82,6 +82,8 @@
     <Content Include="AdminSkillForm.aspx" />
     <Content Include="AdminSkills.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\images\placeholder.txt" />
+    <Content Include="Content\images\projects\placeholder.txt" />
     <Content Include="Content\placeholder-styles.css" />
     <Content Include="Content\Site.css" />
     <Content Include="DatabaseSetup.aspx" />
@@ -242,6 +244,8 @@
     <Content Include="Content\docs\README.md" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
+    <Content Include="README.md" />
+    <Content Include="QUICKSTART.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

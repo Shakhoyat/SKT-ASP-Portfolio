@@ -1,0 +1,11 @@
+/* This is a placeholder file to ensure the Content/images directory exists */
+/* The actual images should be placed in this directory */
+
+/* Expected image files:
+- profile.png (main profile image for homepage)
+- about.jpg (about section image)
+- projects/ecommerce.jpg
+- projects/taskmanager.jpg
+- projects/finance.jpg
+- projects/support.jpg
+*/
