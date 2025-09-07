@@ -21,6 +21,7 @@ namespace WebApplication1
 
         /// <summary>
         /// Load projects data with priority on database content
+        /// Note: This method now primarily logs information and prepares for future dynamic content
         /// </summary>
         private void LoadProjectsData()
         {
@@ -55,9 +56,6 @@ namespace WebApplication1
                                 System.Diagnostics.Debug.WriteLine("1. No projects have been added yet");
                                 System.Diagnostics.Debug.WriteLine("2. All projects are marked as inactive");
                                 System.Diagnostics.Debug.WriteLine("3. Database needs to be initialized with sample data");
-                                
-                                // Show a message to admin about empty database
-                                projects = GetEmptyStateProjects();
                             }
                         }
                         catch (Exception dbEx)
@@ -69,17 +67,15 @@ namespace WebApplication1
                     else
                     {
                         System.Diagnostics.Debug.WriteLine("Projects table not found. Database needs to be initialized.");
-                        projects = GetDatabaseNotInitializedProjects();
                     }
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("Database connection failed. Using fallback sample data.");
-                    projects = LoadSampleProjectsData();
+                    System.Diagnostics.Debug.WriteLine("Database connection failed. Using static content.");
                 }
 
-                // Step 4: Bind projects to UI
-                BindProjectsData(projects, usingDatabase);
+                // Step 4: Set page information based on data source
+                SetPageInformation(projects, usingDatabase);
                 
             }
             catch (Exception ex)
@@ -87,74 +83,54 @@ namespace WebApplication1
                 System.Diagnostics.Debug.WriteLine($"Error in LoadProjectsData: {ex.Message}");
                 System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
                 
-                // Fallback to sample data
-                var fallbackProjects = LoadSampleProjectsData();
-                BindProjectsData(fallbackProjects, false);
+                // Set fallback information
+                SetPageInformation(new List<Project>(), false);
             }
         }
 
         /// <summary>
-        /// Create empty state projects message
+        /// Set page information and title based on data source
         /// </summary>
-        private List<Project> GetEmptyStateProjects()
+        /// <param name="projects">List of projects from database</param>
+        /// <param name="usingDatabase">Whether data is from database</param>
+        private void SetPageInformation(List<Project> projects, bool usingDatabase)
         {
-            return new List<Project>
+            try
             {
-                new Project
+                // Update page title to indicate data source
+                if (usingDatabase && projects.Count > 0)
                 {
-                    ProjectId = 0,
-                    Title = "No Projects Found",
-                    Description = "Your portfolio database is connected but no projects have been added yet. Use the Admin Panel to add your first project.",
-                    ShortDescription = "Database is ready - add your first project through the Admin Panel",
-                    TechnologiesUsed = "Admin Panel Ready",
-                    ProjectUrl = "AdminLogin.aspx",
-                    GitHubUrl = null,
-                    ImageUrl = null,
-                    StartDate = DateTime.Now,
-                    EndDate = null,
-                    IsActive = true,
-                    DisplayOrder = 1,
-                    CreatedDate = DateTime.Now,
-                    UpdatedDate = DateTime.Now
+                    Page.Title = "Projects (Live Data)";
+                    System.Diagnostics.Debug.WriteLine($"Page configured with {projects.Count} database projects.");
                 }
-            };
+                else if (usingDatabase && projects.Count == 0)
+                {
+                    Page.Title = "Projects (Database Ready)";
+                    System.Diagnostics.Debug.WriteLine("Page configured with database connection but no projects.");
+                }
+                else
+                {
+                    Page.Title = "Projects (Demo Data)";
+                    System.Diagnostics.Debug.WriteLine("Page configured with static demonstration content.");
+                }
+                
+                // Future enhancement: You can add code here to dynamically update the static content
+                // based on database projects when available
+                
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error setting page information: {ex.Message}");
+            }
         }
 
         /// <summary>
-        /// Create database not initialized projects message
+        /// Get sample projects data for future use or comparison
+        /// This method is retained for potential future dynamic content generation
         /// </summary>
-        private List<Project> GetDatabaseNotInitializedProjects()
+        private List<Project> GetSampleProjectsData()
         {
             return new List<Project>
-            {
-                new Project
-                {
-                    ProjectId = 0,
-                    Title = "Database Not Initialized",
-                    Description = "Your database connection is working, but the Projects table hasn't been created yet. Please run the Database Setup to initialize your portfolio database.",
-                    ShortDescription = "Run Database Setup to initialize your portfolio database",
-                    TechnologiesUsed = "Database Setup Required",
-                    ProjectUrl = "DatabaseSetup.aspx",
-                    GitHubUrl = null,
-                    ImageUrl = null,
-                    StartDate = DateTime.Now,
-                    EndDate = null,
-                    IsActive = true,
-                    DisplayOrder = 1,
-                    CreatedDate = DateTime.Now,
-                    UpdatedDate = DateTime.Now
-                }
-            };
-        }
-
-        /// <summary>
-        /// Load sample projects data (only used when database is completely unavailable)
-        /// </summary>
-        private List<Project> LoadSampleProjectsData()
-        {
-            System.Diagnostics.Debug.WriteLine("Loading demonstration sample projects...");
-            
-            List<Project> sampleProjects = new List<Project>
             {
                 new Project
                 {
@@ -189,140 +165,8 @@ namespace WebApplication1
                     DisplayOrder = 2,
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now
-                },
-                new Project
-                {
-                    ProjectId = 3,
-                    Title = "Personal Finance Tracker",
-                    Description = "A personal finance management application that helps users track income, expenses, budgets, and financial goals. Includes data visualization with charts and graphs, category-based expense tracking, and financial reporting. Designed with security and privacy as top priorities.",
-                    ShortDescription = "Personal finance management tool with budgeting and expense tracking",
-                    TechnologiesUsed = "ASP.NET Web Forms, C#, SQL Server, Chart.js, Pure CSS",
-                    ProjectUrl = null,
-                    GitHubUrl = "https://github.com/Shakhoyat/finance-tracker",
-                    ImageUrl = "/Content/images/projects/finance.jpg",
-                    StartDate = new DateTime(2023, 9, 1),
-                    EndDate = null, // Ongoing project
-                    IsActive = true,
-                    DisplayOrder = 3,
-                    CreatedDate = DateTime.Now,
-                    UpdatedDate = DateTime.Now
-                },
-                new Project
-                {
-                    ProjectId = 4,
-                    Title = "DEMO: Portfolio Website",
-                    Description = "This is demonstration data. Connect your database and use the Admin Panel to replace this with your real projects. This portfolio website itself is built with ASP.NET Web Forms showcasing technical skills, projects, and achievements.",
-                    ShortDescription = "DEMO DATA - Use Admin Panel to add your real projects",
-                    TechnologiesUsed = "ASP.NET Web Forms, C#, SQL Server, Pure CSS, JavaScript",
-                    ProjectUrl = null,
-                    GitHubUrl = "https://github.com/Shakhoyat/SKT-ASP-Portfolio",
-                    ImageUrl = "/Content/images/projects/portfolio.jpg",
-                    StartDate = new DateTime(2024, 1, 1),
-                    EndDate = null, // Ongoing project
-                    IsActive = true,
-                    DisplayOrder = 4,
-                    CreatedDate = DateTime.Now,
-                    UpdatedDate = DateTime.Now
                 }
             };
-
-            return sampleProjects;
-        }
-
-        /// <summary>
-        /// Bind projects data to the repeater and set statistics
-        /// </summary>
-        /// <param name="projects">List of projects to bind</param>
-        /// <param name="usingDatabase">Whether data is from database</param>
-        private void BindProjectsData(List<Project> projects, bool usingDatabase)
-        {
-            try
-            {
-                rptProjects.DataSource = projects;
-                rptProjects.DataBind();
-
-                // Set total projects count
-                ltlTotalProjects.Text = projects.Count.ToString();
-                
-                string dataSource = usingDatabase ? "database" : "demonstration";
-                System.Diagnostics.Debug.WriteLine($"Successfully bound {projects.Count} projects from {dataSource} to repeater.");
-                
-                // Add data source indicator to page (for debugging)
-                if (!usingDatabase && projects.Count > 0 && projects[0].ProjectId != 0)
-                {
-                    Page.Title += " (Demo Data)";
-                }
-                else if (usingDatabase)
-                {
-                    Page.Title += " (Live Data)";
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error binding projects data: {ex.Message}");
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Handle project item data binding to bind nested technologies repeater and generate URLs safely
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void rptProjects_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
-            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
-            {
-                try
-                {
-                    // Get the current project
-                    Project project = (Project)e.Item.DataItem;
-                    
-                    if (project != null)
-                    {
-                        // Find and bind the nested technologies repeater
-                        Repeater rptTechnologies = (Repeater)e.Item.FindControl("rptTechnologies");
-                        if (rptTechnologies != null && project.TechnologiesList != null)
-                        {
-                            rptTechnologies.DataSource = project.TechnologiesList;
-                            rptTechnologies.DataBind();
-                        }
-
-                        // Handle Project URL safely
-                        Literal ltlProjectUrl = (Literal)e.Item.FindControl("ltlProjectUrl");
-                        if (ltlProjectUrl != null)
-                        {
-                            if (!string.IsNullOrEmpty(project.ProjectUrl))
-                            {
-                                ltlProjectUrl.Text = $"<a href='{project.ProjectUrl}' target='_blank' class='btn btn-primary' title='View Live Demo'><i class='fas fa-external-link-alt'></i> Live Demo</a>";
-                            }
-                            else
-                            {
-                                ltlProjectUrl.Text = "";
-                            }
-                        }
-
-                        // Handle GitHub URL safely
-                        Literal ltlGitHubUrl = (Literal)e.Item.FindControl("ltlGitHubUrl");
-                        if (ltlGitHubUrl != null)
-                        {
-                            if (!string.IsNullOrEmpty(project.GitHubUrl))
-                            {
-                                ltlGitHubUrl.Text = $"<a href='{project.GitHubUrl}' target='_blank' class='btn btn-secondary' title='View Source Code'><i class='fab fa-github'></i> Source</a>";
-                            }
-                            else
-                            {
-                                ltlGitHubUrl.Text = "";
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Error in rptProjects_ItemDataBound: {ex.Message}");
-                }
-            }
         }
     }
 }
