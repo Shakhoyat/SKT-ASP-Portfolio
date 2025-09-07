@@ -127,62 +127,42 @@
         </div>
     </div>
 
-    <!-- Technical Expertise -->
+    <!-- Technology Highlights -->
     <div class="section section-alt">
         <div class="container">
-            <h2 class="section-title-ghost" data-text="EXPERTISE">TECHNICAL EXPERTISE</h2>
-            <div class="expertise-grid">
-                <div class="expertise-category">
-                    <div class="expertise-icon data-science">
+            <h2 class="section-title-ghost" data-text="TECH STACK">TECHNOLOGY HIGHLIGHTS</h2>
+            <p class="section-subtitle">
+                Core technologies and areas of expertise. For detailed technical skills and proficiency levels, 
+                <a href="Skills.aspx" class="highlight-link">visit my Skills page</a>.
+            </p>
+            <div class="tech-highlights-grid">
+                <div class="tech-highlight">
+                    <div class="tech-highlight-icon data-science">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Data Science & Analytics</h3>
-                    <ul class="expertise-list">
-                        <li>Python, Pandas, NumPy, Matplotlib</li>
-                        <li>Statistical Analysis & Hypothesis Testing</li>
-                        <li>Data Mining & Feature Engineering</li>
-                        <li>Automated EDA Pipeline Development</li>
-                        <li>Real-time Data Processing</li>
-                    </ul>
+                    <p>Python, Pandas, NumPy, Statistical Analysis, Automated EDA</p>
                 </div>
-                <div class="expertise-category">
-                    <div class="expertise-icon machine-learning">
+                <div class="tech-highlight">
+                    <div class="tech-highlight-icon machine-learning">
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>Machine Learning & AI</h3>
-                    <ul class="expertise-list">
-                        <li>TensorFlow, PyTorch, Scikit-Learn</li>
-                        <li>Deep Learning & Neural Networks</li>
-                        <li>Computer Vision & NLP</li>
-                        <li>Predictive Modeling & Classification</li>
-                        <li>Model Optimization & Deployment</li>
-                    </ul>
+                    <p>TensorFlow, PyTorch, Deep Learning, Computer Vision, NLP</p>
                 </div>
-                <div class="expertise-category">
-                    <div class="expertise-icon web-development">
+                <div class="tech-highlight">
+                    <div class="tech-highlight-icon web-development">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>Software Development</h3>
-                    <ul class="expertise-list">
-                        <li>Python, Java, C++, JavaScript</li>
-                        <li>React, Next.js, Node.js, TypeScript</li>
-                        <li>REST APIs & Microservices</li>
-                        <li>Database Design & Optimization</li>
-                        <li>Cloud Platforms & DevOps</li>
-                    </ul>
+                    <p>Python, Java, C++, React, Node.js, ASP.NET, RESTful APIs</p>
                 </div>
-                <div class="expertise-category">
-                    <div class="expertise-icon iot-systems">
+                <div class="tech-highlight">
+                    <div class="tech-highlight-icon iot-systems">
                         <i class="fas fa-microchip"></i>
                     </div>
                     <h3>IoT & Edge Computing</h3>
-                    <ul class="expertise-list">
-                        <li>Sensor Integration & Data Collection</li>
-                        <li>Arduino, Raspberry Pi, ESP32</li>
-                        <li>MQTT, IoT Protocols & Communication</li>
-                        <li>Edge Computing & Real-time Analytics</li>
-                        <li>Hardware-Software Integration</li>
-                    </ul>
+                    <p>Arduino, Raspberry Pi, Sensor Integration, MQTT, Real-time Analytics</p>
                 </div>
             </div>
         </div>
@@ -345,30 +325,53 @@
             border: 1px solid rgba(0, 212, 170, 0.2);
         }
 
-        /* Expertise Grid */
-        .expertise-grid {
+        /* Technology Highlights */
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(0, 212, 170, 0.3);
+            transition: var(--transition);
+        }
+
+        .highlight-link:hover {
+            border-bottom-color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .tech-highlights-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .expertise-category {
+        .tech-highlight {
+            text-align: center;
+            padding: 2rem;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
-            padding: 2rem;
-            text-align: center;
             transition: var(--transition);
         }
 
-        .expertise-category:hover {
+        .tech-highlight:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-medium);
             border-color: var(--accent-color);
         }
 
-        .expertise-icon {
+        .tech-highlight-icon {
             width: 80px;
             height: 80px;
             border-radius: 50%;
@@ -380,46 +383,32 @@
             color: white;
         }
 
-        .expertise-icon.data-science {
+        .tech-highlight-icon.data-science {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        .expertise-icon.machine-learning {
+        .tech-highlight-icon.machine-learning {
             background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
         }
 
-        .expertise-icon.web-development {
+        .tech-highlight-icon.web-development {
             background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
         }
 
-        .expertise-icon.iot-systems {
+        .tech-highlight-icon.iot-systems {
             background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
         }
 
-        .expertise-category h3 {
-            margin-bottom: 1.5rem;
+        .tech-highlight h3 {
+            margin-bottom: 1rem;
             color: var(--text-primary);
+            font-size: 1.2rem;
         }
 
-        .expertise-list {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-        }
-
-        .expertise-list li {
+        .tech-highlight p {
             color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .expertise-list li::before {
-            content: '?';
-            color: var(--accent-color);
-            position: absolute;
-            left: 0;
-            font-size: 0.8rem;
+            line-height: 1.6;
+            margin: 0;
         }
 
         /* Values Grid */
@@ -497,7 +486,7 @@
                 gap: 1rem;
             }
 
-            .expertise-grid,
+            .tech-highlights-grid,
             .values-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -518,7 +507,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Animate cards on scroll
-            const cards = document.querySelectorAll('.professional-card, .expertise-category, .value-item');
+            const cards = document.querySelectorAll('.professional-card, .tech-highlight, .value-item');
             
             const observerOptions = {
                 threshold: 0.1,

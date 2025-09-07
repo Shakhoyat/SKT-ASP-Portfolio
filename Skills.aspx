@@ -12,7 +12,7 @@
                 <p class="hero-description">
                     A comprehensive overview of my technical expertise and proficiency levels 
                     across various programming languages, frameworks, and tools. From data science 
-                    to full-stack development, here's my technology arsenal.
+                    to full-stack development, here's my complete technology arsenal.
                 </p>
                 <div class="skills-overview">
                     <div class="overview-stat">
@@ -32,8 +32,77 @@
         </div>
     </div>
 
-    <!-- Programming Languages -->
+    <!-- Core Technical Expertise -->
     <div class="section">
+        <div class="container">
+            <h2 class="section-title-ghost" data-text="EXPERTISE">CORE TECHNICAL EXPERTISE</h2>
+            <div class="expertise-grid">
+                <div class="expertise-category">
+                    <div class="expertise-icon data-science">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Science & Analytics</h3>
+                    <ul class="expertise-list">
+                        <li>Python, Pandas, NumPy, Matplotlib, Plotly</li>
+                        <li>Statistical Analysis & Hypothesis Testing</li>
+                        <li>Data Mining & Feature Engineering</li>
+                        <li>Automated EDA Pipeline Development</li>
+                        <li>Real-time Data Processing & Analytics</li>
+                        <li>Time Series Analysis & Forecasting</li>
+                        <li>A/B Testing & Experimental Design</li>
+                    </ul>
+                </div>
+                <div class="expertise-category">
+                    <div class="expertise-icon machine-learning">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning & AI</h3>
+                    <ul class="expertise-list">
+                        <li>TensorFlow, PyTorch, Scikit-Learn, Keras</li>
+                        <li>Deep Learning & Neural Networks</li>
+                        <li>Computer Vision & Image Processing</li>
+                        <li>Natural Language Processing (NLP)</li>
+                        <li>Predictive Modeling & Classification</li>
+                        <li>Model Optimization & Hyperparameter Tuning</li>
+                        <li>MLOps & Model Deployment</li>
+                    </ul>
+                </div>
+                <div class="expertise-category">
+                    <div class="expertise-icon web-development">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Software Development</h3>
+                    <ul class="expertise-list">
+                        <li>Python, Java, C++, C#, JavaScript</li>
+                        <li>React, Next.js, Node.js, TypeScript</li>
+                        <li>ASP.NET Web Forms, MVC, .NET Core</li>
+                        <li>REST APIs & Microservices Architecture</li>
+                        <li>Database Design & SQL Optimization</li>
+                        <li>Git Version Control & CI/CD</li>
+                        <li>Agile Development & Testing</li>
+                    </ul>
+                </div>
+                <div class="expertise-category">
+                    <div class="expertise-icon iot-systems">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>IoT & Edge Computing</h3>
+                    <ul class="expertise-list">
+                        <li>Arduino, Raspberry Pi, ESP32 Development</li>
+                        <li>Sensor Integration & Data Collection</li>
+                        <li>MQTT, IoT Protocols & Communication</li>
+                        <li>Edge Computing & Real-time Analytics</li>
+                        <li>Hardware-Software Integration</li>
+                        <li>Embedded Systems Programming</li>
+                        <li>IoT Security & Device Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Programming Languages -->
+    <div class="section section-alt">
         <div class="container">
             <h2 class="section-title-ghost" data-text="PROGRAMMING">PROGRAMMING LANGUAGES</h2>
             <div class="skills-grid">
@@ -61,7 +130,7 @@
     </div>
 
     <!-- Frameworks & Technologies -->
-    <div class="section section-alt">
+    <div class="section">
         <div class="container">
             <h2 class="section-title-ghost" data-text="FRAMEWORKS">FRAMEWORKS & TECHNOLOGIES</h2>
             <div class="framework-grid">
@@ -84,7 +153,7 @@
     </div>
 
     <!-- Tools & Software -->
-    <div class="section">
+    <div class="section section-alt">
         <div class="container">
             <h2 class="section-title-ghost" data-text="TOOLS">TOOLS & SOFTWARE</h2>
             <div class="tools-grid">
@@ -104,7 +173,7 @@
     </div>
 
     <!-- Professional Skills -->
-    <div class="section section-alt">
+    <div class="section">
         <div class="container">
             <h2 class="section-title-ghost" data-text="PROFESSIONAL">PROFESSIONAL SKILLS</h2>
             <div class="professional-skills">
@@ -141,7 +210,7 @@
     </div>
 
     <!-- Skills Summary -->
-    <div class="section">
+    <div class="section section-alt">
         <div class="container">
             <div class="skills-summary">
                 <div class="summary-content">
@@ -196,7 +265,7 @@
     </div>
 
     <!-- Call to Action -->
-    <div class="section section-alt">
+    <div class="section">
         <div class="container text-center">
             <h2 class="section-title-ghost" data-text="LET'S BUILD">LET'S BUILD TOGETHER</h2>
             <p class="cta-description">
@@ -256,6 +325,83 @@
             font-size: 0.9rem;
             color: var(--text-muted);
             font-weight: 500;
+        }
+
+        /* Expertise Grid */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .expertise-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-color);
+        }
+
+        .expertise-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .expertise-icon.data-science {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .expertise-icon.machine-learning {
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+        }
+
+        .expertise-icon.web-development {
+            background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
+        }
+
+        .expertise-icon.iot-systems {
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+        }
+
+        .expertise-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .expertise-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .expertise-list li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .expertise-list li::before {
+            content: '?';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
         }
 
         /* Skills Grid */
@@ -601,6 +747,7 @@
                 gap: 1.5rem;
             }
 
+            .expertise-grid,
             .skills-grid,
             .framework-grid,
             .tools-grid {
@@ -665,7 +812,7 @@
             });
 
             // Animate cards on scroll
-            const cards = document.querySelectorAll('.skill-card, .framework-card, .tool-card, .professional-skill, .stat-card');
+            const cards = document.querySelectorAll('.skill-card, .framework-card, .tool-card, .professional-skill, .stat-card, .expertise-category');
             
             const cardObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
