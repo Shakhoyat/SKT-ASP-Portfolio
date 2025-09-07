@@ -31,7 +31,7 @@
             <div class="container">
                 <!-- Brand Section -->
                 <div class="navbar-brand-section">
-                    <a class="navbar-brand" href="About.aspx">
+                    <a class="navbar-brand" href="Default.aspx">
                         <div class="brand-icon">
                             <i class="fas fa-code"></i>
                         </div>
@@ -51,7 +51,7 @@
                 
                 <!-- Navigation Links -->
                 <div class="navbar-nav" id="navbarNav">
-                    <a class="nav-link" href="About.aspx" data-section="home">
+                    <a class="nav-link" href="Default.aspx" data-section="home">
                         <i class="fas fa-home nav-icon"></i>
                         <span>Home</span>
                     </a>
@@ -120,7 +120,7 @@
                     <div class="footer-section footer-links">
                         <h4>Quick Links</h4>
                         <div class="footer-nav">
-                            <a href="About.aspx">Home</a>
+                            <a href="Default.aspx">Home</a>
                             <a href="About.aspx">About</a>
                             <a href="Skills.aspx">Skills</a>
                             <a href="Projects.aspx">Projects</a>
@@ -297,10 +297,25 @@
             
             navLinks.forEach(function(link) {
                 const linkPage = link.getAttribute('href');
-                if (linkPage === currentPage || 
-                    (currentPage === '' && linkPage === 'About.aspx') ||
-                    (currentPage === 'Default.aspx' && linkPage === 'About.aspx')) {
-                    link.classList.add('active');
+                const linkSection = link.getAttribute('data-section');
+                
+                // Handle Home page (Default.aspx)
+                if (linkSection === 'home') {
+                    if (currentPage === 'Default.aspx' || currentPage === '' || currentPage === '/') {
+                        link.classList.add('active');
+                    }
+                }
+                // Handle About page
+                else if (linkSection === 'about') {
+                    if (currentPage === 'About.aspx') {
+                        link.classList.add('active');
+                    }
+                }
+                // Handle other pages
+                else {
+                    if (linkPage === currentPage) {
+                        link.classList.add('active');
+                    }
                 }
             });
 
@@ -311,7 +326,7 @@
             };
 
             const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
+                entries.forEach entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animate-in');
                     }
