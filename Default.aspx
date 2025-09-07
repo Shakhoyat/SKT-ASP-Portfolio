@@ -857,6 +857,7 @@
             </div>
         </div>
     </div>
+</asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsContent" runat="server">
     <style>
@@ -1986,4 +1987,4 @@
         // Remove parallax effect that interferes with normal scrolling
         // Normal scrolling will now work properly without interference
     </script>
-</asp:Content></asp:Content></asp:Content></asp:Content>
+</asp:Content>
