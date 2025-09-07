@@ -1531,9 +1531,18 @@
                 grid-template-columns: 1fr;
             }
 
-            .projects-grid,
-            .achievements-grid {
-                grid-template-columns: 1fr;
+            /* Mobile adjustments for infinite scroll */
+            .project-showcase,
+            .achievement-card {
+                min-width: 280px;
+            }
+
+            .projects-scroll-track {
+                animation-duration: 25s; /* Slower on mobile */
+            }
+
+            .achievements-carousel-track {
+                animation-duration: 20s; /* Slower on mobile */
             }
         }
 
@@ -1568,6 +1577,25 @@
 
             .tagline {
                 animation: fadeInUp 1.5s ease-out 0.8s both;
+            }
+
+            /* Extra small mobile adjustments */
+            .project-showcase,
+            .achievement-card {
+                min-width: 250px;
+            }
+
+            .project-info,
+            .achievement-content {
+                padding: 1rem;
+            }
+
+            .projects-scroll-track {
+                animation-duration: 20s; /* Even slower on small mobile */
+            }
+
+            .achievements-carousel-track {
+                animation-duration: 15s; /* Even slower on small mobile */
             }
         }
 
