@@ -37,823 +37,830 @@
             </div>
         </div>
 
-        <!-- Animated Stats Section -->
-        <div class="stats-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="700">0</div>
-                        <div class="stat-label">PROBLEMS SOLVED</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="15">0</div>
-                        <div class="stat-label">TECHNOLOGIES MASTERED</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="5">0</div>
-                        <div class="stat-label">SUCCESSFUL PROJECTS</div>
-                    </div>
+        <!-- Scroll Down Arrow -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Stats Section -->
+    <div class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="700">0</div>
+                    <div class="stat-label">PROBLEMS SOLVED</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">TECHNOLOGIES MASTERED</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5">0</div>
+                    <div class="stat-label">SUCCESSFUL PROJECTS</div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- About Me Section -->
-        <div class="about-section">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-text">
-                        <h2 class="section-title-hollow">ABOUT ME</h2>
-                        <div class="about-description">
-                            <p>
-                                Hi, I'm Shakhoyat, a CSE student at KUET specializing in data science, ML, and IoT. With 700+ programming 
-                                problem-solving experiences on platforms like Codeforces, I transitioned into data science and am now a Kaggle Expert. 
-                                My team and I actively compete in datathons across the country, tackling challenges in Deep Learning, NLP, and Computer Vision.
-                            </p>
-                            <p>
-                                From automated EDA pipelines to predictive healthcare models, I focus on building intelligent systems with real-world impact—driven 
-                                by the vision of becoming a future tech lead in deep learning.
-                            </p>
-                        </div>
-                        
-                        <!-- Social Links -->
-                        <div class="social-links">
-                            <a href="https://x.com/skt_rahman" target="_blank" class="social-icon">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/shakhoyat-shujon-313ba5336/" target="_blank" class="social-icon">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="mailto:skt104.shujon@gmail.com" class="social-icon">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="https://github.com/Shakhoyat" target="_blank" class="social-icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.kaggle.com/shakhoyatshujon" target="_blank" class="social-icon">
-                                <i class="fab fa-kaggle"></i>
-                            </a>
-                        </div>
-
-                        <div class="section-cta">
-                            <a href="About.aspx" class="cta-button">
-                                <span>Learn More About Me</span>
-                                <i class="fas fa-user"></i>
-                            </a>
-                        </div>
+    <!-- About Me Section -->
+    <div class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title-hollow">ABOUT ME</h2>
+                    <div class="about-description">
+                        <p>
+                            Hi, I'm Shakhoyat, a CSE student at KUET specializing in data science, ML, and IoT. With 700+ programming 
+                            problem-solving experiences on platforms like Codeforces, I transitioned into data science and am now a Kaggle Expert. 
+                            My team and I actively compete in datathons across the country, tackling challenges in Deep Learning, NLP, and Computer Vision.
+                        </p>
+                        <p>
+                            From automated EDA pipelines to predictive healthcare models, I focus on building intelligent systems with real-world impact—driven 
+                            by the vision of becoming a future tech lead in deep learning.
+                        </p>
                     </div>
                     
-                    <!-- Right side image -->
-                    <div class="about-image">
-                        <div class="about-photo">
-                            <img src="/Content/images/about.jpg" alt="Shakhoyat Shujon" />
-                            <!-- Fallback placeholder if image not loaded -->
-                            <div class="about-placeholder">
-                                <i class="fas fa-user fa-5x"></i>
-                            </div>
+                    <!-- Social Links -->
+                    <div class="social-links">
+                        <a href="https://x.com/skt_rahman" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shakhoyat-shujon-313ba5336/" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:skt104.shujon@gmail.com" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://github.com/Shakhoyat" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.kaggle.com/shakhoyatshujon" target="_blank" class="social-icon">
+                            <i class="fab fa-kaggle"></i>
+                        </a>
+                    </div>
+
+                    <div class="section-cta">
+                        <a href="About.aspx" class="cta-button">
+                            <span>Learn More About Me</span>
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right side image -->
+                <div class="about-image">
+                    <div class="about-photo">
+                        <img src="/Content/images/about.jpg" alt="Shakhoyat Shujon" />
+                        <!-- Fallback placeholder if image not loaded -->
+                        <div class="about-placeholder">
+                            <i class="fas fa-user fa-5x"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Featured Projects Section - Now with Infinite Horizontal Auto-Scroll -->
-        <div class="projects-section">
-            <div class="container">
-                <h2 class="section-title-hollow">FEATURED PROJECTS</h2>
-                <div class="infinite-scroll-container">
-                    <div class="projects-scroll-track">
-                        <!-- Project 1: Doctor Appointment System -->
-                        <div class="project-showcase">
-                            <div class="project-image-container">
-                                <div class="project-image healthcare">
-                                    <i class="fas fa-user-md"></i>
-                                </div>
-                                <div class="project-overlay">
-                                    <div class="project-actions">
-                                        <a href="Projects.aspx" class="project-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                            <i class="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
+    <!-- Featured Projects Section - Now with Infinite Horizontal Auto-Scroll -->
+    <div class="projects-section">
+        <div class="container">
+            <h2 class="section-title-hollow">FEATURED PROJECTS</h2>
+            <div class="infinite-scroll-container">
+                <div class="projects-scroll-track">
+                    <!-- Project 1: Doctor Appointment System -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image healthcare">
+                                <i class="fas fa-user-md"></i>
                             </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Doctor Appointment System</h3>
-                                <p class="project-desc">Healthcare management with ML-powered resource allocation</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-badge java">Java</span>
-                                    <span class="tech-badge">JavaFX</span>
-                                    <span class="tech-badge">MySQL</span>
-                                    <span class="tech-badge">ML</span>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Project 2: Data Analysis Platform -->
-                        <div class="project-showcase">
-                            <div class="project-image-container">
-                                <div class="project-image analytics">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <div class="project-overlay">
-                                    <div class="project-actions">
-                                        <a href="Projects.aspx" class="project-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                            <i class="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Automated EDA Platform</h3>
-                                <p class="project-desc">Reduces data exploration time by 70% with automated insights</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-badge python">Python</span>
-                                    <span class="tech-badge">Streamlit</span>
-                                    <span class="tech-badge">Pandas</span>
-                                    <span class="tech-badge">Plotly</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 3: Weather Analytics -->
-                        <div class="project-showcase">
-                            <div class="project-image-container">
-                                <div class="project-image weather">
-                                    <i class="fas fa-cloud-sun"></i>
-                                </div>
-                                <div class="project-overlay">
-                                    <div class="project-actions">
-                                        <a href="Projects.aspx" class="project-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                            <i class="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Weather Analytics WebApp</h3>
-                                <p class="project-desc">Real-time weather forecasting with geospatial analysis</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-badge react">React</span>
-                                    <span class="tech-badge">TypeScript</span>
-                                    <span class="tech-badge">APIs</span>
-                                    <span class="tech-badge">Maps</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 4: IoT Data Analytics -->
-                        <div class="project-showcase">
-                            <div class="project-image-container">
-                                <div class="project-image" style="background: linear-gradient(135deg, #FF9A56 0%, #FF6B95 100%);">
-                                    <i class="fas fa-wifi"></i>
-                                </div>
-                                <div class="project-overlay">
-                                    <div class="project-actions">
-                                        <a href="Projects.aspx" class="project-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                            <i class="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">IoT Data Analytics Platform</h3>
-                                <p class="project-desc">Real-time sensor data processing with machine learning insights</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-badge python">Python</span>
-                                    <span class="tech-badge">IoT</span>
-                                    <span class="tech-badge">MongoDB</span>
-                                    <span class="tech-badge">ML</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project 5: Computer Vision App -->
-                        <div class="project-showcase">
-                            <div class="project-image-container">
-                                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                                <div class="project-overlay">
-                                    <div class="project-actions">
-                                        <a href="Projects.aspx" class="project-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                            <i class="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Computer Vision Detection</h3>
-                                <p class="project-desc">Advanced object detection using deep learning models</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-badge python">Python</span>
-                                    <span class="tech-badge">OpenCV</span>
-                                    <span class="tech-badge">TensorFlow</span>
-                                    <span class="tech-badge">CNN</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Duplicate projects for infinite scroll effect -->
-                        <div class="project-showcase">
-                            <div class="project-image-container">
-                                <div class="project-image healthcare">
-                                    <i class="fas fa-user-md"></i>
-                                </div>
-                                <div class="project-overlay">
-                                    <div class="project-actions">
-                                        <a href="Projects.aspx" class="project-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                            <i class="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Doctor Appointment System</h3>
-                                <p class="project-desc">Healthcare management with ML-powered resource allocation</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-badge java">Java</span>
-                                    <span class="tech-badge">JavaFX</span>
-                                    <span class="tech-badge">MySQL</span>
-                                    <span class="tech-badge">ML</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-showcase">
-                            <div class="project-image-container">
-                                <div class="project-image analytics">
-                                    <i class="fas fa-chart-line"></i>
-                                </div>
-                                <div class="project-overlay">
-                                    <div class="project-actions">
-                                        <a href="Projects.aspx" class="project-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                            <i class="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="project-info">
-                                <h3 class="project-title">Automated EDA Platform</h3>
-                                <p class="project-desc">Reduces data exploration time by 70% with automated insights</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-badge python">Python</span>
-                                    <span class="tech-badge">Streamlit</span>
-                                    <span class="tech-badge">Pandas</span>
-                                    <span class="tech-badge">Plotly</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-cta">
-                    <a href="Projects.aspx" class="cta-button">
-                        <span>View All Projects</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tech Stack Section -->
-        <div class="tech-stack-section">
-            <div class="container">
-                <h2 class="section-title-hollow">TECH STACK</h2>
-                <div class="tech-categories">
-                    <!-- Programming Languages -->
-                    <div class="tech-category">
-                        <h3 class="category-title">Programming Languages</h3>
-                        <div class="tech-logos">
-                            <div class="tech-item">
-                                <div class="tech-logo python">
-                                    <i class="fab fa-python"></i>
-                                </div>
-                                <span>Python</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo java">
-                                    <i class="fab fa-java"></i>
-                                </div>
-                                <span>Java</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo js">
-                                    <i class="fab fa-js-square"></i>
-                                </div>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo cpp">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
-                                </div>
-                                <span>C++</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo c">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />
-                                </div>
-                                <span>C</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
-                                </div>
-                                <span>TypeScript</span>
+                        <div class="project-info">
+                            <h3 class="project-title">Doctor Appointment System</h3>
+                            <p class="project-desc">Healthcare management with ML-powered resource allocation</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge java">Java</span>
+                                <span class="tech-badge">JavaFX</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">ML</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Data Science & ML -->
-                    <div class="tech-category">
-                        <h3 class="category-title">Data Science & ML</h3>
-                        <div class="tech-logos">
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
-                                </div>
-                                <span>Pandas</span>
+                    <!-- Project 2: Data Analysis Platform -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image analytics">
+                                <i class="fas fa-chart-line"></i>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" />
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
                                 </div>
-                                <span>NumPy</span>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" />
-                                </div>
-                                <span>TensorFlow</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
-                                </div>
-                                <span>PyTorch</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo sklearn">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" />
-                                </div>
-                                <span>Scikit-learn</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" />
-                                </div>
-                                <span>OpenCV</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Automated EDA Platform</h3>
+                            <p class="project-desc">Reduces data exploration time by 70% with automated insights</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge">Streamlit</span>
+                                <span class="tech-badge">Pandas</span>
+                                <span class="tech-badge">Plotly</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Web Development -->
-                    <div class="tech-category">
-                        <h3 class="category-title">Web Development</h3>
-                        <div class="tech-logos">
-                            <div class="tech-item">
-                                <div class="tech-logo react">
-                                    <i class="fab fa-react"></i>
-                                </div>
-                                <span>React</span>
+                    <!-- Project 3: Weather Analytics -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image weather">
+                                <i class="fas fa-cloud-sun"></i>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo node">
-                                    <i class="fab fa-node-js"></i>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
                                 </div>
-                                <span>Node.js</span>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" />
-                                </div>
-                                <span>Next.js</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" />
-                                </div>
-                                <span>Express.js</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo html">
-                                    <i class="fab fa-html5"></i>
-                                </div>
-                                <span>HTML5</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo css">
-                                    <i class="fab fa-css3-alt"></i>
-                                </div>
-                                <span>CSS3</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Weather Analytics WebApp</h3>
+                            <p class="project-desc">Real-time weather forecasting with geospatial analysis</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge react">React</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">APIs</span>
+                                <span class="tech-badge">Maps</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Backend & Frameworks -->
-                    <div class="tech-category">
-                        <h3 class="category-title">Backend & Frameworks</h3>
-                        <div class="tech-logos">
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" />
-                                </div>
-                                <span>.NET</span>
+                    <!-- Project 4: IoT Data Analytics -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image" style="background: linear-gradient(135deg, #FF9A56 0%, #FF6B95 100%);">
+                                <i class="fas fa-wifi"></i>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" />
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
                                 </div>
-                                <span>Spring Boot</span>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" />
-                                </div>
-                                <span>Django</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" />
-                                </div>
-                                <span>Flask</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://streamlit.io/images/brand/streamlit-mark-color.png" alt="Streamlit" />
-                                </div>
-                                <span>Streamlit</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" />
-                                </div>
-                                <span>FastAPI</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">IoT Data Analytics Platform</h3>
+                            <p class="project-desc">Real-time sensor data processing with machine learning insights</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge">IoT</span>
+                                <span class="tech-badge">MongoDB</span>
+                                <span class="tech-badge">ML</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Databases & Storage -->
-                    <div class="tech-category">
-                        <h3 class="category-title">Databases & Storage</h3>
-                        <div class="tech-logos">
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
-                                </div>
-                                <span>MySQL</span>
+                    <!-- Project 5: Computer Vision App -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="fas fa-eye"></i>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
                                 </div>
-                                <span>PostgreSQL</span>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
-                                </div>
-                                <span>MongoDB</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" />
-                                </div>
-                                <span>Redis</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite" />
-                                </div>
-                                <span>SQLite</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" />
-                                </div>
-                                <span>Firebase</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Computer Vision Detection</h3>
+                            <p class="project-desc">Advanced object detection using deep learning models</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge">OpenCV</span>
+                                <span class="tech-badge">TensorFlow</span>
+                                <span class="tech-badge">CNN</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- DevOps & Tools -->
-                    <div class="tech-category">
-                        <h3 class="category-title">DevOps & Tools</h3>
-                        <div class="tech-logos">
-                            <div class="tech-item">
-                                <div class="tech-logo git">
-                                    <i class="fab fa-git-alt"></i>
-                                </div>
-                                <span>Git</span>
+                    <!-- Duplicate projects for infinite scroll effect -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image healthcare">
+                                <i class="fas fa-user-md"></i>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo github">
-                                    <i class="fab fa-github"></i>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
                                 </div>
-                                <span>GitHub</span>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo docker">
-                                    <i class="fab fa-docker"></i>
-                                </div>
-                                <span>Docker</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
-                                </div>
-                                <span>Linux</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" />
-                                </div>
-                                <span>AWS</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo vs">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
-                                </div>
-                                <span>VS Code</span>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Doctor Appointment System</h3>
+                            <p class="project-desc">Healthcare management with ML-powered resource allocation</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge java">Java</span>
+                                <span class="tech-badge">JavaFX</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">ML</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Data Analysis & Visualization -->
-                    <div class="tech-category">
-                        <h3 class="category-title">Data Analysis & Visualization</h3>
-                        <div class="tech-logos">
-                            <div class="tech-item">
-                                <div class="tech-logo">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter" />
-                                </div>
-                                <span>Jupyter</span>
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image analytics">
+                                <i class="fas fa-chart-line"></i>
                             </div>
-                            <div class="tech-item">
-                                <div class="tech-logo plotly">
-                                    <img src="https://images.plot.ly/logo/new-branding/plotly-logomark.png" alt="Plotly" />
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
                                 </div>
-                                <span>Plotly</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo seaborn">
-                                    <img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" alt="Seaborn" />
-                                </div>
-                                <span>Seaborn</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo matplotlib">
-                                    <img src="https://matplotlib.org/stable/_images/sphx_glr_logos2_003.png" alt="Matplotlib" />
-                                </div>
-                                <span>Matplotlib</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo kaggle">
-                                    <i class="fab fa-kaggle"></i>
-                                </div>
-                                <span>Kaggle</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo tableau">
-                                    <img src="https://logos-world.net/wp-content/uploads/2021/10/Tableau-Logo.png" alt="Tableau" />
-                                </div>
-                                <span>Tableau</span>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- IoT & Hardware -->
-                    <div class="tech-category">
-                        <h3 class="category-title">IoT & Embedded Systems</h3>
-                        <div class="tech-logos">
-                            <div class="tech-item">
-                                <div class="tech-logo arduino">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino" />
-                                </div>
-                                <span>Arduino</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo raspberry">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" alt="Raspberry Pi" />
-                                </div>
-                                <span>Raspberry Pi</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo esp">
-                                    <img src="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/_images/logo.svg" alt="MQTT" />
-                                </div>
-                                <span>ESP32</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo mqtt">
-                                    <img src="https://mqtt.org/assets/img/mqtt-logo-transp.svg" alt="MQTT" />
-                                </div>
-                                <span>MQTT</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo sensors">
-                                    <i class="fas fa-microchip"></i>
-                                </div>
-                                <span>Sensors</span>
-                            </div>
-                            <div class="tech-item">
-                                <div class="tech-logo embedded">
-                                    <i class="fas fa-memory"></i>
-                                </div>
-                                <span>Embedded C</span>
+                        <div class="project-info">
+                            <h3 class="project-title">Automated EDA Platform</h3>
+                            <p class="project-desc">Reduces data exploration time by 70% with automated insights</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge">Streamlit</span>
+                                <span class="tech-badge">Pandas</span>
+                                <span class="tech-badge">Plotly</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="section-cta">
+                <a href="Projects.aspx" class="cta-button">
+                    <span>View All Projects</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
+    </div>
 
-        <!-- Achievements Section - Now with Carousel Infinite Scroll -->
-        <div class="achievements-section">
-            <div class="container">
-                <h2 class="section-title-hollow">ACHIEVEMENTS</h2>
-                <div class="achievements-carousel-container">
-                    <div class="achievements-carousel-track">
-                        <!-- Achievement 1: Kaggle -->
-                        <div class="achievement-card">
-                            <div class="achievement-icon kaggle-achievement">
-                                <i class="fab fa-kaggle"></i>
+    <!-- Tech Stack Section -->
+    <div class="tech-stack-section">
+        <div class="container">
+            <h2 class="section-title-hollow">TECH STACK</h2>
+            <div class="tech-categories">
+                <!-- Programming Languages -->
+                <div class="tech-category">
+                    <h3 class="category-title">Programming Languages</h3>
+                    <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo python">
+                                <i class="fab fa-python"></i>
                             </div>
-                            <div class="achievement-content">
-                                <h3 class="achievement-title">Kaggle Competitor</h3>
-                                <p class="achievement-desc">Active participant in data science competitions</p>
-                                <div class="achievement-stats">
-                                    <span class="stat">700+ Problems Solved</span>
-                                    <span class="stat">Multiple Competitions</span>
-                                </div>
-                            </div>
+                            <span>Python</span>
                         </div>
-
-                        <!-- Achievement 2: Project Excellence -->
-                        <div class="achievement-card">
-                            <div class="achievement-icon excellence-achievement">
-                                <i class="fas fa-trophy"></i>
+                        <div class="tech-item">
+                            <div class="tech-logo java">
+                                <i class="fab fa-java"></i>
                             </div>
-                            <div class="achievement-content">
-                                <h3 class="achievement-title">Project Excellence</h3>
-                                <p class="achievement-desc">Outstanding performance in ML project delivery</p>
-                                <div class="achievement-stats">
-                                    <span class="stat">Innovation Award</span>
-                                    <span class="stat">Tech Solutions</span>
-                                </div>
-                            </div>
+                            <span>Java</span>
                         </div>
+                        <div class="tech-item">
+                            <div class="tech-logo js">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo cpp">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+                            </div>
+                            <span>C++</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo c">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />
+                            </div>
+                            <span>C</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
+                            </div>
+                            <span>TypeScript</span>
+                        </div>
+                    </div>
+                </div>
 
-                        <!-- Achievement 3: Open Source -->
-                        <div class="achievement-card">
-                            <div class="achievement-icon github-achievement">
+                <!-- Data Science & ML -->
+                <div class="tech-category">
+                    <h3 class="category-title">Data Science & ML</h3>
+                    <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
+                            </div>
+                            <span>Pandas</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" />
+                            </div>
+                            <span>NumPy</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" />
+                            </div>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
+                            </div>
+                            <span>PyTorch</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo sklearn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" />
+                            </div>
+                            <span>Scikit-learn</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" />
+                            </div>
+                            <span>OpenCV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="tech-category">
+                    <h3 class="category-title">Web Development</h3>
+                    <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo react">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <span>React</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo node">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" />
+                            </div>
+                            <span>Next.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" />
+                            </div>
+                            <span>Express.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo html">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo css">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <span>CSS3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend & Frameworks -->
+                <div class="tech-category">
+                    <h3 class="category-title">Backend & Frameworks</h3>
+                    <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" />
+                            </div>
+                            <span>.NET</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" />
+                            </div>
+                            <span>Spring Boot</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" />
+                            </div>
+                            <span>Django</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" />
+                            </div>
+                            <span>Flask</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://streamlit.io/images/brand/streamlit-mark-color.png" alt="Streamlit" />
+                            </div>
+                            <span>Streamlit</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" />
+                            </div>
+                            <span>FastAPI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Databases & Storage -->
+                <div class="tech-category">
+                    <h3 class="category-title">Databases & Storage</h3>
+                    <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+                            </div>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
+                            </div>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
+                            </div>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" />
+                            </div>
+                            <span>Redis</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite" />
+                            </div>
+                            <span>SQLite</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" />
+                            </div>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps & Tools -->
+                <div class="tech-category">
+                    <h3 class="category-title">DevOps & Tools</h3>
+                    <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo git">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <span>Git</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo github">
                                 <i class="fab fa-github"></i>
                             </div>
-                            <div class="achievement-content">
-                                <h3 class="achievement-title">Open Source Contributor</h3>
-                                <p class="achievement-desc">Significant contributions to ML community projects</p>
-                                <div class="achievement-stats">
-                                    <span class="stat">100+ Commits</span>
-                                    <span class="stat">Community Impact</span>
-                                </div>
-                            </div>
+                            <span>GitHub</span>
                         </div>
-
-                        <!-- Achievement 4: Education -->
-                        <div class="achievement-card">
-                            <div class="achievement-icon education-achievement">
-                                <i class="fas fa-graduation-cap"></i>
+                        <div class="tech-item">
+                            <div class="tech-logo docker">
+                                <i class="fab fa-docker"></i>
                             </div>
-                            <div class="achievement-content">
-                                <h3 class="achievement-title">KUET CS Student</h3>
-                                <p class="achievement-desc">Computer Science Engineering specialization</p>
-                                <div class="achievement-stats">
-                                    <span class="stat">Data Science Focus</span>
-                                    <span class="stat">Academic Excellence</span>
-                                </div>
-                            </div>
+                            <span>Docker</span>
                         </div>
-
-                        <!-- Achievement 5: Research -->
-                        <div class="achievement-card">
-                            <div class="achievement-icon" style="background: linear-gradient(135deg, #FF6B95 0%, #FF9A56 100%);">
-                                <i class="fas fa-microscope"></i>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
                             </div>
-                            <div class="achievement-content">
-                                <h3 class="achievement-title">Research Publications</h3>
-                                <p class="achievement-desc">Published research in machine learning and IoT domains</p>
-                                <div class="achievement-stats">
-                                    <span class="stat">Research Papers</span>
-                                    <span class="stat">Conference Presentations</span>
-                                </div>
-                            </div>
+                            <span>Linux</span>
                         </div>
-
-                        <!-- Achievement 6: Hackathons -->
-                        <div class="achievement-card">
-                            <div class="achievement-icon" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);">
-                                <i class="fas fa-code"></i>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" />
                             </div>
-                            <div class="achievement-content">
-                                <h3 class="achievement-title">Hackathon Winner</h3>
-                                <p class="achievement-desc">Multiple wins in national and international hackathons</p>
-                                <div class="achievement-stats">
-                                    <span class="stat">First Place</span>
-                                    <span class="stat">Team Leadership</span>
-                                </div>
-                            </div>
+                            <span>AWS</span>
                         </div>
+                        <div class="tech-item">
+                            <div class="tech-logo vs">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
+                            </div>
+                            <span>VS Code</span>
+                        </div>
+                    </div>
+                </div>
 
-                        <!-- Duplicate achievements for infinite scroll -->
-                        <div class="achievement-card">
-                            <div class="achievement-icon kaggle-achievement">
+                <!-- Data Analysis & Visualization -->
+                <div class="tech-category">
+                    <h3 class="category-title">Data Analysis & Visualization</h3>
+                    <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter" />
+                            </div>
+                            <span>Jupyter</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo plotly">
+                                <img src="https://images.plot.ly/logo/new-branding/plotly-logomark.png" alt="Plotly" />
+                            </div>
+                            <span>Plotly</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo seaborn">
+                                <img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" alt="Seaborn" />
+                            </div>
+                            <span>Seaborn</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo matplotlib">
+                                <img src="https://matplotlib.org/stable/_images/sphx_glr_logos2_003.png" alt="Matplotlib" />
+                            </div>
+                            <span>Matplotlib</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo kaggle">
                                 <i class="fab fa-kaggle"></i>
                             </div>
-                            <div class="achievement-content">
-                                <h3 class="achievement-title">Kaggle Competitor</h3>
-                                <p class="achievement-desc">Active participant in data science competitions</p>
-                                <div class="achievement-stats">
-                                    <span class="stat">700+ Problems Solved</span>
-                                    <span class="stat">Multiple Competitions</span>
-                                </div>
+                            <span>Kaggle</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo tableau">
+                                <img src="https://logos-world.net/wp-content/uploads/2021/10/Tableau-Logo.png" alt="Tableau" />
+                            </div>
+                            <span>Tableau</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IoT & Hardware -->
+                <div class="tech-category">
+                    <h3 class="category-title">IoT & Embedded Systems</h3>
+                    <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo arduino">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino" />
+                            </div>
+                            <span>Arduino</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo raspberry">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" alt="Raspberry Pi" />
+                            </div>
+                            <span>Raspberry Pi</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo esp">
+                                <img src="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/_images/logo.svg" alt="MQTT" />
+                            </div>
+                            <span>ESP32</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo mqtt">
+                                <img src="https://mqtt.org/assets/img/mqtt-logo-transp.svg" alt="MQTT" />
+                            </div>
+                            <span>MQTT</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo sensors">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <span>Sensors</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo embedded">
+                                <i class="fas fa-memory"></i>
+                            </div>
+                            <span>Embedded C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements Section - Now with Carousel Infinite Scroll -->
+    <div class="achievements-section">
+        <div class="container">
+            <h2 class="section-title-hollow">ACHIEVEMENTS</h2>
+            <div class="achievements-carousel-container">
+                <div class="achievements-carousel-track">
+                    <!-- Achievement 1: Kaggle -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon kaggle-achievement">
+                            <i class="fab fa-kaggle"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Kaggle Competitor</h3>
+                            <p class="achievement-desc">Active participant in data science competitions</p>
+                            <div class="achievement-stats">
+                                <span class="stat">700+ Problems Solved</span>
+                                <span class="stat">Multiple Competitions</span>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="achievement-card">
-                            <div class="achievement-icon excellence-achievement">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="achievement-content">
-                                <h3 class="achievement-title">Project Excellence</h3>
-                                <p class="achievement-desc">Outstanding performance in ML project delivery</p>
-                                <div class="achievement-stats">
-                                    <span class="stat">Innovation Award</span>
-                                    <span class="stat">Tech Solutions</span>
-                                </div>
+                    <!-- Achievement 2: Project Excellence -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon excellence-achievement">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Project Excellence</h3>
+                            <p class="achievement-desc">Outstanding performance in ML project delivery</p>
+                            <div class="achievement-stats">
+                                <span class="stat">Innovation Award</span>
+                                <span class="stat">Tech Solutions</span>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="achievement-card">
-                            <div class="achievement-icon github-achievement">
-                                <i class="fab fa-github"></i>
+                    <!-- Achievement 3: Open Source -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon github-achievement">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Open Source Contributor</h3>
+                            <p class="achievement-desc">Significant contributions to ML community projects</p>
+                            <div class="achievement-stats">
+                                <span class="stat">100+ Commits</span>
+                                <span class="stat">Community Impact</span>
                             </div>
-                            <div class="achievement-content">
-                                <h3 class="achievement-title">Open Source Contributor</h3>
-                                <p class="achievement-desc">Significant contributions to ML community projects</p>
-                                <div class="achievement-stats">
-                                    <span class="stat">100+ Commits</span>
-                                    <span class="stat">Community Impact</span>
-                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 4: Education -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon education-achievement">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">KUET CS Student</h3>
+                            <p class="achievement-desc">Computer Science Engineering specialization</p>
+                            <div class="achievement-stats">
+                                <span class="stat">Data Science Focus</span>
+                                <span class="stat">Academic Excellence</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 5: Research -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon" style="background: linear-gradient(135deg, #FF6B95 0%, #FF9A56 100%);">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Research Publications</h3>
+                            <p class="achievement-desc">Published research in machine learning and IoT domains</p>
+                            <div class="achievement-stats">
+                                <span class="stat">Research Papers</span>
+                                <span class="stat">Conference Presentations</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 6: Hackathons -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Hackathon Winner</h3>
+                            <p class="achievement-desc">Multiple wins in national and international hackathons</p>
+                            <div class="achievement-stats">
+                                <span class="stat">First Place</span>
+                                <span class="stat">Team Leadership</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate achievements for infinite scroll -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon kaggle-achievement">
+                            <i class="fab fa-kaggle"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Kaggle Competitor</h3>
+                            <p class="achievement-desc">Active participant in data science competitions</p>
+                            <div class="achievement-stats">
+                                <span class="stat">700+ Problems Solved</span>
+                                <span class="stat">Multiple Competitions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon excellence-achievement">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Project Excellence</h3>
+                            <p class="achievement-desc">Outstanding performance in ML project delivery</p>
+                            <div class="achievement-stats">
+                                <span class="stat">Innovation Award</span>
+                                <span class="stat">Tech Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon github-achievement">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Open Source Contributor</h3>
+                            <p class="achievement-desc">Significant contributions to ML community projects</p>
+                            <div class="achievement-stats">
+                                <span class="stat">100+ Commits</span>
+                                <span class="stat">Community Impact</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="section-cta">
-                    <a href="Achievements.aspx" class="cta-button">
-                        <span>View All Achievements</span>
-                        <i class="fas fa-award"></i>
-                    </a>
-                </div>
+            </div>
+            <div class="section-cta">
+                <a href="Achievements.aspx" class="cta-button">
+                    <span>View All Achievements</span>
+                    <i class="fas fa-award"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <!-- Action Buttons Section -->
-        <div class="action-section">
-            <div class="container text-center">
-                <h2 class="section-title-hollow">LET'S COLLABORATE</h2>
-                <p class="action-subtitle">Ready to transform data into meaningful insights?</p>
-                <div class="action-buttons">
-                    <a href="Projects.aspx" class="btn-modern btn-primary">
-                        <span>View My Work</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="Contact.aspx" class="btn-modern btn-secondary">
-                        <span>Get In Touch</span>
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://www.kaggle.com/shakhoyatshujon" target="_blank" class="btn-modern btn-outline">
-                        <span>Kaggle Profile</span>
-                        <i class="fab fa-kaggle"></i>
-                    </a>
-                </div>
+    <!-- Action Buttons Section -->
+    <div class="action-section">
+        <div class="container text-center">
+            <h2 class="section-title-hollow">LET'S COLLABORATE</h2>
+            <p class="action-subtitle">Ready to transform data into meaningful insights?</p>
+            <div class="action-buttons">
+                <a href="Projects.aspx" class="btn-modern btn-primary">
+                    <span>View My Work</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="Contact.aspx" class="btn-modern btn-secondary">
+                    <span>Get In Touch</span>
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.kaggle.com/shakhoyatshujon" target="_blank" class="btn-modern btn-outline">
+                    <span>Kaggle Profile</span>
+                    <i class="fab fa-kaggle"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -1060,10 +1067,12 @@
             font-weight: 400;
         }
 
-        /* Scroll Indicator - Now positioned within hero-text-overlay */
+        /* Scroll Indicator */
         .scroll-indicator {
-            position: relative;
-            margin-top: 2rem;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 10;
             animation: fadeInUp 1.8s ease-out 1.2s both;
         }
@@ -1080,7 +1089,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             animation: bounce 2s infinite;
-            margin: 0 auto;
         }
 
         .scroll-arrow:hover {
@@ -1757,7 +1765,7 @@
             }
 
             .scroll-indicator {
-                margin-top: 1.5rem;
+                bottom: 30px;
                 animation: fadeInUp 1.8s ease-out 1.2s both;
             }
 
