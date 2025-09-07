@@ -52,21 +52,33 @@
         </div>
     </div>
 
-    <!-- Animated Stats Section -->
+    <!-- Animated Stats Section - Now with 6 impressive stats -->
     <div class="stats-section">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number" data-target="700">0</div>
-                    <div class="stat-label">PROBLEMS SOLVED</div>
+                    <div class="stat-number" data-target="60">0</div>
+                    <div class="stat-label">KAGGLE MEDALS</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">WORKING PROJECTS ON LATEST TECH</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="700">0</div>
+                    <div class="stat-label">CODING PROBLEMS SOLVED</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="25">0</div>
                     <div class="stat-label">TECHNOLOGIES MASTERED</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="5">0</div>
-                    <div class="stat-label">SUCCESSFUL PROJECTS</div>
+                    <div class="stat-label">RESEARCH PUBLICATIONS</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-label">HACKATHON WINS</div>
                 </div>
             </div>
         </div>
@@ -77,7 +89,7 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2 class="section-title-hollow">ABOUT ME</h2>
+                    <h2 class="section-title-ghost" data-text="ABOUT ME">ABOUT ME</h2>
                     <div class="about-description">
                         <p>
                             Hi, I'm Shakhoyat, a CSE student at KUET specializing in data science, ML, and IoT. With 700+ programming 
@@ -134,7 +146,7 @@
     <!-- Featured Projects Section - Now with Infinite Horizontal Auto-Scroll -->
     <div class="projects-section">
         <div class="container">
-            <h2 class="section-title-hollow">FEATURED PROJECTS</h2>
+            <h2 class="section-title-ghost" data-text="FEATURED PROJECTS">FEATURED PROJECTS</h2>
             <div class="infinite-scroll-container">
                 <div class="projects-scroll-track">
                     <!-- Project 1: Doctor Appointment System -->
@@ -352,7 +364,7 @@
     <!-- Tech Stack Section -->
     <div class="tech-stack-section">
         <div class="container">
-            <h2 class="section-title-hollow">TECH STACK</h2>
+            <h2 class="section-title-ghost" data-text="TECH STACK">TECH STACK</h2>
             <div class="tech-categories">
                 <!-- Programming Languages -->
                 <div class="tech-category">
@@ -704,7 +716,7 @@
     <!-- Achievements Section - Now with Carousel Infinite Scroll -->
     <div class="achievements-section">
         <div class="container">
-            <h2 class="section-title-hollow">ACHIEVEMENTS</h2>
+            <h2 class="section-title-ghost" data-text="ACHIEVEMENTS">ACHIEVEMENTS</h2>
             <div class="achievements-carousel-container">
                 <div class="achievements-carousel-track">
                     <!-- Achievement 1: Kaggle -->
@@ -853,7 +865,7 @@
     <!-- Action Buttons Section -->
     <div class="action-section">
         <div class="container text-center">
-            <h2 class="section-title-hollow">LET'S COLLABORATE</h2>
+            <h2 class="section-title-ghost" data-text="LET'S COLLABORATE">LET'S COLLABORATE</h2>
             <p class="action-subtitle">Ready to transform data into meaningful insights?</p>
             <div class="action-buttons">
                 <a href="Projects.aspx" class="btn-modern btn-primary">
@@ -1135,177 +1147,111 @@
             }
         }
 
-        /* Stats Section */
+        /* Stats Section - Enhanced with 6 impressive stats */
         .stats-section {
-            background: #000000; /* Pure black background */
-            padding: 80px 0;
-            border-top: 1px solid #111111; /* Darker border */
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 4rem;
-            font-weight: 900;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            color: #666;
-            font-weight: 500;
-        }
-
-        /* Tech Stack Section */
-        .tech-stack-section {
             background: #000000; /* Pure black background */
             padding: 100px 0;
             border-top: 1px solid #111111; /* Darker border */
         }
 
-        .section-title-hollow {
-            font-size: 3rem;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
             font-weight: 900;
-            -webkit-text-stroke: 1px #333;
-            -webkit-text-fill-color: transparent;
-            text-stroke: 1px #333;
-            text-fill-color: transparent;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            color: #ccc;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* New Ghost Text/Outline Typography for Section Titles */
+        .section-title-ghost {
+            font-size: 4rem;
+            font-weight: 900;
             margin-bottom: 3rem;
             letter-spacing: 0.05em;
             text-align: center;
+            position: relative;
+            color: transparent;
+            text-transform: uppercase;
+            
+            /* Main outline stroke */
+            -webkit-text-stroke: 2px #333;
+            text-stroke: 2px #333;
+            
+            /* Text shadow for depth */
+            text-shadow: 
+                0 0 0 #fff,
+                0 0 10px rgba(102, 126, 234, 0.3),
+                0 0 20px rgba(102, 126, 234, 0.2),
+                0 0 30px rgba(102, 126, 234, 0.1);
         }
 
-        .tech-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
+        .section-title-ghost::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            color: rgba(102, 126, 234, 0.1);
+            -webkit-text-stroke: 4px rgba(102, 126, 234, 0.1);
+            text-stroke: 4px rgba(102, 126, 234, 0.1);
+            transform: translate(3px, 3px);
         }
 
-        .tech-category {
-            background: #111;
-            border-radius: 12px;
-            padding: 2rem;
-            border: 1px solid #222;
+        .section-title-ghost::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -2;
+            color: transparent;
+            -webkit-text-stroke: 6px rgba(0, 0, 0, 0.5);
+            text-stroke: 6px rgba(0, 0, 0, 0.5);
+            transform: translate(6px, 6px);
         }
 
-        .category-title {
-            color: #667eea;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .tech-logos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .tech-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .tech-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .tech-logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #1a1a1a;
-            border: 1px solid #333;
+        /* Hover effect for ghost titles */
+        .section-title-ghost:hover {
+            -webkit-text-stroke: 2px #667eea;
+            text-stroke: 2px #667eea;
+            text-shadow: 
+                0 0 0 #fff,
+                0 0 15px rgba(102, 126, 234, 0.5),
+                0 0 30px rgba(102, 126, 234, 0.3),
+                0 0 45px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
             transition: all 0.3s ease;
-        }
-
-        .tech-logo:hover {
-            border-color: #667eea;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .tech-logo img {
-            width: 30px;
-            height: 30px;
-            object-fit: contain;
-        }
-
-        .tech-logo i {
-            font-size: 1.8rem;
-        }
-
-        .tech-logo.python i { color: #3776ab; }
-        .tech-logo.java i { color: #f89820; }
-        .tech-logo.react i { color: #61dafb; }
-        .tech-logo.js i { color: #f7df1e; }
-        .tech-logo.node i { color: #339933; }
-        .tech-logo.git i { color: #f05032; }
-        .tech-logo.github i { color: #333; }
-        .tech-logo.docker i { color: #2496ed; }
-        .tech-logo.kaggle i { color: #20beff; }
-        .tech-logo.html i { color: #e34f26; }
-        .tech-logo.css i { color: #1572b6; }
-
-        /* Additional tech logo colors */
-        .tech-logo.cpp img,
-        .tech-logo.c img { filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%); }
-        
-        .tech-logo.sklearn img { filter: brightness(0) saturate(100%) invert(40%) sepia(84%) saturate(1945%) hue-rotate(162deg) brightness(96%) contrast(101%); }
-        
-        .tech-logo.plotly img,
-        .tech-logo.seaborn img,
-        .tech-logo.matplotlib img,
-        .tech-logo.tableau img { max-width: 28px; max-height: 28px; }
-        
-        .tech-logo.arduino img { filter: brightness(0) saturate(100%) invert(40%) sepia(84%) saturate(1945%) hue-rotate(162deg) brightness(96%) contrast(101%); }
-        
-        .tech-logo.raspberry img { filter: brightness(0) saturate(100%) invert(26%) sepia(85%) saturate(2851%) hue-rotate(338deg) brightness(98%) contrast(92%); }
-        
-        .tech-logo.esp img,
-        .tech-logo.mqtt img { max-width: 28px; max-height: 28px; object-fit: contain; }
-        
-        .tech-logo.vs img { filter: brightness(0) saturate(100%) invert(40%) sepia(84%) saturate(1945%) hue-rotate(162deg) brightness(96%) contrast(101%); }
-        
-        .tech-logo.sensors i,
-        .tech-logo.embedded i { color: #00d4aa; font-size: 1.6rem; }
-
-        /* Ensure consistent sizing for all tech logos */
-        .tech-logo img {
-            width: 30px;
-            height: 30px;
-            object-fit: contain;
-        }
-
-        /* Special sizing for certain logos */
-        .tech-logo.plotly img,
-        .tech-logo.seaborn img,
-        .tech-logo.matplotlib img,
-        .tech-logo.tableau img,
-        .tech-logo.esp img,
-        .tech-logo.mqtt img {
-            width: 28px;
-            height: 28px;
         }
         /* Projects Section */
         .projects-section {
@@ -1826,7 +1772,7 @@
                 animation: slideInFromRight 2.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
             }
 
-            .hero-photo-container {
+            .hero_photo-container {
                 max-width: 400px;
                 height: 500px;
                 margin-bottom: 2rem;
@@ -1882,11 +1828,11 @@
             }
 
             .project-showcase.center-item {
-                transform: translateY(-15px) scale(1.03); /* Reduced scale for mobile */
+                transform: translateY(-15px) scale(1.03);
             }
 
             .achievement-card.center-item {
-                transform: translateY(-12px) scale(1.05); /* Reduced scale for mobile */
+                transform: translateY(-12px) scale(1.05);
             }
 
             .projects-scroll-track {
@@ -1911,7 +1857,7 @@
                 animation: slideInFromRight 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
             }
 
-            .hero-photo-container {
+            .hero_photo-container {
                 max-width: 300px;
                 height: 400px;
                 /* Maintain slower left-depth animation on small mobile */
@@ -1965,6 +1911,11 @@
         /* Override main content margin for homepage since navbar is hidden initially */
         .main-content {
             margin-top: 0 !important;
+        }
+
+        /* Remove the old section-title-hollow class since we're not using it anymore */
+        .section-title-hollow {
+            display: none;
         }
     </style>
 
@@ -2065,12 +2016,12 @@
                     if (isInCenter(item)) {
                         item.classList.add('center-item');
                     } else {
-                        item.classList.remove('center-item');
+                        item.classlList.remove('center-item');
                     }
                 });
             }
 
-            // Run center detection every 100ms for smooth animation
+            // Run centerdetection every 100ms for smooth animation
             setInterval(updateCenterItems, 100);
 
             // Also run on scroll and resize
