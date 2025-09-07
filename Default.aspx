@@ -1001,13 +1001,34 @@
             background: #0a0a0a;
             padding: 100px 0;
             border-top: 1px solid #1a1a1a;
+            overflow: hidden;
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        .infinite-scroll-container {
+            width: 100%;
+            overflow: hidden;
+            mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+            -webkit-mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+        }
+
+        .projects-scroll-track {
+            display: flex;
             gap: 2rem;
-            margin-top: 3rem;
+            animation: infiniteScrollProjects 30s linear infinite;
+            width: calc(350px * 14 + 2rem * 13); /* Accommodate all project cards */
+        }
+
+        .projects-scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes infiniteScrollProjects {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-350px * 7 - 2rem * 6)); /* Move by half the track width */
+            }
         }
 
         .project-showcase {
@@ -1016,6 +1037,8 @@
             overflow: hidden;
             border: 1px solid #222;
             transition: all 0.3s ease;
+            min-width: 350px;
+            flex-shrink: 0;
         }
 
         .project-showcase:hover {
@@ -1121,40 +1144,39 @@
         .tech-badge.python { background: #3776ab; color: #fff; }
         .tech-badge.react { background: #61dafb; color: #000; }
 
-        /* Achievements Section */
+        /* Achievements Section - Carousel Infinite Scroll */
         .achievements-section {
             background: #0a0a0a;
             padding: 100px 0;
             border-top: 1px solid #1a1a1a;
+            overflow: hidden;
         }
 
         .achievements-carousel-container {
-            position: relative;
+            width: 100%;
             overflow: hidden;
-            height: 250px;
-            margin-top: 3rem;
+            mask: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+            -webkit-mask: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
         }
 
         .achievements-carousel-track {
             display: flex;
-            animation: scroll 20s linear infinite;
+            gap: 2rem;
+            animation: infiniteScrollAchievements 25s linear infinite;
+            width: calc(300px * 18 + 2rem * 17); /* Accommodate all achievement cards */
         }
 
-        /* Keyframes for the infinite scrolling effect */
-        @keyframes scroll {
+        .achievements-carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes infiniteScrollAchievements {
             0% {
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-50%);
+                transform: translateX(calc(-300px * 9 - 2rem * 8)); /* Move by half the track width */
             }
-        }
-
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
         }
 
         .achievement-card {
@@ -1164,6 +1186,8 @@
             border: 1px solid #222;
             transition: all 0.3s ease;
             text-align: center;
+            min-width: 300px;
+            flex-shrink: 0;
         }
 
         .achievement-card:hover {
