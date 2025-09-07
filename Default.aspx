@@ -124,6 +124,224 @@
         </div>
     </div>
 
+    <!-- Featured Projects Section - Now with Infinite Horizontal Auto-Scroll -->
+    <div class="projects-section">
+        <div class="container">
+            <h2 class="section-title-hollow">FEATURED PROJECTS</h2>
+            <div class="infinite-scroll-container">
+                <div class="projects-scroll-track">
+                    <!-- Project 1: Doctor Appointment System -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image healthcare">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Doctor Appointment System</h3>
+                            <p class="project-desc">Healthcare management with ML-powered resource allocation</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge java">Java</span>
+                                <span class="tech-badge">JavaFX</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">ML</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Data Analysis Platform -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image analytics">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Automated EDA Platform</h3>
+                            <p class="project-desc">Reduces data exploration time by 70% with automated insights</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge">Streamlit</span>
+                                <span class="tech-badge">Pandas</span>
+                                <span class="tech-badge">Plotly</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Weather Analytics -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image weather">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Weather Analytics WebApp</h3>
+                            <p class="project-desc">Real-time weather forecasting with geospatial analysis</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge react">React</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">APIs</span>
+                                <span class="tech-badge">Maps</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: IoT Data Analytics -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image" style="background: linear-gradient(135deg, #FF9A56 0%, #FF6B95 100%);">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">IoT Data Analytics Platform</h3>
+                            <p class="project-desc">Real-time sensor data processing with machine learning insights</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge">IoT</span>
+                                <span class="tech-badge">MongoDB</span>
+                                <span class="tech-badge">ML</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Computer Vision App -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Computer Vision Detection</h3>
+                            <p class="project-desc">Advanced object detection using deep learning models</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge">OpenCV</span>
+                                <span class="tech-badge">TensorFlow</span>
+                                <span class="tech-badge">CNN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate projects for infinite scroll effect -->
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image healthcare">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Doctor Appointment System</h3>
+                            <p class="project-desc">Healthcare management with ML-powered resource allocation</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge java">Java</span>
+                                <span class="tech-badge">JavaFX</span>
+                                <span class="tech-badge">MySQL</span>
+                                <span class="tech-badge">ML</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-showcase">
+                        <div class="project-image-container">
+                            <div class="project-image analytics">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="Projects.aspx" class="project-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">Automated EDA Platform</h3>
+                            <p class="project-desc">Reduces data exploration time by 70% with automated insights</p>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge python">Python</span>
+                                <span class="tech-badge">Streamlit</span>
+                                <span class="tech-badge">Pandas</span>
+                                <span class="tech-badge">Plotly</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="Projects.aspx" class="cta-button">
+                    <span>View All Projects</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Tech Stack Section -->
     <div class="tech-stack-section">
         <div class="container">
@@ -239,107 +457,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Featured Projects Section -->
-    <div class="projects-section">
-        <div class="container">
-            <h2 class="section-title-hollow">FEATURED PROJECTS</h2>
-            <div class="projects-grid">
-                <!-- Project 1: Doctor Appointment System -->
-                <div class="project-showcase">
-                    <div class="project-image-container">
-                        <div class="project-image healthcare">
-                            <i class="fas fa-user-md"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="Projects.aspx" class="project-btn">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Doctor Appointment System</h3>
-                        <p class="project-desc">Healthcare management with ML-powered resource allocation</p>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge java">Java</span>
-                            <span class="tech-badge">JavaFX</span>
-                            <span class="tech-badge">MySQL</span>
-                            <span class="tech-badge">ML</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Data Analysis Platform -->
-                <div class="project-showcase">
-                    <div class="project-image-container">
-                        <div class="project-image analytics">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="Projects.aspx" class="project-btn">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Automated EDA Platform</h3>
-                        <p class="project-desc">Reduces data exploration time by 70% with automated insights</p>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge python">Python</span>
-                            <span class="tech-badge">Streamlit</span>
-                            <span class="tech-badge">Pandas</span>
-                            <span class="tech-badge">Plotly</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Weather Analytics -->
-                <div class="project-showcase">
-                    <div class="project-image-container">
-                        <div class="project-image weather">
-                            <i class="fas fa-cloud-sun"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="Projects.aspx" class="project-btn">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Weather Analytics WebApp</h3>
-                        <p class="project-desc">Real-time weather forecasting with geospatial analysis</p>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge react">React</span>
-                            <span class="tech-badge">TypeScript</span>
-                            <span class="tech-badge">APIs</span>
-                            <span class="tech-badge">Maps</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="section-cta">
-                <a href="Projects.aspx" class="cta-button">
-                    <span>View All Projects</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
             </div>
         </div>
     </div>
@@ -1202,6 +1319,29 @@
             }
             60% {
                 transform: translateY(-5px);
+            }
+        }
+
+        /* Projects Section - Infinite Scroll Styles */
+        .infinite-scroll-container {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+            margin-top: 3rem;
+        }
+
+        .projects-scroll-track {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+
+        /* Keyframes for the infinite scrolling effect */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
             }
         }
 
