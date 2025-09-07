@@ -383,12 +383,6 @@
                             <span>Java</span>
                         </div>
                         <div class="tech-item">
-                            <div class="tech-logo js">
-                                <i class="fab fa-js-square"></i>
-                            </div>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="tech-item">
                             <div class="tech-logo cpp">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
                             </div>
@@ -401,18 +395,54 @@
                             <span>C</span>
                         </div>
                         <div class="tech-item">
+                            <div class="tech-logo csharp">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" />
+                            </div>
+                            <span>C#</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo js">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-item">
                             <div class="tech-logo">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
                             </div>
                             <span>TypeScript</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo php">
+                                <i class="fab fa-php"></i>
+                            </div>
+                            <span>PHP</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Data Science & ML -->
                 <div class="tech-category">
-                    <h3 class="category-title">Data Science & ML</h3>
+                    <h3 class="category-title">Data Science & AI/ML</h3>
                     <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo tensorflow">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" />
+                            </div>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo pytorch">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
+                            </div>
+                            <span>PyTorch</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo sklearn">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" />
+                            </div>
+                            <span>Scikit-learn</span>
+                        </div>
                         <div class="tech-item">
                             <div class="tech-logo">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
@@ -427,34 +457,28 @@
                         </div>
                         <div class="tech-item">
                             <div class="tech-logo">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" />
-                            </div>
-                            <span>TensorFlow</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
-                            </div>
-                            <span>PyTorch</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo sklearn">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn" />
-                            </div>
-                            <span>Scikit-learn</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" />
                             </div>
                             <span>OpenCV</span>
                         </div>
+                        <div class="tech-item">
+                            <div class="tech-logo kaggle">
+                                <i class="fab fa-kaggle"></i>
+                            </div>
+                            <span>Kaggle</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter" />
+                            </div>
+                            <span>Jupyter</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Web Development -->
+                <!-- Web Development Frontend -->
                 <div class="tech-category">
-                    <h3 class="category-title">Web Development</h3>
+                    <h3 class="category-title">Frontend Development</h3>
                     <div class="tech-logos">
                         <div class="tech-item">
                             <div class="tech-logo react">
@@ -463,22 +487,22 @@
                             <span>React</span>
                         </div>
                         <div class="tech-item">
-                            <div class="tech-logo node">
-                                <i class="fab fa-node-js"></i>
+                            <div class="tech-logo angular">
+                                <i class="fab fa-angular"></i>
                             </div>
-                            <span>Node.js</span>
+                            <span>Angular</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo vue">
+                                <i class="fab fa-vuejs"></i>
+                            </div>
+                            <span>Vue.js</span>
                         </div>
                         <div class="tech-item">
                             <div class="tech-logo">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" />
                             </div>
                             <span>Next.js</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" />
-                            </div>
-                            <span>Express.js</span>
                         </div>
                         <div class="tech-item">
                             <div class="tech-logo html">
@@ -492,13 +516,37 @@
                             </div>
                             <span>CSS3</span>
                         </div>
+                        <div class="tech-item">
+                            <div class="tech-logo bootstrap">
+                                <i class="fab fa-bootstrap"></i>
+                            </div>
+                            <span>Bootstrap</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" alt="Sass" />
+                            </div>
+                            <span>Sass</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Backend & Frameworks -->
+                <!-- Backend Development -->
                 <div class="tech-category">
-                    <h3 class="category-title">Backend & Frameworks</h3>
+                    <h3 class="category-title">Backend Development</h3>
                     <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo node">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" />
+                            </div>
+                            <span>Express.js</span>
+                        </div>
                         <div class="tech-item">
                             <div class="tech-logo">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt=".NET" />
@@ -524,10 +572,10 @@
                             <span>Flask</span>
                         </div>
                         <div class="tech-item">
-                            <div class="tech-logo">
-                                <img src="https://streamlit.io/images/brand/streamlit-mark-color.png" alt="Streamlit" />
+                            <div class="tech-logo laravel">
+                                <i class="fab fa-laravel"></i>
                             </div>
-                            <span>Streamlit</span>
+                            <span>Laravel</span>
                         </div>
                         <div class="tech-item">
                             <div class="tech-logo">
@@ -538,7 +586,7 @@
                     </div>
                 </div>
 
-                <!-- Databases & Storage -->
+                <!-- Database & Storage -->
                 <div class="tech-category">
                     <h3 class="category-title">Databases & Storage</h3>
                     <div class="tech-logos">
@@ -578,13 +626,55 @@
                             </div>
                             <span>Firebase</span>
                         </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle" />
+                            </div>
+                            <span>Oracle</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg" alt="Elasticsearch" />
+                            </div>
+                            <span>Elasticsearch</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- DevOps & Tools -->
+                <!-- DevOps & Cloud -->
                 <div class="tech-category">
-                    <h3 class="category-title">DevOps & Tools</h3>
+                    <h3 class="category-title">DevOps & Cloud</h3>
                     <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo docker">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <span>Docker</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" />
+                            </div>
+                            <span>Kubernetes</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" />
+                            </div>
+                            <span>AWS</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud" />
+                            </div>
+                            <span>GCP</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" />
+                            </div>
+                            <span>Azure</span>
+                        </div>
                         <div class="tech-item">
                             <div class="tech-logo git">
                                 <i class="fab fa-git-alt"></i>
@@ -598,76 +688,15 @@
                             <span>GitHub</span>
                         </div>
                         <div class="tech-item">
-                            <div class="tech-logo docker">
-                                <i class="fab fa-docker"></i>
-                            </div>
-                            <span>Docker</span>
-                        </div>
-                        <div class="tech-item">
                             <div class="tech-logo">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins" />
                             </div>
-                            <span>Linux</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" />
-                            </div>
-                            <span>AWS</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo vs">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
-                            </div>
-                            <span>VS Code</span>
+                            <span>Jenkins</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Data Analysis & Visualization -->
-                <div class="tech-category">
-                    <h3 class="category-title">Data Analysis & Visualization</h3>
-                    <div class="tech-logos">
-                        <div class="tech-item">
-                            <div class="tech-logo">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter" />
-                            </div>
-                            <span>Jupyter</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo plotly">
-                                <img src="https://images.plot.ly/logo/new-branding/plotly-logomark.png" alt="Plotly" />
-                            </div>
-                            <span>Plotly</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo seaborn">
-                                <img src="https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" alt="Seaborn" />
-                            </div>
-                            <span>Seaborn</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo matplotlib">
-                                <img src="https://matplotlib.org/stable/_images/sphx_glr_logos2_003.png" alt="Matplotlib" />
-                            </div>
-                            <span>Matplotlib</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo kaggle">
-                                <i class="fab fa-kaggle"></i>
-                            </div>
-                            <span>Kaggle</span>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-logo tableau">
-                                <img src="https://logos-world.net/wp-content/uploads/2021/10/Tableau-Logo.png" alt="Tableau" />
-                            </div>
-                            <span>Tableau</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- IoT & Hardware -->
+                <!-- IoT & Embedded Systems -->
                 <div class="tech-category">
                     <h3 class="category-title">IoT & Embedded Systems</h3>
                     <div class="tech-logos">
@@ -685,7 +714,7 @@
                         </div>
                         <div class="tech-item">
                             <div class="tech-logo esp">
-                                <img src="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/_images/logo.svg" alt="MQTT" />
+                                <img src="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/_images/logo.svg" alt="ESP32" />
                             </div>
                             <span>ESP32</span>
                         </div>
@@ -706,6 +735,73 @@
                                 <i class="fas fa-memory"></i>
                             </div>
                             <span>Embedded C</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
+                            </div>
+                            <span>Linux</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                            <span>IoT Protocols</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & IDEs -->
+                <div class="tech-category">
+                    <h3 class="category-title">Development Tools & IDEs</h3>
+                    <div class="tech-logos">
+                        <div class="tech-item">
+                            <div class="tech-logo vscode">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
+                            </div>
+                            <span>VS Code</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo vs">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio" />
+                            </div>
+                            <span>Visual Studio</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" alt="IntelliJ IDEA" />
+                            </div>
+                            <span>IntelliJ IDEA</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" alt="PyCharm" />
+                            </div>
+                            <span>PyCharm</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="Android Studio" />
+                            </div>
+                            <span>Android Studio</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" alt="Eclipse" />
+                            </div>
+                            <span>Eclipse</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman" />
+                            </div>
+                            <span>Postman</span>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-logo">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
+                            </div>
+                            <span>Figma</span>
                         </div>
                     </div>
                 </div>
@@ -1194,27 +1290,20 @@
             line-height: 1.3;
         }
 
-        /* New Ghost Text/Outline Typography for Section Titles */
+        /* Simple Ghost Text/Outline Typography for Section Titles */
         .section-title-ghost {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 900;
             margin-bottom: 3rem;
             letter-spacing: 0.05em;
             text-align: center;
             position: relative;
-            color: transparent;
+            color: #ffffff;
             text-transform: uppercase;
             
-            /* Main outline stroke */
-            -webkit-text-stroke: 2px #333;
-            text-stroke: 2px #333;
-            
-            /* Text shadow for depth */
-            text-shadow: 
-                0 0 0 #fff,
-                0 0 10px rgba(102, 126, 234, 0.3),
-                0 0 20px rgba(102, 126, 234, 0.2),
-                0 0 30px rgba(102, 126, 234, 0.1);
+            /* Simple text outline/stroke */
+            -webkit-text-stroke: 1px #333;
+            text-stroke: 1px #333;
         }
 
         .section-title-ghost::before {
@@ -1223,34 +1312,16 @@
             left: 0;
             top: 0;
             z-index: -1;
-            color: rgba(102, 126, 234, 0.1);
-            -webkit-text-stroke: 4px rgba(102, 126, 234, 0.1);
-            text-stroke: 4px rgba(102, 126, 234, 0.1);
-            transform: translate(3px, 3px);
-        }
-
-        .section-title-ghost::after {
-            content: attr(data-text);
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: -2;
             color: transparent;
-            -webkit-text-stroke: 6px rgba(0, 0, 0, 0.5);
-            text-stroke: 6px rgba(0, 0, 0, 0.5);
-            transform: translate(6px, 6px);
+            -webkit-text-stroke: 2px rgba(102, 126, 234, 0.2);
+            text-stroke: 2px rgba(102, 126, 234, 0.2);
+            transform: translate(2px, 2px);
         }
 
-        /* Hover effect for ghost titles */
+        /* Simple hover effect */
         .section-title-ghost:hover {
-            -webkit-text-stroke: 2px #667eea;
-            text-stroke: 2px #667eea;
-            text-shadow: 
-                0 0 0 #fff,
-                0 0 15px rgba(102, 126, 234, 0.5),
-                0 0 30px rgba(102, 126, 234, 0.3),
-                0 0 45px rgba(102, 126, 234, 0.2);
-            transform: translateY(-2px);
+            color: #667eea;
+            transform: translateY(-1px);
             transition: all 0.3s ease;
         }
         /* Projects Section */
@@ -1916,6 +1987,208 @@
         /* Remove the old section-title-hollow class since we're not using it anymore */
         .section-title-hollow {
             display: none;
+        }
+
+        /* Tech Stack Section - Restored comprehensive version */
+        .tech-stack-section {
+            background: #000000; /* Pure black background */
+            padding: 100px 0;
+            border-top: 1px solid #111111; /* Darker border */
+        }
+
+        .tech-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .tech-category {
+            background: #111;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #222;
+            transition: all 0.3s ease;
+        }
+
+        .tech-category:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .category-title {
+            color: #667eea;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tech-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-item span {
+            color: #ccc;
+            font-size: 0.8rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .tech-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .tech-logo:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transform: scale(1.1);
+        }
+
+        .tech-logo img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .tech-logo i {
+            font-size: 1.8rem;
+        }
+
+        /* Enhanced tech logo colors with modern color schemes */
+        .tech-logo.python i { color: #3776ab; }
+        .tech-logo.java i { color: #f89820; }
+        .tech-logo.react i { color: #61dafb; }
+        .tech-logo.js i { color: #f7df1e; }
+        .tech-logo.node i { color: #339933; }
+        .tech-logo.git i { color: #f05032; }
+        .tech-logo.github i { color: #171515; }
+        .tech-logo.docker i { color: #2496ed; }
+        .tech-logo.kaggle i { color: #20beff; }
+        .tech-logo.html i { color: #e34f26; }
+        .tech-logo.css i { color: #1572b6; }
+        .tech-logo.csharp i { color: #239120; }
+        .tech-logo.angular i { color: #dd0031; }
+        .tech-logo.vue i { color: #4fc08d; }
+        .tech-logo.php i { color: #777bb4; }
+        .tech-logo.laravel i { color: #ff2d20; }
+        .tech-logo.bootstrap i { color: #7952b3; }
+        .tech-logo.tailwind i { color: #06b6d4; }
+
+        /* SVG icon color filters for better visibility */
+        .tech-logo.cpp img,
+        .tech-logo.c img { 
+            filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%); 
+        }
+        
+        .tech-logo.csharp img {
+            filter: brightness(0) saturate(100%) invert(35%) sepia(85%) saturate(1945%) hue-rotate(92deg) brightness(96%) contrast(101%);
+        }
+        
+        .tech-logo.sklearn img,
+        .tech-logo.tensorflow img,
+        .tech-logo.pytorch img { 
+            filter: brightness(0) saturate(100%) invert(40%) sepia(84%) saturate(1945%) hue-rotate(162deg) brightness(96%) contrast(101%); 
+        }
+        
+        .tech-logo.plotly img,
+        .tech-logo.seaborn img,
+        .tech-logo.matplotlib img,
+        .tech-logo.tableau img,
+        .tech-logo.esp img,
+        .tech-logo.mqtt img {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .tech-logo.arduino img { 
+            filter: brightness(0) saturate(100%) invert(40%) sepia(84%) saturate(1945%) hue-rotate(162deg) brightness(96%) contrast(101%); 
+        }
+        
+        .tech-logo.raspberry img { 
+            filter: brightness(0) saturate(100%) invert(26%) sepia(85%) saturate(2851%) hue-rotate(338deg) brightness(98%) contrast(92%); 
+        }
+        
+        .tech-logo.esp img,
+        .tech-logo.mqtt img { 
+            max-width: 28px; 
+            max-height: 28px; 
+            object-fit: contain; 
+        }
+        
+        .tech-logo.vs img,
+        .tech-logo.vscode img { 
+            filter: brightness(0) saturate(100%) invert(40%) sepia(84%) saturate(1945%) hue-rotate(162deg) brightness(96%) contrast(101%);
+        }
+        
+        .tech-logo.sensors i,
+        .tech-logo.embedded i { 
+            color: #00d4aa; 
+            font-size: 1.6rem; 
+        }
+
+        /* Ensure consistent sizing for all tech logos */
+        .tech-logo img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        /* Special sizing for certain logos that need adjustment */
+        .tech-logo.plotly img,
+        .tech-logo.seaborn img,
+        .tech-logo.matplotlib img,
+        .tech-logo.tableau img,
+        .tech-logo.esp img,
+        .tech-logo.mqtt img {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* Progressive reveal animation for tech items */
+        .tech-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInTech 0.6s ease-out forwards;
+        }
+
+        .tech-item:nth-child(1) { animation-delay: 0.1s; }
+        .tech-item:nth-child(2) { animation-delay: 0.2s; }
+        .tech-item:nth-child(3) { animation-delay: 0.3s; }
+        .tech-item:nth-child(4) { animation-delay: 0.4s; }
+        .tech-item:nth-child(5) { animation-delay: 0.5s; }
+        .tech-item:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInTech {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 
