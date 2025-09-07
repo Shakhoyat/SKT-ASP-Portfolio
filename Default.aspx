@@ -33,6 +33,13 @@
                 <!-- Tagline below the photo -->
                 <div class="tagline">
                     <p>MY WORK ISN'T JUST ABOUT ANALYZING DATA - IT'S ABOUT MAKING A DIFFERENCE.</p>
+                    
+                    <!-- New Arrow to navigate to About Me section -->
+                    <div class="tagline-arrow">
+                        <div class="tagline-scroll-arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -892,7 +899,7 @@
             width: 100%;
         }
 
-        /* Hero Photo Container */
+        /* Hero Photo Container - Slower animation from left */
         .hero-photo-container {
             position: relative;
             width: 100%;
@@ -902,9 +909,9 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            /* Photo slides in from left depth with floating */
-            animation: slideInFromLeft 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
-                       floatingImage 6s ease-in-out infinite 1.5s;
+            /* Photo slides in from left depth with floating - SLOWER */
+            animation: slideInFromLeft 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
+                       floatingImage 6s ease-in-out infinite 2.2s;
         }
 
         /* Floating animation for the image */
@@ -975,8 +982,8 @@
             justify-content: center;
             background: rgba(0, 0, 0, 0.4);
             z-index: 2;
-            /* Text content slides in from right depth */
-            animation: slideInFromRight 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+            /* Text content slides in from right depth - SLOWER */
+            animation: slideInFromRight 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
         }
 
         .name-overlay {
@@ -1013,7 +1020,7 @@
             opacity: 1;
         }
 
-        /* Name animation from left depth of screen */
+        /* Name animation from left depth of screen - Slowed down */
         @keyframes slideInFromLeft {
             0% {
                 transform: translateX(-100vw); /* Start from left edge of viewport */
@@ -1025,7 +1032,7 @@
             }
         }
 
-        /* New animation for content from right depth of screen */
+        /* New animation for content from right depth of screen - Slowed down */
         @keyframes slideInFromRight {
             0% {
                 transform: translateX(100vw); /* Start from right edge of viewport */
@@ -1068,11 +1075,64 @@
             transition: all 0.5s ease-in-out;
         }
 
-        /* Tagline - Enhanced animation from right */
+        /* Tagline - Slower animation from right with arrow */
         .tagline {
-            margin: 2rem 0 3rem 0;
-            /* Tagline slides in from right depth after other content */
-            animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
+            margin: 2rem 0 1rem 0;
+            /* Tagline slides in from right depth after other content - SLOWER */
+            animation: slideInFromRight 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s both;
+            position: relative;
+        }
+
+        .tagline p {
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            font-weight: 400;
+        }
+
+        /* New Tagline Arrow - Positioned after tagline text */
+        .tagline-arrow {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            animation: fadeInUp 2s ease-out 2s both;
+        }
+
+        .tagline-scroll-arrow {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: gentleBounce 3s infinite 2.5s;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .tagline-scroll-arrow:hover {
+            border-color: #667eea;
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: scale(1.1);
+        }
+
+        /* Gentle bounce animation for tagline arrow */
+        @keyframes gentleBounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-8px);
+            }
+            60% {
+                transform: translateY(-4px);
+            }
         }
 
         /* Stats Section */
@@ -1747,7 +1807,7 @@
             }
         }
 
-        /* Responsive Design - Enhanced for depth-based animations */
+        /* Responsive Design - Enhanced for slower depth-based animations */
         @media (max-width: 768px) {
             .hero-hollow-name {
                 font-size: 3.5rem;
@@ -1762,17 +1822,17 @@
 
             .hero-text-overlay {
                 top: 55%;
-                /* Maintain right-depth animation on tablets */
-                animation: slideInFromRight 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+                /* Maintain slower right-depth animation on tablets */
+                animation: slideInFromRight 2.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
             }
 
             .hero-photo-container {
                 max-width: 400px;
                 height: 500px;
                 margin-bottom: 2rem;
-                /* Maintain left-depth animation on tablets */
-                animation: slideInFromLeft 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
-                           floatingImage 6s ease-in-out infinite 1.5s;
+                /* Maintain slower left-depth animation on tablets */
+                animation: slideInFromLeft 2.0s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
+                           floatingImage 6s ease-in-out infinite 2.0s;
             }
 
             .scroll-indicator {
@@ -1781,8 +1841,8 @@
             }
 
             .tagline {
-                /* Maintain right-depth animation on tablets */
-                animation: slideInFromRight 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
+                /* Maintain slower right-depth animation on tablets */
+                animation: slideInFromRight 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.0s both;
             }
 
             .initials {
@@ -1847,16 +1907,16 @@
 
             .hero-text-overlay {
                 top: 50%;
-                /* Maintain right-depth animation on small mobile */
-                animation: slideInFromRight 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+                /* Maintain slower right-depth animation on small mobile */
+                animation: slideInFromRight 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
             }
 
             .hero-photo-container {
                 max-width: 300px;
                 height: 400px;
-                /* Maintain left-depth animation on small mobile */
-                animation: slideInFromLeft 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
-                           floatingImage 6s ease-in-out infinite 1.4s;
+                /* Maintain slower left-depth animation on small mobile */
+                animation: slideInFromLeft 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
+                           floatingImage 6s ease-in-out infinite 1.8s;
             }
 
             .scroll-indicator {
@@ -1870,8 +1930,8 @@
             }
 
             .tagline {
-                /* Maintain right-depth animation on small mobile */
-                animation: slideInFromRight 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s both;
+                /* Maintain slower right-depth animation on small mobile */
+                animation: slideInFromRight 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s both;
             }
 
             /* Extra small mobile adjustments */
@@ -2018,8 +2078,9 @@
             window.addEventListener('resize', updateCenterItems);
         }
 
-        // Enhanced scroll for arrow with smooth animation
+        // Enhanced scroll for arrows with smooth animation
         document.addEventListener('DOMContentLoaded', function() {
+            // Original scroll arrow functionality
             const scrollArrow = document.querySelector('.scroll-arrow');
             if (scrollArrow) {
                 scrollArrow.addEventListener('click', function() {
@@ -2039,12 +2100,32 @@
                 });
             }
 
+            // New tagline arrow functionality - Navigate to About Me
+            const taglineArrow = document.querySelector('.tagline-scroll-arrow');
+            if (taglineArrow) {
+                taglineArrow.addEventListener('click', function() {
+                    // Calculate position to show complete About Me section
+                    const aboutSection = document.querySelector('.about-section');
+                    
+                    if (aboutSection) {
+                        // Position to show the About Me title and complete content
+                        const targetPosition = aboutSection.offsetTop - 60; // 60px padding from top for perfect positioning
+                        
+                        // Smooth scroll to the calculated position
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+
             // Initialize all animations and effects
             animateCounters();
             animateOnScroll();
             initializeCenterDetection(); // Initialize center detection for floating effect
 
-            // Fixed animated subtitle text transition - Now starts after animations complete
+            // Fixed animated subtitle text transition - Now starts after slower animations complete
             setTimeout(() => {
                 const subtitleElement = document.querySelector('.subtitle-text');
                 if (subtitleElement) {
@@ -2056,17 +2137,17 @@
                     const texts = [text1, text2, text3]; // Rotate through all texts
                     let currentIndex = 0;
 
-                    // Start the rotation after initial animations
+                    // Start the rotation after slower initial animations
                     setInterval(() => {
                         subtitleElement.style.opacity = '0';
                         setTimeout(() => {
                             currentIndex = (currentIndex + 1) % texts.length; // Cycle through all 3 texts
                             subtitleElement.textContent = texts[currentIndex];
                             subtitleElement.style.opacity = '1';
-                        }, 300); // Slightly longer fade time
-                    }, 3500); // Slightly longer interval for better readability
+                        }, 350); // Slightly longer fade time for slower feel
+                    }, 4000); // Longer interval for better readability with slower animations
                 }
-            }, 2000); // Wait 2 seconds for animations to complete before starting rotation
+            }, 3000); // Wait 3 seconds for slower animations to complete before starting rotation
         });
 
         // Remove parallax effect that interferes with normal scrolling
