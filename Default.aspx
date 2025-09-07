@@ -461,67 +461,142 @@
         </div>
     </div>
 
-    <!-- Achievements Section -->
+    <!-- Achievements Section - Now with Carousel Infinite Scroll -->
     <div class="achievements-section">
         <div class="container">
             <h2 class="section-title-hollow">ACHIEVEMENTS</h2>
-            <div class="achievements-grid">
-                <!-- Achievement 1: Kaggle -->
-                <div class="achievement-card">
-                    <div class="achievement-icon kaggle-achievement">
-                        <i class="fab fa-kaggle"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">Kaggle Competitor</h3>
-                        <p class="achievement-desc">Active participant in data science competitions</p>
-                        <div class="achievement-stats">
-                            <span class="stat">700+ Problems Solved</span>
-                            <span class="stat">Multiple Competitions</span>
+            <div class="achievements-carousel-container">
+                <div class="achievements-carousel-track">
+                    <!-- Achievement 1: Kaggle -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon kaggle-achievement">
+                            <i class="fab fa-kaggle"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Kaggle Competitor</h3>
+                            <p class="achievement-desc">Active participant in data science competitions</p>
+                            <div class="achievement-stats">
+                                <span class="stat">700+ Problems Solved</span>
+                                <span class="stat">Multiple Competitions</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Achievement 2: Project Excellence -->
-                <div class="achievement-card">
-                    <div class="achievement-icon excellence-achievement">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">Project Excellence</h3>
-                        <p class="achievement-desc">Outstanding performance in ML project delivery</p>
-                        <div class="achievement-stats">
-                            <span class="stat">Innovation Award</span>
-                            <span class="stat">Tech Solutions</span>
+                    <!-- Achievement 2: Project Excellence -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon excellence-achievement">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Project Excellence</h3>
+                            <p class="achievement-desc">Outstanding performance in ML project delivery</p>
+                            <div class="achievement-stats">
+                                <span class="stat">Innovation Award</span>
+                                <span class="stat">Tech Solutions</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Achievement 3: Open Source -->
-                <div class="achievement-card">
-                    <div class="achievement-icon github-achievement">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">Open Source Contributor</h3>
-                        <p class="achievement-desc">Significant contributions to ML community projects</p>
-                        <div class="achievement-stats">
-                            <span class="stat">100+ Commits</span>
-                            <span class="stat">Community Impact</span>
+                    <!-- Achievement 3: Open Source -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon github-achievement">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Open Source Contributor</h3>
+                            <p class="achievement-desc">Significant contributions to ML community projects</p>
+                            <div class="achievement-stats">
+                                <span class="stat">100+ Commits</span>
+                                <span class="stat">Community Impact</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Achievement 4: Education -->
-                <div class="achievement-card">
-                    <div class="achievement-icon education-achievement">
-                        <i class="fas fa-graduation-cap"></i>
+                    <!-- Achievement 4: Education -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon education-achievement">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">KUET CS Student</h3>
+                            <p class="achievement-desc">Computer Science Engineering specialization</p>
+                            <div class="achievement-stats">
+                                <span class="stat">Data Science Focus</span>
+                                <span class="stat">Academic Excellence</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="achievement-content">
-                        <h3 class="achievement-title">KUET CS Student</h3>
-                        <p class="achievement-desc">Computer Science Engineering specialization</p>
-                        <div class="achievement-stats">
-                            <span class="stat">Data Science Focus</span>
-                            <span class="stat">Academic Excellence</span>
+
+                    <!-- Achievement 5: Research -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon" style="background: linear-gradient(135deg, #FF6B95 0%, #FF9A56 100%);">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Research Publications</h3>
+                            <p class="achievement-desc">Published research in machine learning and IoT domains</p>
+                            <div class="achievement-stats">
+                                <span class="stat">Research Papers</span>
+                                <span class="stat">Conference Presentations</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 6: Hackathons -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon" style="background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Hackathon Winner</h3>
+                            <p class="achievement-desc">Multiple wins in national and international hackathons</p>
+                            <div class="achievement-stats">
+                                <span class="stat">First Place</span>
+                                <span class="stat">Team Leadership</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate achievements for infinite scroll -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon kaggle-achievement">
+                            <i class="fab fa-kaggle"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Kaggle Competitor</h3>
+                            <p class="achievement-desc">Active participant in data science competitions</p>
+                            <div class="achievement-stats">
+                                <span class="stat">700+ Problems Solved</span>
+                                <span class="stat">Multiple Competitions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon excellence-achievement">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Project Excellence</h3>
+                            <p class="achievement-desc">Outstanding performance in ML project delivery</p>
+                            <div class="achievement-stats">
+                                <span class="stat">Innovation Award</span>
+                                <span class="stat">Tech Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon github-achievement">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Open Source Contributor</h3>
+                            <p class="achievement-desc">Significant contributions to ML community projects</p>
+                            <div class="achievement-stats">
+                                <span class="stat">100+ Commits</span>
+                                <span class="stat">Community Impact</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1051,6 +1126,28 @@
             background: #0a0a0a;
             padding: 100px 0;
             border-top: 1px solid #1a1a1a;
+        }
+
+        .achievements-carousel-container {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+            margin-top: 3rem;
+        }
+
+        .achievements-carousel-track {
+            display: flex;
+            animation: scroll 20s linear infinite;
+        }
+
+        /* Keyframes for the infinite scrolling effect */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .achievements-grid {
