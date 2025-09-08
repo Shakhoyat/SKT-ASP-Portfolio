@@ -288,6 +288,7 @@
     <Content Include="RoslynCompilerFiles.targets" />
     <Content Include="ROSLYN-FIX-README.md" />
     <Content Include="PreferencesHandler.ashx" />
+    <Content Include="TECHNICAL_DOCUMENTATION.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
