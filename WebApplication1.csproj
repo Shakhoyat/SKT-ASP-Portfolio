@@ -82,6 +82,7 @@
     <Content Include="AdminSkillForm.aspx" />
     <Content Include="AdminSkills.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\images\achievements\placeholder.txt" />
     <Content Include="Content\images\placeholder.txt" />
     <Content Include="Content\images\projects\placeholder.txt" />
     <Content Include="Content\placeholder-styles.css" />

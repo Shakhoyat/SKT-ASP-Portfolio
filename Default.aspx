@@ -588,6 +588,173 @@
             </div>
         </div>
     </div>
+
+    <!-- Achievements Section - Infinite Carousel Slider -->
+    <div class="achievements-section">
+        <div class="container">
+            <h2 class="section-title-ghost" data-text="ACHIEVEMENTS">ACHIEVEMENTS</h2>
+            <div class="achievements-carousel-container">
+                <div class="achievements-scroll-track">
+                    <!-- Achievement 1: Kaggle Expert -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon-container">
+                            <div class="achievement-icon kaggle-expert">
+                                <i class="fab fa-kaggle"></i>
+                            </div>
+                            <div class="achievement-glow"></div>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Kaggle Expert</h3>
+                            <p class="achievement-org">Kaggle Platform</p>
+                            <p class="achievement-desc">Achieved Expert status on Kaggle through consistent participation in data science competitions</p>
+                            <div class="achievement-date">2023</div>
+                            <div class="achievement-type expert">Expert Status</div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 2: Microsoft Azure Certified -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon-container">
+                            <div class="achievement-icon azure-cert">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <div class="achievement-glow"></div>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Azure Developer Associate</h3>
+                            <p class="achievement-org">Microsoft</p>
+                            <p class="achievement-desc">Demonstrated expertise in developing cloud applications and services on Microsoft Azure</p>
+                            <div class="achievement-date">2023</div>
+                            <div class="achievement-type certification">Certification</div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 3: Hackathon Champion -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon-container">
+                            <div class="achievement-icon hackathon-winner">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="achievement-glow"></div>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Hackathon Champion</h3>
+                            <p class="achievement-org">Tech Innovation Conference</p>
+                            <p class="achievement-desc">Won multiple hackathons with innovative AI and IoT solutions</p>
+                            <div class="achievement-date">2023</div>
+                            <div class="achievement-type award">Award</div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 4: Research Publications -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon-container">
+                            <div class="achievement-icon research">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="achievement-glow"></div>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Research Publications</h3>
+                            <p class="achievement-org">Academic Conferences</p>
+                            <p class="achievement-desc">Published research papers in machine learning and IoT domains</p>
+                            <div class="achievement-date">2023</div>
+                            <div class="achievement-type research">Research</div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 5: Open Source Contributor -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon-container">
+                            <div class="achievement-icon opensource">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="achievement-glow"></div>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Open Source Contributor</h3>
+                            <p class="achievement-org">GitHub Community</p>
+                            <p class="achievement-desc">Significant contributions to open-source projects with 100+ commits</p>
+                            <div class="achievement-date">2023</div>
+                            <div class="achievement-type milestone">Milestone</div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 6: Problem Solving Master -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon-container">
+                            <div class="achievement-icon coding-master">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="achievement-glow"></div>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">700+ Problems Solved</h3>
+                            <p class="achievement-org">Competitive Programming</p>
+                            <p class="achievement-desc">Solved over 700 programming problems across various platforms like Codeforces</p>
+                            <div class="achievement-date">2023</div>
+                            <div class="achievement-type achievement">Achievement</div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate achievements for infinite scroll effect -->
+                    <div class="achievement-card">
+                        <div class="achievement-icon-container">
+                            <div class="achievement-icon kaggle-expert">
+                                <i class="fab fa-kaggle"></i>
+                            </div>
+                            <div class="achievement-glow"></div>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Kaggle Expert</h3>
+                            <p class="achievement-org">Kaggle Platform</p>
+                            <p class="achievement-desc">Achieved Expert status on Kaggle through consistent participation in data science competitions</p>
+                            <div class="achievement-date">2023</div>
+                            <div class="achievement-type expert">Expert Status</div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon-container">
+                            <div class="achievement-icon azure-cert">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <div class="achievement-glow"></div>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Azure Developer Associate</h3>
+                            <p class="achievement-org">Microsoft</p>
+                            <p class="achievement-desc">Demonstrated expertise in developing cloud applications and services on Microsoft Azure</p>
+                            <div class="achievement-date">2023</div>
+                            <div class="achievement-type certification">Certification</div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-card">
+                        <div class="achievement-icon-container">
+                            <div class="achievement-icon hackathon-winner">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="achievement-glow"></div>
+                        </div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Hackathon Champion</h3>
+                            <p class="achievement-org">Tech Innovation Conference</p>
+                            <p class="achievement-desc">Won multiple hackathons with innovative AI and IoT solutions</p>
+                            <div class="achievement-date">2023</div>
+                            <div class="achievement-type award">Award</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="Achievements.aspx" class="cta-button">
+                    <span>View All Achievements</span>
+                    <i class="fas fa-trophy"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptsContent" runat="server">
@@ -1688,6 +1855,357 @@
                 transform: translateY(0);
             }
         }
+
+        /* Achievements Section - Infinite Carousel Slider */
+        .achievements-section {
+            background: #000000; /* Pure black background */
+            padding: 100px 0;
+            border-top: 1px solid #111111; /* Darker border */
+            overflow: hidden;
+        }
+
+        .achievements-carousel-container {
+            width: 100%;
+            overflow: hidden;
+            mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+            -webkit-mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .achievements-scroll-track {
+            display: flex;
+            gap: 2rem;
+            animation: infiniteScrollAchievements 35s linear infinite;
+            width: calc(380px * 18 + 2rem * 17); /* Accommodate all achievement cards */
+        }
+
+        .achievements-scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes infiniteScrollAchievements {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-380px * 9 - 2rem * 8)); /* Move by half the track width */
+            }
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 380px;
+            flex-shrink: 0;
+            position: relative;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Center detection and enhanced hover effect for achievements */
+        .achievement-card.center-item {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
+            border-color: #667eea;
+            z-index: 10;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: #667eea;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+        }
+
+        .achievement-card.center-item:hover {
+            transform: translateY(-25px) scale(1.08);
+            box-shadow: 0 35px 70px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Achievement Icon Container */
+        .achievement-icon-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .achievement-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Achievement glow effect */
+        .achievement-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .achievement-card:hover .achievement-glow {
+            opacity: 0.3;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.1;
+            }
+        }
+
+        /* Specific achievement icon styles */
+        .achievement-icon.kaggle-expert {
+            background: linear-gradient(135deg, #20beff 0%, #1da1f2 100%);
+        }
+        .achievement-icon.kaggle-expert + .achievement-glow {
+            background: radial-gradient(circle, #20beff 0%, transparent 70%);
+        }
+
+        .achievement-icon.azure-cert {
+            background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+        }
+        .achievement-icon.azure-cert + .achievement-glow {
+            background: radial-gradient(circle, #0078d4 0%, transparent 70%);
+        }
+
+        .achievement-icon.hackathon-winner {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #333;
+        }
+        .achievement-icon.hackathon-winner + .achievement-glow {
+            background: radial-gradient(circle, #ffd700 0%, transparent 70%);
+        }
+
+        .achievement-icon.research {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .achievement-icon.research + .achievement-glow {
+            background: radial-gradient(circle, #667eea 0%, transparent 70%);
+        }
+
+        .achievement-icon.opensource {
+            background: linear-gradient(135deg, #333 0%, #171515 100%);
+        }
+        .achievement-icon.opensource + .achievement-glow {
+            background: radial-gradient(circle, #333 0%, transparent 70%);
+        }
+
+        .achievement-icon.coding-master {
+            background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+        }
+        .achievement-icon.coding-master + .achievement-glow {
+            background: radial-gradient(circle, #00d4aa 0%, transparent 70%);
+        }
+
+        /* Achievement Content */
+        .achievement-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .achievement-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .achievement-org {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .achievement-desc {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            min-height: 3.2rem; /* Ensure consistent height */
+        }
+
+        .achievement-date {
+            position: absolute;
+            top: -1rem;
+            right: 1rem;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .achievement-type {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 1rem;
+        }
+
+        /* Achievement type colors */
+        .achievement-type.expert {
+            background: linear-gradient(135deg, #20beff 0%, #1da1f2 100%);
+            color: white;
+        }
+
+        .achievement-type.certification {
+            background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+            color: white;
+        }
+
+        .achievement-type.award {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #333;
+        }
+
+        .achievement-type.research {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .achievement-type.milestone {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            color: white;
+        }
+
+        .achievement-type.achievement {
+            background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+            color: white;
+        }
+
+        /* Enhanced hover effects for achievements */
+        .achievement-card:hover .achievement-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .achievement-card:hover .achievement-title {
+            color: #667eea;
+        }
+
+        .achievement-card:hover .achievement-desc {
+            color: #fff;
+        }
+
+        /* Responsive design for achievements */
+        @media (max-width: 768px) {
+            .achievement-card {
+                min-width: 320px;
+                padding: 1.5rem;
+            }
+
+            .achievement-card.center-item {
+                transform: translateY(-15px) scale(1.03);
+            }
+
+            .achievements-scroll-track {
+                animation-duration: 30s; /* Slower on tablets */
+            }
+
+            .achievement-icon-container {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 1rem;
+            }
+
+            .achievement-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+
+            .achievement-title {
+                font-size: 1.2rem;
+            }
+
+            .achievement-desc {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .achievement-card {
+                min-width: 280px;
+                padding: 1.2rem;
+            }
+
+            .achievement-card.center-item {
+                transform: translateY(-10px) scale(1.02);
+            }
+
+            .achievements-scroll-track {
+                animation-duration: 25s; /* Even slower on mobile */
+            }
+
+            .achievement-icon-container {
+                width: 60px;
+                height: 60px;
+            }
+
+            .achievement-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .achievement-title {
+                font-size: 1.1rem;
+            }
+
+            .achievement-desc {
+                font-size: 0.85rem;
+                min-height: auto;
+            }
+
+            .achievement-date {
+                top: -0.5rem;
+                right: 0.5rem;
+                font-size: 0.75rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
     </style>
 
     <script>
@@ -1732,7 +2250,7 @@
 
         // Scroll animations
         function animateOnScroll() {
-            const elements = document.querySelectorAll('.tech-item, .project-showcase');
+            const elements = document.querySelectorAll('.tech-item, .project-showcase, .achievement-card');
             
             const observerOptions = {
                 threshold: 0.1,
@@ -1774,6 +2292,16 @@
                 // Update project items
                 const projectItems = document.querySelectorAll('.project-showcase');
                 projectItems.forEach(item => {
+                    if (isInCenter(item)) {
+                        item.classList.add('center-item');
+                    } else {
+                        item.classList.remove('center-item');
+                    }
+                });
+
+                // Update achievement items
+                const achievementItems = document.querySelectorAll('.achievement-card');
+                achievementItems.forEach(item => {
                     if (isInCenter(item)) {
                         item.classList.add('center-item');
                     } else {

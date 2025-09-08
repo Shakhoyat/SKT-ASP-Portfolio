@@ -1,0 +1,10 @@
+/* Achievement images placeholder directory */
+/* Place achievement certificate images or award photos here */
+/* Expected files:
+- kaggle-expert.jpg
+- azure-certification.jpg
+- hackathon-trophy.jpg
+- research-publications.jpg
+- opensource-contributor.jpg
+- coding-master.jpg
+*/
