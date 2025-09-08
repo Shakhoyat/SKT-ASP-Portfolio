@@ -243,10 +243,13 @@
   <ItemGroup>
     <Content Include="Content\images\README.md" />
     <Content Include="Content\docs\README.md" />
+    <Content Include="fix-roslyn.ps1" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="README.md" />
     <Content Include="QUICKSTART.md" />
+    <Content Include="RoslynCompilerFiles.targets" />
+    <Content Include="ROSLYN-FIX-README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
