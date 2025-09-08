@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="test_admin_features.aspx.cs" Inherits="WebApplication1.test_admin_features" %>

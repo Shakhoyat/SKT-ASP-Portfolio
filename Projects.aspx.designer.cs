@@ -13,13 +13,13 @@ namespace WebApplication1 {
     public partial class Projects {
         
         /// <summary>
-        /// ltlTotalProjects control.
+        /// ltlProjectCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlTotalProjects;
+        protected global::System.Web.UI.WebControls.Literal ltlProjectCount;
         
         /// <summary>
         /// rptProjects control.
@@ -29,5 +29,14 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptProjects;
+        
+        /// <summary>
+        /// noProjectsMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl noProjectsMessage;
     }
 }

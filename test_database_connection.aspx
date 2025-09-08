@@ -1,0 +1,1 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="test_database_connection.aspx.cs" Inherits="WebApplication1.test_database_connection" %>

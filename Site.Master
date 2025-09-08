@@ -24,8 +24,15 @@
     </asp:ContentPlaceHolder>
 </head>
 
-<body>
+<body id="bodyTag" runat="server" data-theme="dark" data-lang="en">
     <form id="form1" runat="server">
+        <!-- Theme Toggle Button -->
+        <div class="theme-controls">
+            <button type="button" class="theme-toggle" data-theme-toggle title="Toggle theme">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+
         <!-- Smart Navigation Bar - Hidden when at top -->
         <nav class="navbar smart-navbar" id="mainNavbar">
             <div class="container">
@@ -80,8 +87,14 @@
                         <span>Contact</span>
                     </a>
                     
-                    <!-- Admin Link with Special Styling -->
+                    <!-- Theme Toggle in Nav -->
                     <div class="nav-divider"></div>
+                    <button type="button" class="nav-link theme-nav-toggle" data-theme-toggle title="Toggle theme">
+                        <i class="fas fa-sun nav-icon"></i>
+                        <span>Theme</span>
+                    </button>
+                    
+                    <!-- Admin Link with Special Styling -->
                     <a class="nav-link admin-link" href="AdminLogin.aspx" data-section="admin">
                         <i class="fas fa-shield-alt nav-icon"></i>
                         <span>Admin Panel</span>
@@ -181,6 +194,9 @@
         </footer>
     </form>
 
+    <!-- Portfolio Manager JavaScript -->
+    <script src="Content/js/portfolio-manager.js"></script>
+    
     <!-- Enhanced JavaScript for Smart Navigation -->
     <script>
         // Smart Navigation System
@@ -288,6 +304,11 @@
             // Initialize smart navigation
             initializeNavigation();
             
+            // Initialize Portfolio Manager (handles themes and tracking)
+            if (typeof PortfolioManager !== 'undefined') {
+                PortfolioManager.init();
+            }
+            
             // Set up scroll listener
             window.addEventListener('scroll', handleScroll, { passive: true });
             
@@ -326,7 +347,7 @@
             };
 
             const observer = new IntersectionObserver(function(entries) {
-                entries.forEach entry => {
+                entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animate-in');
                     }

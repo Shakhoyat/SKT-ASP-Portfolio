@@ -16,7 +16,7 @@
                 </p>
                 <div class="projects-overview">
                     <div class="overview-stat">
-                        <div class="overview-number">15+</div>
+                        <div class="overview-number"><asp:Literal ID="ltlProjectCount" runat="server" /></div>
                         <div class="overview-label">Active Projects</div>
                     </div>
                     <div class="overview-stat">
@@ -37,27 +37,27 @@
         <div class="container">
             <h2 class="section-title-ghost" data-text="CATEGORIES">PROJECT CATEGORIES</h2>
             <div class="project-filters">
-                <button class="filter-btn active" onclick="filterProjects('all')">
+                <button class="filter-btn active" onclick="filterProjects(event,'all'); return false;">
                     <i class="fas fa-th"></i>
                     <span>All Projects</span>
                 </button>
-                <button class="filter-btn" onclick="filterProjects('datascience')">
+                <button class="filter-btn" onclick="filterProjects(event,'datascience'); return false;">
                     <i class="fas fa-chart-line"></i>
                     <span>Data Science</span>
                 </button>
-                <button class="filter-btn" onclick="filterProjects('ml')">
+                <button class="filter-btn" onclick="filterProjects(event,'ml'); return false;">
                     <i class="fas fa-brain"></i>
                     <span>Machine Learning</span>
                 </button>
-                <button class="filter-btn" onclick="filterProjects('web')">
+                <button class="filter-btn" onclick="filterProjects(event,'web'); return false;">
                     <i class="fas fa-code"></i>
                     <span>Web Development</span>
                 </button>
-                <button class="filter-btn" onclick="filterProjects('iot')">
+                <button class="filter-btn" onclick="filterProjects(event,'iot'); return false;">
                     <i class="fas fa-microchip"></i>
                     <span>IoT Systems</span>
                 </button>
-                <button class="filter-btn" onclick="filterProjects('research')">
+                <button class="filter-btn" onclick="filterProjects(event,'research'); return false;">
                     <i class="fas fa-microscope"></i>
                     <span>Research</span>
                 </button>
@@ -65,289 +65,46 @@
         </div>
     </div>
 
-    <!-- Featured Projects Grid -->
+    <!-- Dynamic Projects Grid -->
     <div class="section section-alt">
         <div class="container">
             <div class="projects-grid" id="projectsContainer">
-                <!-- Project 1: Doctor Appointment System -->
-                <div class="project-card project-item" data-category="ml">
-                    <div class="project-image healthcare">
-                        <i class="fas fa-user-md"></i>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="#" class="project-btn" onclick="showProjectDetails(1)">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
+                <asp:Repeater ID="rptProjects" runat="server">
+                    <ItemTemplate>
+                        <div class="project-card project-item" data-category="<%# Eval("Category") %>">
+                            <div class="project-image <%= Eval("ImageStyleClass") %>">
+                                <i class="fas fa-project-diagram"></i>
+                                <div class="project-overlay">
+                                    <div class="project-actions">
+                                        <a href="#" class="project-btn" onclick="showDbProjectDetails('<%# Eval("ProjectId") %>'); return false;">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <%# string.IsNullOrEmpty(Eval("GitHubUrl") as string) ? "" : "<a href='" + Eval("GitHubUrl") + "' target='_blank' class='project-btn'><i class='fab fa-github'></i></a>" %>
+                                        <%# string.IsNullOrEmpty(Eval("ProjectUrl") as string) ? "" : "<a href='" + Eval("ProjectUrl") + "' target='_blank' class='project-btn'><i class='fas fa-external-link-alt'></i></a>" %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-header">
+                                    <h3 class="project-title"><%# Eval("Title") %></h3>
+                                    <span class="project-status <%= Eval("StatusCss") %>"><%# Eval("StatusText") %></span>
+                                </div>
+                                <p class="project-description"><%# Eval("ShortDescription") %></p>
+                                <div class="project-tech-stack">
+                                    <%# Eval("TechBadges") %>
+                                </div>
+                                <div class="project-metrics">
+                                    <div class="metric">
+                                        <i class="fas fa-calendar"></i>
+                                        <span><%# Eval("DateRange") %></span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">Doctor Appointment System</h3>
-                            <span class="project-status completed">Completed</span>
-                        </div>
-                        <p class="project-description">
-                            Healthcare management system with ML-powered resource allocation and predictive analytics 
-                            for optimizing appointment scheduling and patient flow.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge java">Java</span>
-                            <span class="tech-badge">JavaFX</span>
-                            <span class="tech-badge">MySQL</span>
-                            <span class="tech-badge">ML</span>
-                        </div>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <i class="fas fa-users"></i>
-                                <span>500+ Patients</span>
-                            </div>
-                            <div class="metric">
-                                <i class="fas fa-clock"></i>
-                                <span>40% Time Saved</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Automated EDA Platform -->
-                <div class="project-card project-item" data-category="datascience">
-                    <div class="project-image analytics">
-                        <i class="fas fa-chart-line"></i>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="#" class="project-btn" onclick="showProjectDetails(2)">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">Automated EDA Platform</h3>
-                            <span class="project-status active">Active</span>
-                        </div>
-                        <p class="project-description">
-                            Intelligent data exploration platform that reduces analysis time by 70% through automated 
-                            insights generation, statistical analysis, and interactive visualizations.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge python">Python</span>
-                            <span class="tech-badge">Streamlit</span>
-                            <span class="tech-badge">Pandas</span>
-                            <span class="tech-badge">Plotly</span>
-                        </div>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <i class="fas fa-tachometer-alt"></i>
-                                <span>70% Faster</span>
-                            </div>
-                            <div class="metric">
-                                <i class="fas fa-chart-bar"></i>
-                                <span>50+ Visualizations</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Weather Analytics WebApp -->
-                <div class="project-card project-item" data-category="web">
-                    <div class="project-image weather">
-                        <i class="fas fa-cloud-sun"></i>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="#" class="project-btn" onclick="showProjectDetails(3)">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">Weather Analytics WebApp</h3>
-                            <span class="project-status completed">Completed</span>
-                        </div>
-                        <p class="project-description">
-                            Real-time weather forecasting application with geospatial analysis, interactive maps, 
-                            and predictive modeling for weather pattern analysis.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge react">React</span>
-                            <span class="tech-badge">TypeScript</span>
-                            <span class="tech-badge">APIs</span>
-                            <span class="tech-badge">Maps</span>
-                        </div>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>100+ Cities</span>
-                            </div>
-                            <div class="metric">
-                                <i class="fas fa-sync"></i>
-                                <span>Real-time Data</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4: IoT Data Analytics -->
-                <div class="project-card project-item" data-category="iot">
-                    <div class="project-image iot">
-                        <i class="fas fa-wifi"></i>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="#" class="project-btn" onclick="showProjectDetails(4)">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">IoT Data Analytics Platform</h3>
-                            <span class="project-status active">In Progress</span>
-                        </div>
-                        <p class="project-description">
-                            Comprehensive IoT platform for real-time sensor data processing with machine learning 
-                            insights, edge computing capabilities, and predictive maintenance.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge python">Python</span>
-                            <span class="tech-badge">IoT</span>
-                            <span class="tech-badge">MongoDB</span>
-                            <span class="tech-badge">ML</span>
-                        </div>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <i class="fas fa-microchip"></i>
-                                <span>20+ Sensors</span>
-                            </div>
-                            <div class="metric">
-                                <i class="fas fa-database"></i>
-                                <span>1M+ Data Points</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 5: Computer Vision Detection -->
-                <div class="project-card project-item" data-category="ml">
-                    <div class="project-image vision">
-                        <i class="fas fa-eye"></i>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="#" class="project-btn" onclick="showProjectDetails(5)">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">Computer Vision Detection</h3>
-                            <span class="project-status completed">Research</span>
-                        </div>
-                        <p class="project-description">
-                            Advanced object detection system using deep learning models with real-time processing 
-                            capabilities for industrial automation and surveillance applications.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge python">Python</span>
-                            <span class="tech-badge">OpenCV</span>
-                            <span class="tech-badge">TensorFlow</span>
-                            <span class="tech-badge">CNN</span>
-                        </div>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <i class="fas fa-bullseye"></i>
-                                <span>95% Accuracy</span>
-                            </div>
-                            <div class="metric">
-                                <i class="fas fa-clock"></i>
-                                <span>Real-time</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 6: NLP Text Analysis -->
-                <div class="project-card project-item" data-category="research">
-                    <div class="project-image nlp">
-                        <i class="fas fa-comments"></i>
-                        <div class="project-overlay">
-                            <div class="project-actions">
-                                <a href="#" class="project-btn" onclick="showProjectDetails(6)">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="project-btn">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3 class="project-title">NLP Text Analysis Engine</h3>
-                            <span class="project-status active">Research</span>
-                        </div>
-                        <p class="project-description">
-                            Natural language processing system for sentiment analysis, text classification, 
-                            and automated content generation using transformer models and deep learning.
-                        </p>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge python">Python</span>
-                            <span class="tech-badge">NLTK</span>
-                            <span class="tech-badge">Transformers</span>
-                            <span class="tech-badge">NLP</span>
-                        </div>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <i class="fas fa-language"></i>
-                                <span>5 Languages</span>
-                            </div>
-                            <div class="metric">
-                                <i class="fas fa-chart-line"></i>
-                                <span>92% F1-Score</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
-            
-            <!-- No Projects Message -->
-            <div id="noProjectsMessage" class="no-projects-message" style="display: none;">
+            <div id="noProjectsMessage" class="no-projects-message" runat="server" visible="false">
                 <div class="no-projects-icon">
                     <i class="fas fa-folder-open"></i>
                 </div>
@@ -367,14 +124,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div id="modalContent">
-                    <!-- Project details will be loaded here -->
-                </div>
+                <div id="modalContent"></div>
             </div>
         </div>
     </div>
 
-    <!-- Technologies Section -->
+    <!-- Technologies Section (unchanged) -->
     <div class="section">
         <div class="container">
             <h2 class="section-title-ghost" data-text="TECH STACK">TECHNOLOGIES I USE</h2>
@@ -933,189 +688,31 @@
     </style>
 
     <script>
-        // Project filtering functionality
-        function filterProjects(category) {
+        function filterProjects(e, category) {
             const projects = document.querySelectorAll('.project-item');
             const filterBtns = document.querySelectorAll('.filter-btn');
-            const noProjectsMsg = document.getElementById('noProjectsMessage');
-            
-            // Update active filter button
+            const noProjectsMsg = document.getElementById('<%= noProjectsMessage.ClientID %>');
             filterBtns.forEach(btn => btn.classList.remove('active'));
-            event.target.closest('.filter-btn').classList.add('active');
-            
-            let visibleCount = 0;
-            
-            projects.forEach(project => {
-                if (category === 'all' || project.getAttribute('data-category') === category) {
-                    project.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    project.style.display = 'none';
-                }
+            e.currentTarget.classList.add('active');
+            let visible = 0;
+            projects.forEach(p => {
+                if (category === 'all' || p.getAttribute('data-category') === category) {
+                    p.style.display = 'block'; visible++; }
+                else { p.style.display = 'none'; }
             });
-            
-            // Show/hide no projects message
-            noProjectsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+            if (noProjectsMsg) noProjectsMsg.style.display = visible === 0 ? 'block' : 'none';
         }
-
-        // Project details modal
-        function showProjectDetails(projectId) {
+        function showDbProjectDetails(id) {
+            // Basic modal with placeholder - could be extended to AJAX load full description
             const modal = document.getElementById('projectModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalContent = document.getElementById('modalContent');
-            
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            const card = document.querySelector('.project-item a[onclick*="' + id + '"]');
+            title.textContent = 'Project #' + id;
+            content.innerHTML = '<p style="color: var(--text-secondary);">Full project description coming soon. (Enhance by loading from server.)</p>';
             modal.style.display = 'flex';
-            modalTitle.textContent = 'Project Details';
-            modalContent.innerHTML = '<div style="text-align: center; padding: 2rem;"><i class="fas fa-spinner fa-spin fa-2x" style="color: var(--accent-color);"></i><p style="margin-top: 1rem;">Loading project details...</p></div>';
-            
-            // Simulate loading project details with specific content based on projectId
-            setTimeout(() => {
-                let projectDetails = '';
-                
-                switch(projectId) {
-                    case 1:
-                        projectDetails = `
-                            <h4 style="color: var(--accent-color); margin-bottom: 1rem;">Doctor Appointment System</h4>
-                            <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                                <h5 style="color: var(--text-primary);">Project Overview</h5>
-                                <p style="color: var(--text-secondary); line-height: 1.6;">
-                                    A comprehensive healthcare management system designed to optimize patient flow and resource allocation 
-                                    using machine learning algorithms. The system predicts optimal appointment scheduling based on 
-                                    historical data, patient demographics, and doctor availability.
-                                </p>
-                            </div>
-                            <div style="margin-bottom: 1.5rem;">
-                                <h5 style="color: var(--text-primary);">Key Features</h5>
-                                <ul style="color: var(--text-secondary); line-height: 1.8;">
-                                    <li>ML-powered appointment scheduling optimization</li>
-                                    <li>Patient management with demographic analysis</li>
-                                    <li>Doctor availability and workload balancing</li>
-                                    <li>Predictive analytics for resource planning</li>
-                                    <li>Real-time appointment tracking and notifications</li>
-                                </ul>
-                            </div>
-                            <div style="margin-bottom: 1.5rem;">
-                                <h5 style="color: var(--text-primary);">Technical Implementation</h5>
-                                <p style="color: var(--text-secondary); line-height: 1.6;">
-                                    Built using Java with JavaFX for the user interface, MySQL for data persistence, 
-                                    and Python machine learning models for predictive analytics. The system processes 
-                                    over 500 patient records and has improved appointment efficiency by 40%.
-                                </p>
-                            </div>
-                            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-                                <a href="https://github.com/Shakhoyat" target="_blank" style="background: var(--accent-color); color: white; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                                    <i class="fab fa-github"></i> View Code
-                                </a>
-                                <a href="#" style="background: var(--border-color); color: var(--text-primary); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                                    <i class="fas fa-external-link-alt"></i> Live Demo
-                                </a>
-                            </div>
-                        `;
-                        break;
-                    case 2:
-                        projectDetails = `
-                            <h4 style="color: var(--accent-color); margin-bottom: 1rem;">Automated EDA Platform</h4>
-                            <div style="background: var(--secondary-bg); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                                <h5 style="color: var(--text-primary);">Project Overview</h5>
-                                <p style="color: var(--text-secondary); line-height: 1.6;">
-                                    An intelligent data exploration platform that automates the exploratory data analysis process, 
-                                    reducing manual analysis time by 70%. The platform generates comprehensive insights, 
-                                    visualizations, and statistical summaries automatically.
-                                </p>
-                            </div>
-                            <div style="margin-bottom: 1.5rem;">
-                                <h5 style="color: var(--text-primary);">Key Features</h5>
-                                <ul style="color: var(--text-secondary); line-height: 1.8;">
-                                    <li>Automated statistical analysis and profiling</li>
-                                    <li>Interactive visualization generation (50+ chart types)</li>
-                                    <li>Missing data pattern detection and recommendations</li>
-                                    <li>Correlation analysis and feature relationships</li>
-                                    <li>Automated report generation with insights</li>
-                                </ul>
-                            </div>
-                            <div style="margin-bottom: 1.5rem;">
-                                <h5 style="color: var(--text-primary);">Impact & Results</h5>
-                                <p style="color: var(--text-secondary); line-height: 1.6;">
-                                    Successfully deployed in multiple data science projects, reducing initial data exploration 
-                                    time from hours to minutes. The platform has processed over 100 datasets and generated 
-                                    thousands of automated insights for data scientists and analysts.
-                                </p>
-                            </div>
-                        `;
-                        break;
-                    default:
-                        projectDetails = `
-                            <h4 style="color: var(--accent-color); margin-bottom: 1rem;">Project #${projectId}</h4>
-                            <p style="color: var(--text-secondary); line-height: 1.6;">
-                                Detailed information about this project including technical implementation, 
-                                challenges overcome, and impact achieved. This project showcases expertise 
-                                in modern technologies and innovative problem-solving approaches.
-                            </p>
-                        `;
-                }
-                
-                modalContent.innerHTML = projectDetails;
-            }, 800);
         }
-
-        function closeModal() {
-            document.getElementById('projectModal').style.display = 'none';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('projectModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animate cards on scroll
-            const cards = document.querySelectorAll('.project-card, .tech-category');
-            
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
-                observer.observe(card);
-            });
-
-            // Animate counter numbers
-            const numbers = document.querySelectorAll('.overview-number');
-            numbers.forEach(num => {
-                const finalValue = num.textContent;
-                const numValue = parseInt(finalValue.replace('+', ''));
-                if (!isNaN(numValue)) {
-                    let current = 0;
-                    const increment = numValue / 50;
-                    
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= numValue) {
-                            num.textContent = finalValue;
-                            clearInterval(timer);
-                        } else {
-                            num.textContent = Math.floor(current) + (finalValue.includes('+') ? '+' : '');
-                        }
-                    }, 30);
-                }
-            });
-        });
+        function closeModal(){ document.getElementById('projectModal').style.display='none'; }
+        window.onclick = function(ev){ const m=document.getElementById('projectModal'); if(ev.target===m) closeModal(); }
     </script>
 </asp:Content>

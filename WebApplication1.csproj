@@ -82,20 +82,26 @@
     <Content Include="AdminSkillForm.aspx" />
     <Content Include="AdminSkills.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\css\theme-manager.css" />
     <Content Include="Content\images\achievements\placeholder.txt" />
     <Content Include="Content\images\placeholder.txt" />
     <Content Include="Content\images\projects\placeholder.txt" />
+    <Content Include="Content\js\portfolio-manager.js" />
     <Content Include="Content\placeholder-styles.css" />
     <Content Include="Content\Site.css" />
     <Content Include="DatabaseSetup.aspx" />
     <Content Include="Database\PortfolioSchema.sql" />
+    <Content Include="database_test_results.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="demo-features.html" />
     <Content Include="Education.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Projects.aspx" />
+    <Content Include="SessionDemo.aspx" />
     <Content Include="Site_Master_Updated.txt" />
     <Content Include="Skills.aspx" />
+    <Content Include="test_admin_features.aspx" />
+    <Content Include="test_database_connection.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +190,37 @@
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>AdminSkills.aspx</DependentUpon>
     </Compile>
+    <Content Include="App_Code\SessionCookieManager.cs" />
+    <Content Include="App_Code\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Compile Include="DatabaseSetup.cs" />
+    <Compile Include="DatabaseTester.cs" />
+    <Compile Include="database_test_results.aspx.cs">
+      <DependentUpon>database_test_results.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PopulateAIMLAchievements.cs" />
+    <Compile Include="PopulateAIMLEducation.cs" />
+    <Compile Include="PopulateAIMLProjects.cs" />
+    <Compile Include="PopulateAIMLSkills.cs" />
+    <Compile Include="SessionDemo.aspx.cs">
+      <DependentUpon>SessionDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SessionDemo.aspx.designer.cs">
+      <DependentUpon>SessionDemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test_admin_features.aspx.cs">
+      <DependentUpon>test_admin_features.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test_database_connection.aspx.cs">
+      <DependentUpon>test_database_connection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateProjectsImageUrlColumn.cs" />
+    <Compile Include="VerifyPortfolioData.cs" />
     <Content Include="App_Code\PortfolioCacheManager.cs" />
     <Compile Include="AdminSkills.aspx.designer.cs">
       <DependentUpon>AdminSkills.aspx</DependentUpon>
@@ -250,6 +287,7 @@
     <Content Include="QUICKSTART.md" />
     <Content Include="RoslynCompilerFiles.targets" />
     <Content Include="ROSLYN-FIX-README.md" />
+    <Content Include="PreferencesHandler.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
