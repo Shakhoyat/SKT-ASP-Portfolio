@@ -584,7 +584,7 @@
                             <span>Docker</span>
                         </div>
                     </div>
-                </div
+                </div>
             </div>
         </div>
     </div>

@@ -89,10 +89,10 @@
                     
                     <!-- Theme Toggle in Nav -->
                     <div class="nav-divider"></div>
-                    <button type="button" class="nav-link theme-nav-toggle" data-theme-toggle title="Toggle theme">
+                    <a class="nav-link theme-nav-toggle" data-theme-toggle title="Toggle theme" href="javascript:void(0);">
                         <i class="fas fa-sun nav-icon"></i>
                         <span>Theme</span>
-                    </button>
+                    </a>
                     
                     <!-- Admin Link with Special Styling -->
                     <a class="nav-link admin-link" href="AdminLogin.aspx" data-section="admin">
