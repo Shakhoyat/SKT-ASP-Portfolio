@@ -141,7 +141,7 @@ public static class SessionCookieManager
 
     /// <summary>
     /// Initialize visit data for new session
-    /// </summary>
+    /// </summary}
     public static void InitializeVisit()
     {
         var visitData = new VisitData
@@ -459,7 +459,8 @@ public static class SessionCookieManager
         var cookie = HttpContext.Current.Request.Cookies[COOKIE_LAST_VISIT];
         if (cookie != null && !string.IsNullOrEmpty(cookie.Value))
         {
-            if (DateTime.TryParse(cookie.Value, out DateTime lastVisit))
+            DateTime lastVisit;
+            if (DateTime.TryParse(cookie.Value, out lastVisit))
             {
                 return lastVisit;
             }
