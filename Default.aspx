@@ -103,6 +103,10 @@
                             <span>Learn More About Me</span>
                             <i class="fas fa-user"></i>
                         </a>
+                        <a href="/Content/documents/Shakhoyat_Resume.pdf" target="_blank" class="cta-button resume-btn">
+                            <span>Download My Resume</span>
+                            <i class="fas fa-download"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -764,7 +768,7 @@
             }
         }
 
-        /* Stats Section - Enhanced with 5 impressive stats */
+        /* Stats Section - Enhanced with 5 impressive stats - ONE LINE DESKTOP LAYOUT */
         .stats-section {
             background: #000000; /* Pure black background */
             padding: 100px 0;
@@ -772,12 +776,12 @@
         }
 
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 3rem;
-            max-width: 1300px;
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1400px;
             margin: 0 auto;
-            justify-content: center;
+            align-items: center;
         }
 
         .stat-item {
@@ -789,6 +793,8 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            flex: 1;
+            min-width: 200px;
         }
 
         .stat-item::before {
@@ -1272,6 +1278,10 @@
         .section-cta {
             text-align: center;
             margin-top: 3rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cta-button {
@@ -1296,6 +1306,18 @@
             color: white;
             text-decoration: none;
             transform: translateY(-2px);
+        }
+
+        /* Resume download button styling */
+        .resume-btn {
+            border-color: #00d4aa;
+            color: #00d4aa;
+        }
+
+        .resume-btn:hover {
+            background: #00d4aa;
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 212, 170, 0.3);
         }
 
         /* Tech Stack Section - Restored comprehensive version */
@@ -1441,9 +1463,14 @@
         /* Responsive Design - Enhanced for slower depth-based animations */
         @media (max-width: 1024px) {
             .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 2.5rem;
-                max-width: 900px;
+                flex-wrap: wrap;
+                gap: 2rem;
+                justify-content: center;
+            }
+            
+            .stat-item {
+                flex: 0 1 calc(50% - 1rem);
+                min-width: 200px;
             }
         }
 
@@ -1484,7 +1511,7 @@
             }
 
             .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                flex-direction: column;
                 gap: 2rem;
                 max-width: 600px;
                 margin: 0 auto;
@@ -1492,10 +1519,24 @@
 
             .stat-item {
                 padding: 1.5rem 1rem;
+                flex: none;
+                width: 100%;
             }
 
             .stat-number {
                 font-size: 3rem;
+            }
+
+            .section-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
             }
 
             .about-content {
@@ -1585,14 +1626,15 @@
             }
 
             .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
+                flex-direction: column;
+                gap: 2rem;
                 max-width: 400px;
                 margin: 0 auto;
             }
 
             .stat-item {
                 padding: 1.8rem 1.2rem;
+                width: 100%;
             }
 
             .stat-number {
@@ -1625,21 +1667,383 @@
                 font-size: 0.8rem;
             }
 
-            /* Extra small mobile adjustments */
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-modern {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .tech-categories {
+                grid-template-columns: 1fr;
+            }
+
+            /* Mobile adjustments for infinite scroll with enhanced center detection */
             .project-showcase {
-                min-width: 250px;
+                min-width: 280px;
             }
 
             .project-showcase.center-item {
-                transform: translateY(-10px) scale(1.02); /* Further reduced for small mobile */
-            }
-
-            .project-info {
-                padding: 1rem;
+                transform: translateY(-15px) scale(1.03);
             }
 
             .projects-scroll-track {
-                animation-duration: 20s; /* Even slower on small mobile */
+                animation-duration: 25s; /* Slower on mobile */
+            }
+        }
+
+        /* Achievements Section - Infinite Carousel Slider */
+        .achievements-section {
+            background: #000000; /* Pure black background */
+            padding: 100px 0;
+            border-top: 1px solid #111111; /* Darker border */
+            overflow: hidden;
+        }
+
+        .achievements-carousel-container {
+            width: 100%;
+            overflow: hidden;
+            mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+            -webkit-mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .achievements-scroll-track {
+            display: flex;
+            gap: 2rem;
+            animation: infiniteScrollAchievements 35s linear infinite;
+            width: calc(380px * 18 + 2rem * 17); /* Accommodate all achievement cards */
+        }
+
+        .achievements-scroll-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes infiniteScrollAchievements {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-380px * 9 - 2rem * 8)); /* Move by half the track width */
+            }
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 380px;
+            flex-shrink: 0;
+            position: relative;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Center detection and enhanced hover effect for achievements */
+        .achievement-card.center-item {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
+            border-color: #667eea;
+            z-index: 10;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            border-color: #667eea;
+            background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+        }
+
+        .achievement-card.center-item:hover {
+            transform: translateY(-25px) scale(1.08);
+            box-shadow: 0 35px 70px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Achievement Icon Container */
+        .achievement-icon-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .achievement-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Achievement glow effect */
+        .achievement-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .achievement-card:hover .achievement-glow {
+            opacity: 0.3;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.1;
+            }
+        }
+
+        /* Specific achievement icon styles */
+        .achievement-icon.kaggle-expert {
+            background: linear-gradient(135deg, #20beff 0%, #1da1f2 100%);
+        }
+        .achievement-icon.kaggle-expert + .achievement-glow {
+            background: radial-gradient(circle, #20beff 0%, transparent 70%);
+        }
+
+        .achievement-icon.azure-cert {
+            background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+        }
+        .achievement-icon.azure-cert + .achievement-glow {
+            background: radial-gradient(circle, #0078d4 0%, transparent 70%);
+        }
+
+        .achievement-icon.hackathon-winner {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #333;
+        }
+        .achievement-icon.hackathon-winner + .achievement-glow {
+            background: radial-gradient(circle, #ffd700 0%, transparent 70%);
+        }
+
+        .achievement-icon.research {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .achievement-icon.research + .achievement-glow {
+            background: radial-gradient(circle, #667eea 0%, transparent 70%);
+        }
+
+        .achievement-icon.opensource {
+            background: linear-gradient(135deg, #333 0%, #171515 100%);
+        }
+        .achievement-icon.opensource + .achievement-glow {
+            background: radial-gradient(circle, #333 0%, transparent 70%);
+        }
+
+        .achievement-icon.coding-master {
+            background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+        }
+        .achievement-icon.coding-master + .achievement-glow {
+            background: radial-gradient(circle, #00d4aa 0%, transparent 70%);
+        }
+
+        /* Achievement Content */
+        .achievement-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .achievement-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .achievement-org {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .achievement-desc {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            min-height: 3.2rem; /* Ensure consistent height */
+        }
+
+        .achievement-date {
+            position: absolute;
+            top: -1rem;
+            right: 1rem;
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .achievement-type {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 1rem;
+        }
+
+        /* Achievement type colors */
+        .achievement-type.expert {
+            background: linear-gradient(135deg, #20beff 0%, #1da1f2 100%);
+            color: white;
+        }
+
+        .achievement-type.certification {
+            background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
+            color: white;
+        }
+
+        .achievement-type.award {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #333;
+        }
+
+        .achievement-type.research {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .achievement-type.milestone {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            color: white;
+        }
+
+        .achievement-type.achievement {
+            background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+            color: white;
+        }
+
+        /* Enhanced hover effects for achievements */
+        .achievement-card:hover .achievement-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .achievement-card:hover .achievement-title {
+            color: #667eea;
+        }
+
+        .achievement-card:hover .achievement-desc {
+            color: #fff;
+        }
+
+        /* Responsive design for achievements */
+        @media (max-width: 768px) {
+            .achievement-card {
+                min-width: 320px;
+                padding: 1.5rem;
+            }
+
+            .achievement-card.center-item {
+                transform: translateY(-15px) scale(1.03);
+            }
+
+            .achievements-scroll-track {
+                animation-duration: 30s; /* Slower on tablets */
+            }
+
+            .achievement-icon-container {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 1rem;
+            }
+
+            .achievement-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+
+            .achievement-title {
+                font-size: 1.2rem;
+            }
+
+            .achievement-desc {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .achievement-card {
+                min-width: 280px;
+                padding: 1.2rem;
+            }
+
+            .achievement-card.center-item {
+                transform: translateY(-10px) scale(1.02);
+            }
+
+            .achievements-scroll-track {
+                animation-duration: 25s; /* Even slower on mobile */
+            }
+
+            .achievement-icon-container {
+                width: 60px;
+                height: 60px;
+            }
+
+            .achievement-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .achievement-title {
+                font-size: 1.1rem;
+            }
+
+            .achievement-desc {
+                font-size: 0.85rem;
+                min-height: auto;
+            }
+
+            .achievement-date {
+                top: -0.5rem;
+                right: 0.5rem;
+                font-size: 0.75rem;
+                padding: 0.2rem 0.6rem;
             }
         }
     </style>
@@ -1754,38 +2158,7 @@
             window.addEventListener('resize', updateCenterItems);
         }
 
-        // Initialize infinite achievement scroll
-        function initializeInfiniteAchievementScroll() {
-            const achievementTrack = document.querySelector('.achievements-scroll-track');
-            if (!achievementTrack) return;
-
-            // Count original achievement cards (not duplicates)
-            const originalCards = achievementTrack.querySelectorAll('.achievement-card');
-            const cardCount = originalCards.length / 2; // Divide by 2 since we have duplicates
-            
-            // Set CSS custom property for animation calculation
-            document.documentElement.style.setProperty('--achievement-count', cardCount);
-            
-            // Ensure seamless infinite scroll by cloning if needed
-            if (cardCount < 3) {
-                // If we have very few achievements, clone them multiple times for smooth scrolling
-                const cloneContainer = achievementTrack.cloneNode(true);
-                achievementTrack.appendChild(...cloneContainer.children);
-            }
-
-            // Create truly infinite scroll effect
-            const cardWidth = 380; // Achievement card width
-            const gap = 32; // 2rem gap in pixels
-            const totalWidth = (cardWidth + gap) * cardCount;
-            
-            // Update animation duration based on number of cards for consistent speed
-            const animationDuration = Math.max(30, cardCount * 5); // Minimum 30s, 5s per card
-            achievementTrack.style.animationDuration = animationDuration + 's';
-            
-            console.log(`Initialized infinite achievement scroll: ${cardCount} cards, ${animationDuration}s duration`);
-        }
-
-        // Scroll functionality to specific sections
+        // Initialize all animations and effects
         document.addEventListener('DOMContentLoaded', function() {
             // Original scroll arrow functionality
             const scrollArrow = document.querySelector('.scroll-arrow');
@@ -1831,7 +2204,6 @@
             animateCounters();
             animateOnScroll();
             initializeCenterDetection(); // Initialize center detection for floating effect
-            initializeInfiniteAchievementScroll(); // Initialize infinite achievement scroll
 
             // Fixed animated subtitle text transition - Now starts after slower animations complete
             setTimeout(() => {
