@@ -38,15 +38,32 @@ namespace WebApplication1
         {
             try
             {
-                List<AchievementModel> achievements = GetAchievementsFromDatabase();
-                System.Diagnostics.Debug.WriteLine($"Admin: Loaded {achievements.Count} achievements.");
+                if (!DatabaseHelper.TestConnection())
+                {
+                    ShowError("Database connection failed. Please check your connection settings.");
+                    return;
+                }
 
-                gvAchievements.DataSource = achievements;
+                // Check if table exists
+                if (!DatabaseHelper.TableExists("Achievements"))
+                {
+                    ShowError("Achievements table does not exist. Please run database setup first.");
+                    return;
+                }
+
+                // Get all achievements with ImageUrl and CertificateUrl
+                var query = @"SELECT AchievementId, Title, AchievementType as Type, Organization, 
+                             Description, AchievementDate, CertificateUrl, ImageUrl, IsActive, CreatedDate, UpdatedDate 
+                             FROM Achievements ORDER BY AchievementDate DESC";
+                
+                var dt = DatabaseHelper.ExecuteQuery(query);
+                
+                gvAchievements.DataSource = dt;
                 gvAchievements.DataBind();
 
-                // Log the admin activity
-                LogAdminActivity($"Viewed achievements list ({achievements.Count} achievements)");
-
+                // Log successful load
+                LogAdminActivity($"Loaded {dt.Rows.Count} achievements");
+                System.Diagnostics.Debug.WriteLine($"Successfully loaded {dt.Rows.Count} achievements from database");
             }
             catch (Exception ex)
             {
@@ -321,6 +338,41 @@ namespace WebApplication1
             {
                 System.Diagnostics.Debug.WriteLine($"Error logging admin activity: {ex.Message}");
             }
+        }
+
+        /// <summary>
+        /// Get achievement image URL with fallback
+        /// </summary>
+        protected string GetAchievementImageUrl(object imageUrl)
+        {
+            string url = imageUrl?.ToString();
+            if (string.IsNullOrEmpty(url))
+            {
+                return "/Content/images/placeholder-achievement.jpg";
+            }
+            return url;
+        }
+
+        /// <summary>
+        /// Get certificate URL display text
+        /// </summary>
+        protected string GetCertificateDisplay(object certificateUrl)
+        {
+            string url = certificateUrl?.ToString();
+            if (string.IsNullOrEmpty(url))
+            {
+                return "No certificate";
+            }
+            return "View Certificate";
+        }
+
+        /// <summary>
+        /// Check if certificate URL exists
+        /// </summary>
+        protected bool HasCertificate(object certificateUrl)
+        {
+            string url = certificateUrl?.ToString();
+            return !string.IsNullOrEmpty(url);
         }
     }
 }

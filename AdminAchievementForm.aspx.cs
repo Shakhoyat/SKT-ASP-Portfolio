@@ -65,6 +65,8 @@ namespace WebApplication1
                         Organization = row["Organization"]?.ToString() ?? "",
                         AchievementDate = Convert.ToDateTime(row["AchievementDate"]),
                         Description = row["Description"]?.ToString() ?? "",
+                        CertificateUrl = row["CertificateUrl"]?.ToString() ?? "",
+                        ImageUrl = row["ImageUrl"]?.ToString() ?? "",
                         IsActive = Convert.ToBoolean(row["IsActive"]),
                         CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
                         UpdatedDate = Convert.ToDateTime(row["UpdatedDate"])
@@ -91,12 +93,7 @@ namespace WebApplication1
                     // This is an edit operation
                     ltlFormTitle.Text = "Edit Achievement";
                     
-                    // In a real application, you would load the achievement from database
-                    // For now, we'll show a placeholder message
-                    ShowInfo("Edit functionality will be implemented when database integration is complete.");
-                    
-                    // Example of how you would load achievement data:
-                    /*
+                    // Load achievement from database
                     var achievement = GetAchievementById(AchievementId);
                     if (achievement != null)
                     {
@@ -104,10 +101,15 @@ namespace WebApplication1
                         ddlType.SelectedValue = achievement.Type;
                         txtOrganization.Text = achievement.Organization;
                         txtAchievementDate.Text = achievement.AchievementDate.ToString("yyyy-MM-dd");
+                        txtImageUrl.Text = achievement.ImageUrl;
+                        txtCertificateUrl.Text = achievement.CertificateUrl;
                         txtDescription.Text = achievement.Description;
                         chkIsActive.Checked = achievement.IsActive;
                     }
-                    */
+                    else
+                    {
+                        ShowError("Achievement not found.");
+                    }
                     
                     LogAdminActivity($"Opened achievement edit form for ID: {AchievementId}");
                 }
@@ -163,6 +165,8 @@ namespace WebApplication1
                     Type = ddlType.SelectedValue,
                     Organization = txtOrganization.Text.Trim(),
                     AchievementDate = DateTime.Parse(txtAchievementDate.Text),
+                    ImageUrl = txtImageUrl.Text.Trim(),
+                    CertificateUrl = txtCertificateUrl.Text.Trim(),
                     Description = txtDescription.Text.Trim(),
                     IsActive = chkIsActive.Checked,
                     CreatedDate = DateTime.Now,
@@ -228,9 +232,9 @@ namespace WebApplication1
                 }
 
                 var query = @"INSERT INTO Achievements (Title, AchievementType, Organization, AchievementDate, 
-                             Description, IsActive, DisplayOrder, CreatedDate, UpdatedDate)
+                             Description, CertificateUrl, ImageUrl, IsActive, DisplayOrder, CreatedDate, UpdatedDate)
                              VALUES (@Title, @Type, @Organization, @AchievementDate, @Description, 
-                             @IsActive, @DisplayOrder, GETDATE(), GETDATE())";
+                             @CertificateUrl, @ImageUrl, @IsActive, @DisplayOrder, GETDATE(), GETDATE())";
 
                 var parameters = new[]
                 {
@@ -239,6 +243,8 @@ namespace WebApplication1
                     new System.Data.SqlClient.SqlParameter("@Organization", achievement.Organization),
                     new System.Data.SqlClient.SqlParameter("@AchievementDate", achievement.AchievementDate),
                     new System.Data.SqlClient.SqlParameter("@Description", achievement.Description),
+                    new System.Data.SqlClient.SqlParameter("@CertificateUrl", (object)achievement.CertificateUrl ?? DBNull.Value),
+                    new System.Data.SqlClient.SqlParameter("@ImageUrl", (object)achievement.ImageUrl ?? DBNull.Value),
                     new System.Data.SqlClient.SqlParameter("@IsActive", achievement.IsActive),
                     new System.Data.SqlClient.SqlParameter("@DisplayOrder", 1)
                 };
@@ -266,7 +272,8 @@ namespace WebApplication1
 
                 var query = @"UPDATE Achievements SET Title = @Title, AchievementType = @Type, 
                              Organization = @Organization, AchievementDate = @AchievementDate, 
-                             Description = @Description, IsActive = @IsActive, UpdatedDate = GETDATE()
+                             Description = @Description, CertificateUrl = @CertificateUrl, 
+                             ImageUrl = @ImageUrl, IsActive = @IsActive, UpdatedDate = GETDATE()
                              WHERE AchievementId = @AchievementId";
 
                 var parameters = new[]
@@ -276,6 +283,8 @@ namespace WebApplication1
                     new System.Data.SqlClient.SqlParameter("@Organization", achievement.Organization),
                     new System.Data.SqlClient.SqlParameter("@AchievementDate", achievement.AchievementDate),
                     new System.Data.SqlClient.SqlParameter("@Description", achievement.Description),
+                    new System.Data.SqlClient.SqlParameter("@CertificateUrl", (object)achievement.CertificateUrl ?? DBNull.Value),
+                    new System.Data.SqlClient.SqlParameter("@ImageUrl", (object)achievement.ImageUrl ?? DBNull.Value),
                     new System.Data.SqlClient.SqlParameter("@IsActive", achievement.IsActive),
                     new System.Data.SqlClient.SqlParameter("@AchievementId", achievement.AchievementId)
                 };
@@ -298,6 +307,8 @@ namespace WebApplication1
             ddlType.SelectedIndex = 0;
             txtOrganization.Text = "";
             txtAchievementDate.Text = "";
+            txtImageUrl.Text = "";
+            txtCertificateUrl.Text = "";
             txtDescription.Text = "";
             chkIsActive.Checked = true;
         }

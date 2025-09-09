@@ -13,6 +13,8 @@ namespace WebApplication1.Models
         public string Description { get; set; }
         public string Organization { get; set; }
         public DateTime AchievementDate { get; set; }
+        public string CertificateUrl { get; set; }
+        public string ImageUrl { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }

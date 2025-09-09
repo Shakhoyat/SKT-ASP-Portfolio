@@ -87,6 +87,40 @@
                                                           CssClass="text-danger" Display="Dynamic" />
                             </div>
 
+                            <!-- Image URL -->
+                            <div class="form-group">
+                                <label for="txtImageUrl">Achievement Image URL</label>
+                                <asp:TextBox ID="txtImageUrl" runat="server" CssClass="form-control" 
+                                           placeholder="e.g., /Content/images/achievements/certificate.jpg or https://example.com/image.jpg" 
+                                           MaxLength="500" />
+                                <small class="form-text text-muted">
+                                    Optional: URL to an image representing this achievement (certificate, trophy photo, etc.)
+                                </small>
+                                <!-- Image Preview -->
+                                <div class="image-preview-container" id="imagePreviewContainer" style="display: none;">
+                                    <div class="image-preview-header">
+                                        <span>Image Preview:</span>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="clearImagePreview()">
+                                            <i class="fas fa-times"></i> Clear
+                                        </button>
+                                    </div>
+                                    <div class="image-preview">
+                                        <img id="imagePreview" src="" alt="Achievement Image Preview" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Certificate URL -->
+                            <div class="form-group">
+                                <label for="txtCertificateUrl">Certificate/Document URL</label>
+                                <asp:TextBox ID="txtCertificateUrl" runat="server" CssClass="form-control" 
+                                           placeholder="e.g., https://verify.certificate.com/abc123 or link to downloadable certificate" 
+                                           MaxLength="500" />
+                                <small class="form-text text-muted">
+                                    Optional: Link to verifiable certificate or supporting document
+                                </small>
+                            </div>
+
                             <!-- Description -->
                             <div class="form-group">
                                 <label for="txtDescription">Description *</label>
@@ -245,6 +279,45 @@
             border: 1px solid rgba(239, 68, 68, 0.3);
         }
 
+        /* Image Preview Styles */
+        .image-preview-container {
+            margin-top: 1rem;
+            border: 2px dashed var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .image-preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .image-preview {
+            text-align: center;
+            max-height: 200px;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            background: #f8f9fa;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            border-radius: var(--border-radius);
+        }
+
+        .form-text {
+            font-size: 0.875rem;
+            color: #888;
+            margin-top: 0.25rem;
+        }
+
         @media (max-width: 768px) {
             .form-actions {
                 flex-direction: column;
@@ -252,6 +325,10 @@
 
             .form-actions .btn {
                 width: 100%;
+            }
+
+            .image-preview {
+                max-height: 150px;
             }
         }
     </style>
@@ -278,6 +355,35 @@
                 dateInput.value = new Date().toISOString().split('T')[0];
             }
 
+            // Image URL preview functionality
+            const imageUrlInput = document.getElementById('<%= txtImageUrl.ClientID %>');
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            const imagePreview = document.getElementById('imagePreview');
+
+            if (imageUrlInput) {
+                // Show preview if there's already a value (edit mode)
+                if (imageUrlInput.value.trim()) {
+                    showImagePreview(imageUrlInput.value.trim());
+                }
+
+                // Add event listener for URL changes
+                imageUrlInput.addEventListener('blur', function() {
+                    const url = this.value.trim();
+                    if (url) {
+                        showImagePreview(url);
+                    } else {
+                        hideImagePreview();
+                    }
+                });
+
+                imageUrlInput.addEventListener('input', function() {
+                    const url = this.value.trim();
+                    if (!url) {
+                        hideImagePreview();
+                    }
+                });
+            }
+
             // Form enhancement
             const inputs = document.querySelectorAll('.form-control');
             inputs.forEach(input => {
@@ -290,5 +396,41 @@
                 });
             });
         });
+
+        // Function to show image preview
+        function showImagePreview(url) {
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            const imagePreview = document.getElementById('imagePreview');
+            
+            if (imagePreview && imagePreviewContainer) {
+                imagePreview.onload = function() {
+                    imagePreviewContainer.style.display = 'block';
+                };
+                
+                imagePreview.onerror = function() {
+                    hideImagePreview();
+                    console.log('Failed to load image:', url);
+                };
+                
+                imagePreview.src = url;
+            }
+        }
+
+        // Function to hide image preview
+        function hideImagePreview() {
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            if (imagePreviewContainer) {
+                imagePreviewContainer.style.display = 'none';
+            }
+        }
+
+        // Function to clear image preview and URL
+        function clearImagePreview() {
+            const imageUrlInput = document.getElementById('<%= txtImageUrl.ClientID %>');
+            if (imageUrlInput) {
+                imageUrlInput.value = '';
+            }
+            hideImagePreview();
+        }
     </script>
 </asp:Content>

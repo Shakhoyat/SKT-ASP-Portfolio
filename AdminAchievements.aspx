@@ -53,12 +53,23 @@
                                     <asp:TemplateField HeaderText="Achievement">
                                         <ItemTemplate>
                                             <div class="achievement-info">
-                                                <div class="achievement-icon <%# GetAchievementClass(Eval("Type").ToString()) %>">
-                                                    <i class="<%# GetAchievementIcon(Eval("Type").ToString()) %>"></i>
+                                                <div class="achievement-image-container">
+                                                    <img src="<%# GetAchievementImageUrl(Eval("ImageUrl")) %>" 
+                                                         alt="<%# Eval("Title") %>" 
+                                                         class="achievement-image" 
+                                                         onerror="this.src='/Content/images/placeholder-achievement.jpg';" />
+                                                    <div class="achievement-icon-overlay <%# GetAchievementClass(Eval("Type").ToString()) %>">
+                                                        <i class="<%# GetAchievementIcon(Eval("Type").ToString()) %>"></i>
+                                                    </div>
                                                 </div>
                                                 <div class="achievement-details">
                                                     <h4><%# Eval("Title") %></h4>
                                                     <span class="achievement-type"><%# Eval("Type") %></span>
+                                                    <div class="achievement-urls">
+                                                        <%# HasCertificate(Eval("CertificateUrl")) ? 
+                                                            "<a href='" + Eval("CertificateUrl") + "' target='_blank' class='certificate-link'><i class='fas fa-external-link-alt'></i> Certificate</a>" : 
+                                                            "<span class='no-certificate'><i class='fas fa-times'></i> No certificate</span>" %>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </ItemTemplate>
@@ -211,6 +222,44 @@
             gap: 1rem;
         }
 
+        .achievement-image-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--border-color);
+            background: #f8f9fa;
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-image-container:hover .achievement-image {
+            transform: scale(1.05);
+        }
+
+        .achievement-icon-overlay {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
         .achievement-icon {
             width: 60px;
             height: 60px;
@@ -223,30 +272,42 @@
             flex-shrink: 0;
         }
 
-        .achievement-icon.gold {
+        .achievement-icon.gold,
+        .achievement-icon-overlay.gold {
             background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
             box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
         }
 
-        .achievement-icon.silver {
+        .achievement-icon.silver,
+        .achievement-icon-overlay.silver {
             background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
             box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
         }
 
-        .achievement-icon.bronze {
+        .achievement-icon.bronze,
+        .achievement-icon-overlay.bronze {
             background: linear-gradient(135deg, #cd7f32 0%, #d4af37 100%);
             box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
         }
 
-        .achievement-icon.special {
+        .achievement-icon.special,
+        .achievement-icon-overlay.special {
             background: var(--gradient-primary);
             box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+        }
+
+        .achievement-details {
+            flex: 1;
+            min-width: 0;
         }
 
         .achievement-details h4 {
             color: var(--text-primary);
             margin: 0 0 0.25rem 0;
             font-size: 1.1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .achievement-type {
@@ -255,6 +316,39 @@
             background: rgba(0, 212, 170, 0.1);
             padding: 0.25rem 0.5rem;
             border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-urls {
+            margin-top: 0.5rem;
+        }
+
+        .certificate-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .certificate-link:hover {
+            color: #00a085;
+            text-decoration: underline;
+        }
+
+        .certificate-link i {
+            margin-right: 0.25rem;
+        }
+
+        .no-certificate {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+
+        .no-certificate i {
+            margin-right: 0.25rem;
         }
 
         /* Achievement description */

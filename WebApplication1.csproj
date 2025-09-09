@@ -90,6 +90,7 @@
     <Content Include="Content\placeholder-styles.css" />
     <Content Include="Content\Site.css" />
     <Content Include="DatabaseSetup.aspx" />
+    <Content Include="Database\AddImageUrlToAchievements.sql" />
     <Content Include="Database\CreateAdminTables.sql" />
     <Content Include="Database\PortfolioSchema.sql" />
     <Content Include="database_test_results.aspx" />
@@ -288,6 +289,7 @@
     <Content Include="ADMIN_IMPLEMENTATION_COMPLETE.md" />
     <Content Include="DYNAMIC_HOMEPAGE_IMPLEMENTATION.md" />
     <Content Include="ACHIEVEMENTS_DYNAMIC_IMPLEMENTATION.md" />
+    <Content Include="ACHIEVEMENTS_IMAGEURL_IMPLEMENTATION.md" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="README.md" />

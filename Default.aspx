@@ -1512,13 +1512,6 @@
 
             .hero-text-overlay {
                 top: 50%;
-                /* Maintain slower right-depth animation on small mobile */
-                animation: slideInFromRight 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
-            }
-
-            .hero-photo-container {
-                max-width: 300px;
-                height: 400px;
                 /* Maintain slower left-depth animation on small mobile */
                 animation: slideInFromLeft 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
                            floatingImage 6s ease-in-out infinite 1.8s;
@@ -1625,8 +1618,9 @@
         .achievements-scroll-track {
             display: flex;
             gap: 2rem;
-            animation: infiniteScrollAchievements 35s linear infinite;
-            width: calc(380px * 18 + 2rem * 17); /* Accommodate all achievement cards */
+            animation: infiniteScrollAchievements 40s linear infinite;
+            /* Create seamless infinite loop by calculating exact width */
+            width: max-content;
         }
 
         .achievements-scroll-track:hover {
@@ -1638,8 +1632,14 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(calc(-380px * 9 - 2rem * 8)); /* Move by half the track width */
+                /* Move exactly by the width of the original set to create seamless loop */
+                transform: translateX(calc(-380px * var(--achievement-count) - 2rem * var(--achievement-count)));
             }
+        }
+
+        /* CSS custom properties will be set by JavaScript */
+        :root {
+            --achievement-count: 6; /* Default fallback */
         }
 
         .achievement-card {
@@ -1890,7 +1890,7 @@
             }
 
             .achievements-scroll-track {
-                animation-duration: 30s; /* Slower on tablets */
+                animation-duration: 35s !important; /* Slightly slower on tablets for better readability */
             }
 
             .achievement-icon-container {
@@ -1912,6 +1912,11 @@
             .achievement-desc {
                 font-size: 0.9rem;
             }
+
+            /* Update CSS custom property for mobile card width */
+            :root {
+                --mobile-card-width: 320px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1925,7 +1930,7 @@
             }
 
             .achievements-scroll-track {
-                animation-duration: 25s; /* Even slower on mobile */
+                animation-duration: 40s !important; /* Slower on mobile for better UX */
             }
 
             .achievement-icon-container {
@@ -1953,6 +1958,11 @@
                 right: 0.5rem;
                 font-size: 0.75rem;
                 padding: 0.2rem 0.6rem;
+            }
+
+            /* Update CSS custom property for small mobile card width */
+            :root {
+                --mobile-card-width: 280px;
             }
         }
     </style>
@@ -2067,7 +2077,38 @@
             window.addEventListener('resize', updateCenterItems);
         }
 
-        // Enhanced scroll for arrows with smooth animation
+        // Initialize infinite achievement scroll
+        function initializeInfiniteAchievementScroll() {
+            const achievementTrack = document.querySelector('.achievements-scroll-track');
+            if (!achievementTrack) return;
+
+            // Count original achievement cards (not duplicates)
+            const originalCards = achievementTrack.querySelectorAll('.achievement-card');
+            const cardCount = originalCards.length / 2; // Divide by 2 since we have duplicates
+            
+            // Set CSS custom property for animation calculation
+            document.documentElement.style.setProperty('--achievement-count', cardCount);
+            
+            // Ensure seamless infinite scroll by cloning if needed
+            if (cardCount < 3) {
+                // If we have very few achievements, clone them multiple times for smooth scrolling
+                const cloneContainer = achievementTrack.cloneNode(true);
+                achievementTrack.appendChild(...cloneContainer.children);
+            }
+
+            // Create truly infinite scroll effect
+            const cardWidth = 380; // Achievement card width
+            const gap = 32; // 2rem gap in pixels
+            const totalWidth = (cardWidth + gap) * cardCount;
+            
+            // Update animation duration based on number of cards for consistent speed
+            const animationDuration = Math.max(30, cardCount * 5); // Minimum 30s, 5s per card
+            achievementTrack.style.animationDuration = animationDuration + 's';
+            
+            console.log(`Initialized infinite achievement scroll: ${cardCount} cards, ${animationDuration}s duration`);
+        }
+
+        // Scroll functionality to specific sections
         document.addEventListener('DOMContentLoaded', function() {
             // Original scroll arrow functionality
             const scrollArrow = document.querySelector('.scroll-arrow');
@@ -2113,6 +2154,7 @@
             animateCounters();
             animateOnScroll();
             initializeCenterDetection(); // Initialize center detection for floating effect
+            initializeInfiniteAchievementScroll(); // Initialize infinite achievement scroll
 
             // Fixed animated subtitle text transition - Now starts after slower animations complete
             setTimeout(() => {

@@ -63,7 +63,7 @@ namespace WebApplication1
                 }
 
                 var query = @"SELECT AchievementId, Title, AchievementType, Organization, Description, 
-                             AchievementDate, IsActive, CreatedDate, UpdatedDate 
+                             AchievementDate, CertificateUrl, ImageUrl, IsActive, CreatedDate, UpdatedDate 
                              FROM Achievements WHERE IsActive = 1 
                              ORDER BY DisplayOrder, AchievementDate DESC";
                 
@@ -79,6 +79,8 @@ namespace WebApplication1
                         Organization = row["Organization"]?.ToString() ?? "",
                         Description = row["Description"]?.ToString() ?? "",
                         AchievementDate = Convert.ToDateTime(row["AchievementDate"]),
+                        CertificateUrl = row["CertificateUrl"]?.ToString() ?? "",
+                        ImageUrl = row["ImageUrl"]?.ToString() ?? "",
                         IsActive = Convert.ToBoolean(row["IsActive"]),
                         CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
                         UpdatedDate = Convert.ToDateTime(row["UpdatedDate"])
