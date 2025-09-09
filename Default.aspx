@@ -143,213 +143,71 @@
         </div>
     </div>
 
-    <!-- Featured Projects Section - Now with Infinite Horizontal Auto-Scroll -->
+    <!-- Featured Projects Section - Now with Dynamic Data from Database -->
     <div class="projects-section">
         <div class="container">
             <h2 class="section-title-ghost" data-text="FEATURED PROJECTS">FEATURED PROJECTS</h2>
             <div class="infinite-scroll-container">
                 <div class="projects-scroll-track">
-                    <!-- Project 1: Doctor Appointment System -->
-                    <div class="project-showcase">
-                        <div class="project-image-container">
-                            <div class="project-image healthcare">
-                                <i class="fas fa-user-md"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <a href="Projects.aspx" class="project-btn">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                        <i class="fab fa-github"></i>
-                                    </a>
+                    <!-- Dynamic Projects from Database -->
+                    <asp:Repeater ID="rptProjects" runat="server">
+                        <ItemTemplate>
+                            <div class="project-showcase">
+                                <div class="project-image-container">
+                                    <div class="project-image" style="<%# Eval("ProjectGradient") %>">
+                                        <i class="<%# Eval("ProjectIcon") %>"></i>
+                                    </div>
+                                    <div class="project-overlay">
+                                        <div class="project-actions">
+                                            <a href="Projects.aspx" class="project-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <%# !string.IsNullOrEmpty(Eval("GitHubUrl") as string) ? 
+                                                "<a href='" + Eval("GitHubUrl") + "' target='_blank' class='project-btn'><i class='fab fa-github'></i></a>" : 
+                                                "<a href='https://github.com/Shakhoyat' target='_blank' class='project-btn'><i class='fab fa-github'></i></a>" %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <h3 class="project-title"><%# Eval("Title") %></h3>
+                                    <p class="project-desc"><%# Eval("Description") %></p>
+                                    <div class="project-tech-stack">
+                                        <%# Eval("TechBadges") %>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Doctor Appointment System</h3>
-                            <p class="project-desc">Healthcare management with ML-powered resource allocation</p>
-                            <div class="project-tech-stack">
-                                <span class="tech-badge java">Java</span>
-                                <span class="tech-badge">JavaFX</span>
-                                <span class="tech-badge">MySQL</span>
-                                <span class="tech-badge">ML</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 2: Data Analysis Platform -->
-                    <div class="project-showcase">
-                        <div class="project-image-container">
-                            <div class="project-image analytics">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <a href="Projects.aspx" class="project-btn">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Automated EDA Platform</h3>
-                            <p class="project-desc">Reduces data exploration time by 70% with automated insights</p>
-                            <div class="project-tech-stack">
-                                <span class="tech-badge python">Python</span>
-                                <span class="tech-badge">Streamlit</span>
-                                <span class="tech-badge">Pandas</span>
-                                <span class="tech-badge">Plotly</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3: Weather Analytics -->
-                    <div class="project-showcase">
-                        <div class="project-image-container">
-                            <div class="project-image weather">
-                                <i class="fas fa-cloud-sun"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <a href="Projects.aspx" class="project-btn">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Weather Analytics WebApp</h3>
-                            <p class="project-desc">Real-time weather forecasting with geospatial analysis</p>
-                            <div class="project-tech-stack">
-                                <span class="tech-badge react">React</span>
-                                <span class="tech-badge">TypeScript</span>
-                                <span class="tech-badge">APIs</span>
-                                <span class="tech-badge">Maps</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4: IoT Data Analytics -->
-                    <div class="project-showcase">
-                        <div class="project-image-container">
-                            <div class="project-image" style="background: linear-gradient(135deg, #FF9A56 0%, #FF6B95 100%);">
-                                <i class="fas fa-wifi"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <a href="Projects.aspx" class="project-btn">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">IoT Data Analytics Platform</h3>
-                            <p class="project-desc">Real-time sensor data processing with machine learning insights</p>
-                            <div class="project-tech-stack">
-                                <span class="tech-badge python">Python</span>
-                                <span class="tech-badge">IoT</span>
-                                <span class="tech-badge">MongoDB</span>
-                                <span class="tech-badge">ML</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 5: Computer Vision App -->
-                    <div class="project-showcase">
-                        <div class="project-image-container">
-                            <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <a href="Projects.aspx" class="project-btn">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Computer Vision Detection</h3>
-                            <p class="project-desc">Advanced object detection using deep learning models</p>
-                            <div class="project-tech-stack">
-                                <span class="tech-badge python">Python</span>
-                                <span class="tech-badge">OpenCV</span>
-                                <span class="tech-badge">TensorFlow</span>
-                                <span class="tech-badge">CNN</span>
-                            </div>
-                        </div>
-                    </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
 
                     <!-- Duplicate projects for infinite scroll effect -->
-                    <div class="project-showcase">
-                        <div class="project-image-container">
-                            <div class="project-image healthcare">
-                                <i class="fas fa-user-md"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <a href="Projects.aspx" class="project-btn">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                        <i class="fab fa-github"></i>
-                                    </a>
+                    <asp:Repeater ID="rptProjectsDuplicate" runat="server">
+                        <ItemTemplate>
+                            <div class="project-showcase">
+                                <div class="project-image-container">
+                                    <div class="project-image" style="<%# Eval("ProjectGradient") %>">
+                                        <i class="<%# Eval("ProjectIcon") %>"></i>
+                                    </div>
+                                    <div class="project-overlay">
+                                        <div class="project-actions">
+                                            <a href="Projects.aspx" class="project-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <%# !string.IsNullOrEmpty(Eval("GitHubUrl") as string) ? 
+                                                "<a href='" + Eval("GitHubUrl") + "' target='_blank' class='project-btn'><i class='fab fa-github'></i></a>" : 
+                                                "<a href='https://github.com/Shakhoyat' target='_blank' class='project-btn'><i class='fab fa-github'></i></a>" %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-info">
+                                    <h3 class="project-title"><%# Eval("Title") %></h3>
+                                    <p class="project-desc"><%# Eval("Description") %></p>
+                                    <div class="project-tech-stack">
+                                        <%# Eval("TechBadges") %>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Doctor Appointment System</h3>
-                            <p class="project-desc">Healthcare management with ML-powered resource allocation</p>
-                            <div class="project-tech-stack">
-                                <span class="tech-badge java">Java</span>
-                                <span class="tech-badge">JavaFX</span>
-                                <span class="tech-badge">MySQL</span>
-                                <span class="tech-badge">ML</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-showcase">
-                        <div class="project-image-container">
-                            <div class="project-image analytics">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="project-overlay">
-                                <div class="project-actions">
-                                    <a href="Projects.aspx" class="project-btn">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="https://github.com/Shakhoyat" target="_blank" class="project-btn">
-                                        <i class="fab fa-github"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3 class="project-title">Automated EDA Platform</h3>
-                            <p class="project-desc">Reduces data exploration time by 70% with automated insights</p>
-                            <div class="project-tech-stack">
-                                <span class="tech-badge python">Python</span>
-                                <span class="tech-badge">Streamlit</span>
-                                <span class="tech-badge">Pandas</span>
-                                <span class="tech-badge">Plotly</span>
-                            </div>
-                        </div>
-                    </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
             <div class="section-cta">
@@ -589,162 +447,53 @@
         </div>
     </div>
 
-    <!-- Achievements Section - Infinite Carousel Slider -->
+    <!-- Achievements Section - Dynamic Data from Database -->
     <div class="achievements-section">
         <div class="container">
             <h2 class="section-title-ghost" data-text="ACHIEVEMENTS">ACHIEVEMENTS</h2>
             <div class="achievements-carousel-container">
                 <div class="achievements-scroll-track">
-                    <!-- Achievement 1: Kaggle Expert -->
-                    <div class="achievement-card">
-                        <div class="achievement-icon-container">
-                            <div class="achievement-icon kaggle-expert">
-                                <i class="fab fa-kaggle"></i>
+                    <!-- Dynamic Achievements from Database -->
+                    <asp:Repeater ID="rptAchievements" runat="server">
+                        <ItemTemplate>
+                            <div class="achievement-card">
+                                <div class="achievement-icon-container">
+                                    <div class="achievement-icon <%# Eval("IconClass") %>">
+                                        <%# GetAchievementIconHtml(Eval("IconClass") as string) %>
+                                    </div>
+                                    <div class="achievement-glow"></div>
+                                </div>
+                                <div class="achievement-content">
+                                    <h3 class="achievement-title"><%# Eval("Title") %></h3>
+                                    <p class="achievement-org"><%# Eval("Organization") %></p>
+                                    <p class="achievement-desc"><%# Eval("Description") %></p>
+                                    <div class="achievement-date"><%# Eval("Year") %></div>
+                                    <div class="achievement-type <%# Eval("TypeClass") %>"><%# Eval("Type") %></div>
+                                </div>
                             </div>
-                            <div class="achievement-glow"></div>
-                        </div>
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">Kaggle Expert</h3>
-                            <p class="achievement-org">Kaggle Platform</p>
-                            <p class="achievement-desc">Achieved Expert status on Kaggle through consistent participation in data science competitions</p>
-                            <div class="achievement-date">2023</div>
-                            <div class="achievement-type expert">Expert Status</div>
-                        </div>
-                    </div>
-
-                    <!-- Achievement 2: Microsoft Azure Certified -->
-                    <div class="achievement-card">
-                        <div class="achievement-icon-container">
-                            <div class="achievement-icon azure-cert">
-                                <i class="fab fa-microsoft"></i>
-                            </div>
-                            <div class="achievement-glow"></div>
-                        </div>
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">Azure Developer Associate</h3>
-                            <p class="achievement-org">Microsoft</p>
-                            <p class="achievement-desc">Demonstrated expertise in developing cloud applications and services on Microsoft Azure</p>
-                            <div class="achievement-date">2023</div>
-                            <div class="achievement-type certification">Certification</div>
-                        </div>
-                    </div>
-
-                    <!-- Achievement 3: Hackathon Champion -->
-                    <div class="achievement-card">
-                        <div class="achievement-icon-container">
-                            <div class="achievement-icon hackathon-winner">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="achievement-glow"></div>
-                        </div>
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">Hackathon Champion</h3>
-                            <p class="achievement-org">Tech Innovation Conference</p>
-                            <p class="achievement-desc">Won multiple hackathons with innovative AI and IoT solutions</p>
-                            <div class="achievement-date">2023</div>
-                            <div class="achievement-type award">Award</div>
-                        </div>
-                    </div>
-
-                    <!-- Achievement 4: Research Publications -->
-                    <div class="achievement-card">
-                        <div class="achievement-icon-container">
-                            <div class="achievement-icon research">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="achievement-glow"></div>
-                        </div>
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">Research Publications</h3>
-                            <p class="achievement-org">Academic Conferences</p>
-                            <p class="achievement-desc">Published research papers in machine learning and IoT domains</p>
-                            <div class="achievement-date">2023</div>
-                            <div class="achievement-type research">Research</div>
-                        </div>
-                    </div>
-
-                    <!-- Achievement 5: Open Source Contributor -->
-                    <div class="achievement-card">
-                        <div class="achievement-icon-container">
-                            <div class="achievement-icon opensource">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="achievement-glow"></div>
-                        </div>
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">Open Source Contributor</h3>
-                            <p class="achievement-org">GitHub Community</p>
-                            <p class="achievement-desc">Significant contributions to open-source projects with 100+ commits</p>
-                            <div class="achievement-date">2023</div>
-                            <div class="achievement-type milestone">Milestone</div>
-                        </div>
-                    </div>
-
-                    <!-- Achievement 6: Problem Solving Master -->
-                    <div class="achievement-card">
-                        <div class="achievement-icon-container">
-                            <div class="achievement-icon coding-master">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="achievement-glow"></div>
-                        </div>
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">700+ Problems Solved</h3>
-                            <p class="achievement-org">Competitive Programming</p>
-                            <p class="achievement-desc">Solved over 700 programming problems across various platforms like Codeforces</p>
-                            <div class="achievement-date">2023</div>
-                            <div class="achievement-type achievement">Achievement</div>
-                        </div>
-                    </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
 
                     <!-- Duplicate achievements for infinite scroll effect -->
-                    <div class="achievement-card">
-                        <div class="achievement-icon-container">
-                            <div class="achievement-icon kaggle-expert">
-                                <i class="fab fa-kaggle"></i>
+                    <asp:Repeater ID="rptAchievementsDuplicate" runat="server">
+                        <ItemTemplate>
+                            <div class="achievement-card">
+                                <div class="achievement-icon-container">
+                                    <div class="achievement-icon <%# Eval("IconClass") %>">
+                                        <%# GetAchievementIconHtml(Eval("IconClass") as string) %>
+                                    </div>
+                                    <div class="achievement-glow"></div>
+                                </div>
+                                <div class="achievement-content">
+                                    <h3 class="achievement-title"><%# Eval("Title") %></h3>
+                                    <p class="achievement-org"><%# Eval("Organization") %></p>
+                                    <p class="achievement-desc"><%# Eval("Description") %></p>
+                                    <div class="achievement-date"><%# Eval("Year") %></div>
+                                    <div class="achievement-type <%# Eval("TypeClass") %>"><%# Eval("Type") %></div>
+                                </div>
                             </div>
-                            <div class="achievement-glow"></div>
-                        </div>
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">Kaggle Expert</h3>
-                            <p class="achievement-org">Kaggle Platform</p>
-                            <p class="achievement-desc">Achieved Expert status on Kaggle through consistent participation in data science competitions</p>
-                            <div class="achievement-date">2023</div>
-                            <div class="achievement-type expert">Expert Status</div>
-                        </div>
-                    </div>
-
-                    <div class="achievement-card">
-                        <div class="achievement-icon-container">
-                            <div class="achievement-icon azure-cert">
-                                <i class="fab fa-microsoft"></i>
-                            </div>
-                            <div class="achievement-glow"></div>
-                        </div>
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">Azure Developer Associate</h3>
-                            <p class="achievement-org">Microsoft</p>
-                            <p class="achievement-desc">Demonstrated expertise in developing cloud applications and services on Microsoft Azure</p>
-                            <div class="achievement-date">2023</div>
-                            <div class="achievement-type certification">Certification</div>
-                        </div>
-                    </div>
-
-                    <div class="achievement-card">
-                        <div class="achievement-icon-container">
-                            <div class="achievement-icon hackathon-winner">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="achievement-glow"></div>
-                        </div>
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">Hackathon Champion</h3>
-                            <p class="achievement-org">Tech Innovation Conference</p>
-                            <p class="achievement-desc">Won multiple hackathons with innovative AI and IoT solutions</p>
-                            <div class="achievement-date">2023</div>
-                            <div class="achievement-type award">Award</div>
-                        </div>
-                    </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
             <div class="section-cta">

@@ -14,303 +14,66 @@
                     that demonstrate my expertise in data science, machine learning, and innovative technology solutions. 
                     Each achievement represents dedication, growth, and impact in the tech community.
                 </p>
+                
+                <!-- Dynamic Achievement Overview Stats -->
                 <div class="achievements-overview">
-                    <div class="overview-stat">
-                        <div class="overview-number">60+</div>
-                        <div class="overview-label">Kaggle Medals</div>
-                    </div>
-                    <div class="overview-stat">
-                        <div class="overview-number">12+</div>
-                        <div class="overview-label">Hackathon Wins</div>
-                    </div>
-                    <div class="overview-stat">
-                        <div class="overview-number">5+</div>
-                        <div class="overview-label">Research Papers</div>
-                    </div>
+                    <asp:Literal ID="ltlTotalAchievements" runat="server"></asp:Literal>
+                    <asp:Literal ID="ltlCertifications" runat="server"></asp:Literal>
+                    <asp:Literal ID="ltlAwards" runat="server"></asp:Literal>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Competitive Programming & Data Science -->
-    <div class="section">
+    <!-- Filter/Sort Section -->
+    <div class="filter-section">
         <div class="container">
-            <h2 class="section-title-ghost" data-text="COMPETITIVE">COMPETITIVE EXCELLENCE</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card competitive">
-                    <div class="achievement-icon kaggle">
-                        <i class="fab fa-kaggle"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>Kaggle Expert</h3>
-                        <div class="achievement-meta">
-                            <span class="achievement-category">Data Science</span>
-                            <span class="achievement-date">2023-Present</span>
-                        </div>
-                        <p class="achievement-description">
-                            Achieved expert status on Kaggle through consistent participation in data science competitions. 
-                            Earned 60+ medals across various machine learning challenges including tabular data, 
-                            computer vision, and NLP competitions.
-                        </p>
-                        <div class="achievement-stats">
-                            <div class="stat">
-                                <span class="stat-number">60+</span>
-                                <span class="stat-label">Total Medals</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">Top 5%</span>
-                                <span class="stat-label">Ranking</span>
-                            </div>
-                        </div>
-                        <div class="achievement-skills">
-                            <span class="skill-tag">Machine Learning</span>
-                            <span class="skill-tag">Deep Learning</span>
-                            <span class="skill-tag">Feature Engineering</span>
-                            <span class="skill-tag">Ensemble Methods</span>
-                        </div>
-                    </div>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="ddlAchievementType" class="filter-label">Filter by Type:</label>
+                    <asp:DropDownList ID="ddlAchievementType" runat="server" CssClass="filter-dropdown" AutoPostBack="true" OnSelectedIndexChanged="ddlAchievementType_SelectedIndexChanged">
+                        <asp:ListItem Text="All Achievements" Value="All" Selected="True" />
+                        <asp:ListItem Text="Certifications" Value="Certification" />
+                        <asp:ListItem Text="Awards" Value="Award" />
+                        <asp:ListItem Text="Research" Value="Research" />
+                        <asp:ListItem Text="Expert Status" Value="Expert" />
+                        <asp:ListItem Text="Competitions" Value="Competition" />
+                        <asp:ListItem Text="Other" Value="Other" />
+                    </asp:DropDownList>
                 </div>
-
-                <div class="achievement-card programming">
-                    <div class="achievement-icon codeforces">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>700+ Problems Solved</h3>
-                        <div class="achievement-meta">
-                            <span class="achievement-category">Algorithms</span>
-                            <span class="achievement-date">2020-Present</span>
-                        </div>
-                        <p class="achievement-description">
-                            Solved over 700 programming problems across platforms like Codeforces, developing strong 
-                            algorithmic thinking and optimization skills. This foundation became crucial for transitioning 
-                            into data science and machine learning.
-                        </p>
-                        <div class="achievement-stats">
-                            <div class="stat">
-                                <span class="stat-number">700+</span>
-                                <span class="stat-label">Problems</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">4+</span>
-                                <span class="stat-label">Platforms</span>
-                            </div>
-                        </div>
-                        <div class="achievement-skills">
-                            <span class="skill-tag">Algorithms</span>
-                            <span class="skill-tag">Data Structures</span>
-                            <span class="skill-tag">Optimization</span>
-                            <span class="skill-tag">Problem Solving</span>
-                        </div>
-                    </div>
+                
+                <div class="filter-group">
+                    <label for="ddlSortOrder" class="filter-label">Sort by:</label>
+                    <asp:DropDownList ID="ddlSortOrder" runat="server" CssClass="filter-dropdown" AutoPostBack="true" OnSelectedIndexChanged="ddlSortOrder_SelectedIndexChanged">
+                        <asp:ListItem Text="Most Recent" Value="DateDesc" Selected="True" />
+                        <asp:ListItem Text="Oldest First" Value="DateAsc" />
+                        <asp:ListItem Text="A-Z" Value="TitleAsc" />
+                        <asp:ListItem Text="Z-A" Value="TitleDesc" />
+                        <asp:ListItem Text="By Type" Value="Type" />
+                    </asp:DropDownList>
+                </div>
+                
+                <div class="results-count">
+                    <asp:Literal ID="ltlResultsCount" runat="server"></asp:Literal>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Research & Innovation -->
-    <div class="section section-alt">
-        <div class="container">
-            <h2 class="section-title-ghost" data-text="RESEARCH">RESEARCH & INNOVATION</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card research">
-                    <div class="achievement-icon research-icon">
-                        <i class="fas fa-microscope"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>Research Publications</h3>
-                        <div class="achievement-meta">
-                            <span class="achievement-category">Academic</span>
-                            <span class="achievement-date">2023-Present</span>
-                        </div>
-                        <p class="achievement-description">
-                            Published research papers in machine learning and IoT domains, contributing to the academic 
-                            community with innovative solutions and novel approaches to complex problems in data science 
-                            and edge computing.
-                        </p>
-                        <div class="achievement-stats">
-                            <div class="stat">
-                                <span class="stat-number">5+</span>
-                                <span class="stat-label">Papers</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">3</span>
-                                <span class="stat-label">Conferences</span>
-                            </div>
-                        </div>
-                        <div class="achievement-skills">
-                            <span class="skill-tag">Research</span>
-                            <span class="skill-tag">IoT Systems</span>
-                            <span class="skill-tag">Machine Learning</span>
-                            <span class="skill-tag">Data Analysis</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- Dynamic Achievements by Type -->
+    <asp:PlaceHolder ID="phAchievementSections" runat="server"></asp:PlaceHolder>
 
-                <div class="achievement-card innovation">
-                    <div class="achievement-icon innovation-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>Automated EDA Platform</h3>
-                        <div class="achievement-meta">
-                            <span class="achievement-category">Innovation</span>
-                            <span class="achievement-date">2023</span>
-                        </div>
-                        <p class="achievement-description">
-                            Developed an automated exploratory data analysis platform that reduces data exploration time 
-                            by 70%. This innovation has been adopted by multiple data science teams and significantly 
-                            improved productivity in data analysis workflows.
-                        </p>
-                        <div class="achievement-stats">
-                            <div class="stat">
-                                <span class="stat-number">70%</span>
-                                <span class="stat-label">Time Saved</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">50+</span>
-                                <span class="stat-label">Visualizations</span>
-                            </div>
-                        </div>
-                        <div class="achievement-skills">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Streamlit</span>
-                            <span class="skill-tag">Data Visualization</span>
-                            <span class="skill-tag">Automation</span>
-                        </div>
-                    </div>
-                </div>
+    <!-- No Results Message -->
+    <asp:Panel ID="pnlNoResults" runat="server" Visible="false" CssClass="no-results-panel">
+        <div class="container text-center">
+            <div class="no-results-content">
+                <i class="fas fa-trophy fa-4x"></i>
+                <h3>No Achievements Found</h3>
+                <p>No achievements match your current filter criteria. Try adjusting your filters or check back later for new achievements.</p>
+                <asp:Button ID="btnClearFilters" runat="server" Text="Clear Filters" CssClass="btn-modern btn-primary" OnClick="btnClearFilters_Click" />
             </div>
         </div>
-    </div>
-
-    <!-- Hackathons & Competitions -->
-    <div class="section">
-        <div class="container">
-            <h2 class="section-title-ghost" data-text="COMPETITIONS">HACKATHONS & COMPETITIONS</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card hackathon">
-                    <div class="achievement-icon hackathon-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>National Hackathon Winner</h3>
-                        <div class="achievement-meta">
-                            <span class="achievement-category">Competition</span>
-                            <span class="achievement-date">2023</span>
-                        </div>
-                        <p class="achievement-description">
-                            Won multiple national and international hackathons with innovative solutions in healthcare AI, 
-                            IoT systems, and data analytics. Led cross-functional teams to develop prototype solutions 
-                            within 48-hour timeframes.
-                        </p>
-                        <div class="achievement-stats">
-                            <div class="stat">
-                                <span class="stat-number">12+</span>
-                                <span class="stat-label">Wins</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">1st</span>
-                                <span class="stat-label">Place</span>
-                            </div>
-                        </div>
-                        <div class="achievement-skills">
-                            <span class="skill-tag">Team Leadership</span>
-                            <span class="skill-tag">Rapid Prototyping</span>
-                            <span class="skill-tag">Healthcare AI</span>
-                            <span class="skill-tag">IoT Solutions</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="achievement-card datathon">
-                    <div class="achievement-icon datathon-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <h3>Datathon Excellence</h3>
-                        <div class="achievement-meta">
-                            <span class="achievement-category">Data Science</span>
-                            <span class="achievement-date">2022-Present</span>
-                        </div>
-                        <p class="achievement-description">
-                            Active participant in datathons across the country, tackling complex challenges in deep learning, 
-                            NLP, and computer vision. Consistently ranked in top percentiles with innovative approaches to 
-                            data science problems.
-                        </p>
-                        <div class="achievement-stats">
-                            <div class="stat">
-                                <span class="stat-number">15+</span>
-                                <span class="stat-label">Events</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">Top 10%</span>
-                                <span class="stat-label">Ranking</span>
-                            </div>
-                        </div>
-                        <div class="achievement-skills">
-                            <span class="skill-tag">Deep Learning</span>
-                            <span class="skill-tag">Computer Vision</span>
-                            <span class="skill-tag">NLP</span>
-                            <span class="skill-tag">Time Pressure</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Professional Recognition -->
-    <div class="section section-alt">
-        <div class="container">
-            <h2 class="section-title-ghost" data-text="RECOGNITION">PROFESSIONAL RECOGNITION</h2>
-            <div class="recognition-grid">
-                <div class="recognition-item">
-                    <div class="recognition-icon excellence">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>Academic Excellence</h3>
-                    <p>
-                        Recognized for outstanding academic performance in Computer Science Engineering at KUET 
-                        with focus on emerging technologies and research contributions.
-                    </p>
-                </div>
-
-                <div class="recognition-item">
-                    <div class="recognition-icon leadership">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Team Leadership</h3>
-                    <p>
-                        Successfully led multiple project teams in hackathons and research initiatives, 
-                        demonstrating strong collaborative and mentorship skills.
-                    </p>
-                </div>
-
-                <div class="recognition-item">
-                    <div class="recognition-icon innovation">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Innovation Award</h3>
-                    <p>
-                        Received recognition for innovative approaches to data science problems and 
-                        development of tools that significantly improve workflow efficiency.
-                    </p>
-                </div>
-
-                <div class="recognition-item">
-                    <div class="recognition-icon community">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Community Impact</h3>
-                    <p>
-                        Active contributor to open-source projects and data science community with 
-                        significant impact through shared knowledge and collaborative solutions.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </asp:Panel>
 
     <!-- Call to Action -->
     <div class="section">
@@ -344,7 +107,7 @@
         .hero-description {
             font-size: 1.2rem;
             line-height: 1.7;
-            color: var(--text-secondary);
+            color: #ccc;
             margin-bottom: 3rem;
             max-width: 800px;
             margin-left: auto;
@@ -356,6 +119,7 @@
             gap: 3rem;
             justify-content: center;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .overview-stat {
@@ -365,14 +129,117 @@
         .overview-number {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--accent-color);
+            color: #667eea;
             margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
         }
 
         .overview-label {
             font-size: 0.9rem;
-            color: var(--text-muted);
+            color: #888;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: #111;
+            padding: 2rem 0;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-label {
+            color: #ccc;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+
+        .filter-dropdown {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-dropdown:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+
+        .filter-dropdown option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .results-count {
+            color: #888;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 1rem;
+        }
+
+        /* Achievement Type Sections */
+        .achievement-type-section {
+            padding: 3rem 0;
+            border-top: 1px solid #111;
+        }
+
+        .achievement-type-section:first-child {
+            border-top: none;
+        }
+
+        .type-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .type-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .type-description {
+            color: #888;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .type-count {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
         }
 
         /* Achievements Grid */
@@ -380,17 +247,18 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .achievement-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid #333;
+            border-radius: 12px;
             padding: 2.5rem;
-            transition: var(--transition);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .achievement-card::before {
@@ -400,19 +268,26 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: var(--gradient-primary);
+            background: linear-gradient(90deg, #667eea, #764ba2);
             opacity: 0;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
 
         .achievement-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-dark);
-            border-color: var(--accent-color);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
         }
 
         .achievement-card:hover::before {
             opacity: 1;
+        }
+
+        .achievement-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .achievement-icon {
@@ -422,166 +297,141 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 2rem;
             font-size: 2.2rem;
             color: white;
+            flex-shrink: 0;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .achievement-icon.kaggle {
-            background: linear-gradient(135deg, #20beff 0%, #1a9ce8 100%);
+        .achievement-card:hover .achievement-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .achievement-icon.codeforces {
-            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+        /* Achievement Type Icons */
+        .achievement-icon.certification {
+            background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
         }
 
-        .achievement-icon.research-icon {
+        .achievement-icon.award {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #333;
+        }
+
+        .achievement-icon.research {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
-        .achievement-icon.innovation-icon {
-            background: linear-gradient(135deg, #fdcb6e 0%, #f39c12 100%);
+        .achievement-icon.expert {
+            background: linear-gradient(135deg, #20beff 0%, #1da1f2 100%);
         }
 
-        .achievement-icon.hackathon-icon {
-            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+        .achievement-icon.competition {
+            background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
         }
 
-        .achievement-icon.datathon-icon {
-            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+        .achievement-icon.other {
+            background: linear-gradient(135deg, #636e72 0%, #2d3436 100%);
         }
 
-        .achievement-content h3 {
-            margin-bottom: 1rem;
-            color: var(--text-primary);
+        .achievement-info {
+            flex: 1;
+        }
+
+        .achievement-title {
             font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .achievement-card:hover .achievement-title {
+            color: #667eea;
         }
 
         .achievement-meta {
             display: flex;
             gap: 1rem;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
         }
 
-        .achievement-category {
-            background: rgba(0, 212, 170, 0.1);
-            color: var(--accent-color);
+        .achievement-organization {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .achievement-date {
-            background: var(--border-color);
-            color: var(--text-muted);
+            background: #333;
+            color: #ccc;
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.8rem;
             font-weight: 500;
+        }
+
+        .achievement-type-badge {
+            background: rgba(0, 212, 170, 0.1);
+            color: #00d4aa;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .achievement-description {
-            color: var(--text-secondary);
+            color: #ccc;
             line-height: 1.6;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
-        .achievement-stats {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .achievement-card:hover .achievement-description {
+            color: #fff;
         }
 
-        .stat {
+        /* No Results Panel */
+        .no-results-panel {
+            padding: 4rem 0;
             text-align: center;
         }
 
-        .stat-number {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            margin-bottom: 0.25rem;
+        .no-results-content {
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 500;
+        .no-results-content i {
+            color: #333;
+            margin-bottom: 2rem;
         }
 
-        .achievement-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: rgba(0, 212, 170, 0.1);
-            color: var(--accent-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid rgba(0, 212, 170, 0.2);
-        }
-
-        /* Recognition Grid */
-        .recognition-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .recognition-item {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .recognition-icon {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2.2rem;
-            color: white;
-        }
-
-        .recognition-icon.excellence {
-            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
-        }
-
-        .recognition-icon.leadership {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .recognition-icon.innovation {
-            background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
-        }
-
-        .recognition-icon.community {
-            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
-        }
-
-        .recognition-item h3 {
+        .no-results-content h3 {
+            color: #666;
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            font-size: 1.5rem;
         }
 
-        .recognition-item p {
-            color: var(--text-secondary);
+        .no-results-content p {
+            color: #888;
+            margin-bottom: 2rem;
             line-height: 1.6;
         }
 
         /* CTA Section */
         .cta-description {
             font-size: 1.2rem;
-            color: var(--text-secondary);
+            color: #ccc;
             margin-bottom: 3rem;
             max-width: 700px;
             margin-left: auto;
@@ -602,13 +452,29 @@
                 gap: 1.5rem;
             }
 
-            .achievements-grid,
-            .recognition-grid {
+            .filter-controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .filter-group {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .achievements-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            .achievement-stats {
+            .achievement-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .achievement-meta {
                 justify-content: center;
             }
 
@@ -622,12 +488,32 @@
                 max-width: 300px;
             }
         }
+
+        @media (max-width: 480px) {
+            .achievement-card {
+                padding: 1.5rem;
+            }
+
+            .achievement-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+
+            .achievement-title {
+                font-size: 1.2rem;
+            }
+
+            .type-title {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Animate cards on scroll
-            const cards = document.querySelectorAll('.achievement-card, .recognition-item');
+            const cards = document.querySelectorAll('.achievement-card');
             
             const observerOptions = {
                 threshold: 0.1,
@@ -651,7 +537,7 @@
             });
 
             // Animate counter numbers
-            const numbers = document.querySelectorAll('.overview-number, .stat-number');
+            const numbers = document.querySelectorAll('.overview-number');
             numbers.forEach(num => {
                 const finalValue = num.textContent;
                 const numValue = parseInt(finalValue.replace(/[^\d]/g, ''));
@@ -669,26 +555,12 @@
                             const currentNum = Math.floor(current);
                             if (finalValue.includes('+')) {
                                 num.textContent = currentNum + '+';
-                            } else if (finalValue.includes('%')) {
-                                num.textContent = currentNum + '%';
                             } else {
                                 num.textContent = currentNum;
                             }
                         }
                     }, 30);
                 }
-            });
-
-            // Add hover effects for achievement cards
-            const achievementCards = document.querySelectorAll('.achievement-card');
-            achievementCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-12px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(-8px) scale(1)';
-                });
             });
         });
     </script>

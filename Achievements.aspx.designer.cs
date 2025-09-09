@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1 {
-    
-    
-    public partial class Achievements {
-        
+namespace WebApplication1
+{
+
+
+    public partial class Achievements
+    {
+
         /// <summary>
         /// ltlTotalAchievements control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltlTotalAchievements;
-        
+
         /// <summary>
         /// ltlCertifications control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltlCertifications;
-        
+
         /// <summary>
         /// ltlAwards control.
         /// </summary>
@@ -38,14 +40,59 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltlAwards;
-        
+
         /// <summary>
-        /// ltlEducation control.
+        /// ddlAchievementType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ltlEducation;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAchievementType;
+
+        /// <summary>
+        /// ddlSortOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSortOrder;
+
+        /// <summary>
+        /// ltlResultsCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlResultsCount;
+
+        /// <summary>
+        /// phAchievementSections control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder phAchievementSections;
+
+        /// <summary>
+        /// pnlNoResults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlNoResults;
+
+        /// <summary>
+        /// btnClearFilters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnClearFilters;
     }
 }

@@ -201,6 +201,9 @@
       <DependentUpon>database_test_results.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PopulateAIMLAchievements.cs" />
     <Compile Include="PopulateAIMLEducation.cs" />
     <Compile Include="PopulateAIMLProjects.cs" />
@@ -283,6 +286,7 @@
     <Content Include="Content\docs\README.md" />
     <Content Include="fix-roslyn.ps1" />
     <Content Include="ADMIN_IMPLEMENTATION_COMPLETE.md" />
+    <Content Include="DYNAMIC_HOMEPAGE_IMPLEMENTATION.md" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="README.md" />

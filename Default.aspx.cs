@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebApplication1.Models;
-using WebApplication1.DataAccess;
 
 namespace WebApplication1
 {
@@ -20,134 +20,324 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Load dynamic content from database to keep homepage current
+        /// Load dynamic content from database
         /// </summary>
         private void LoadDynamicContent()
         {
             try
             {
-                // Load latest project count for stats
-                UpdateProjectStats();
-                
-                // Add data source indicator
-                AddDataSourceIndicator();
-                
-                System.Diagnostics.Debug.WriteLine("Default page dynamic content loaded successfully.");
+                // Load projects and achievements from database
+                var projects = GetProjectsFromDatabase();
+                var achievements = GetAchievementsFromDatabase();
+
+                // Bind data to repeaters
+                rptProjects.DataSource = projects;
+                rptProjects.DataBind();
+
+                rptAchievements.DataSource = achievements;
+                rptAchievements.DataBind();
+
+                // Also duplicate for infinite scroll effect
+                rptProjectsDuplicate.DataSource = projects;
+                rptProjectsDuplicate.DataBind();
+
+                rptAchievementsDuplicate.DataSource = achievements;
+                rptAchievementsDuplicate.DataBind();
+
+                // Update dynamic stats
+                UpdateDynamicStats(projects.Count, achievements.Count);
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error loading dynamic content for Default page: {ex.Message}");
-                // Page will continue to work with static content if dynamic loading fails
+                System.Diagnostics.Debug.WriteLine($"Error loading dynamic content: {ex.Message}");
             }
         }
 
         /// <summary>
-        /// Update project statistics in the Quick Stats section
+        /// Update statistics with dynamic data
         /// </summary>
-        private void UpdateProjectStats()
+        private void UpdateDynamicStats(int projectCount, int achievementCount)
         {
             try
             {
-                if (DatabaseHelper.TestConnection() && DatabaseHelper.TableExists("Projects"))
-                {
-                    // Get actual project count from database
-                    string query = "SELECT COUNT(*) FROM Projects WHERE IsActive = 1";
-                    object result = DatabaseHelper.ExecuteScalar(query);
-                    int projectCount = Convert.ToInt32(result);
-                    
-                    // Update the projects stat dynamically via JavaScript
-                    string script = $@"
-                        document.addEventListener('DOMContentLoaded', function() {{
-                            // Update project count in Quick Stats section
-                            const projectStatElements = document.querySelectorAll('.text-center div[style*=""font-size: 2.5rem""]');
-                            if (projectStatElements.length >= 1) {{
-                                const projectElement = projectStatElements[0]; // First stat is projects
-                                if (projectElement && projectElement.textContent.includes('+')) {{
-                                    projectElement.textContent = '{projectCount}+';
-                                    console.log('Updated project count to: {projectCount}+');
-                                }}
-                            }}
-                        }});
-                    ";
-                    
-                    ClientScript.RegisterStartupScript(this.GetType(), "UpdateStats", script, true);
-                    
-                    System.Diagnostics.Debug.WriteLine($"Updated homepage with {projectCount} active projects from database.");
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("Database not available - using static stats on homepage.");
-                }
+                // You can update these stats based on your actual data
+                // For now, we'll use the existing impressive numbers but you can modify as needed
+                
+                // Example: If you want to show actual project count
+                // You could update the frontend JS to use these values
+                // or create literal controls to inject the real numbers
+                
+                System.Diagnostics.Debug.WriteLine($"Loaded {projectCount} projects and {achievementCount} achievements from database");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error updating project stats: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error updating stats: {ex.Message}");
             }
         }
 
         /// <summary>
-        /// Get featured projects for homepage (could be used for dynamic featured section)
+        /// Get featured projects from database
         /// </summary>
-        private List<Project> GetFeaturedProjects()
+        private List<object> GetProjectsFromDatabase()
         {
+            var projects = new List<object>();
             try
             {
-                if (DatabaseHelper.TestConnection() && DatabaseHelper.TableExists("Projects"))
+                if (!DatabaseHelper.TestConnection() || !DatabaseHelper.TableExists("Projects"))
                 {
-                    return ProjectsDAL.GetFeaturedProjects();
+                    return GetSampleProjects(); // Fallback to sample data
+                }
+
+                var query = @"SELECT TOP 5 ProjectId, Title, ShortDescription, TechnologiesUsed, ProjectUrl, GitHubUrl 
+                             FROM Projects WHERE IsActive = 1 ORDER BY DisplayOrder, StartDate DESC";
+                var dt = DatabaseHelper.ExecuteQuery(query);
+                
+                foreach (DataRow row in dt.Rows)
+                {
+                    projects.Add(new
+                    {
+                        ProjectId = Convert.ToInt32(row["ProjectId"]),
+                        Title = row["Title"].ToString(),
+                        Description = row["ShortDescription"]?.ToString() ?? "",
+                        TechnologiesUsed = row["TechnologiesUsed"]?.ToString() ?? "",
+                        ProjectUrl = row["ProjectUrl"]?.ToString() ?? "",
+                        GitHubUrl = row["GitHubUrl"]?.ToString() ?? "",
+                        ProjectIcon = GetProjectIcon(row["Title"].ToString()),
+                        ProjectGradient = GetProjectGradient(row["Title"].ToString()),
+                        TechBadges = BuildTechBadgesHtml(row["TechnologiesUsed"]?.ToString())
+                    });
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error getting featured projects: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error getting projects from database: {ex.Message}");
+                return GetSampleProjects(); // Fallback to sample data
             }
             
-            return new List<Project>();
+            return projects.Count > 0 ? projects : GetSampleProjects();
         }
 
         /// <summary>
-        /// Add indicator to show if data is from database or demo
+        /// Get featured achievements from database
         /// </summary>
-        private void AddDataSourceIndicator()
+        private List<object> GetAchievementsFromDatabase()
         {
+            var achievements = new List<object>();
             try
             {
-                bool isUsingDatabase = DatabaseHelper.TestConnection() && DatabaseHelper.TableExists("Projects");
+                if (!DatabaseHelper.TestConnection() || !DatabaseHelper.TableExists("Achievements"))
+                {
+                    return GetSampleAchievements(); // Fallback to sample data
+                }
+
+                var query = @"SELECT TOP 6 AchievementId, Title, Organization, Description, AchievementDate, AchievementType 
+                             FROM Achievements WHERE IsActive = 1 ORDER BY DisplayOrder, AchievementDate DESC";
+                var dt = DatabaseHelper.ExecuteQuery(query);
                 
-                string indicatorStyle = isUsingDatabase ? 
-                    "position: fixed; top: 10px; right: 10px; background: rgba(0, 212, 170, 0.9); color: white; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.8rem; z-index: 1000; font-weight: 600;" :
-                    "position: fixed; top: 10px; right: 10px; background: rgba(255, 193, 7, 0.9); color: #333; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.8rem; z-index: 1000; font-weight: 600;";
-                
-                string indicatorText = isUsingDatabase ? 
-                    "<i class='fas fa-database'></i> Live Data" : 
-                    "<i class='fas fa-flask'></i> Demo Data";
-                
-                string script = $@"
-                    document.addEventListener('DOMContentLoaded', function() {{
-                        var indicator = document.createElement('div');
-                        indicator.innerHTML = '{indicatorText}';
-                        indicator.style.cssText = '{indicatorStyle}';
-                        indicator.title = '{(isUsingDatabase ? "Data is loading from your database. Admin changes will appear immediately." : "This is demonstration data. Connect your database and use the Admin Panel to manage your real content.")}';
-                        document.body.appendChild(indicator);
-                        
-                        // Auto-hide after 5 seconds
-                        setTimeout(function() {{
-                            indicator.style.opacity = '0';
-                            indicator.style.transform = 'translateY(-20px)';
-                            setTimeout(function() {{
-                                if (indicator.parentNode) {{
-                                    indicator.parentNode.removeChild(indicator);
-                                }}
-                            }}, 300);
-                        }}, 5000);
-                    }});
-                ";
-                
-                ClientScript.RegisterStartupScript(this.GetType(), "DataSourceIndicator", script, true);
+                foreach (DataRow row in dt.Rows)
+                {
+                    achievements.Add(new
+                    {
+                        AchievementId = Convert.ToInt32(row["AchievementId"]),
+                        Title = row["Title"].ToString(),
+                        Organization = row["Organization"]?.ToString() ?? "",
+                        Description = row["Description"]?.ToString() ?? "",
+                        Year = Convert.ToDateTime(row["AchievementDate"]).Year.ToString(),
+                        Type = row["AchievementType"]?.ToString() ?? "Achievement",
+                        IconClass = GetAchievementIcon(row["AchievementType"]?.ToString()),
+                        TypeClass = GetAchievementTypeClass(row["AchievementType"]?.ToString())
+                    });
+                }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error adding data source indicator: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Error getting achievements from database: {ex.Message}");
+                return GetSampleAchievements(); // Fallback to sample data
+            }
+            
+            return achievements.Count > 0 ? achievements : GetSampleAchievements();
+        }
+
+        /// <summary>
+        /// Get project icon based on title
+        /// </summary>
+        private string GetProjectIcon(string title)
+        {
+            var lowerTitle = title.ToLower();
+            if (lowerTitle.Contains("doctor") || lowerTitle.Contains("health") || lowerTitle.Contains("medical"))
+                return "fas fa-user-md";
+            else if (lowerTitle.Contains("data") || lowerTitle.Contains("analytics") || lowerTitle.Contains("eda"))
+                return "fas fa-chart-line";
+            else if (lowerTitle.Contains("weather") || lowerTitle.Contains("climate"))
+                return "fas fa-cloud-sun";
+            else if (lowerTitle.Contains("iot") || lowerTitle.Contains("sensor"))
+                return "fas fa-wifi";
+            else if (lowerTitle.Contains("vision") || lowerTitle.Contains("image") || lowerTitle.Contains("detection"))
+                return "fas fa-eye";
+            else
+                return "fas fa-project-diagram";
+        }
+
+        /// <summary>
+        /// Get project gradient based on title
+        /// </summary>
+        private string GetProjectGradient(string title)
+        {
+            var lowerTitle = title.ToLower();
+            if (lowerTitle.Contains("doctor") || lowerTitle.Contains("health") || lowerTitle.Contains("medical"))
+                return "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);";
+            else if (lowerTitle.Contains("data") || lowerTitle.Contains("analytics") || lowerTitle.Contains("eda"))
+                return "background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);";
+            else if (lowerTitle.Contains("weather") || lowerTitle.Contains("climate"))
+                return "background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);";
+            else if (lowerTitle.Contains("iot") || lowerTitle.Contains("sensor"))
+                return "background: linear-gradient(135deg, #FF9A56 0%, #FF6B95 100%);";
+            else if (lowerTitle.Contains("vision") || lowerTitle.Contains("image") || lowerTitle.Contains("detection"))
+                return "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);";
+            else
+                return "background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);";
+        }
+
+        /// <summary>
+        /// Build tech badges HTML from technologies string
+        /// </summary>
+        private string BuildTechBadgesHtml(string techList)
+        {
+            if (string.IsNullOrWhiteSpace(techList)) return "";
+            
+            var parts = techList.Split(new[] {',', ';'}, StringSplitOptions.RemoveEmptyEntries)
+                                .Select(t => t.Trim())
+                                .Where(t => t.Length > 0)
+                                .Take(4); // Limit to 4 badges for UI
+            
+            var html = "";
+            foreach (var tech in parts)
+            {
+                var className = "tech-badge";
+                if (tech.ToLower().Contains("java")) className += " java";
+                else if (tech.ToLower().Contains("python")) className += " python";
+                else if (tech.ToLower().Contains("react")) className += " react";
+                
+                html += $"<span class=\"{className}\">{HttpUtility.HtmlEncode(tech)}</span>";
+            }
+            return html;
+        }
+
+        /// <summary>
+        /// Get achievement icon based on type
+        /// </summary>
+        private string GetAchievementIcon(string type)
+        {
+            switch (type?.ToLower())
+            {
+                case "certification": return "azure-cert";
+                case "award": return "hackathon-winner";
+                case "expert": return "kaggle-expert";
+                case "research": return "research";
+                case "achievement": return "coding-master";
+                default: return "opensource";
+            }
+        }
+
+        /// <summary>
+        /// Get achievement type class based on type
+        /// </summary>
+        private string GetAchievementTypeClass(string type)
+        {
+            switch (type?.ToLower())
+            {
+                case "certification": return "certification";
+                case "award": return "award";
+                case "expert": return "expert";
+                case "research": return "research";
+                case "achievement": return "achievement";
+                default: return "milestone";
+            }
+        }
+
+        /// <summary>
+        /// Fallback sample projects if database is unavailable
+        /// </summary>
+        private List<object> GetSampleProjects()
+        {
+            return new List<object>
+            {
+                new {
+                    ProjectId = 1,
+                    Title = "Doctor Appointment System",
+                    Description = "Healthcare management with ML-powered resource allocation",
+                    TechnologiesUsed = "Java, JavaFX, MySQL, ML",
+                    ProjectUrl = "",
+                    GitHubUrl = "https://github.com/Shakhoyat",
+                    ProjectIcon = "fas fa-user-md",
+                    ProjectGradient = "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);",
+                    TechBadges = "<span class=\"tech-badge java\">Java</span><span class=\"tech-badge\">JavaFX</span><span class=\"tech-badge\">MySQL</span><span class=\"tech-badge\">ML</span>"
+                },
+                new {
+                    ProjectId = 2,
+                    Title = "Automated EDA Platform",
+                    Description = "Reduces data exploration time by 70% with automated insights",
+                    TechnologiesUsed = "Python, Streamlit, Pandas, Plotly",
+                    ProjectUrl = "",
+                    GitHubUrl = "https://github.com/Shakhoyat",
+                    ProjectIcon = "fas fa-chart-line",
+                    ProjectGradient = "background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);",
+                    TechBadges = "<span class=\"tech-badge python\">Python</span><span class=\"tech-badge\">Streamlit</span><span class=\"tech-badge\">Pandas</span><span class=\"tech-badge\">Plotly</span>"
+                }
+            };
+        }
+
+        /// <summary>
+        /// Fallback sample achievements if database is unavailable
+        /// </summary>
+        private List<object> GetSampleAchievements()
+        {
+            return new List<object>
+            {
+                new {
+                    AchievementId = 1,
+                    Title = "Kaggle Expert",
+                    Organization = "Kaggle Platform",
+                    Description = "Achieved Expert status on Kaggle through consistent participation in data science competitions",
+                    Year = "2023",
+                    Type = "Expert Status",
+                    IconClass = "kaggle-expert",
+                    TypeClass = "expert"
+                },
+                new {
+                    AchievementId = 2,
+                    Title = "Azure Developer Associate",
+                    Organization = "Microsoft",
+                    Description = "Demonstrated expertise in developing cloud applications and services on Microsoft Azure",
+                    Year = "2023",
+                    Type = "Certification",
+                    IconClass = "azure-cert",
+                    TypeClass = "certification"
+                }
+            };
+        }
+
+        /// <summary>
+        /// Get achievement icon HTML based on icon class
+        /// </summary>
+        protected string GetAchievementIconHtml(string iconClass)
+        {
+            switch (iconClass)
+            {
+                case "kaggle-expert":
+                    return "<i class=\"fab fa-kaggle\"></i>";
+                case "azure-cert":
+                    return "<i class=\"fab fa-microsoft\"></i>";
+                case "hackathon-winner":
+                    return "<i class=\"fas fa-trophy\"></i>";
+                case "research":
+                    return "<i class=\"fas fa-graduation-cap\"></i>";
+                case "opensource":
+                    return "<i class=\"fab fa-github\"></i>";
+                case "coding-master":
+                    return "<i class=\"fas fa-code\"></i>";
+                default:
+                    return "<i class=\"fas fa-star\"></i>";
             }
         }
     }
