@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <!-- Animated Stats Section - Now with 6 impressive stats -->
+    <!-- Animated Stats Section - Now with 5 impressive stats -->
     <div class="stats-section">
         <div class="container">
             <div class="stats-grid">
@@ -62,19 +62,15 @@
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="15">0</div>
-                    <div class="stat-label">WORKING PROJECTS ON LATEST TECH</div>
+                    <div class="stat-label">ACTIVE PROJECTS</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="700">0</div>
-                    <div class="stat-label">CODING PROBLEMS SOLVED</div>
+                    <div class="stat-label">PROBLEMS SOLVED</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="25">0</div>
-                    <div class="stat-label">TECHNOLOGIES MASTERED</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-target="5">0</div>
-                    <div class="stat-label">RESEARCH PUBLICATIONS</div>
+                    <div class="stat-label">TECHNOLOGIES</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="12">0</div>
@@ -768,7 +764,7 @@
             }
         }
 
-        /* Stats Section - Enhanced with 6 impressive stats */
+        /* Stats Section - Enhanced with 5 impressive stats */
         .stats-section {
             background: #000000; /* Pure black background */
             padding: 100px 0;
@@ -777,42 +773,78 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2.5rem;
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            max-width: 1300px;
             margin: 0 auto;
+            justify-content: center;
         }
 
         .stat-item {
             text-align: center;
-            padding: 1.5rem;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
-            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-item:hover::before {
+            opacity: 1;
         }
 
         .stat-number {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 900;
             color: #667eea;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             line-height: 1;
-            text-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            text-shadow: 0 0 25px rgba(102, 126, 234, 0.4);
+            letter-spacing: -0.02em;
         }
 
         .stat-label {
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
-            color: #ccc;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: #ddd;
             font-weight: 600;
-            line-height: 1.3;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        /* Add subtle glow animation */
+        @keyframes statGlow {
+            0%, 100% {
+                text-shadow: 0 0 25px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 35px rgba(102, 126, 234, 0.6);
+            }
+        }
+
+        .stat-item:hover .stat-number {
+            animation: statGlow 2s ease-in-out infinite;
         }
 
         /* Simple Ghost Text/Outline Typography for Section Titles */
@@ -1407,6 +1439,14 @@
         }
 
         /* Responsive Design - Enhanced for slower depth-based animations */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2.5rem;
+                max-width: 900px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-hollow-name {
                 font-size: 3.5rem;
@@ -1444,8 +1484,18 @@
             }
 
             .stats-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
                 gap: 2rem;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .stat-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
             }
 
             .about-content {
@@ -1512,6 +1562,13 @@
 
             .hero-text-overlay {
                 top: 50%;
+                /* Maintain slower right-depth animation on small mobile */
+                animation: slideInFromRight 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+            }
+
+            .hero-photo-container {
+                max-width: 300px;
+                height: 400px;
                 /* Maintain slower left-depth animation on small mobile */
                 animation: slideInFromLeft 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, 
                            floatingImage 6s ease-in-out infinite 1.8s;
@@ -1525,6 +1582,25 @@
             .tagline {
                 /* Maintain slower right-depth animation on small mobile */
                 animation: slideInFromRight 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s both;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .stat-item {
+                padding: 1.8rem 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 3.2rem;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
             }
 
             .about-photo {
@@ -1564,405 +1640,6 @@
 
             .projects-scroll-track {
                 animation-duration: 20s; /* Even slower on small mobile */
-            }
-        }
-
-        /* Override main content margin for homepage since navbar is hidden initially */
-        .main-content {
-            margin-top: 0 !important;
-        }
-
-        /* Remove the old section-title-hollow class since we're not using it anymore */
-        .section-title-hollow {
-            display: none;
-        }
-
-        /* Progressive reveal animation for tech items */
-        .tech-item {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInTech 0.6s ease-out forwards;
-        }
-
-        .tech-item:nth-child(1) { animation-delay: 0.1s; }
-        .tech-item:nth-child(2) { animation-delay: 0.2s; }
-        .tech-item:nth-child(3) { animation-delay: 0.3s; }
-        .tech-item:nth-child(4) { animation-delay: 0.4s; }
-        .tech-item:nth-child(5) { animation-delay: 0.5s; }
-        .tech-item:nth-child(6) { animation-delay: 0.6s; }
-
-        @keyframes fadeInTech {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Achievements Section - Infinite Carousel Slider */
-        .achievements-section {
-            background: #000000; /* Pure black background */
-            padding: 100px 0;
-            border-top: 1px solid #111111; /* Darker border */
-            overflow: hidden;
-        }
-
-        .achievements-carousel-container {
-            width: 100%;
-            overflow: hidden;
-            mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
-            -webkit-mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
-            position: relative;
-            margin: 3rem 0;
-        }
-
-        .achievements-scroll-track {
-            display: flex;
-            gap: 2rem;
-            animation: infiniteScrollAchievements 40s linear infinite;
-            /* Create seamless infinite loop by calculating exact width */
-            width: max-content;
-        }
-
-        .achievements-scroll-track:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes infiniteScrollAchievements {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                /* Move exactly by the width of the original set to create seamless loop */
-                transform: translateX(calc(-380px * var(--achievement-count) - 2rem * var(--achievement-count)));
-            }
-        }
-
-        /* CSS custom properties will be set by JavaScript */
-        :root {
-            --achievement-count: 6; /* Default fallback */
-        }
-
-        .achievement-card {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid #333;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            min-width: 380px;
-            flex-shrink: 0;
-            position: relative;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Center detection and enhanced hover effect for achievements */
-        .achievement-card.center-item {
-            transform: translateY(-20px) scale(1.05);
-            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
-            border-color: #667eea;
-            z-index: 10;
-            background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            border-color: #667eea;
-            background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
-        }
-
-        .achievement-card.center-item:hover {
-            transform: translateY(-25px) scale(1.08);
-            box-shadow: 0 35px 70px rgba(102, 126, 234, 0.5);
-        }
-
-        /* Achievement Icon Container */
-        .achievement-icon-container {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .achievement-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s ease;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Achievement glow effect */
-        .achievement-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-
-        .achievement-card:hover .achievement-glow {
-            opacity: 0.3;
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.3;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.2);
-                opacity: 0.1;
-            }
-        }
-
-        /* Specific achievement icon styles */
-        .achievement-icon.kaggle-expert {
-            background: linear-gradient(135deg, #20beff 0%, #1da1f2 100%);
-        }
-        .achievement-icon.kaggle-expert + .achievement-glow {
-            background: radial-gradient(circle, #20beff 0%, transparent 70%);
-        }
-
-        .achievement-icon.azure-cert {
-            background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
-        }
-        .achievement-icon.azure-cert + .achievement-glow {
-            background: radial-gradient(circle, #0078d4 0%, transparent 70%);
-        }
-
-        .achievement-icon.hackathon-winner {
-            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
-            color: #333;
-        }
-        .achievement-icon.hackathon-winner + .achievement-glow {
-            background: radial-gradient(circle, #ffd700 0%, transparent 70%);
-        }
-
-        .achievement-icon.research {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .achievement-icon.research + .achievement-glow {
-            background: radial-gradient(circle, #667eea 0%, transparent 70%);
-        }
-
-        .achievement-icon.opensource {
-            background: linear-gradient(135deg, #333 0%, #171515 100%);
-        }
-        .achievement-icon.opensource + .achievement-glow {
-            background: radial-gradient(circle, #333 0%, transparent 70%);
-        }
-
-        .achievement-icon.coding-master {
-            background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
-        }
-        .achievement-icon.coding-master + .achievement-glow {
-            background: radial-gradient(circle, #00d4aa 0%, transparent 70%);
-        }
-
-        /* Achievement Content */
-        .achievement-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .achievement-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .achievement-org {
-            font-size: 0.9rem;
-            color: #667eea;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .achievement-desc {
-            color: #ccc;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            min-height: 3.2rem; /* Ensure consistent height */
-        }
-
-        .achievement-date {
-            position: absolute;
-            top: -1rem;
-            right: 1rem;
-            background: rgba(102, 126, 234, 0.9);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-        }
-
-        .achievement-type {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 1rem;
-        }
-
-        /* Achievement type colors */
-        .achievement-type.expert {
-            background: linear-gradient(135deg, #20beff 0%, #1da1f2 100%);
-            color: white;
-        }
-
-        .achievement-type.certification {
-            background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
-            color: white;
-        }
-
-        .achievement-type.award {
-            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
-            color: #333;
-        }
-
-        .achievement-type.research {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .achievement-type.milestone {
-            background: linear-gradient(135deg, #333 0%, #555 100%);
-            color: white;
-        }
-
-        .achievement-type.achievement {
-            background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
-            color: white;
-        }
-
-        /* Enhanced hover effects for achievements */
-        .achievement-card:hover .achievement-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .achievement-card:hover .achievement-title {
-            color: #667eea;
-        }
-
-        .achievement-card:hover .achievement-desc {
-            color: #fff;
-        }
-
-        /* Responsive design for achievements */
-        @media (max-width: 768px) {
-            .achievement-card {
-                min-width: 320px;
-                padding: 1.5rem;
-            }
-
-            .achievement-card.center-item {
-                transform: translateY(-15px) scale(1.03);
-            }
-
-            .achievements-scroll-track {
-                animation-duration: 35s !important; /* Slightly slower on tablets for better readability */
-            }
-
-            .achievement-icon-container {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 1rem;
-            }
-
-            .achievement-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
-            }
-
-            .achievement-title {
-                font-size: 1.2rem;
-            }
-
-            .achievement-desc {
-                font-size: 0.9rem;
-            }
-
-            /* Update CSS custom property for mobile card width */
-            :root {
-                --mobile-card-width: 320px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .achievement-card {
-                min-width: 280px;
-                padding: 1.2rem;
-            }
-
-            .achievement-card.center-item {
-                transform: translateY(-10px) scale(1.02);
-            }
-
-            .achievements-scroll-track {
-                animation-duration: 40s !important; /* Slower on mobile for better UX */
-            }
-
-            .achievement-icon-container {
-                width: 60px;
-                height: 60px;
-            }
-
-            .achievement-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
-            .achievement-title {
-                font-size: 1.1rem;
-            }
-
-            .achievement-desc {
-                font-size: 0.85rem;
-                min-height: auto;
-            }
-
-            .achievement-date {
-                top: -0.5rem;
-                right: 0.5rem;
-                font-size: 0.75rem;
-                padding: 0.2rem 0.6rem;
-            }
-
-            /* Update CSS custom property for small mobile card width */
-            :root {
-                --mobile-card-width: 280px;
             }
         }
     </style>
