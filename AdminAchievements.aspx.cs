@@ -38,13 +38,13 @@ namespace WebApplication1
         {
             try
             {
-                List<AchievementModel> achievements = GetSampleAchievements();
+                List<AchievementModel> achievements = GetAchievementsFromDatabase();
                 System.Diagnostics.Debug.WriteLine($"Admin: Loaded {achievements.Count} achievements.");
 
                 gvAchievements.DataSource = achievements;
                 gvAchievements.DataBind();
 
-                // Log the admin action
+                // Log the admin activity
                 LogAdminActivity($"Viewed achievements list ({achievements.Count} achievements)");
 
             }
@@ -56,63 +56,43 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Get sample achievements for demonstration
+        /// Get achievements from database
         /// </summary>
-        private List<AchievementModel> GetSampleAchievements()
+        private List<AchievementModel> GetAchievementsFromDatabase()
         {
-            return new List<AchievementModel>
+            var achievements = new List<AchievementModel>();
+            try
             {
-                new AchievementModel
+                if (!DatabaseHelper.TestConnection() || !DatabaseHelper.TableExists("Achievements"))
                 {
-                    AchievementId = 1,
-                    Title = "Project Excellence Award",
-                    Type = "Award",
-                    Description = "Outstanding performance in web development project delivery with innovative solutions",
-                    Organization = "Tech Solutions Inc.",
-                    AchievementDate = new DateTime(2024, 6, 15),
-                    IsActive = true
-                },
-                new AchievementModel
-                {
-                    AchievementId = 2,
-                    Title = "Microsoft Azure Fundamentals",
-                    Type = "Certification",
-                    Description = "Successfully completed Microsoft Azure Fundamentals certification (AZ-900)",
-                    Organization = "Microsoft",
-                    AchievementDate = new DateTime(2023, 11, 20),
-                    IsActive = true
-                },
-                new AchievementModel
-                {
-                    AchievementId = 3,
-                    Title = "Best Code Quality",
-                    Type = "Recognition",
-                    Description = "Recognized for maintaining the highest code quality standards in the development team",
-                    Organization = "Dev Team",
-                    AchievementDate = new DateTime(2023, 9, 10),
-                    IsActive = true
-                },
-                new AchievementModel
-                {
-                    AchievementId = 4,
-                    Title = "Open Source Contributor",
-                    Type = "Milestone",
-                    Description = "Significant contributions to open-source projects with over 100 GitHub commits",
-                    Organization = "GitHub Community",
-                    AchievementDate = new DateTime(2023, 12, 1),
-                    IsActive = true
-                },
-                new AchievementModel
-                {
-                    AchievementId = 5,
-                    Title = "Team Leadership Excellence",
-                    Type = "Award",
-                    Description = "Successfully led a team of 5 developers for major client project completion",
-                    Organization = "WebDev Solutions",
-                    AchievementDate = new DateTime(2022, 8, 25),
-                    IsActive = false
+                    return achievements;
                 }
-            };
+
+                var query = "SELECT * FROM Achievements ORDER BY DisplayOrder, AchievementDate DESC";
+                var dt = DatabaseHelper.ExecuteQuery(query);
+                
+                foreach (System.Data.DataRow row in dt.Rows)
+                {
+                    achievements.Add(new AchievementModel
+                    {
+                        AchievementId = Convert.ToInt32(row["AchievementId"]),
+                        Title = row["Title"].ToString(),
+                        Type = row["AchievementType"]?.ToString() ?? "",
+                        Organization = row["Organization"]?.ToString() ?? "",
+                        AchievementDate = Convert.ToDateTime(row["AchievementDate"]),
+                        Description = row["Description"]?.ToString() ?? "",
+                        IsActive = Convert.ToBoolean(row["IsActive"]),
+                        CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
+                        UpdatedDate = Convert.ToDateTime(row["UpdatedDate"])
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error getting achievements from database: {ex.Message}");
+            }
+            
+            return achievements;
         }
 
         /// <summary>
@@ -171,10 +151,26 @@ namespace WebApplication1
         {
             try
             {
-                // For now, just show a success message (later will update database)
-                ShowSuccess($"Achievement status toggled successfully. (Achievement ID: {achievementId})");
-                LogAdminActivity($"Toggled status for achievement ID: {achievementId}");
-                LoadAchievements(); // Refresh grid
+                if (!DatabaseHelper.TestConnection())
+                {
+                    ShowError("Database connection failed.");
+                    return;
+                }
+
+                var query = "UPDATE Achievements SET IsActive = CASE WHEN IsActive = 1 THEN 0 ELSE 1 END, UpdatedDate = GETDATE() WHERE AchievementId = @AchievementId";
+                var parameters = new[] { new System.Data.SqlClient.SqlParameter("@AchievementId", achievementId) };
+                
+                int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
+                if (rowsAffected > 0)
+                {
+                    ShowSuccess("Achievement status updated successfully.");
+                    LogAdminActivity($"Toggled status for achievement ID: {achievementId}");
+                    LoadAchievements();
+                }
+                else
+                {
+                    ShowError("Failed to update achievement status.");
+                }
             }
             catch (Exception ex)
             {
@@ -190,10 +186,26 @@ namespace WebApplication1
         {
             try
             {
-                // For now, just show a success message (later will update database)
-                ShowSuccess($"Achievement deleted successfully. (Achievement ID: {achievementId})");
-                LogAdminActivity($"Deleted achievement ID: {achievementId}");
-                LoadAchievements(); // Refresh grid
+                if (!DatabaseHelper.TestConnection())
+                {
+                    ShowError("Database connection failed.");
+                    return;
+                }
+
+                var query = "DELETE FROM Achievements WHERE AchievementId = @AchievementId";
+                var parameters = new[] { new System.Data.SqlClient.SqlParameter("@AchievementId", achievementId) };
+                
+                int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
+                if (rowsAffected > 0)
+                {
+                    ShowSuccess("Achievement deleted successfully.");
+                    LogAdminActivity($"Deleted achievement ID: {achievementId}");
+                    LoadAchievements();
+                }
+                else
+                {
+                    ShowError("Failed to delete achievement.");
+                }
             }
             catch (Exception ex)
             {

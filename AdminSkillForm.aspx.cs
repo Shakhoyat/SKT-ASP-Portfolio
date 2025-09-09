@@ -39,6 +39,78 @@ namespace WebApplication1
         }
 
         /// <summary>
+        /// Get skill by ID from database
+        /// </summary>
+        private SkillModel GetSkillById(int skillId)
+        {
+            try
+            {
+                if (!DatabaseHelper.TestConnection())
+                {
+                    return null;
+                }
+
+                var query = "SELECT SkillId, SkillName, SkillLevel, CategoryId, IsActive, DisplayOrder, CreatedDate, UpdatedDate FROM Skills WHERE SkillId = @SkillId";
+                var parameters = new[] { new System.Data.SqlClient.SqlParameter("@SkillId", skillId) };
+                
+                var dt = DatabaseHelper.ExecuteQuery(query, parameters);
+                if (dt.Rows.Count > 0)
+                {
+                    var row = dt.Rows[0];
+                    return new SkillModel
+                    {
+                        SkillId = Convert.ToInt32(row["SkillId"]),
+                        SkillName = row["SkillName"].ToString(),
+                        Category = GetCategoryName(Convert.ToInt32(row["CategoryId"])),
+                        ProficiencyLevel = Convert.ToInt32(row["SkillLevel"]),
+                        Description = "", // Description not stored in database
+                        IsActive = Convert.ToBoolean(row["IsActive"]),
+                        CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
+                        UpdatedDate = Convert.ToDateTime(row["UpdatedDate"])
+                    };
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error getting skill by ID: {ex.Message}");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Get category ID from category name
+        /// </summary>
+        private int GetCategoryId(string categoryName)
+        {
+            switch (categoryName?.ToLower())
+            {
+                case "programming": return 1;
+                case "frameworks": return 2;
+                case "databases": return 3;
+                case "tools": return 4;
+                case "cloud": return 5;
+                default: return 1;
+            }
+        }
+
+        /// <summary>
+        /// Get category name from category ID
+        /// </summary>
+        private string GetCategoryName(int categoryId)
+        {
+            switch (categoryId)
+            {
+                case 1: return "programming";
+                case 2: return "frameworks";
+                case 3: return "databases";
+                case 4: return "tools";
+                case 5: return "cloud";
+                default: return "programming";
+            }
+        }
+
+        /// <summary>
         /// Load skill data for editing (if ID is provided)
         /// </summary>
         private void LoadSkillData()
@@ -50,9 +122,20 @@ namespace WebApplication1
                     // This is an edit operation
                     ltlFormTitle.Text = "Edit Skill";
                     
-                    // In a real application, you would load the skill from database
-                    // For now, we'll show a placeholder message
-                    ShowInfo("Edit functionality will be implemented when database integration is complete.");
+                    // Load skill from database
+                    var skill = GetSkillById(SkillId);
+                    if (skill != null)
+                    {
+                        txtSkillName.Text = skill.SkillName;
+                        ddlCategory.SelectedValue = skill.Category;
+                        rblProficiencyLevel.SelectedValue = skill.ProficiencyLevel.ToString();
+                        txtDescription.Text = skill.Description;
+                        chkIsActive.Checked = skill.IsActive;
+                    }
+                    else
+                    {
+                        ShowError("Skill not found.");
+                    }
                     
                     LogAdminActivity($"Opened skill edit form for ID: {SkillId}");
                 }
@@ -160,20 +243,30 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Create new skill (placeholder for database integration)
+        /// Create new skill
         /// </summary>
         private bool CreateSkill(SkillModel skill)
         {
             try
             {
-                // In a real application, this would save to database
-                // For now, we'll just simulate success
-                System.Diagnostics.Debug.WriteLine($"Creating skill: {skill.SkillName}");
-                
-                // Simulate database operation
-                System.Threading.Thread.Sleep(500);
-                
-                return true;
+                if (!DatabaseHelper.TestConnection())
+                {
+                    return false;
+                }
+
+                var query = @"INSERT INTO Skills (SkillName, SkillLevel, CategoryId, IsActive, DisplayOrder, CreatedDate, UpdatedDate)
+                             VALUES (@SkillName, @SkillLevel, @CategoryId, @IsActive, @DisplayOrder, GETDATE(), GETDATE())";
+
+                var parameters = new[]
+                {
+                    new System.Data.SqlClient.SqlParameter("@SkillName", skill.SkillName),
+                    new System.Data.SqlClient.SqlParameter("@SkillLevel", skill.ProficiencyLevel),
+                    new System.Data.SqlClient.SqlParameter("@CategoryId", GetCategoryId(skill.Category)),
+                    new System.Data.SqlClient.SqlParameter("@IsActive", skill.IsActive),
+                    new System.Data.SqlClient.SqlParameter("@DisplayOrder", 1)
+                };
+
+                return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -183,20 +276,31 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Update existing skill (placeholder for database integration)
+        /// Update existing skill
         /// </summary>
         private bool UpdateSkill(SkillModel skill)
         {
             try
             {
-                // In a real application, this would update database
-                // For now, we'll just simulate success
-                System.Diagnostics.Debug.WriteLine($"Updating skill: {skill.SkillName}");
-                
-                // Simulate database operation
-                System.Threading.Thread.Sleep(500);
-                
-                return true;
+                if (!DatabaseHelper.TestConnection())
+                {
+                    return false;
+                }
+
+                var query = @"UPDATE Skills SET SkillName = @SkillName, SkillLevel = @SkillLevel, 
+                             CategoryId = @CategoryId, IsActive = @IsActive, UpdatedDate = GETDATE()
+                             WHERE SkillId = @SkillId";
+
+                var parameters = new[]
+                {
+                    new System.Data.SqlClient.SqlParameter("@SkillName", skill.SkillName),
+                    new System.Data.SqlClient.SqlParameter("@SkillLevel", skill.ProficiencyLevel),
+                    new System.Data.SqlClient.SqlParameter("@CategoryId", GetCategoryId(skill.Category)),
+                    new System.Data.SqlClient.SqlParameter("@IsActive", skill.IsActive),
+                    new System.Data.SqlClient.SqlParameter("@SkillId", skill.SkillId)
+                };
+
+                return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {

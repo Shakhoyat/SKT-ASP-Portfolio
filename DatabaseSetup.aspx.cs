@@ -155,18 +155,6 @@ namespace WebApplication1
             {
                 SetStatusMessage(lblDataStatus, "? Inserting sample data...", "status-info");
                 
-                bool success = DatabaseHelper.InitializeSampleData();
-                
-                if (success)
-                {
-                    SetStatusMessage(lblDataStatus, "? Sample data inserted successfully!", "status-success");
-                    btnInsertSampleData.Enabled = false;
-                    btnInsertSampleData.Text = "Sample Data Inserted";
-                }
-                else
-                {
-                    SetStatusMessage(lblDataStatus, "? Failed to insert sample data. Check the debug output for details.", "status-error");
-                }
             }
             catch (Exception ex)
             {
@@ -188,12 +176,6 @@ namespace WebApplication1
                     schemaSuccess = CreateDatabaseSchema();
                 }
 
-                // Insert sample data if needed
-                if (schemaSuccess)
-                {
-                    SetStatusMessage(lblDataStatus, "? Inserting sample data...", "status-info");
-                    dataSuccess = DatabaseHelper.InitializeSampleData();
-                }
 
                 if (schemaSuccess && dataSuccess)
                 {

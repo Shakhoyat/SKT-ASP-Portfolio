@@ -25,7 +25,6 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if admin is logged in
             if (!AdminLogin.IsAdminLoggedIn())
             {
                 Response.Redirect("AdminLogin.aspx");
@@ -39,28 +38,75 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Load education data for editing (if ID is provided)
+        /// Get education by ID from database
         /// </summary>
+        private EducationModel GetEducationById(int educationId)
+        {
+            try
+            {
+                if (!DatabaseHelper.TestConnection())
+                {
+                    return null;
+                }
+
+                var query = "SELECT * FROM Education WHERE EducationId = @EducationId";
+                var parameters = new[] { new System.Data.SqlClient.SqlParameter("@EducationId", educationId) };
+                
+                var dt = DatabaseHelper.ExecuteQuery(query, parameters);
+                if (dt.Rows.Count > 0)
+                {
+                    var row = dt.Rows[0];
+                    return new EducationModel
+                    {
+                        EducationId = Convert.ToInt32(row["EducationId"]),
+                        Institution = row["InstitutionName"].ToString(),
+                        Degree = row["Degree"].ToString(),
+                        FieldOfStudy = row["FieldOfStudy"]?.ToString() ?? "",
+                        StartDate = Convert.ToDateTime(row["StartDate"]),
+                        EndDate = row["EndDate"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["EndDate"]),
+                        IsActive = Convert.ToBoolean(row["IsActive"]),
+                        CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
+                        UpdatedDate = Convert.ToDateTime(row["UpdatedDate"])
+                    };
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error getting education by ID: {ex.Message}");
+                return null;
+            }
+        }
+
         private void LoadEducationData()
         {
             try
             {
                 if (EducationId > 0)
                 {
-                    // This is an edit operation
                     ltlFormTitle.Text = "Edit Education";
                     
-                    // In a real application, you would load the education from database
-                    // For now, we'll show a placeholder message
-                    ShowInfo("Edit functionality will be implemented when database integration is complete.");
+                    var education = GetEducationById(EducationId);
+                    if (education != null)
+                    {
+                        txtInstitution.Text = education.Institution;
+                        txtDegree.Text = education.Degree;
+                        txtFieldOfStudy.Text = education.FieldOfStudy;
+                        txtStartDate.Text = education.StartDate.ToString("yyyy-MM-dd");
+                        txtEndDate.Text = education.EndDate?.ToString("yyyy-MM-dd") ?? "";
+                        chkIsActive.Checked = education.IsActive;
+                    }
+                    else
+                    {
+                        ShowError("Education record not found.");
+                    }
                     
                     LogAdminActivity($"Opened education edit form for ID: {EducationId}");
                 }
                 else
                 {
-                    // This is a new education record
                     ltlFormTitle.Text = "Add New Education";
-                    chkIsActive.Checked = true; // Default to active
+                    chkIsActive.Checked = true;
                     LogAdminActivity("Opened new education form");
                 }
             }
@@ -71,9 +117,6 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Handle save button click
-        /// </summary>
         protected void btnSave_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -82,9 +125,6 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Handle save and add another button click
-        /// </summary>
         protected void btnSaveAndAdd_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -93,14 +133,10 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Save education data
-        /// </summary>
         private void SaveEducation(bool addAnother)
         {
             try
             {
-                // Parse dates
                 DateTime startDate = DateTime.Parse(txtStartDate.Text);
                 DateTime? endDate = null;
                 if (!string.IsNullOrEmpty(txtEndDate.Text))
@@ -108,18 +144,14 @@ namespace WebApplication1
                     endDate = DateTime.Parse(txtEndDate.Text);
                 }
 
-                // Create education model from form data
                 var education = new EducationModel
                 {
                     EducationId = EducationId,
-                    Type = ddlType.SelectedValue,
+                    Institution = txtInstitution.Text.Trim(),
                     Degree = txtDegree.Text.Trim(),
                     FieldOfStudy = txtFieldOfStudy.Text.Trim(),
-                    Institution = txtInstitution.Text.Trim(),
-                    Location = txtLocation.Text.Trim(),
                     StartDate = startDate,
                     EndDate = endDate,
-                    GPA = txtGPA.Text.Trim(),
                     IsActive = chkIsActive.Checked,
                     CreatedDate = DateTime.Now,
                     UpdatedDate = DateTime.Now
@@ -130,14 +162,12 @@ namespace WebApplication1
 
                 if (EducationId > 0)
                 {
-                    // Update existing education
                     success = UpdateEducation(education);
                     message = success ? "Education record updated successfully!" : "Failed to update education record.";
                     LogAdminActivity($"Updated education: {education.Degree} at {education.Institution}");
                 }
                 else
                 {
-                    // Create new education
                     success = CreateEducation(education);
                     message = success ? "Education record created successfully!" : "Failed to create education record.";
                     LogAdminActivity($"Created new education: {education.Degree} at {education.Institution}");
@@ -149,12 +179,10 @@ namespace WebApplication1
                     
                     if (addAnother)
                     {
-                        // Clear form for next entry
                         ClearForm();
                     }
                     else
                     {
-                        // Redirect back to education list after a short delay
                         ClientScript.RegisterStartupScript(this.GetType(), "redirect", 
                             "setTimeout(function() { window.location = 'AdminEducation.aspx'; }, 2000);", true);
                     }
@@ -172,20 +200,34 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Create new education (placeholder for database integration)
+        /// Create new education
         /// </summary>
         private bool CreateEducation(EducationModel education)
         {
             try
             {
-                // In a real application, this would save to database
-                // For now, we'll just simulate success
-                System.Diagnostics.Debug.WriteLine($"Creating education: {education.Degree} at {education.Institution}");
-                
-                // Simulate database operation
-                System.Threading.Thread.Sleep(500);
-                
-                return true;
+                if (!DatabaseHelper.TestConnection())
+                {
+                    return false;
+                }
+
+                var query = @"INSERT INTO Education (InstitutionName, Degree, FieldOfStudy, StartDate, EndDate, 
+                             IsActive, DisplayOrder, CreatedDate, UpdatedDate)
+                             VALUES (@Institution, @Degree, @FieldOfStudy, @StartDate, @EndDate, 
+                             @IsActive, @DisplayOrder, GETDATE(), GETDATE())";
+
+                var parameters = new[]
+                {
+                    new System.Data.SqlClient.SqlParameter("@Institution", education.Institution),
+                    new System.Data.SqlClient.SqlParameter("@Degree", education.Degree),
+                    new System.Data.SqlClient.SqlParameter("@FieldOfStudy", education.FieldOfStudy),
+                    new System.Data.SqlClient.SqlParameter("@StartDate", education.StartDate),
+                    new System.Data.SqlClient.SqlParameter("@EndDate", (object)education.EndDate ?? DBNull.Value),
+                    new System.Data.SqlClient.SqlParameter("@IsActive", education.IsActive),
+                    new System.Data.SqlClient.SqlParameter("@DisplayOrder", 1)
+                };
+
+                return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -195,20 +237,34 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Update existing education (placeholder for database integration)
+        /// Update existing education
         /// </summary>
         private bool UpdateEducation(EducationModel education)
         {
             try
             {
-                // In a real application, this would update database
-                // For now, we'll just simulate success
-                System.Diagnostics.Debug.WriteLine($"Updating education: {education.Degree} at {education.Institution}");
-                
-                // Simulate database operation
-                System.Threading.Thread.Sleep(500);
-                
-                return true;
+                if (!DatabaseHelper.TestConnection())
+                {
+                    return false;
+                }
+
+                var query = @"UPDATE Education SET InstitutionName = @Institution, Degree = @Degree, 
+                             FieldOfStudy = @FieldOfStudy, StartDate = @StartDate, EndDate = @EndDate, 
+                             IsActive = @IsActive, UpdatedDate = GETDATE()
+                             WHERE EducationId = @EducationId";
+
+                var parameters = new[]
+                {
+                    new System.Data.SqlClient.SqlParameter("@Institution", education.Institution),
+                    new System.Data.SqlClient.SqlParameter("@Degree", education.Degree),
+                    new System.Data.SqlClient.SqlParameter("@FieldOfStudy", education.FieldOfStudy),
+                    new System.Data.SqlClient.SqlParameter("@StartDate", education.StartDate),
+                    new System.Data.SqlClient.SqlParameter("@EndDate", (object)education.EndDate ?? DBNull.Value),
+                    new System.Data.SqlClient.SqlParameter("@IsActive", education.IsActive),
+                    new System.Data.SqlClient.SqlParameter("@EducationId", education.EducationId)
+                };
+
+                return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -217,25 +273,16 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Clear form fields
-        /// </summary>
         private void ClearForm()
         {
-            ddlType.SelectedIndex = 0;
+            txtInstitution.Text = "";
             txtDegree.Text = "";
             txtFieldOfStudy.Text = "";
-            txtInstitution.Text = "";
-            txtLocation.Text = "";
             txtStartDate.Text = "";
             txtEndDate.Text = "";
-            txtGPA.Text = "";
             chkIsActive.Checked = true;
         }
 
-        /// <summary>
-        /// Show success message
-        /// </summary>
         private void ShowSuccess(string message)
         {
             ltlSuccessMessage.Text = message;
@@ -244,9 +291,6 @@ namespace WebApplication1
             pnlMessages.Visible = true;
         }
 
-        /// <summary>
-        /// Show error message
-        /// </summary>
         private void ShowError(string message)
         {
             ltlErrorMessage.Text = message;
@@ -255,9 +299,6 @@ namespace WebApplication1
             pnlMessages.Visible = true;
         }
 
-        /// <summary>
-        /// Show info message
-        /// </summary>
         private void ShowInfo(string message)
         {
             ltlSuccessMessage.Text = message;
@@ -266,9 +307,6 @@ namespace WebApplication1
             pnlMessages.Visible = true;
         }
 
-        /// <summary>
-        /// Log admin activity
-        /// </summary>
         private void LogAdminActivity(string activity)
         {
             try

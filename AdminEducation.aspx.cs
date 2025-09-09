@@ -13,7 +13,6 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if admin is logged in
             if (!AdminLogin.IsAdminLoggedIn())
             {
                 Response.Redirect("AdminLogin.aspx");
@@ -26,7 +25,6 @@ namespace WebApplication1
             }
             else
             {
-                // Log postback events for debugging
                 System.Diagnostics.Debug.WriteLine($"AdminEducation postback occurred. EventTarget: {Request.Form["__EVENTTARGET"]}");
             }
         }
@@ -38,13 +36,12 @@ namespace WebApplication1
         {
             try
             {
-                List<EducationModel> educationList = GetSampleEducation();
+                List<EducationModel> educationList = GetEducationFromDatabase();
                 System.Diagnostics.Debug.WriteLine($"Admin: Loaded {educationList.Count} education records.");
 
                 gvEducation.DataSource = educationList;
                 gvEducation.DataBind();
 
-                // Log the admin action
                 LogAdminActivity($"Viewed education list ({educationList.Count} records)");
 
             }
@@ -56,70 +53,67 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Get sample education for demonstration
+        /// Get education from database
         /// </summary>
-        private List<EducationModel> GetSampleEducation()
+        private List<EducationModel> GetEducationFromDatabase()
         {
-            return new List<EducationModel>
+            var educationList = new List<EducationModel>();
+            try
             {
-                new EducationModel
+                if (!DatabaseHelper.TestConnection() || !DatabaseHelper.TableExists("Education"))
                 {
-                    EducationId = 1,
-                    Degree = "Bachelor of Science in Computer Science",
-                    FieldOfStudy = "Computer Science",
-                    Institution = "University of Technology",
-                    Location = "Dhaka, Bangladesh",
-                    StartDate = new DateTime(2018, 1, 15),
-                    EndDate = new DateTime(2022, 6, 30),
-                    GPA = "3.75",
-                    Type = "Degree",
-                    IsActive = true
-                },
-                new EducationModel
-                {
-                    EducationId = 2,
-                    Degree = "Microsoft Certified: Azure Fundamentals",
-                    FieldOfStudy = "Cloud Computing",
-                    Institution = "Microsoft",
-                    Location = "Online",
-                    StartDate = new DateTime(2023, 10, 1),
-                    EndDate = new DateTime(2023, 11, 15),
-                    GPA = "Pass",
-                    Type = "Certification",
-                    IsActive = true
-                },
-                new EducationModel
-                {
-                    EducationId = 3,
-                    Degree = "Full Stack Web Development",
-                    FieldOfStudy = "Web Development",
-                    Institution = "Programming Hero",
-                    Location = "Online",
-                    StartDate = new DateTime(2022, 7, 1),
-                    EndDate = new DateTime(2023, 2, 28),
-                    GPA = "A+",
-                    Type = "Course",
-                    IsActive = true
-                },
-                new EducationModel
-                {
-                    EducationId = 4,
-                    Degree = "Higher Secondary Certificate",
-                    FieldOfStudy = "Science",
-                    Institution = "Dhaka College",
-                    Location = "Dhaka, Bangladesh",
-                    StartDate = new DateTime(2016, 7, 1),
-                    EndDate = new DateTime(2018, 6, 30),
-                    GPA = "5.00",
-                    Type = "Degree",
-                    IsActive = false
+                    return educationList;
                 }
-            };
+
+                var query = "SELECT EducationId, InstitutionName, Degree, FieldOfStudy, StartDate, EndDate, GPA, Location, IsActive, DisplayOrder, CreatedDate, UpdatedDate FROM Education ORDER BY DisplayOrder, StartDate DESC";
+                var dt = DatabaseHelper.ExecuteQuery(query);
+                
+                foreach (DataRow row in dt.Rows)
+                {
+                    educationList.Add(new EducationModel
+                    {
+                        EducationId = Convert.ToInt32(row["EducationId"]),
+                        Institution = row["InstitutionName"].ToString(),
+                        Degree = row["Degree"].ToString(),
+                        FieldOfStudy = row["FieldOfStudy"]?.ToString() ?? "",
+                        StartDate = Convert.ToDateTime(row["StartDate"]),
+                        EndDate = row["EndDate"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(row["EndDate"]),
+                        GPA = row["GPA"]?.ToString() ?? "",
+                        Location = row["Location"]?.ToString() ?? "",
+                        Type = GetEducationType(row["Degree"].ToString()),
+                        IsActive = Convert.ToBoolean(row["IsActive"]),
+                        CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
+                        UpdatedDate = Convert.ToDateTime(row["UpdatedDate"])
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error getting education from database: {ex.Message}");
+            }
+            
+            return educationList;
         }
 
         /// <summary>
-        /// Handle grid view row command
+        /// Get education type from degree name
         /// </summary>
+        private string GetEducationType(string degree)
+        {
+            if (string.IsNullOrEmpty(degree)) return "Course";
+            
+            var lowerDegree = degree.ToLower();
+            if (lowerDegree.Contains("bachelor") || lowerDegree.Contains("master") || lowerDegree.Contains("phd") || 
+                lowerDegree.Contains("diploma") || lowerDegree.Contains("certificate") && lowerDegree.Contains("secondary"))
+                return "Degree";
+            else if (lowerDegree.Contains("certified") || lowerDegree.Contains("certification"))
+                return "Certification";
+            else if (lowerDegree.Contains("training") || lowerDegree.Contains("workshop"))
+                return "Training";
+            else
+                return "Course";
+        }
+
         protected void gvEducation_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -146,9 +140,6 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Handle grid view row data bound
-        /// </summary>
         protected void gvEducation_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -157,12 +148,8 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Edit education
-        /// </summary>
         private void EditEducation(int educationId)
         {
-            // Redirect to the education form (will be created)
             Response.Redirect($"AdminEducationForm.aspx?id={educationId}");
         }
 
@@ -173,10 +160,26 @@ namespace WebApplication1
         {
             try
             {
-                // For now, just show a success message (later will update database)
-                ShowSuccess($"Education status toggled successfully. (Education ID: {educationId})");
-                LogAdminActivity($"Toggled status for education ID: {educationId}");
-                LoadEducation(); // Refresh grid
+                if (!DatabaseHelper.TestConnection())
+                {
+                    ShowError("Database connection failed.");
+                    return;
+                }
+
+                var query = "UPDATE Education SET IsActive = CASE WHEN IsActive = 1 THEN 0 ELSE 1 END, UpdatedDate = GETDATE() WHERE EducationId = @EducationId";
+                var parameters = new[] { new System.Data.SqlClient.SqlParameter("@EducationId", educationId) };
+                
+                int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
+                if (rowsAffected > 0)
+                {
+                    ShowSuccess("Education status updated successfully.");
+                    LogAdminActivity($"Toggled status for education ID: {educationId}");
+                    LoadEducation();
+                }
+                else
+                {
+                    ShowError("Failed to update education status.");
+                }
             }
             catch (Exception ex)
             {
@@ -192,10 +195,26 @@ namespace WebApplication1
         {
             try
             {
-                // For now, just show a success message (later will update database)
-                ShowSuccess($"Education deleted successfully. (Education ID: {educationId})");
-                LogAdminActivity($"Deleted education ID: {educationId}");
-                LoadEducation(); // Refresh grid
+                if (!DatabaseHelper.TestConnection())
+                {
+                    ShowError("Database connection failed.");
+                    return;
+                }
+
+                var query = "DELETE FROM Education WHERE EducationId = @EducationId";
+                var parameters = new[] { new System.Data.SqlClient.SqlParameter("@EducationId", educationId) };
+                
+                int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
+                if (rowsAffected > 0)
+                {
+                    ShowSuccess("Education deleted successfully.");
+                    LogAdminActivity($"Deleted education ID: {educationId}");
+                    LoadEducation();
+                }
+                else
+                {
+                    ShowError("Failed to delete education.");
+                }
             }
             catch (Exception ex)
             {
@@ -204,19 +223,12 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Handle add education button click
-        /// </summary>
         protected void btnAddEducation_Click(object sender, EventArgs e)
         {
             try
             {
-                // Log the button click for debugging
                 System.Diagnostics.Debug.WriteLine("Add Education button clicked by admin: " + AdminLogin.GetAdminUsername());
                 LogAdminActivity("Clicked Add New Education button");
-                
-                // Redirect to the add form (will be created)
-                System.Diagnostics.Debug.WriteLine("Redirecting to AdminEducationForm.aspx");
                 Response.Redirect("AdminEducationForm.aspx");
             }
             catch (Exception ex)
@@ -226,18 +238,12 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Handle refresh button click
-        /// </summary>
         protected void btnRefreshEducation_Click(object sender, EventArgs e)
         {
             LoadEducation();
             ShowSuccess("Education list refreshed successfully.");
         }
 
-        /// <summary>
-        /// Get education icon based on type
-        /// </summary>
         protected string GetEducationIcon(string type)
         {
             switch (type?.ToLower())
@@ -255,9 +261,6 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Get education class based on type
-        /// </summary>
         protected string GetEducationClass(string type)
         {
             switch (type?.ToLower())
@@ -275,9 +278,6 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Get duration string from start and end dates
-        /// </summary>
         protected string GetDuration(DateTime startDate, DateTime? endDate)
         {
             DateTime end = endDate ?? DateTime.Now;
@@ -301,9 +301,6 @@ namespace WebApplication1
             }
         }
 
-        /// <summary>
-        /// Show success message
-        /// </summary>
         private void ShowSuccess(string message)
         {
             ltlSuccessMessage.Text = message;
@@ -312,9 +309,6 @@ namespace WebApplication1
             pnlMessages.Visible = true;
         }
 
-        /// <summary>
-        /// Show error message
-        /// </summary>
         private void ShowError(string message)
         {
             ltlErrorMessage.Text = message;
@@ -323,9 +317,6 @@ namespace WebApplication1
             pnlMessages.Visible = true;
         }
 
-        /// <summary>
-        /// Log admin activity
-        /// </summary>
         private void LogAdminActivity(string activity)
         {
             try

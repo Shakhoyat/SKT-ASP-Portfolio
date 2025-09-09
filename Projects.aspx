@@ -72,11 +72,11 @@
                 <asp:Repeater ID="rptProjects" runat="server">
                     <ItemTemplate>
                         <div class="project-card project-item" data-category="<%# Eval("Category") %>">
-                            <div class="project-image <%= Eval("ImageStyleClass") %>">
+                            <div class="project-image <%# Eval("ImageStyleClass") %>">
                                 <i class="fas fa-project-diagram"></i>
                                 <div class="project-overlay">
                                     <div class="project-actions">
-                                        <a href="#" class="project-btn" onclick="showDbProjectDetails('<%# Eval("ProjectId") %>'); return false;">
+                                        <a href="#" class="project-btn" onclick='showDbProjectDetails("<%# Eval("ProjectId") %>"); return false;'>
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <%# string.IsNullOrEmpty(Eval("GitHubUrl") as string) ? "" : "<a href='" + Eval("GitHubUrl") + "' target='_blank' class='project-btn'><i class='fab fa-github'></i></a>" %>
@@ -87,7 +87,7 @@
                             <div class="project-content">
                                 <div class="project-header">
                                     <h3 class="project-title"><%# Eval("Title") %></h3>
-                                    <span class="project-status <%= Eval("StatusCss") %>"><%# Eval("StatusText") %></span>
+                                    <span class="project-status <%# Eval("StatusCss") %>"><%# Eval("StatusText") %></span>
                                 </div>
                                 <p class="project-description"><%# Eval("ShortDescription") %></p>
                                 <div class="project-tech-stack">

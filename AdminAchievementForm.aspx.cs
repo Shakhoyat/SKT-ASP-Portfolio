@@ -39,6 +39,47 @@ namespace WebApplication1
         }
 
         /// <summary>
+        /// Get achievement by ID from database
+        /// </summary>
+        private AchievementModel GetAchievementById(int achievementId)
+        {
+            try
+            {
+                if (!DatabaseHelper.TestConnection())
+                {
+                    return null;
+                }
+
+                var query = "SELECT * FROM Achievements WHERE AchievementId = @AchievementId";
+                var parameters = new[] { new System.Data.SqlClient.SqlParameter("@AchievementId", achievementId) };
+                
+                var dt = DatabaseHelper.ExecuteQuery(query, parameters);
+                if (dt.Rows.Count > 0)
+                {
+                    var row = dt.Rows[0];
+                    return new AchievementModel
+                    {
+                        AchievementId = Convert.ToInt32(row["AchievementId"]),
+                        Title = row["Title"].ToString(),
+                        Type = row["AchievementType"]?.ToString() ?? "",
+                        Organization = row["Organization"]?.ToString() ?? "",
+                        AchievementDate = Convert.ToDateTime(row["AchievementDate"]),
+                        Description = row["Description"]?.ToString() ?? "",
+                        IsActive = Convert.ToBoolean(row["IsActive"]),
+                        CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
+                        UpdatedDate = Convert.ToDateTime(row["UpdatedDate"])
+                    };
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error getting achievement by ID: {ex.Message}");
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Load achievement data for editing (if ID is provided)
         /// </summary>
         private void LoadAchievementData()
@@ -175,20 +216,34 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Create new achievement (placeholder for database integration)
+        /// Create new achievement
         /// </summary>
         private bool CreateAchievement(AchievementModel achievement)
         {
             try
             {
-                // In a real application, this would save to database
-                // For now, we'll just simulate success
-                System.Diagnostics.Debug.WriteLine($"Creating achievement: {achievement.Title}");
-                
-                // Simulate database operation
-                System.Threading.Thread.Sleep(500);
-                
-                return true;
+                if (!DatabaseHelper.TestConnection())
+                {
+                    return false;
+                }
+
+                var query = @"INSERT INTO Achievements (Title, AchievementType, Organization, AchievementDate, 
+                             Description, IsActive, DisplayOrder, CreatedDate, UpdatedDate)
+                             VALUES (@Title, @Type, @Organization, @AchievementDate, @Description, 
+                             @IsActive, @DisplayOrder, GETDATE(), GETDATE())";
+
+                var parameters = new[]
+                {
+                    new System.Data.SqlClient.SqlParameter("@Title", achievement.Title),
+                    new System.Data.SqlClient.SqlParameter("@Type", achievement.Type),
+                    new System.Data.SqlClient.SqlParameter("@Organization", achievement.Organization),
+                    new System.Data.SqlClient.SqlParameter("@AchievementDate", achievement.AchievementDate),
+                    new System.Data.SqlClient.SqlParameter("@Description", achievement.Description),
+                    new System.Data.SqlClient.SqlParameter("@IsActive", achievement.IsActive),
+                    new System.Data.SqlClient.SqlParameter("@DisplayOrder", 1)
+                };
+
+                return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {
@@ -198,20 +253,34 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Update existing achievement (placeholder for database integration)
+        /// Update existing achievement
         /// </summary>
         private bool UpdateAchievement(AchievementModel achievement)
         {
             try
             {
-                // In a real application, this would update database
-                // For now, we'll just simulate success
-                System.Diagnostics.Debug.WriteLine($"Updating achievement: {achievement.Title}");
-                
-                // Simulate database operation
-                System.Threading.Thread.Sleep(500);
-                
-                return true;
+                if (!DatabaseHelper.TestConnection())
+                {
+                    return false;
+                }
+
+                var query = @"UPDATE Achievements SET Title = @Title, AchievementType = @Type, 
+                             Organization = @Organization, AchievementDate = @AchievementDate, 
+                             Description = @Description, IsActive = @IsActive, UpdatedDate = GETDATE()
+                             WHERE AchievementId = @AchievementId";
+
+                var parameters = new[]
+                {
+                    new System.Data.SqlClient.SqlParameter("@Title", achievement.Title),
+                    new System.Data.SqlClient.SqlParameter("@Type", achievement.Type),
+                    new System.Data.SqlClient.SqlParameter("@Organization", achievement.Organization),
+                    new System.Data.SqlClient.SqlParameter("@AchievementDate", achievement.AchievementDate),
+                    new System.Data.SqlClient.SqlParameter("@Description", achievement.Description),
+                    new System.Data.SqlClient.SqlParameter("@IsActive", achievement.IsActive),
+                    new System.Data.SqlClient.SqlParameter("@AchievementId", achievement.AchievementId)
+                };
+
+                return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
             }
             catch (Exception ex)
             {

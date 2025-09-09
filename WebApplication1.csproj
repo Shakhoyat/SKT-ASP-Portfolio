@@ -90,6 +90,7 @@
     <Content Include="Content\placeholder-styles.css" />
     <Content Include="Content\Site.css" />
     <Content Include="DatabaseSetup.aspx" />
+    <Content Include="Database\CreateAdminTables.sql" />
     <Content Include="Database\PortfolioSchema.sql" />
     <Content Include="database_test_results.aspx" />
     <Content Include="Default.aspx" />
@@ -281,6 +282,7 @@
     <Content Include="Content\images\README.md" />
     <Content Include="Content\docs\README.md" />
     <Content Include="fix-roslyn.ps1" />
+    <Content Include="ADMIN_IMPLEMENTATION_COMPLETE.md" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="README.md" />

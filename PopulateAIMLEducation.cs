@@ -16,59 +16,44 @@ namespace EducationPopulator
     
     class Program
     {
-        private static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=personal-portfolio-ASP; Integrated Security=True; Connect Timeout=30; Encrypt=False; TrustServerCertificate=True";
+        private static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=personal-portfolio-ASP; Integrated Security=True";
         
         static void Main(string[] args)
         {
-            Console.WriteLine("=================================");
             Console.WriteLine("AI/ML EDUCATION POPULATOR");
-            Console.WriteLine("=================================");
             Console.WriteLine();
             
             try
             {
-                List<AIMLEducation> educationRecords = GetAIMLEducation();
+                var education = GetEducation();
+                Console.WriteLine($"Adding {education.Count} education records...");
                 
-                Console.WriteLine($"Preparing to add {educationRecords.Count} education records to your portfolio...");
-                Console.WriteLine();
-                
-                int successCount = 0;
-                foreach (var education in educationRecords)
+                int success = 0;
+                foreach (var edu in education)
                 {
                     try
                     {
-                        int educationId = InsertEducation(education);
-                        Console.WriteLine($"? Added: {education.Degree} in {education.FieldOfStudy} from {education.InstitutionName} - ID: {educationId}");
-                        successCount++;
+                        int id = InsertEducation(edu);
+                        Console.WriteLine($"Added: {edu.Degree} - {edu.InstitutionName}");
+                        success++;
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"? Failed to add: {education.Degree} - {ex.Message}");
+                        Console.WriteLine($"Failed: {edu.Degree} - {ex.Message}");
                     }
                 }
                 
-                Console.WriteLine();
-                Console.WriteLine($"Successfully added {successCount} out of {educationRecords.Count} education records!");
-                Console.WriteLine();
-                Console.WriteLine("Your portfolio now includes education in:");
-                Console.WriteLine("• Computer Science & AI");
-                Console.WriteLine("• Advanced Machine Learning");
-                Console.WriteLine("• Data Science & Analytics");
-                Console.WriteLine("• Professional Certifications");
-                
+                Console.WriteLine($"\nSuccessfully added {success}/{education.Count} education records!");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"ERROR: {ex.Message}");
-                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
             
-            Console.WriteLine();
-            Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
         
-        static List<AIMLEducation> GetAIMLEducation()
+        static List<AIMLEducation> GetEducation()
         {
             return new List<AIMLEducation>
             {
@@ -76,7 +61,7 @@ namespace EducationPopulator
                 {
                     InstitutionName = "Stanford University",
                     Degree = "Master of Science",
-                    FieldOfStudy = "Computer Science - Artificial Intelligence",
+                    FieldOfStudy = "Computer Science - AI",
                     StartDate = new DateTime(2020, 9, 1),
                     EndDate = new DateTime(2022, 6, 15),
                     DisplayOrder = 1
@@ -84,9 +69,9 @@ namespace EducationPopulator
                 
                 new AIMLEducation
                 {
-                    InstitutionName = "MIT (Massachusetts Institute of Technology)",
+                    InstitutionName = "MIT",
                     Degree = "Bachelor of Science",
-                    FieldOfStudy = "Computer Science and Engineering",
+                    FieldOfStudy = "Computer Science",
                     StartDate = new DateTime(2016, 9, 1),
                     EndDate = new DateTime(2020, 5, 30),
                     DisplayOrder = 2
@@ -100,81 +85,29 @@ namespace EducationPopulator
                     StartDate = new DateTime(2023, 1, 15),
                     EndDate = new DateTime(2023, 6, 30),
                     DisplayOrder = 3
-                },
-                
-                new AIMLEducation
-                {
-                    InstitutionName = "edX - Harvard University",
-                    Degree = "Professional Certificate",
-                    FieldOfStudy = "Data Science and Machine Learning",
-                    StartDate = new DateTime(2022, 8, 1),
-                    EndDate = new DateTime(2023, 2, 28),
-                    DisplayOrder = 4
-                },
-                
-                new AIMLEducation
-                {
-                    InstitutionName = "Udacity",
-                    Degree = "Nanodegree",
-                    FieldOfStudy = "Machine Learning Engineer",
-                    StartDate = new DateTime(2021, 3, 1),
-                    EndDate = new DateTime(2021, 9, 30),
-                    DisplayOrder = 5
-                },
-                
-                new AIMLEducation
-                {
-                    InstitutionName = "Fast.ai",
-                    Degree = "Course Completion",
-                    FieldOfStudy = "Practical Deep Learning for Coders",
-                    StartDate = new DateTime(2022, 1, 10),
-                    EndDate = new DateTime(2022, 4, 15),
-                    DisplayOrder = 6
-                },
-                
-                new AIMLEducation
-                {
-                    InstitutionName = "Google Cloud",
-                    Degree = "Professional Certificate",
-                    FieldOfStudy = "Machine Learning Engineering",
-                    StartDate = new DateTime(2023, 3, 1),
-                    EndDate = new DateTime(2023, 8, 31),
-                    DisplayOrder = 7
-                },
-                
-                new AIMLEducation
-                {
-                    InstitutionName = "AWS Training",
-                    Degree = "Certification",
-                    FieldOfStudy = "Machine Learning Specialty",
-                    StartDate = new DateTime(2022, 10, 1),
-                    EndDate = new DateTime(2023, 1, 31),
-                    DisplayOrder = 8
                 }
             };
         }
         
         static int InsertEducation(AIMLEducation education)
         {
-            string query = @"
-                INSERT INTO Education (InstitutionName, Degree, FieldOfStudy, StartDate, EndDate, IsActive, DisplayOrder)
-                VALUES (@InstitutionName, @Degree, @FieldOfStudy, @StartDate, @EndDate, @IsActive, @DisplayOrder);
-                SELECT SCOPE_IDENTITY();";
+            var query = @"INSERT INTO Education (InstitutionName, Degree, FieldOfStudy, StartDate, EndDate, IsActive, DisplayOrder)
+                         VALUES (@InstitutionName, @Degree, @FieldOfStudy, @StartDate, @EndDate, 1, @DisplayOrder);
+                         SELECT SCOPE_IDENTITY()";
             
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var conn = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (var cmd = new SqlCommand(query, conn))
                 {
-                    command.Parameters.AddWithValue("@InstitutionName", education.InstitutionName);
-                    command.Parameters.AddWithValue("@Degree", education.Degree);
-                    command.Parameters.AddWithValue("@FieldOfStudy", education.FieldOfStudy);
-                    command.Parameters.AddWithValue("@StartDate", education.StartDate);
-                    command.Parameters.AddWithValue("@EndDate", (object)education.EndDate ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@IsActive", true);
-                    command.Parameters.AddWithValue("@DisplayOrder", education.DisplayOrder);
+                    cmd.Parameters.AddWithValue("@InstitutionName", education.InstitutionName);
+                    cmd.Parameters.AddWithValue("@Degree", education.Degree);
+                    cmd.Parameters.AddWithValue("@FieldOfStudy", education.FieldOfStudy);
+                    cmd.Parameters.AddWithValue("@StartDate", education.StartDate);
+                    cmd.Parameters.AddWithValue("@EndDate", (object)education.EndDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DisplayOrder", education.DisplayOrder);
                     
-                    connection.Open();
-                    return Convert.ToInt32(command.ExecuteScalar());
+                    conn.Open();
+                    return Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
         }

@@ -38,7 +38,7 @@ namespace WebApplication1
         {
             try
             {
-                List<SkillModel> skills = GetSampleSkills();
+                List<SkillModel> skills = GetSkillsFromDatabase();
                 System.Diagnostics.Debug.WriteLine($"Admin: Loaded {skills.Count} skills.");
 
                 gvSkills.DataSource = skills;
@@ -56,58 +56,58 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Get sample skills for demonstration
+        /// Get skills from database
         /// </summary>
-        private List<SkillModel> GetSampleSkills()
+        private List<SkillModel> GetSkillsFromDatabase()
         {
-            return new List<SkillModel>
+            var skills = new List<SkillModel>();
+            try
             {
-                new SkillModel
+                if (!DatabaseHelper.TestConnection() || !DatabaseHelper.TableExists("Skills"))
                 {
-                    SkillId = 1,
-                    SkillName = "C#",
-                    Category = "Programming",
-                    ProficiencyLevel = 90,
-                    Description = "Advanced knowledge of C# and .NET Framework",
-                    IsActive = true
-                },
-                new SkillModel
-                {
-                    SkillId = 2,
-                    SkillName = "ASP.NET Web Forms",
-                    Category = "Framework",
-                    ProficiencyLevel = 85,
-                    Description = "Experienced in building web applications",
-                    IsActive = true
-                },
-                new SkillModel
-                {
-                    SkillId = 3,
-                    SkillName = "SQL Server",
-                    Category = "Database",
-                    ProficiencyLevel = 80,
-                    Description = "Database design and T-SQL programming",
-                    IsActive = true
-                },
-                new SkillModel
-                {
-                    SkillId = 4,
-                    SkillName = "JavaScript",
-                    Category = "Programming",
-                    ProficiencyLevel = 75,
-                    Description = "Frontend programming and DOM manipulation",
-                    IsActive = true
-                },
-                new SkillModel
-                {
-                    SkillId = 5,
-                    SkillName = "HTML/CSS",
-                    Category = "Frontend",
-                    ProficiencyLevel = 85,
-                    Description = "Responsive web design and modern CSS",
-                    IsActive = true
+                    return skills; // Return empty list if no database
                 }
-            };
+
+                var query = "SELECT SkillId, SkillName, SkillLevel, CategoryId, IsActive, DisplayOrder, CreatedDate, UpdatedDate FROM Skills ORDER BY DisplayOrder, SkillName";
+                var dt = DatabaseHelper.ExecuteQuery(query);
+                
+                foreach (DataRow row in dt.Rows)
+                {
+                    skills.Add(new SkillModel
+                    {
+                        SkillId = Convert.ToInt32(row["SkillId"]),
+                        SkillName = row["SkillName"].ToString(),
+                        Category = GetCategoryName(Convert.ToInt32(row["CategoryId"])),
+                        ProficiencyLevel = Convert.ToInt32(row["SkillLevel"]),
+                        Description = "", // Description not stored in Skills table
+                        IsActive = Convert.ToBoolean(row["IsActive"]),
+                        CreatedDate = Convert.ToDateTime(row["CreatedDate"]),
+                        UpdatedDate = Convert.ToDateTime(row["UpdatedDate"])
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error getting skills from database: {ex.Message}");
+            }
+            
+            return skills;
+        }
+
+        /// <summary>
+        /// Get category name from category ID
+        /// </summary>
+        private string GetCategoryName(int categoryId)
+        {
+            switch (categoryId)
+            {
+                case 1: return "Programming";
+                case 2: return "Framework";
+                case 3: return "Database";
+                case 4: return "Frontend";
+                case 5: return "Tools";
+                default: return "Programming";
+            }
         }
 
         /// <summary>
@@ -155,7 +155,6 @@ namespace WebApplication1
         /// </summary>
         private void EditSkill(int skillId)
         {
-            // Redirect to the skill form (will be created)
             Response.Redirect($"AdminSkillForm.aspx?id={skillId}");
         }
 
@@ -166,10 +165,26 @@ namespace WebApplication1
         {
             try
             {
-                // For now, just show a success message (later will update database)
-                ShowSuccess($"Skill status toggled successfully. (Skill ID: {skillId})");
-                LogAdminActivity($"Toggled status for skill ID: {skillId}");
-                LoadSkills(); // Refresh grid
+                if (!DatabaseHelper.TestConnection())
+                {
+                    ShowError("Database connection failed.");
+                    return;
+                }
+
+                var query = "UPDATE Skills SET IsActive = CASE WHEN IsActive = 1 THEN 0 ELSE 1 END, UpdatedDate = GETDATE() WHERE SkillId = @SkillId";
+                var parameters = new[] { new System.Data.SqlClient.SqlParameter("@SkillId", skillId) };
+                
+                int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
+                if (rowsAffected > 0)
+                {
+                    ShowSuccess("Skill status updated successfully.");
+                    LogAdminActivity($"Toggled status for skill ID: {skillId}");
+                    LoadSkills(); // Refresh grid
+                }
+                else
+                {
+                    ShowError("Failed to update skill status.");
+                }
             }
             catch (Exception ex)
             {
@@ -185,10 +200,26 @@ namespace WebApplication1
         {
             try
             {
-                // For now, just show a success message (later will update database)
-                ShowSuccess($"Skill deleted successfully. (Skill ID: {skillId})");
-                LogAdminActivity($"Deleted skill ID: {skillId}");
-                LoadSkills(); // Refresh grid
+                if (!DatabaseHelper.TestConnection())
+                {
+                    ShowError("Database connection failed.");
+                    return;
+                }
+
+                var query = "DELETE FROM Skills WHERE SkillId = @SkillId";
+                var parameters = new[] { new System.Data.SqlClient.SqlParameter("@SkillId", skillId) };
+                
+                int rowsAffected = DatabaseHelper.ExecuteNonQuery(query, parameters);
+                if (rowsAffected > 0)
+                {
+                    ShowSuccess("Skill deleted successfully.");
+                    LogAdminActivity($"Deleted skill ID: {skillId}");
+                    LoadSkills(); // Refresh grid
+                }
+                else
+                {
+                    ShowError("Failed to delete skill.");
+                }
             }
             catch (Exception ex)
             {
@@ -204,12 +235,8 @@ namespace WebApplication1
         {
             try
             {
-                // Log the button click for debugging
                 System.Diagnostics.Debug.WriteLine("Add Skill button clicked by admin: " + AdminLogin.GetAdminUsername());
                 LogAdminActivity("Clicked Add New Skill button");
-                
-                // Redirect to the add form (will be created)
-                System.Diagnostics.Debug.WriteLine("Redirecting to AdminSkillForm.aspx");
                 Response.Redirect("AdminSkillForm.aspx");
             }
             catch (Exception ex)

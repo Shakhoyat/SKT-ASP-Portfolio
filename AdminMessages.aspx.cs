@@ -41,8 +41,8 @@ namespace WebApplication1
                 }
                 else
                 {
-                    // Load sample data for demonstration
-                    messages = GetSampleMessages();
+                    // Return empty list if no database available
+                    messages = new List<ContactMessage>();
                 }
 
                 if (messages.Count > 0)
@@ -76,9 +76,10 @@ namespace WebApplication1
             try
             {
                 string query = @"
-                    SELECT ContactMessageId, Name, Email, Phone, Subject, Message, IsRead, CreatedDate
+                    SELECT MessageId, Name, Email, Phone, Subject, MessageBody, ProjectType, 
+                           IsRead, IsReplied, MessageDate, AdminNotes
                     FROM ContactMessages 
-                    ORDER BY CreatedDate DESC";
+                    ORDER BY MessageDate DESC";
 
                 DataTable dt = DatabaseHelper.ExecuteQuery(query);
 
@@ -86,14 +87,14 @@ namespace WebApplication1
                 {
                     messages.Add(new ContactMessage
                     {
-                        ContactMessageId = Convert.ToInt32(row["ContactMessageId"]),
+                        ContactMessageId = Convert.ToInt32(row["MessageId"]),
                         Name = row["Name"].ToString(),
                         Email = row["Email"].ToString(),
                         Phone = row["Phone"]?.ToString(),
-                        Subject = row["Subject"].ToString(),
-                        Message = row["Message"].ToString(),
+                        Subject = row["Subject"]?.ToString() ?? GetSubjectFromProjectType(row["ProjectType"]?.ToString()),
+                        Message = row["MessageBody"].ToString(),
                         IsRead = Convert.ToBoolean(row["IsRead"]),
-                        CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+                        CreatedDate = Convert.ToDateTime(row["MessageDate"])
                     });
                 }
             }
@@ -106,46 +107,20 @@ namespace WebApplication1
         }
 
         /// <summary>
-        /// Get sample messages for demonstration
+        /// Get subject from project type
         /// </summary>
-        private List<ContactMessage> GetSampleMessages()
+        private string GetSubjectFromProjectType(string projectType)
         {
-            return new List<ContactMessage>
+            switch (projectType?.ToLower())
             {
-                new ContactMessage
-                {
-                    ContactMessageId = 1,
-                    Name = "John Smith",
-                    Email = "john.smith@example.com",
-                    Phone = "+1 (555) 123-4567",
-                    Subject = "project",
-                    Message = "Hi Shakhoyat,\n\nI'm interested in discussing a potential web development project for my small business. We need an e-commerce platform similar to what you've showcased in your portfolio.\n\nCould we schedule a call to discuss the requirements and timeline?\n\nBest regards,\nJohn",
-                    IsRead = false,
-                    CreatedDate = DateTime.Now.AddHours(-2)
-                },
-                new ContactMessage
-                {
-                    ContactMessageId = 2,
-                    Name = "Sarah Johnson",
-                    Email = "sarah.j@techcorp.com",
-                    Phone = null,
-                    Subject = "freelance",
-                    Message = "Hello,\n\nWe have a freelance opportunity for an ASP.NET developer. The project involves modernizing our existing web application.\n\nPlease let me know if you're interested in learning more about this opportunity.\n\nThanks!",
-                    IsRead = true,
-                    CreatedDate = DateTime.Now.AddDays(-1)
-                },
-                new ContactMessage
-                {
-                    ContactMessageId = 3,
-                    Name = "Mike Davis",
-                    Email = "mike.davis@startup.io",
-                    Phone = "+1 (555) 987-6543",
-                    Subject = "consultation",
-                    Message = "Hi there!\n\nI found your portfolio online and I'm impressed with your work. We're a startup looking for technical consultation on our MVP development.\n\nWould you be available for a consultation session next week?",
-                    IsRead = false,
-                    CreatedDate = DateTime.Now.AddDays(-3)
-                }
-            };
+                case "datascience": return "Data Science Project";
+                case "machinelearning": return "Machine Learning Project";
+                case "web": return "Web Development";
+                case "iot": return "IoT Project";
+                case "research": return "Research Collaboration";
+                case "consultation": return "Technical Consultation";
+                default: return "General Inquiry";
+            }
         }
 
         /// <summary>
@@ -222,7 +197,10 @@ namespace WebApplication1
             {
                 if (DatabaseHelper.TestConnection() && DatabaseHelper.TableExists("ContactMessages"))
                 {
-                    string query = "UPDATE ContactMessages SET IsRead = ~IsRead WHERE ContactMessageId = @MessageId";
+                    string query = @"UPDATE ContactMessages 
+                                   SET IsRead = CASE WHEN IsRead = 1 THEN 0 ELSE 1 END, 
+                                       ReadDate = CASE WHEN IsRead = 0 THEN GETDATE() ELSE NULL END
+                                   WHERE MessageId = @MessageId";
                     var parameters = new System.Data.SqlClient.SqlParameter[]
                     {
                         new System.Data.SqlClient.SqlParameter("@MessageId", messageId)
@@ -233,7 +211,7 @@ namespace WebApplication1
                     {
                         ShowSuccess("Message status updated successfully.");
                         LogAdminActivity($"Toggled read status for message ID: {messageId}");
-                        LoadMessages(); // Refresh list
+                        LoadMessages();
                     }
                     else
                     {
@@ -261,7 +239,7 @@ namespace WebApplication1
             {
                 if (DatabaseHelper.TestConnection() && DatabaseHelper.TableExists("ContactMessages"))
                 {
-                    string query = "DELETE FROM ContactMessages WHERE ContactMessageId = @MessageId";
+                    string query = "DELETE FROM ContactMessages WHERE MessageId = @MessageId";
                     var parameters = new System.Data.SqlClient.SqlParameter[]
                     {
                         new System.Data.SqlClient.SqlParameter("@MessageId", messageId)
@@ -272,7 +250,7 @@ namespace WebApplication1
                     {
                         ShowSuccess("Message deleted successfully.");
                         LogAdminActivity($"Deleted message ID: {messageId}");
-                        LoadMessages(); // Refresh list
+                        LoadMessages();
                     }
                     else
                     {
@@ -282,7 +260,7 @@ namespace WebApplication1
                 else
                 {
                     ShowSuccess("Message deleted (demonstration mode - database not available).");
-                    LoadMessages(); // Refresh with sample data
+                    LoadMessages();
                 }
             }
             catch (Exception ex)
@@ -301,7 +279,7 @@ namespace WebApplication1
             {
                 if (DatabaseHelper.TestConnection() && DatabaseHelper.TableExists("ContactMessages"))
                 {
-                    string query = "SELECT * FROM ContactMessages WHERE ContactMessageId = @MessageId";
+                    string query = "SELECT * FROM ContactMessages WHERE MessageId = @MessageId";
                     var parameters = new System.Data.SqlClient.SqlParameter[]
                     {
                         new System.Data.SqlClient.SqlParameter("@MessageId", messageId)
@@ -313,22 +291,21 @@ namespace WebApplication1
                         DataRow row = dt.Rows[0];
                         return new ContactMessage
                         {
-                            ContactMessageId = Convert.ToInt32(row["ContactMessageId"]),
+                            ContactMessageId = Convert.ToInt32(row["MessageId"]),
                             Name = row["Name"].ToString(),
                             Email = row["Email"].ToString(),
                             Phone = row["Phone"]?.ToString(),
-                            Subject = row["Subject"].ToString(),
-                            Message = row["Message"].ToString(),
+                            Subject = row["Subject"]?.ToString() ?? GetSubjectFromProjectType(row["ProjectType"]?.ToString()),
+                            Message = row["MessageBody"].ToString(),
                             IsRead = Convert.ToBoolean(row["IsRead"]),
-                            CreatedDate = Convert.ToDateTime(row["CreatedDate"])
+                            CreatedDate = Convert.ToDateTime(row["MessageDate"])
                         };
                     }
                 }
                 else
                 {
-                    // Return sample data for demonstration
-                    var sampleMessages = GetSampleMessages();
-                    return sampleMessages.FirstOrDefault(m => m.ContactMessageId == messageId);
+                    // Return null if database not available
+                    return null;
                 }
             }
             catch (Exception ex)
