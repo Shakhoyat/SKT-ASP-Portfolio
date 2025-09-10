@@ -457,11 +457,21 @@
                     <asp:Repeater ID="rptAchievements" runat="server">
                         <ItemTemplate>
                             <div class="achievement-card">
-                                <div class="achievement-icon-container">
-                                    <div class="achievement-icon <%# Eval("IconClass") %>">
-                                        <%# GetAchievementIconHtml(Eval("IconClass") as string) %>
+                                <!-- New Image Container -->
+                                <div class="achievement-image-container">
+                                    <div class="achievement-image" style='<%# (bool)Eval("HasImage") ? "background-image: url(" + Eval("ImageUrl") + ")" : "" %>'>
+                                        <%# !(bool)Eval("HasImage") ? "<div class='achievement-icon-fallback " + Eval("IconClass") + "'>" + GetAchievementIconHtml(Eval("IconClass") as string) + "</div>" : "" %>
                                     </div>
-                                    <div class="achievement-glow"></div>
+                                    <div class="achievement-overlay">
+                                        <div class="achievement-actions">
+                                            <a href='<%# Eval("CertificateUrl") %>' target="_blank" class="achievement-btn" title="View Certificate">
+                                                <i class="fas fa-certificate"></i>
+                                            </a>
+                                            <a href="Achievements.aspx" class="achievement-btn" title="Learn More">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="achievement-content">
                                     <h3 class="achievement-title"><%# Eval("Title") %></h3>
@@ -478,11 +488,21 @@
                     <asp:Repeater ID="rptAchievementsDuplicate" runat="server">
                         <ItemTemplate>
                             <div class="achievement-card">
-                                <div class="achievement-icon-container">
-                                    <div class="achievement-icon <%# Eval("IconClass") %>">
-                                        <%# GetAchievementIconHtml(Eval("IconClass") as string) %>
+                                <!-- New Image Container -->
+                                <div class="achievement-image-container">
+                                    <div class="achievement-image" style='<%# (bool)Eval("HasImage") ? "background-image: url(" + Eval("ImageUrl") + ")" : "" %>'>
+                                        <%# !(bool)Eval("HasImage") ? "<div class='achievement-icon-fallback " + Eval("IconClass") + "'>" + GetAchievementIconHtml(Eval("IconClass") as string) + "</div>" : "" %>
                                     </div>
-                                    <div class="achievement-glow"></div>
+                                    <div class="achievement-overlay">
+                                        <div class="achievement-actions">
+                                            <a href='<%# Eval("CertificateUrl") %>' target="_blank" class="achievement-btn" title="View Certificate">
+                                                <i class="fas fa-certificate"></i>
+                                            </a>
+                                            <a href="Achievements.aspx" class="achievement-btn" title="Learn More">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="achievement-content">
                                     <h3 class="achievement-title"><%# Eval("Title") %></h3>
@@ -1645,26 +1665,42 @@
                 font-size: 0.85rem;
             }
 
+            .section-cta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
             .about-photo {
-                width: 200px;
-                height: 260px;
+                width: 250px;
+                height: 320px;
+                margin: 0 auto;
             }
 
             .about-social-media-overlay {
-                position: static;
-                transform: none;
-                margin-bottom: 1rem;
-                justify-content: center;
-                gap: 0.5rem;
+                gap: 0.6rem;
+                top: -20px;
             }
 
             .about-social-icon {
-                width: 32px;
-                height: 32px;
+                width: 35px;
+                height: 35px;
             }
 
             .about-social-icon i {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
             }
 
             .action-buttons {
@@ -1734,153 +1770,127 @@
         }
 
         .achievement-card {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            border-radius: 15px;
+            background: #111;
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid #333;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #222;
+            transition: all 0.5s ease;
             min-width: 380px;
             flex-shrink: 0;
             position: relative;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* Center detection and enhanced hover effect for achievements */
+        /* Center detection and floating animation for achievements */
         .achievement-card.center-item {
             transform: translateY(-20px) scale(1.05);
-            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.3);
             border-color: #667eea;
             z-index: 10;
-            background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
         }
 
         .achievement-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-            border-color: #667eea;
-            background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .achievement-card.center-item:hover {
             transform: translateY(-25px) scale(1.08);
-            box-shadow: 0 35px 70px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 35px 70px rgba(102, 126, 234, 0.4);
         }
 
-        /* Achievement Icon Container */
-        .achievement-icon-container {
+        /* New Achievement Image Container */
+        .achievement-image-container {
             position: relative;
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 220px;
+            overflow: hidden;
+            background: #1a1a1a;
         }
 
-        .achievement-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            position: relative;
-            z-index: 2;
+        .achievement-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
             transition: all 0.3s ease;
-            border: 3px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Achievement glow effect */
-        .achievement-glow {
+        .achievement-card:hover .achievement-image {
+            transform: scale(1.05);
+        }
+
+        .achievement-icon-fallback {
+            font-size: 4rem;
+            color: white;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Fallback icon colors */
+        .achievement-icon-fallback.kaggle-expert { background: linear-gradient(135deg, #20beff 0%, #1da1f2 100%); }
+        .achievement-icon-fallback.azure-cert { background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%); }
+        .achievement-icon-fallback.hackathon-winner { background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%); color: #333; }
+        .achievement-icon-fallback.research { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .achievement-icon-fallback.opensource { background: linear-gradient(135deg, #333 0%, #171515 100%); }
+        .achievement-icon-fallback.coding-master { background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%); }
+
+        .achievement-overlay {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             opacity: 0;
             transition: all 0.3s ease;
-            z-index: 1;
         }
 
-        .achievement-card:hover .achievement-glow {
-            opacity: 0.3;
-            animation: pulse-glow 2s infinite;
+        .achievement-card:hover .achievement-overlay {
+            opacity: 1;
         }
 
-        @keyframes pulse-glow {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.3;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.2);
-                opacity: 0.1;
-            }
+        .achievement-actions {
+            display: flex;
+            gap: 1rem;
         }
 
-        /* Specific achievement icon styles */
-        .achievement-icon.kaggle-expert {
-            background: linear-gradient(135deg, #20beff 0%, #1da1f2 100%);
-        }
-        .achievement-icon.kaggle-expert + .achievement-glow {
-            background: radial-gradient(circle, #20beff 0%, transparent 70%);
-        }
-
-        .achievement-icon.azure-cert {
-            background: linear-gradient(135deg, #0078d4 0%, #005a9e 100%);
-        }
-        .achievement-icon.azure-cert + .achievement-glow {
-            background: radial-gradient(circle, #0078d4 0%, transparent 70%);
+        .achievement-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        .achievement-icon.hackathon-winner {
-            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
-            color: #333;
-        }
-        .achievement-icon.hackathon-winner + .achievement-glow {
-            background: radial-gradient(circle, #ffd700 0%, transparent 70%);
-        }
-
-        .achievement-icon.research {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .achievement-icon.research + .achievement-glow {
-            background: radial-gradient(circle, #667eea 0%, transparent 70%);
-        }
-
-        .achievement-icon.opensource {
-            background: linear-gradient(135deg, #333 0%, #171515 100%);
-        }
-        .achievement-icon.opensource + .achievement-glow {
-            background: radial-gradient(circle, #333 0%, transparent 70%);
-        }
-
-        .achievement-icon.coding-master {
-            background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
-        }
-        .achievement-icon.coding-master + .achievement-glow {
-            background: radial-gradient(circle, #00d4aa 0%, transparent 70%);
+        .achievement-btn:hover {
+            background: #764ba2;
+            transform: scale(1.1);
         }
 
         /* Achievement Content */
         .achievement-content {
+            padding: 1.5rem;
             text-align: center;
-            position: relative;
-            z-index: 2;
         }
 
         .achievement-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 0.5rem;
-            line-height: 1.3;
         }
 
         .achievement-org {
@@ -1888,29 +1898,26 @@
             color: #667eea;
             font-weight: 600;
             margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .achievement-desc {
             color: #ccc;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            min-height: 3.2rem; /* Ensure consistent height */
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            min-height: 3rem;
         }
 
         .achievement-date {
             position: absolute;
-            top: -1rem;
+            top: 1rem;
             right: 1rem;
-            background: rgba(102, 126, 234, 0.9);
+            background: rgba(0, 0, 0, 0.7);
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
         }
 
         .achievement-type {
@@ -1921,7 +1928,6 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-top: 1rem;
         }
 
         /* Achievement type colors */
@@ -1956,11 +1962,6 @@
         }
 
         /* Enhanced hover effects for achievements */
-        .achievement-card:hover .achievement-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
         .achievement-card:hover .achievement-title {
             color: #667eea;
         }
@@ -1973,7 +1974,6 @@
         @media (max-width: 768px) {
             .achievement-card {
                 min-width: 320px;
-                padding: 1.5rem;
             }
 
             .achievement-card.center-item {
@@ -1982,18 +1982,6 @@
 
             .achievements-scroll-track {
                 animation-duration: 30s; /* Slower on tablets */
-            }
-
-            .achievement-icon-container {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 1rem;
-            }
-
-            .achievement-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
             }
 
             .achievement-title {
@@ -2008,7 +1996,6 @@
         @media (max-width: 480px) {
             .achievement-card {
                 min-width: 280px;
-                padding: 1.2rem;
             }
 
             .achievement-card.center-item {
@@ -2017,17 +2004,6 @@
 
             .achievements-scroll-track {
                 animation-duration: 25s; /* Even slower on mobile */
-            }
-
-            .achievement-icon-container {
-                width: 60px;
-                height: 60px;
-            }
-
-            .achievement-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
             }
 
             .achievement-title {
@@ -2040,7 +2016,7 @@
             }
 
             .achievement-date {
-                top: -0.5rem;
+                top: 0.5rem;
                 right: 0.5rem;
                 font-size: 0.75rem;
                 padding: 0.2rem 0.6rem;
@@ -2146,7 +2122,7 @@
                         item.classList.add('center-item');
                     } else {
                         item.classList.remove('center-item');
-                    }
+ }
                 });
             }
 
