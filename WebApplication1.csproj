@@ -296,6 +296,7 @@
     <Content Include="ACHIEVEMENT_IMAGE_FIXES_COMPLETE.md" />
     <Content Include="Content\images\projects\README.md" />
     <Content Include="COMPLETE_IMAGE_SYSTEM_FIXES.md" />
+    <Content Include="FixRoslynPath.bat" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="README.md" />
@@ -304,6 +305,7 @@
     <Content Include="ROSLYN-FIX-README.md" />
     <Content Include="PreferencesHandler.ashx" />
     <Content Include="TECHNICAL_DOCUMENTATION.md" />
+    <Content Include="Web.config.backup" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

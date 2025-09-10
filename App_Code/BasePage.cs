@@ -53,7 +53,8 @@ namespace WebApplication1
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error in BasePage.OnPreInit: {ex.Message}");
+                // Using string.Format for compatibility with older C# versions
+                System.Diagnostics.Debug.WriteLine("Error in BasePage.OnPreInit: " + ex.Message);
             }
         }
 
@@ -71,7 +72,7 @@ namespace WebApplication1
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error in BasePage.OnLoad: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine("Error in BasePage.OnLoad: " + ex.Message);
             }
         }
 
@@ -89,7 +90,7 @@ namespace WebApplication1
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error in BasePage.OnPreRender: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine("Error in BasePage.OnPreRender: " + ex.Message);
             }
         }
 
@@ -110,7 +111,7 @@ namespace WebApplication1
                     var body = Master.FindControl("bodyTag") as System.Web.UI.HtmlControls.HtmlGenericControl;
                     if (body != null)
                     {
-                        body.Attributes["class"] = $"theme-{theme} lang-{language}";
+                        body.Attributes["class"] = "theme-" + theme + " lang-" + language;
                     }
                 }
 
@@ -120,7 +121,7 @@ namespace WebApplication1
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error applying user preferences: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine("Error applying user preferences: " + ex.Message);
             }
         }
 
@@ -134,26 +135,26 @@ namespace WebApplication1
                 var theme = "dark";
                 var language = "en";
 
-                var preferencesScript = $@"
+                var preferencesScript = string.Format(@"
                 <script type='text/javascript'>
                     window.PortfolioPreferences = {{
-                        theme: '{theme}',
-                        language: '{language}',
+                        theme: '{0}',
+                        language: '{1}',
                         lastVisit: null,
                         recentProjectsCount: 0,
                         isReturningVisitor: false
                     }};
                     
                     // Apply theme immediately
-                    document.documentElement.setAttribute('data-theme', '{theme}');
-                    document.documentElement.setAttribute('data-lang', '{language}');
-                </script>";
+                    document.documentElement.setAttribute('data-theme', '{0}');
+                    document.documentElement.setAttribute('data-lang', '{1}');
+                </script>", theme, language);
 
                 ClientScript.RegisterStartupScript(this.GetType(), "PortfolioPreferences", preferencesScript, false);
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error setting client preferences: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine("Error setting client preferences: " + ex.Message);
             }
         }
     }
