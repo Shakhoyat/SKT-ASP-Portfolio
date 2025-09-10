@@ -91,6 +91,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="DatabaseSetup.aspx" />
     <Content Include="Database\AddImageUrlToAchievements.sql" />
+    <Content Include="Database\CreateAchievementsTable.sql" />
+    <Content Include="Database\CreateAchievementsTableSimple.sql" />
     <Content Include="Database\CreateAdminTables.sql" />
     <Content Include="Database\PortfolioSchema.sql" />
     <Content Include="database_test_results.aspx" />
@@ -290,6 +292,10 @@
     <Content Include="DYNAMIC_HOMEPAGE_IMPLEMENTATION.md" />
     <Content Include="ACHIEVEMENTS_DYNAMIC_IMPLEMENTATION.md" />
     <Content Include="ACHIEVEMENTS_IMAGEURL_IMPLEMENTATION.md" />
+    <Content Include="Content\documents\README.md" />
+    <Content Include="ACHIEVEMENT_IMAGE_FIXES_COMPLETE.md" />
+    <Content Include="Content\images\projects\README.md" />
+    <Content Include="COMPLETE_IMAGE_SYSTEM_FIXES.md" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="README.md" />

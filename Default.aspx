@@ -1,4 +1,4 @@
-<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1.Default" %>
+ï»¿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApplication1.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -93,7 +93,7 @@
                             My team and I actively compete in datathons across the country, tackling challenges in Deep Learning, NLP, and Computer Vision.
                         </p>
                         <p>
-                            From automated EDA pipelines to predictive healthcare models, I focus on building intelligent systems with real-world impact—driven 
+                            From automated EDA pipelines to predictive healthcare models, I focus on building intelligent systems with real-world impactï¿½driven 
                             by the vision of becoming a future tech lead in deep learning.
                         </p>
                     </div>
@@ -2052,7 +2052,7 @@
         // Animated Counter Function
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
-            
+
             const observerOptions = {
                 threshold: 0.5,
                 rootMargin: '0px 0px -100px 0px'
@@ -2091,7 +2091,7 @@
         // Scroll animations
         function animateOnScroll() {
             const elements = document.querySelectorAll('.tech-item, .project-showcase, .achievement-card');
-            
+
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -2122,7 +2122,7 @@
                 const viewportWidth = window.innerWidth;
                 const elementCenter = rect.left + rect.width / 2;
                 const viewportCenter = viewportWidth / 2;
-                
+
                 // Check if element center is within 150px of viewport center
                 return Math.abs(elementCenter - viewportCenter) < 150;
             }
@@ -2159,18 +2159,18 @@
         }
 
         // Initialize all animations and effects
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Original scroll arrow functionality
             const scrollArrow = document.querySelector('.scroll-arrow');
             if (scrollArrow) {
-                scrollArrow.addEventListener('click', function() {
+                scrollArrow.addEventListener('click', function () {
                     // Calculate position to show complete Stats section (first section after hero)
                     const statsSection = document.querySelector('.stats-section');
-                    
+
                     if (statsSection) {
                         // Get the offset of the stats section
                         const targetPosition = statsSection.offsetTop - 80; // 80px padding from top
-                        
+
                         // Smooth scroll to the calculated position
                         window.scrollTo({
                             top: targetPosition,
@@ -2183,14 +2183,14 @@
             // New tagline arrow functionality - Navigate to About Me
             const taglineArrow = document.querySelector('.tagline-scroll-arrow');
             if (taglineArrow) {
-                taglineArrow.addEventListener('click', function() {
+                taglineArrow.addEventListener('click', function () {
                     // Calculate position to show complete About Me section
                     const aboutSection = document.querySelector('.about-section');
-                    
+
                     if (aboutSection) {
                         // Position to show the About Me title and complete content
                         const targetPosition = aboutSection.offsetTop - 60; // 60px padding from top for perfect positioning
-                        
+
                         // Smooth scroll to the calculated position
                         window.scrollTo({
                             top: targetPosition,
@@ -2212,7 +2212,7 @@
                     const text1 = subtitleElement.getAttribute('data-text1'); // Deep Learning Engineer
                     const text2 = subtitleElement.getAttribute('data-text2'); // Kaggle Expert | Deep Learning
                     const text3 = subtitleElement.getAttribute('data-text3'); // IoT + ML Researcher
-                    
+
                     // Start with the current text (Kaggle Expert)
                     const texts = [text1, text2, text3]; // Rotate through all texts
                     let currentIndex = 0;

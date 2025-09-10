@@ -228,9 +228,18 @@ namespace WebApplication1
             {
                 if (!DatabaseHelper.TestConnection())
                 {
+                    ShowError("Database connection failed. Please check your connection settings.");
                     return false;
                 }
 
+                // Check if required columns exist
+                if (!DatabaseHelper.TableExists("Achievements"))
+                {
+                    ShowError("Achievements table does not exist. Please run database setup first.");
+                    return false;
+                }
+
+                // Enhanced query with better error handling
                 var query = @"INSERT INTO Achievements (Title, AchievementType, Organization, AchievementDate, 
                              Description, CertificateUrl, ImageUrl, IsActive, DisplayOrder, CreatedDate, UpdatedDate)
                              VALUES (@Title, @Type, @Organization, @AchievementDate, @Description, 
@@ -238,22 +247,60 @@ namespace WebApplication1
 
                 var parameters = new[]
                 {
-                    new System.Data.SqlClient.SqlParameter("@Title", achievement.Title),
-                    new System.Data.SqlClient.SqlParameter("@Type", achievement.Type),
-                    new System.Data.SqlClient.SqlParameter("@Organization", achievement.Organization),
+                    new System.Data.SqlClient.SqlParameter("@Title", achievement.Title ?? ""),
+                    new System.Data.SqlClient.SqlParameter("@Type", achievement.Type ?? "Achievement"),
+                    new System.Data.SqlClient.SqlParameter("@Organization", achievement.Organization ?? ""),
                     new System.Data.SqlClient.SqlParameter("@AchievementDate", achievement.AchievementDate),
-                    new System.Data.SqlClient.SqlParameter("@Description", achievement.Description),
-                    new System.Data.SqlClient.SqlParameter("@CertificateUrl", (object)achievement.CertificateUrl ?? DBNull.Value),
-                    new System.Data.SqlClient.SqlParameter("@ImageUrl", (object)achievement.ImageUrl ?? DBNull.Value),
+                    new System.Data.SqlClient.SqlParameter("@Description", achievement.Description ?? ""),
+                    new System.Data.SqlClient.SqlParameter("@CertificateUrl", string.IsNullOrEmpty(achievement.CertificateUrl) ? (object)DBNull.Value : achievement.CertificateUrl),
+                    new System.Data.SqlClient.SqlParameter("@ImageUrl", string.IsNullOrEmpty(achievement.ImageUrl) ? (object)DBNull.Value : achievement.ImageUrl),
                     new System.Data.SqlClient.SqlParameter("@IsActive", achievement.IsActive),
                     new System.Data.SqlClient.SqlParameter("@DisplayOrder", 1)
                 };
 
-                return DatabaseHelper.ExecuteNonQuery(query, parameters) > 0;
+                System.Diagnostics.Debug.WriteLine($"Creating achievement: {achievement.Title}");
+                System.Diagnostics.Debug.WriteLine($"ImageUrl: {achievement.ImageUrl}");
+                System.Diagnostics.Debug.WriteLine($"CertificateUrl: {achievement.CertificateUrl}");
+
+                int result = DatabaseHelper.ExecuteNonQuery(query, parameters);
+                
+                if (result > 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("Achievement created successfully");
+                    return true;
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("No rows affected during achievement creation");
+                    ShowError("No rows were affected. The achievement may not have been created.");
+                    return false;
+                }
+            }
+            catch (System.Data.SqlClient.SqlException sqlEx)
+            {
+                string errorMessage = $"Database error creating achievement: {sqlEx.Message}";
+                System.Diagnostics.Debug.WriteLine(errorMessage);
+                
+                // Specific error messages for common issues
+                if (sqlEx.Message.Contains("Invalid column name"))
+                {
+                    ShowError("Database schema error. Please run the latest database update script. Missing columns detected.");
+                }
+                else if (sqlEx.Message.Contains("cannot insert the value NULL"))
+                {
+                    ShowError("Required field validation error. Please ensure all required fields are filled.");
+                }
+                else
+                {
+                    ShowError($"Database error: {sqlEx.Message}");
+                }
+                return false;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error creating achievement: {ex.Message}");
+                string errorMessage = $"Error creating achievement: {ex.Message}";
+                System.Diagnostics.Debug.WriteLine(errorMessage);
+                ShowError(errorMessage);
                 return false;
             }
         }

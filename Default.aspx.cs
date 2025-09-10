@@ -88,12 +88,15 @@ namespace WebApplication1
                     return GetSampleProjects(); // Fallback to sample data
                 }
 
-                var query = @"SELECT TOP 5 ProjectId, Title, ShortDescription, TechnologiesUsed, ProjectUrl, GitHubUrl 
+                var query = @"SELECT TOP 5 ProjectId, Title, ShortDescription, TechnologiesUsed, ProjectUrl, GitHubUrl, ImageUrl 
                              FROM Projects WHERE IsActive = 1 ORDER BY DisplayOrder, StartDate DESC";
                 var dt = DatabaseHelper.ExecuteQuery(query);
                 
                 foreach (DataRow row in dt.Rows)
                 {
+                    string imageUrl = row["ImageUrl"]?.ToString();
+                    bool hasCustomImage = !string.IsNullOrWhiteSpace(imageUrl);
+                    
                     projects.Add(new
                     {
                         ProjectId = Convert.ToInt32(row["ProjectId"]),
@@ -104,7 +107,10 @@ namespace WebApplication1
                         GitHubUrl = row["GitHubUrl"]?.ToString() ?? "",
                         ProjectIcon = GetProjectIcon(row["Title"].ToString()),
                         ProjectGradient = GetProjectGradient(row["Title"].ToString()),
-                        TechBadges = BuildTechBadgesHtml(row["TechnologiesUsed"]?.ToString())
+                        TechBadges = BuildTechBadgesHtml(row["TechnologiesUsed"]?.ToString()),
+                        ImageUrl = imageUrl ?? "",
+                        HasCustomImage = hasCustomImage,
+                        DisplayImageUrl = hasCustomImage ? imageUrl : GetDefaultProjectImage(row["Title"].ToString())
                     });
                 }
             }
@@ -130,7 +136,8 @@ namespace WebApplication1
                     return GetSampleAchievements(); // Fallback to sample data
                 }
 
-                var query = @"SELECT TOP 6 AchievementId, Title, Organization, Description, AchievementDate, AchievementType 
+                var query = @"SELECT TOP 6 AchievementId, Title, Organization, Description, AchievementDate, 
+                             AchievementType, ImageUrl, CertificateUrl 
                              FROM Achievements WHERE IsActive = 1 ORDER BY DisplayOrder, AchievementDate DESC";
                 var dt = DatabaseHelper.ExecuteQuery(query);
                 
@@ -145,7 +152,11 @@ namespace WebApplication1
                         Year = Convert.ToDateTime(row["AchievementDate"]).Year.ToString(),
                         Type = row["AchievementType"]?.ToString() ?? "Achievement",
                         IconClass = GetAchievementIcon(row["AchievementType"]?.ToString()),
-                        TypeClass = GetAchievementTypeClass(row["AchievementType"]?.ToString())
+                        TypeClass = GetAchievementTypeClass(row["AchievementType"]?.ToString()),
+                        ImageUrl = row["ImageUrl"]?.ToString() ?? "",
+                        CertificateUrl = row["CertificateUrl"]?.ToString() ?? "",
+                        HasImage = !string.IsNullOrWhiteSpace(row["ImageUrl"]?.ToString()),
+                        HasCertificate = !string.IsNullOrWhiteSpace(row["CertificateUrl"]?.ToString())
                     });
                 }
             }
@@ -271,7 +282,10 @@ namespace WebApplication1
                     GitHubUrl = "https://github.com/Shakhoyat",
                     ProjectIcon = "fas fa-user-md",
                     ProjectGradient = "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);",
-                    TechBadges = "<span class=\"tech-badge java\">Java</span><span class=\"tech-badge\">JavaFX</span><span class=\"tech-badge\">MySQL</span><span class=\"tech-badge\">ML</span>"
+                    TechBadges = "<span class=\"tech-badge java\">Java</span><span class=\"tech-badge\">JavaFX</span><span class=\"tech-badge\">MySQL</span><span class=\"tech-badge\">ML</span>",
+                    ImageUrl = "",
+                    HasCustomImage = false,
+                    DisplayImageUrl = "/Content/images/projects/default-healthcare.jpg"
                 },
                 new {
                     ProjectId = 2,
@@ -282,7 +296,10 @@ namespace WebApplication1
                     GitHubUrl = "https://github.com/Shakhoyat",
                     ProjectIcon = "fas fa-chart-line",
                     ProjectGradient = "background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);",
-                    TechBadges = "<span class=\"tech-badge python\">Python</span><span class=\"tech-badge\">Streamlit</span><span class=\"tech-badge\">Pandas</span><span class=\"tech-badge\">Plotly</span>"
+                    TechBadges = "<span class=\"tech-badge python\">Python</span><span class=\"tech-badge\">Streamlit</span><span class=\"tech-badge\">Pandas</span><span class=\"tech-badge\">Plotly</span>",
+                    ImageUrl = "",
+                    HasCustomImage = false,
+                    DisplayImageUrl = "/Content/images/projects/default-analytics.jpg"
                 }
             };
         }
@@ -302,7 +319,11 @@ namespace WebApplication1
                     Year = "2023",
                     Type = "Expert Status",
                     IconClass = "kaggle-expert",
-                    TypeClass = "expert"
+                    TypeClass = "expert",
+                    ImageUrl = "",
+                    CertificateUrl = "",
+                    HasImage = false,
+                    HasCertificate = false
                 },
                 new {
                     AchievementId = 2,
@@ -312,7 +333,11 @@ namespace WebApplication1
                     Year = "2023",
                     Type = "Certification",
                     IconClass = "azure-cert",
-                    TypeClass = "certification"
+                    TypeClass = "certification",
+                    ImageUrl = "",
+                    CertificateUrl = "",
+                    HasImage = false,
+                    HasCertificate = false
                 }
             };
         }
@@ -339,6 +364,26 @@ namespace WebApplication1
                 default:
                     return "<i class=\"fas fa-star\"></i>";
             }
+        }
+
+        /// <summary>
+        /// Get default project image based on title/category
+        /// </summary>
+        private string GetDefaultProjectImage(string title)
+        {
+            var lowerTitle = title.ToLower();
+            if (lowerTitle.Contains("doctor") || lowerTitle.Contains("health") || lowerTitle.Contains("medical"))
+                return "/Content/images/projects/default-healthcare.jpg";
+            else if (lowerTitle.Contains("data") || lowerTitle.Contains("analytics") || lowerTitle.Contains("eda"))
+                return "/Content/images/projects/default-analytics.jpg";
+            else if (lowerTitle.Contains("weather") || lowerTitle.Contains("climate"))
+                return "/Content/images/projects/default-weather.jpg";
+            else if (lowerTitle.Contains("iot") || lowerTitle.Contains("sensor"))
+                return "/Content/images/projects/default-iot.jpg";
+            else if (lowerTitle.Contains("vision") || lowerTitle.Contains("image") || lowerTitle.Contains("detection"))
+                return "/Content/images/projects/default-vision.jpg";
+            else
+                return "/Content/images/projects/default-project.jpg";
         }
     }
 }
